@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Button } from '@chakra-ui/react'
+import ZIcon from '../components/Icon/ZIcon'
 
 export default function Home() {
   return (
@@ -63,9 +64,14 @@ export default function Home() {
           </span>
         </a>
       </footer>
-      <Button variant="solid" bg="secondary">
+      <Button
+        variant="primary"
+        isFullWidth
+        leftIcon={<ZIcon name="alarm" color="secondary" />}
+      >
         Button
       </Button>
+      <ZIcon name="alarm" color="secondary" />
     </div>
   )
 }
