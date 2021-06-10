@@ -56,6 +56,8 @@ export type IconName =
   | 'boat'
   | 'unarchive'
   | 'label'
+  | 'google'
+  | 'facebook'
 
 /**
  * Props SVG, incluyendo name, color, size y weight. No se debe usar el prop style.

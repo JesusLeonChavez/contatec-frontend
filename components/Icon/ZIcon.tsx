@@ -42,6 +42,8 @@ import Thermostate from './Thermostate'
 import Boat from './Boat'
 import Unarchive from './Unarchive'
 import Label from './Label'
+import Google from './Google'
+import Facebook from './Facebook'
 
 import { PropsIcon } from './types'
 function VIcon({
@@ -60,6 +62,10 @@ function VIcon({
   }
 
   switch (name) {
+    case 'facebook':
+      return <Facebook {...props} style={style} color={_color} />
+    case 'google':
+      return <Google {...props} style={style} color={_color} />
     case 'label':
       return <Label {...props} style={style} color={_color} />
     case 'unarchive':

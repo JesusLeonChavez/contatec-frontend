@@ -1,0 +1,12 @@
+.divContainerPhoto{
+    position: relative;
+    width: 70%;
+    height: 100vh;
+}
+
+.divContainerForm{
+    padding: 5rem;
+    width:30%;
+    display:flex;
+    align-items: center;
+}
