@@ -20,7 +20,7 @@
     "noImplicitAny": false
   },
   "include": [
-    "next-env.d.ts", "pages/**/*", "src/**/*", "styles/**/*" // *** The files TypeScript should type check ***
+    "next-env.d.ts", "pages/**/*", "src/**/*", "styles/**/*","sections/**/*" // *** The files TypeScript should type check ***
   ],
   "exclude": ["node_modules", "coverage"] // *** The files to not type check ***
 }
