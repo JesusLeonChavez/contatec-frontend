@@ -174,7 +174,7 @@ VIcon.propTypes = {
 }
 
 VIcon.defaultProps = {
-  color: 'secondary',
+  color: 'primary',
   size: 15,
   pointer: false
 }

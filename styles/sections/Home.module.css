@@ -1,0 +1,26 @@
+.containerHero{
+    height: calc(100vh - 80px);
+    display: flex;
+    position: relative;
+}
+.blankSection{
+    width: 30%;
+}
+
+.infoHero{
+    width: 600px;
+    display: grid;
+    grid-gap: 15px;
+    position:absolute;
+    top:200px;
+    left: 15%;
+    z-index:9999;
+}
+.swiperSection{
+    height:100%;
+    width: 70%;
+}
+
+.heroMainMessage{
+    font-weight: 700;
+}

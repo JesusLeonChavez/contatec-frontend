@@ -6,9 +6,11 @@
 }
 
 .navbarWrapper{
+    height:100%;
     max-width: 1300px;
     display:flex;
     justify-content:space-between; 
+    align-items:center;
 }
 
 .navbarWrapper ul{
