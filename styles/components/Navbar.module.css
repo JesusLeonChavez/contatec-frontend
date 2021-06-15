@@ -24,6 +24,11 @@
 .navbarWrapper ul li:hover{
     color:#304659;
 }
+
+.navbarWrapper ul li.active{
+    color:#304659;
+    font-weight: 500;
+}
 .navbarWrapper ul:nth-child(2){
     margin-left: 1.5rem;
 }
