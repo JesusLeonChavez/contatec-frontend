@@ -58,6 +58,7 @@ export type IconName =
   | 'label'
   | 'google'
   | 'facebook'
+  | 'logo'
 
 /**
  * Props SVG, incluyendo name, color, size y weight. No se debe usar el prop style.

@@ -44,6 +44,7 @@ import Unarchive from './Unarchive'
 import Label from './Label'
 import Google from './Google'
 import Facebook from './Facebook'
+import Logo from './Logo'
 
 import { PropsIcon } from './types'
 function VIcon({
@@ -62,6 +63,8 @@ function VIcon({
   }
 
   switch (name) {
+    case 'logo':
+      return <Logo {...props} style={style} color={_color} />
     case 'facebook':
       return <Facebook {...props} style={style} color={_color} />
     case 'google':
