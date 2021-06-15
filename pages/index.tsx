@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Button } from '@chakra-ui/react'
-import { Swiper, SwiperSlide } from 'swiper/react'
+// import { Swiper, SwiperSlide } from 'swiper/react'
 // import styles from '../styles/Home.module.css'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/Navbar'
 // import Swiper core and required modules
 import SwiperCore, { Autoplay, Navigation } from 'swiper/core'
-
+import Hero from '../sections/Home/Hero'
 // install Swiper modules
 SwiperCore.use([Autoplay, Navigation])
 
@@ -20,8 +20,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      <Hero />
       <main className={styles.main}>
-        <Swiper
+        {/* <Swiper
           slidesPerView={1}
           spaceBetween={10}
           navigation
@@ -40,8 +41,8 @@ export default function Home() {
             <div>Prueba</div>
           </SwiperSlide>
           ...
-        </Swiper>
-        <Swiper
+        </Swiper> */}
+        {/* <Swiper
           slidesPerView={2}
           spaceBetween={10}
           navigation
@@ -110,7 +111,7 @@ export default function Home() {
             <div>Prueba</div>
           </SwiperSlide>
           ...
-        </Swiper>
+        </Swiper> */}
       </main>
 
       <footer className={styles.footer}>

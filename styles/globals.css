@@ -20,15 +20,23 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
+.generalContainer{
+  max-width: 1300px;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 0 40px;
+}
+
+
+/*----------------Swiper-----------------------*/
 .swiper-container {
-  width: 500px;
+  width: 100%;
   height: 100%;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
   background: red;
   /* Center slide text vertically */
   display: -webkit-box;
@@ -48,6 +56,29 @@ a {
 .slide-2{
   background: green;
 }
+
+.mySwiper  .swiper-button-next, .mySwiper  .swiper-button-prev { 
+  color: white; 
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 1.3rem;
+}
+
+.mySwiper .swiper-button-next{
+  top: 800px;
+  right: 100px;
+}
+
+.mySwiper .swiper-button-prev{
+  top: 800px;
+  right: 180px;
+  left: auto;
+}
+
+.mySwiper .swiper-button-next::after,.mySwiper .swiper-button-prev::after{
+  font-size: 1rem;
+}
+
 
 .mySwiper2{
   width: 200px;
