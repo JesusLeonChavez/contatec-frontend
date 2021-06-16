@@ -1,13 +1,17 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Button } from '@chakra-ui/react'
+import Head from "next/head"
+import Image from "next/image"
+import { Button } from "@chakra-ui/react"
 // import { Swiper, SwiperSlide } from 'swiper/react'
 // import styles from '../styles/Home.module.css'
-import styles from '../styles/Home.module.css'
-import Navbar from '../components/Navbar'
+import styles from "../styles/Home.module.css"
+import Navbar from "../components/Navbar"
 // import Swiper core and required modules
-import SwiperCore, { Autoplay, Navigation } from 'swiper/core'
-import Hero from '../sections/Home/Hero'
+import SwiperCore, { Autoplay, Navigation } from "swiper/core"
+import Hero from "../sections/Home/Hero"
+import React from "react"
+import OurCategories from "../sections/Home/OurCategories"
+import Reason from "../sections/Home/Reason"
+import JoinUs from "../sections/Home/JoinUs"
 // install Swiper modules
 SwiperCore.use([Autoplay, Navigation])
 
@@ -21,8 +25,11 @@ export default function Home() {
       </Head>
       <Navbar />
       <Hero />
-      <main className={styles.main}>
-        {/* <Swiper
+      <Reason />
+      <OurCategories />
+      <JoinUs />
+      {/* <main className={styles.main}> */}
+      {/* <Swiper
           slidesPerView={1}
           spaceBetween={10}
           navigation
@@ -42,7 +49,7 @@ export default function Home() {
           </SwiperSlide>
           ...
         </Swiper> */}
-        {/* <Swiper
+      {/* <Swiper
           slidesPerView={2}
           spaceBetween={10}
           navigation
@@ -112,7 +119,7 @@ export default function Home() {
           </SwiperSlide>
           ...
         </Swiper> */}
-      </main>
+      {/* </main> */}
 
       <footer className={styles.footer}>
         <a
@@ -120,7 +127,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>

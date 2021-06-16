@@ -1,9 +1,9 @@
-import Link from 'next/link'
-import styles from '../styles/components/Navbar.module.css'
-import ZIcon from '../components/Icon/Logo'
-import { useState } from 'react'
+import Link from "next/link"
+import styles from "../styles/components/Navbar.module.css"
+import ZIcon from "../components/Icon/Logo"
+import { useState } from "react"
 export default function Navbar() {
-  const [active, setActive] = useState('home')
+  const [active, setActive] = useState("home")
   const handleActive = id => {
     setActive(id)
   }
@@ -20,27 +20,27 @@ export default function Navbar() {
         </div>
         <ul>
           <li
-            className={`${active === 'home' && styles.active}`}
+            className={`${active === "home" && styles.active}`}
             id="home"
-            onClick={() => handleActive('home')}
+            onClick={() => handleActive("home")}
           >
             <Link href="/">
               <a>Home</a>
             </Link>
           </li>
           <li
-            className={`${active === 'explorar' && styles.active}`}
+            className={`${active === "explorar" && styles.active}`}
             id="explorar"
-            onClick={() => handleActive('explorar')}
+            onClick={() => handleActive("explorar")}
           >
             <Link href="/explorar">
               <a>Explorar anuncio</a>
             </Link>
           </li>
           <li
-            className={`${active === 'publicar' && styles.active}`}
+            className={`${active === "publicar" && styles.active}`}
             id="publicar"
-            onClick={() => handleActive('publicar')}
+            onClick={() => handleActive("publicar")}
           >
             <Link href="/publicar">
               <a href="">Publicar</a>
@@ -49,9 +49,9 @@ export default function Navbar() {
         </ul>
         <ul>
           <li
-            className={`${active === 'iniciosesion' && styles.active}`}
+            className={`${active === "iniciosesion" && styles.active}`}
             id="iniciosesion"
-            onClick={() => handleActive('iniciosesion')}
+            onClick={() => handleActive("iniciosesion")}
           >
             <Link href="/inicio-sesion">
               <a href="">Iniciar sesión</a>

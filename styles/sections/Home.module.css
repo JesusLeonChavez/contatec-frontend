@@ -1,3 +1,5 @@
+/* Hero */
+
 .containerHero{
     height: calc(100vh - 80px);
     display: flex;
@@ -23,4 +25,98 @@
 
 .heroMainMessage{
     font-weight: 700;
+}
+
+/* OurCategories */
+
+.infoContainer{
+  color:#304659;
+}
+
+.infoWrapper{
+
+    width: 100%;
+    max-width: 1500px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 10px;
+}
+
+.infoRowInvert, .infoRowNoInvert{
+  width: 100%;
+  display: grid;
+  grid-template-columns:repeat(2,1fr) ;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  .infoRowInvert, .infoRowNoInvert {
+    grid-template-columns:repeat(1,100%) ;
+    grid-template-rows:repeat(2,1fr) ;
+  }
+  .infoRowInvert > div:first-child{
+    order: 2;
+  }
+}
+.bold600{
+  font-weight: 600;
+}
+.bold500{
+  font-weight: 500;
+}
+.bold400{
+  font-weight: 400;
+}
+.bold300{
+  font-weight: 300;
+}
+.bold200{
+  font-weight: 200;
+}
+
+.mt1{
+  margin-top: 0.5rem;
+}
+.mt2{
+  margin-top: 1rem;
+}
+.mt3{
+  margin-top: 1.5rem;
+}
+.mt4{
+  margin-top: 2rem;
+}
+.mt5{
+  margin-top: 2.5rem;
+}
+.mt6{
+  margin-top: 3rem;
+}
+.ml1{
+  margin-left: 0.5rem;
+}
+.ml2{
+  margin-left: 1rem;
+}
+.ml3{
+  margin-left: 1.5rem;
+}
+.ml4{
+  margin-left: 2rem;
+}
+.ml5{
+  margin-left: 2.5rem;
+}
+.ml6{
+  margin-left: 3rem;
+}
+
+.backgroundTest1{
+  background-color: red;
+}
+.backgroundTest2{
+  background-color:green;
+}
+.backgroundTest3{
+  background-color: purple;
 }

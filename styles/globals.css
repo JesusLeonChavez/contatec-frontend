@@ -1,13 +1,13 @@
 :root{
   --primary: #706F6F;
-  --secondary: #FF6F91;
+  --secondary: #304659;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  
+
 }
 
 a {
@@ -20,11 +20,17 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
-.generalContainer{
+.generalWrapper{
   max-width: 1300px;
   margin: 0 auto;
   overflow: auto;
   padding: 0 40px;
+}
+
+.flexCenterCustom{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -57,8 +63,8 @@ a {
   background: green;
 }
 
-.mySwiper  .swiper-button-next, .mySwiper  .swiper-button-prev { 
-  color: white; 
+.mySwiper  .swiper-button-next, .mySwiper  .swiper-button-prev {
+  color: white;
   border: 1px solid white;
   border-radius: 50%;
   padding: 1.3rem;
@@ -142,8 +148,8 @@ a {
   background: blue;
 }
 
-.mySwiper3 .swiper-button-next, .mySwiper3 .swiper-button-prev { 
-  color: white; 
+.mySwiper3 .swiper-button-next, .mySwiper3 .swiper-button-prev {
+  color: white;
   border: 1px solid white;
   border-radius: 50%;
   padding: 1.3rem;
