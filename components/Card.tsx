@@ -1,6 +1,6 @@
 import { Box, Image, Text, Flex } from "@chakra-ui/react"
 import styles from "../styles/sections/Home.module.css"
-export default function Card() {
+export default function Card({ title }) {
   const property = {
     imageUrl: "https://bit.ly/2Z4KKcF",
     imageAlt: "Rear view of modern home with pool",
@@ -19,7 +19,7 @@ export default function Card() {
         <Flex align="center" justify="center" direction="column">
           <Flex align="center" justify="center">
             <Text fontSize="md" className={styles.bold500}>
-              Marketing contenido
+              {title}
             </Text>
           </Flex>
           <Flex align="center" justify="center">

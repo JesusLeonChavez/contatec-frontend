@@ -85,7 +85,7 @@ export default function FeaturedServices() {
             >
               {["1", "2", "3", "4", "5", "6", "7", "8"].map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Card />
+                  <Card title="Marketing digital" />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -117,7 +117,7 @@ export default function FeaturedServices() {
             >
               {["1", "2", "3", "4", "5", "6", "7", "8"].map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Card />
+                  <Card title="Desarrollo web" />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -149,7 +149,7 @@ export default function FeaturedServices() {
             >
               {["1", "2", "3", "4", "5", "6", "7", "8"].map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Card />
+                  <Card title="Programacion" />
                 </SwiperSlide>
               ))}
             </Swiper>
