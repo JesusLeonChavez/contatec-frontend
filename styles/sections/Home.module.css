@@ -14,7 +14,7 @@
     display: grid;
     grid-gap: 15px;
     position:absolute;
-    top:200px;
+    top:18%;
     left: 15%;
     z-index:9999;
 }
@@ -34,7 +34,6 @@
 }
 
 .infoWrapper{
-
     width: 100%;
     max-width: 1500px;
     margin-right: auto;
