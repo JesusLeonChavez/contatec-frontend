@@ -1,11 +1,6 @@
 import Head from "next/head"
-import Image from "next/image"
-import { Button } from "@chakra-ui/react"
-// import { Swiper, SwiperSlide } from 'swiper/react'
-// import styles from '../styles/Home.module.css'
-import styles from "../styles/Home.module.css"
 import Navbar from "../components/Navbar"
-// import Swiper core and required modules
+import Footer from "../components/Footer"
 import SwiperCore, { Autoplay, Navigation } from "swiper/core"
 import Hero from "../sections/Home/Hero"
 import React from "react"
@@ -13,7 +8,7 @@ import OurCategories from "../sections/Home/OurCategories"
 import Reason from "../sections/Home/Reason"
 import JoinUs from "../sections/Home/JoinUs"
 import FeaturedServices from "../sections/Home/FeaturedServices"
-// install Swiper modules
+
 SwiperCore.use([Autoplay, Navigation])
 
 export default function Home() {
@@ -30,114 +25,7 @@ export default function Home() {
       <Reason />
       <OurCategories />
       <JoinUs />
-      {/* <main className={styles.main}> */}
-      {/* <Swiper
-          slidesPerView={1}
-          spaceBetween={10}
-          navigation
-          className="mySwiper"
-        >
-          <SwiperSlide className="slide-2">
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          ...
-        </Swiper> */}
-      {/* <Swiper
-          slidesPerView={2}
-          spaceBetween={10}
-          navigation
-          className="mySwiper2"
-        >
-          <SwiperSlide className="slide-2">
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          ...
-        </Swiper>
-        <Swiper
-          slidesPerView={3}
-          spaceBetween={10}
-          navigation
-          loop={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false
-          }}
-          breakpoints={{
-            // when window width is >= 640px
-            100: {
-              slidesPerView: 1
-            },
-            // when window width is >= 768px
-            768: {
-              slidesPerView: 2
-            },
-            1000: {
-              slidesPerView: 3
-            }
-          }}
-          className="mySwiper3"
-        >
-          <SwiperSlide className="slide-2">
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          ...
-        </Swiper> */}
-      {/* </main> */}
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-      <Button variant="primary" isFullWidth>
-        Button
-      </Button>
+      <Footer />
     </div>
   )
 }
