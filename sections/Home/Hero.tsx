@@ -7,12 +7,12 @@ import {
   InputLeftElement,
   Button,
   Flex
-} from '@chakra-ui/react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Autoplay, Navigation } from 'swiper/core'
-import styles from '../../styles/sections/Home.module.css'
-import ZIcon from '../../components/Icon/ZIcon'
-import React from 'react'
+} from "@chakra-ui/react"
+import { Swiper, SwiperSlide } from "swiper/react"
+import SwiperCore, { Autoplay, Navigation } from "swiper/core"
+import styles from "../../styles/sections/Home.module.css"
+import ZIcon from "../../components/Icon/ZIcon"
+import React from "react"
 SwiperCore.use([Autoplay, Navigation])
 export default function Hero() {
   return (
@@ -38,7 +38,7 @@ export default function Hero() {
                     />
                     <Input type="text" placeholder="P. ej: Desarrollo web" />
                   </InputGroup>
-                  <Button w={{ md: '3xs' }}>Buscar</Button>
+                  <Button w={{ md: "3xs" }}>Buscar</Button>
                 </Flex>
               </FormControl>
             </div>
