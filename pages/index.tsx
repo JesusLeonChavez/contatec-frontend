@@ -12,6 +12,7 @@ import React from "react"
 import OurCategories from "../sections/Home/OurCategories"
 import Reason from "../sections/Home/Reason"
 import JoinUs from "../sections/Home/JoinUs"
+import FeaturedServices from "../sections/Home/FeaturedServices"
 // install Swiper modules
 SwiperCore.use([Autoplay, Navigation])
 
@@ -25,6 +26,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <Hero />
+      <FeaturedServices />
       <Reason />
       <OurCategories />
       <JoinUs />
