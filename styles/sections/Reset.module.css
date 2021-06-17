@@ -1,0 +1,89 @@
+.container{
+  background-image: url('../../public/Image.jpg');
+  width: 1095px;
+  height: 1024px;
+  left: calc(50% - 1095px/2 + 172.5px);
+  top: calc(50% - 1024px/2);
+  position: relative;
+}
+
+.h1{
+  position: absolute;
+  width: 338.92px;
+  height: 30px;
+  right: 550.08px;
+  top: calc(50% - 30px/2 - 121px);
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+
+  text-align: center;
+
+  color: #304659;
+}
+
+.p{
+  position: absolute;
+  width: 339px;
+  height: 54px;
+  right: 551px;
+  top: calc(50% - 54px/2 - 50px);
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 27px;
+  /* or 169% */
+
+
+  color: #525252;
+}
+
+.Label{
+  position:relative;
+  width: 143px;
+  height: 20px;
+  left: 204px;
+  top: 520px;
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+
+  color: #525252;
+}
+
+.Entrada{
+  position: absolute;
+  left: 0px;
+  right: -0.08px;
+  top: 0px;
+  bottom: 0px;
+
+  border: 1px solid #525252;
+  border-radius: 5px;
+}
+
+/*.Boton{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 40px;
+
+  position: relative;
+  width: 338.92px;
+  height: 41px;
+  left: 551.08px;
+  top: 607px;
+
+  background: #304659;
+  border-radius: 5px;
+}*/

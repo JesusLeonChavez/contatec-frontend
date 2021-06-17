@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import styles from '../../styles/sections/Login.module.css'
+import Image from "next/image"
+import styles from "../../styles/sections/Login.module.css"
 function ImageAside() {
   return (
     <div className={styles.divContainerPhoto}>

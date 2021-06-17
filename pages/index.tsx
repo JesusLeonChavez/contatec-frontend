@@ -1,13 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Button } from '@chakra-ui/react'
+import Head from "next/head"
+import Image from "next/image"
+import { Button } from "@chakra-ui/react"
 // import { Swiper, SwiperSlide } from 'swiper/react'
 // import styles from '../styles/Home.module.css'
-import styles from '../styles/Home.module.css'
-import Navbar from '../components/Navbar'
+import styles from "../styles/Home.module.css"
+import Navbar from "../components/Navbar"
 // import Swiper core and required modules
-import SwiperCore, { Autoplay, Navigation } from 'swiper/core'
-import Hero from '../sections/Home/Hero'
+import SwiperCore, { Autoplay, Navigation } from "swiper/core"
+import Hero from "../sections/Home/Hero"
 // install Swiper modules
 SwiperCore.use([Autoplay, Navigation])
 
@@ -120,7 +120,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>

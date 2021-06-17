@@ -7,7 +7,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  
+
 }
 
 a {
@@ -57,8 +57,8 @@ a {
   background: green;
 }
 
-.mySwiper  .swiper-button-next, .mySwiper  .swiper-button-prev { 
-  color: white; 
+.mySwiper  .swiper-button-next, .mySwiper  .swiper-button-prev {
+  color: white;
   border: 1px solid white;
   border-radius: 50%;
   padding: 1.3rem;
@@ -142,8 +142,8 @@ a {
   background: blue;
 }
 
-.mySwiper3 .swiper-button-next, .mySwiper3 .swiper-button-prev { 
-  color: white; 
+.mySwiper3 .swiper-button-next, .mySwiper3 .swiper-button-prev {
+  color: white;
   border: 1px solid white;
   border-radius: 50%;
   padding: 1.3rem;

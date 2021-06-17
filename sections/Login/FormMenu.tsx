@@ -1,7 +1,7 @@
-import React from 'react'
-import styles from '../../styles/sections/Login.module.css'
-import { FormControl, FormLabel, Input, Button } from '@chakra-ui/react'
-import ZIcon from '../../components/Icon/ZIcon'
+import React from "react"
+import styles from "../../styles/sections/Login.module.css"
+import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react"
+import ZIcon from "../../components/Icon/ZIcon"
 export default function FormMenu() {
   return (
     <div className={styles.divContainerForm}>
