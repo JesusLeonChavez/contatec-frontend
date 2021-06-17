@@ -113,7 +113,7 @@ export default function FeaturedServices() {
                   slidesPerView: 4
                 }
               }}
-              className="mySwiperTab2"
+              className="mySwiperTab"
             >
               {["1", "2", "3", "4", "5", "6", "7", "8"].map((item, index) => (
                 <SwiperSlide key={index}>
