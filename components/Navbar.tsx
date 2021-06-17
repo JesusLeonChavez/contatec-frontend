@@ -2,6 +2,8 @@ import Link from "next/link"
 import styles from "../styles/components/Navbar.module.css"
 import ZIcon from "../components/Icon/Logo"
 import { useState } from "react"
+import Register from "../sections/Home/Register"
+import { Flex } from "@chakra-ui/react"
 export default function Navbar() {
   const [active, setActive] = useState("home")
   const handleActive = id => {
@@ -57,11 +59,18 @@ export default function Navbar() {
               <a href="">Iniciar sesión</a>
             </Link>
           </li>
-          <li>
-            <Link href="/registro">
+
+          <Flex align="center" justify="center">
+            <Register
+              variant="secondary"
+              width="4xs"
+              showModalButtonText="Registrate"
+              isLoading={false}
+            />
+          </Flex>
+          {/* <Link href="/registro">
               <a href="">Registrarse</a>
-            </Link>
-          </li>
+            </Link> */}
         </ul>
       </nav>
     </div>

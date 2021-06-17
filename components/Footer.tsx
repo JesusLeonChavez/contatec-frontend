@@ -10,7 +10,7 @@ export default function Footer() {
         <Flex
           align="center"
           justify="space-between"
-          py="4"
+          py="1"
           direction={{ base: "column", xs: "column", sm: "row" }}
         >
           <Box>
@@ -53,17 +53,17 @@ export default function Footer() {
           <Flex py="4" align="center" justify="center">
             <Link href="/">
               <a>
-                <ZIcon name="pencil" className="mr2 ml2" />
+                <ZIcon name="facebook" color="secondary" className="mr2 ml2" />
               </a>
             </Link>
             <Link href="/">
               <a>
-                <ZIcon name="pencil" className="mr1 ml1" />
+                <ZIcon name="instagram" color="secondary" className="mr1 ml1" />
               </a>
             </Link>
             <Link href="/">
               <a>
-                <ZIcon name="pencil" className="mr2 ml2" />
+                <ZIcon name="twitter" color="secondary" className="mr2 ml2" />
               </a>
             </Link>
           </Flex>

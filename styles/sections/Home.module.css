@@ -16,7 +16,7 @@
     position:absolute;
     top:18%;
     left: 15%;
-    z-index:9999;
+    z-index:3;
 }
 .swiperSection{
     height:100%;

@@ -1,6 +1,6 @@
 import * as React from "react"
 
-function Facebook(props) {
+function Instagram(props) {
   return (
     <svg
       width="1.3em"
@@ -13,11 +13,11 @@ function Facebook(props) {
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M18 0H2a2 2 0 00-2 2v16a2 2 0 002 2h8v-7.53H7V9.648h3V8.131C10 5.26 11.49 4 13.925 4c1.143 0 1.759.081 2.057.121l.018.002v2.7h-1.661C13.305 6.824 13 7.359 13 8.44v1.207h2.974l-.411 2.824H13V20h5a2 2 0 002-2V2a2 2 0 00-2-2z"
+        d="M6 0h8a6 6 0 016 6v8a6 6 0 01-6 6H6a6 6 0 01-6-6V6a6 6 0 016-6zm10 3c.5 0 1 .5 1 1s-.5 1-1 1-1-.5-1-1 .5-1 1-1zm-1 7c0-2.758-2.242-5-5-5s-5 2.242-5 5 2.242 5 5 5 5-2.242 5-5zm-5-3a3 3 0 100 6 3 3 0 000-6z"
         fill={props.color}
       />
     </svg>
   )
 }
 
-export default Facebook
+export default Instagram

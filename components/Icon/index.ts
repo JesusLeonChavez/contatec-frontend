@@ -6,4 +6,4 @@
  * @typedef {import('./types').IconName} IconName
  */
 
-export { default } from './ZIcon'
+export { default } from "./ZIcon"
