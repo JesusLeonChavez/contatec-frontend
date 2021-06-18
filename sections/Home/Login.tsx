@@ -39,6 +39,8 @@ export default function Login({
     console.log("body: ", body)
 
     const respLogin = await post("/api/user/login", body)
+    // TODO: si el logeo fue exitoso en estado AUTH colocar isLogged true
+    // TODO: Implementar un efecto dentro del provider que sea dependiene del isLogged y de los dispatch que se haga para que se aplique el efecto de verificar que este logeado
 
     console.log("resp: ", respLogin)
   }
