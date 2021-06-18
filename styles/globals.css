@@ -292,12 +292,12 @@ a {
 }
 
 .mySwiper .swiper-button-next{
-  top: 800px;
+  top:90%;
   right: 100px;
 }
 
 .mySwiper .swiper-button-prev{
-  top: 800px;
+  top: 90%;
   right: 180px;
   left: auto;
 }
