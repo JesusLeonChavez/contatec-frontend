@@ -3,6 +3,7 @@ import styles from "../styles/components/Navbar.module.css"
 import ZIcon from "../components/Icon/Logo"
 import { useState } from "react"
 import Register from "../sections/Home/Register"
+import Login from "../sections/Home/Login"
 import { Flex } from "@chakra-ui/react"
 export default function Navbar() {
   const [active, setActive] = useState("home")
@@ -50,7 +51,7 @@ export default function Navbar() {
           </li>
         </ul>
         <ul>
-          <li
+          {/* <li
             className={`${active === "iniciosesion" && styles.active}`}
             id="iniciosesion"
             onClick={() => handleActive("iniciosesion")}
@@ -58,8 +59,16 @@ export default function Navbar() {
             <Link href="/inicio-sesion">
               <a href="">Iniciar sesión</a>
             </Link>
-          </li>
+          </li> */}
 
+          <Flex align="center" justify="center" mx="1">
+            <Login
+              variant="primary"
+              width="4xs"
+              showModalButtonText=" Inicio Sesión"
+              isLoading={false}
+            />
+          </Flex>
           <Flex align="center" justify="center">
             <Register
               variant="secondary"
