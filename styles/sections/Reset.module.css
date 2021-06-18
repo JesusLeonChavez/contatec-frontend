@@ -1,18 +1,34 @@
 .container{
-  background-image: url('../../public/Image.jpg');
-  width: 1095px;
-  height: 1024px;
-  left: calc(50% - 1095px/2 + 172.5px);
-  top: calc(50% - 1024px/2);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
   position: relative;
 }
 
+.containerBlanco{
+  width: 345px;
+}
+
+.containerConFondo{
+  background-image: url('../../public/Image.jpg');
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subcontiner{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-right: 300px;
+}
+
 .h1{
-  position: absolute;
   width: 338.92px;
   height: 30px;
-  right: 550.08px;
-  top: calc(50% - 30px/2 - 121px);
+  margin-bottom: 29px;
 
   font-family: Poppins;
   font-style: normal;
@@ -26,11 +42,9 @@
 }
 
 .p{
-  position: absolute;
   width: 339px;
   height: 54px;
-  right: 551px;
-  top: calc(50% - 54px/2 - 50px);
+  margin-top: 15px;
 
   font-family: Poppins;
   font-style: normal;
@@ -44,46 +58,59 @@
 }
 
 .Label{
-  position:relative;
-  width: 143px;
+  width: 100%;
   height: 20px;
-  left: 204px;
-  top: 520px;
+
+  margin-top: 29px;
+  margin-bottom: 10px;
 
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-  /* identical to box height, or 143% */
 
   color: #525252;
 }
 
 .Entrada{
-  position: absolute;
-  left: 0px;
-  right: -0.08px;
-  top: 0px;
-  bottom: 0px;
-
-  border: 1px solid #525252;
+  border: 1px #000;
+  border-style: solid;
   border-radius: 5px;
+  background-color: transparent;
+  height: 30px;
+  width: 80%;
+  margin-top: 10px;
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+
+  color: #636363;
 }
 
-/*.Boton{
+.Boton{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 8px 40px;
+  margin-top: 19px;
 
-  position: relative;
-  width: 338.92px;
+  width: 80%;
   height: 41px;
-  left: 551.08px;
-  top: 607px;
 
   background: #304659;
   border-radius: 5px;
-}*/
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 25px;
+
+  text-align: center;
+  color: #FFFFFF;
+}
+
