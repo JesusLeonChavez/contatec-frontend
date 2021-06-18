@@ -11,10 +11,8 @@ export default function Activar() {
     if (!router.query.token) {
       return
     }
-    console.log("router: ", router.query)
     // eslint-disable-next-line camelcase
     const activation_token = router.query.token
-    console.log("activation_token: ", activation_token)
     post("/api/user/activation", {
       // eslint-disable-next-line camelcase
       activation_token

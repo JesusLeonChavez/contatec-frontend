@@ -1,16 +1,13 @@
 import Link from "next/link"
 import styles from "../styles/components/Navbar.module.css"
 import ZIcon from "../components/Icon/Logo"
-import { useState } from "react"
 import Register from "../sections/Home/Register"
 import Login from "../sections/Home/Login"
 import { Flex } from "@chakra-ui/react"
+import { useRouter } from "next/router"
 export default function Navbar() {
-  const [active, setActive] = useState("home")
-  const handleActive = id => {
-    setActive(id)
-  }
-
+  const router = useRouter()
+  const activeRoute = router.pathname.split("/")[1]
   return (
     <div className={styles.navbarContainer}>
       <nav className={styles.navbarWrapper}>
@@ -22,28 +19,22 @@ export default function Navbar() {
           </Link>
         </div>
         <ul>
-          <li
-            className={`${active === "home" && styles.active}`}
-            id="home"
-            onClick={() => handleActive("home")}
-          >
+          <li className={`${activeRoute === "" && styles.active}`} id="home">
             <Link href="/">
               <a>Home</a>
             </Link>
           </li>
           <li
-            className={`${active === "explorar" && styles.active}`}
+            className={`${activeRoute === "explorar" && styles.active}`}
             id="explorar"
-            onClick={() => handleActive("explorar")}
           >
             <Link href="/explorar">
               <a>Explorar anuncio</a>
             </Link>
           </li>
           <li
-            className={`${active === "publicar" && styles.active}`}
+            className={`${activeRoute === "publicar" && styles.active}`}
             id="publicar"
-            onClick={() => handleActive("publicar")}
           >
             <Link href="/publicar">
               <a href="">Publicar</a>
@@ -51,19 +42,9 @@ export default function Navbar() {
           </li>
         </ul>
         <ul>
-          {/* <li
-            className={`${active === "iniciosesion" && styles.active}`}
-            id="iniciosesion"
-            onClick={() => handleActive("iniciosesion")}
-          >
-            <Link href="/inicio-sesion">
-              <a href="">Iniciar sesión</a>
-            </Link>
-          </li> */}
-
           <Flex align="center" justify="center" mx="1">
             <Login
-              variant="primary"
+              variant="light"
               width="4xs"
               showModalButtonText=" Inicio Sesión"
               isLoading={false}
@@ -77,9 +58,6 @@ export default function Navbar() {
               isLoading={false}
             />
           </Flex>
-          {/* <Link href="/registro">
-              <a href="">Registrarse</a>
-            </Link> */}
         </ul>
       </nav>
     </div>

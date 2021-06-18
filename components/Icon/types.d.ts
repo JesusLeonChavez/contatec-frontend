@@ -61,6 +61,7 @@ export type IconName =
   | "logo"
   | "instagram"
   | "twitter"
+  | "star"
 
 /**
  * Props SVG, incluyendo name, color, size y weight. No se debe usar el prop style.

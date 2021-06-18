@@ -33,9 +33,9 @@ export default function Register({
       us_apellido: "Doe",
       password: "123456"
     }
-    console.log("body: ", body)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line no-unused-vars
     const resp = await post("/api/user/register", body)
-    console.log("resp: ", resp)
   }
   return (
     <ModalCustom

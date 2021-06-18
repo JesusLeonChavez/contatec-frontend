@@ -33,6 +33,34 @@ export const ButtonStyles = {
         boxShadow: "none"
       }
     },
+    light: {
+      bg: "#FFF",
+      color: "secondary",
+      _hover: {
+        bg: darken("#FFF", 10)
+      },
+      _active: {
+        transform: "scale(0.9)"
+      },
+      _focus: {
+        boxShadow: "none"
+      }
+    },
+    third: {
+      bg: "#FFF",
+      color: "secondary",
+      border: "1px solid #304659",
+      _hover: {
+        bg: "secondary",
+        color: "#fff"
+      },
+      _active: {
+        transform: "scale(0.9)"
+      },
+      _focus: {
+        boxShadow: "none"
+      }
+    },
     google: {
       bg: "#ffff",
       color: "#304659",
