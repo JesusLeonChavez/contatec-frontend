@@ -1,4 +1,4 @@
-.container{
+.conteiner{
   width: 100%;
   height: 100vh;
   display: flex;
@@ -6,11 +6,11 @@
   position: relative;
 }
 
-.containerBlanco{
+.conteinerBlanco{
   width: 345px;
 }
 
-.containerConFondo{
+.conteinerConFondo{
   background-image: url('../../public/Image.jpg');
   width: inherit;
   display: flex;
@@ -18,11 +18,13 @@
   align-items: center;
 }
 
-.subcontiner{
+.conteinerForm{
   display: flex;
   flex-direction: column;
-  width: 400px;
-  margin-right: 300px;
+  position: absolute;
+  top:50%;
+  right:50%;
+  transform: translate(50%, -50%);
 }
 
 .h1{
@@ -114,3 +116,22 @@
   color: #FFFFFF;
 }
 
+@media only screen and(max-width: 330px){
+
+  .conteinerConFondo{
+    max-width: 100%;
+    height: auto;
+    position: fixed;
+  }
+
+  .conteinerForm{
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 720px;
+  }
+
+  .h1{
+    font-size: 10px;
+  }
+
+}

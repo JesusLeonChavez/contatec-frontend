@@ -5,13 +5,16 @@ import "swiper/components/pagination/pagination.min.css"
 import "swiper/components/scrollbar/scrollbar.min.css"
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
+import { DataProvider } from "../store/GlobalState"
 import { newTheme } from "../styles/theme"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={newTheme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <DataProvider>
+      <ChakraProvider theme={newTheme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </DataProvider>
   )
 }
 

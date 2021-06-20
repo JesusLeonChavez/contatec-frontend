@@ -5,8 +5,8 @@ import ZIcon from "../../components/Icon/Logo"
 
 export default function FormReset() {
   return (
-    <div className={styles.container}>
-      <div className={styles.containerBlanco}>
+    <div className={styles.conteiner}>
+      <div className={styles.conteinerBlanco}>
         <div>
           <Link href="/">
             <a>
@@ -15,23 +15,22 @@ export default function FormReset() {
           </Link>
         </div>
       </div>
-      <div className={styles.containerConFondo}>
-        <div className={styles.subcontiner}>
-          <h1 className={styles.h1}>Restablecer Contraseña</h1>
-          <p className={styles.p}>
-            Ingresa el correo asociado a tu cuenta y nos comunicaremos contigo
-          </p>
-          <FormLabel className={styles.Label}>Correo Electronico *</FormLabel>
-          <Input
-            borderColor="black.100"
-            className={styles.Entrada}
-            type="email"
-            placeholder="Escribe tu correo aquí"
-          />
-          <Button variant="secondary" className={styles.Boton}>
-            Enviar
-          </Button>
-        </div>
+      <div className={styles.conteinerConFondo}></div>
+      <div className={styles.conteinerForm}>
+        <h1 className={styles.h1}>Restablecer Contraseña</h1>
+        <p className={styles.p}>
+          Ingresa el correo asociado a tu cuenta y nos comunicaremos contigo
+        </p>
+        <FormLabel className={styles.Label}>Correo Electrónico *</FormLabel>
+        <Input
+          borderColor="black.100"
+          className={styles.Entrada}
+          type="email"
+          placeholder="Escribe tu correo aquí"
+        />
+        <Button variant="secondary" className={styles.Boton}>
+          Enviar
+        </Button>
       </div>
     </div>
   )

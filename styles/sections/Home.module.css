@@ -14,9 +14,9 @@
     display: grid;
     grid-gap: 15px;
     position:absolute;
-    top:18%;
+    top:15%;
     left: 15%;
-    z-index:9999;
+    z-index:3;
 }
 .swiperSection{
     height:100%;
@@ -27,7 +27,7 @@
     font-weight: 700;
 }
 
-/* OurCategories */
+/* Info */
 
 .infoContainer{
   color:#304659;

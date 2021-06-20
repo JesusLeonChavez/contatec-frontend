@@ -1,6 +1,8 @@
-import { Text, Grid, Flex, Button } from "@chakra-ui/react"
+import { Text, Grid, Flex } from "@chakra-ui/react"
 import Image from "next/image"
+import React from "react"
 import styles from "../../styles/sections/Home.module.css"
+import Register from "./Register"
 
 export default function OurCategories() {
   return (
@@ -23,9 +25,12 @@ export default function OurCategories() {
               <Text fontSize="5xl" className={styles.bold600}>
                 ¡Únete a nuestra comunidad y empieza el cambio!
               </Text>
-              <Button w="3xs" variant="secondary">
-                Registrarse
-              </Button>
+              <Register
+                variant="secondary"
+                width="3xs"
+                showModalButtonText="Registrate"
+                isLoading={false}
+              />
             </Grid>
           </Flex>
         </div>
