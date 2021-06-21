@@ -54,9 +54,8 @@ export default function Register({
 
       <ModalBody color="primary">
         <form onSubmit={handleSubmit}>
-          <FormControl id="first-name" isRequired mb="6">
+          <FormControl mb="6" id="first-name" isRequired isInvalid={false}>
             <FormLabel>Nombres</FormLabel>
-
             <Input placeholder="P. ej. Liliana Alexandra" />
           </FormControl>
 
@@ -68,7 +67,6 @@ export default function Register({
 
           <FormControl mb="6" isRequired>
             <FormLabel>Correo electrónico</FormLabel>
-
             <Input placeholder="P. ej. lilianasolar@gmail.com" />
           </FormControl>
 
