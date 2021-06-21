@@ -1,7 +1,7 @@
 .navbarContainer{
    height: 80px;
    padding: 0.5rem calc((100vw - 1300px)/2);
-   color: #525252;
+   color: var(--gray);
    font-size: 16px;
 }
 
@@ -24,11 +24,11 @@
     transition: all 0.1s linear;
 }
 .navbarWrapper ul li:hover{
-    color:#304659;
+    color:var(--primary);
 }
 
 .navbarWrapper ul li.active{
-    color:#304659;
+    color:var(--primary);
     font-weight: 500;
 }
 .navbarWrapper ul:nth-child(2){

@@ -53,17 +53,17 @@ export default function Footer() {
           <Flex py="4" align="center" justify="center">
             <Link href="/">
               <a>
-                <ZIcon name="facebook" color="secondary" className="mr2 ml2" />
+                <ZIcon name="facebook" color="primary" className="mr2 ml2" />
               </a>
             </Link>
             <Link href="/">
               <a>
-                <ZIcon name="instagram" color="secondary" className="mr1 ml1" />
+                <ZIcon name="instagram" color="primary" className="mr1 ml1" />
               </a>
             </Link>
             <Link href="/">
               <a>
-                <ZIcon name="twitter" color="secondary" className="mr2 ml2" />
+                <ZIcon name="twitter" color="primary" className="mr2 ml2" />
               </a>
             </Link>
           </Flex>

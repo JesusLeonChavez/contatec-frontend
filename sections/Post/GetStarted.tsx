@@ -18,7 +18,7 @@ export default function OurCategories() {
                 publicado su servicio y se encuentran laborando. ¡Qué esperas
                 para unirte y publicar hoy tu primer anuncio!
               </Text>
-              <Button variant="secondary" w="3xs">
+              <Button variant="primary" w="3xs">
                 Publicar
               </Button>
             </Grid>

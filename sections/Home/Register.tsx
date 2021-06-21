@@ -86,7 +86,7 @@ export default function Register({
 
           <Button
             width="full"
-            variant="secondary"
+            variant="primary"
             mb={6}
             type="submit"
             isLoading={isLoading}

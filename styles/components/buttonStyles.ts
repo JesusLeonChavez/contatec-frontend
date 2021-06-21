@@ -35,7 +35,7 @@ export const ButtonStyles = {
     },
     light: {
       bg: "#FFF",
-      color: "secondary",
+      color: "primary",
       _hover: {
         bg: darken("#FFF", 10)
       },
@@ -48,10 +48,10 @@ export const ButtonStyles = {
     },
     third: {
       bg: "#FFF",
-      color: "secondary",
+      color: "primary",
       border: "1px solid #304659",
       _hover: {
-        bg: "secondary",
+        bg: "primary",
         color: "#fff"
       },
       _active: {

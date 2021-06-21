@@ -6,7 +6,10 @@ import Register from "./Register"
 
 export default function OurCategories() {
   return (
-    <div className={styles.infoContainer}>
+    <div
+      className={styles.infoContainer}
+      style={{ backgroundColor: "var(--secondary)" }}
+    >
       <div className={styles.infoWrapper}>
         <div className={styles.infoRowInvert}>
           <Flex align="center" justify="center" py={10}>
@@ -26,10 +29,9 @@ export default function OurCategories() {
                 ¡Únete a nuestra comunidad y empieza el cambio!
               </Text>
               <Register
-                variant="secondary"
+                variant="primary"
                 width="3xs"
                 showModalButtonText="Registrate"
-                isLoading={false}
               />
             </Grid>
           </Flex>

@@ -12,17 +12,21 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Autoplay, Navigation } from "swiper/core"
 import styles from "../../styles/sections/Home.module.css"
 import ZIcon from "../../components/Icon/ZIcon"
-import React from "react"
+import Image from "next/image"
 SwiperCore.use([Autoplay, Navigation])
 export default function Hero() {
   return (
     <div className={styles.containerHero}>
       <section className={styles.blankSection}>
         <div className={styles.infoHero}>
-          <Text fontSize="smaller" color="gray">
+          <Text fontSize="smaller" color="#525252">
             TRABAJO
           </Text>
-          <Text fontSize="6xl" className={styles.heroMainMessage}>
+          <Text
+            fontSize="6xl"
+            className={styles.heroMainMessage}
+            color="primary"
+          >
             Decubre hoy el mejor servicio para tu negocio
           </Text>
           <div>
@@ -38,7 +42,9 @@ export default function Hero() {
                     />
                     <Input type="text" placeholder="P. ej: Desarrollo web" />
                   </InputGroup>
-                  <Button w={{ md: "3xs" }}>Buscar</Button>
+                  <Button w={{ md: "3xs" }} variant="primary">
+                    Buscar
+                  </Button>
                 </Flex>
               </FormControl>
             </div>
@@ -57,16 +63,28 @@ export default function Hero() {
           }}
         >
           <SwiperSlide className="slide-2">
-            <div>Prueba</div>
+            <Image
+              src="/assets/slides/slide1.png"
+              alt="Picture of the author"
+              layout="fill"
+              objectFit="cover"
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <div>Prueba</div>
+            <Image
+              src="/assets/slides/slide2.png"
+              alt="Picture of the author"
+              layout="fill"
+              objectFit="cover"
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <div>Prueba</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div>Prueba</div>
+            <Image
+              src="/assets/slides/slide3.png"
+              alt="Picture of the author"
+              layout="fill"
+              objectFit="cover"
+            />
           </SwiperSlide>
           ...
         </Swiper>

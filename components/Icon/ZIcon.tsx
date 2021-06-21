@@ -48,6 +48,8 @@ import Logo from "./Logo"
 import Twitter from "./Twitter"
 import Instagram from "./Instagram"
 import Star from "./Star"
+import Border from "./Border"
+import Energy from "./Energy"
 
 import { PropsIcon } from "./types"
 function VIcon({
@@ -66,6 +68,10 @@ function VIcon({
   }
 
   switch (name) {
+    case "border":
+      return <Border {...props} style={style} color={_color} />
+    case "energy":
+      return <Energy {...props} style={style} color={_color} />
     case "star":
       return <Star {...props} style={style} color={_color} />
     case "instagram":

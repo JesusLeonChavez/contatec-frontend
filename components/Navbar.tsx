@@ -52,7 +52,7 @@ export default function Navbar() {
           </Flex>
           <Flex align="center" justify="center">
             <Register
-              variant="secondary"
+              variant="primary"
               width="4xs"
               showModalButtonText="Registrate"
               isLoading={false}

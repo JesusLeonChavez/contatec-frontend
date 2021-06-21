@@ -13,6 +13,28 @@ import styles from "../../styles/sections/Home.module.css"
 import Card from "../../components/Card"
 SwiperCore.use([Autoplay, Navigation])
 export default function FeaturedServices() {
+  const data = [
+    {
+      title: "Marketing de contenido",
+      price: "300",
+      img: "/assets/marketing/marketing1.png"
+    },
+    {
+      title: "Estrategia de marketing",
+      price: "200",
+      img: "/assets/marketing/marketing2.png"
+    },
+    {
+      title: "Crowfunding",
+      price: "150",
+      img: "/assets/marketing/marketing3.png"
+    },
+    {
+      title: "SEO Y SEM",
+      price: "100",
+      img: "/assets/marketing/marketing4.png"
+    }
+  ]
   return (
     <div className="generalWrapper">
       <Flex align="center" justify="center" py={10}>
@@ -24,10 +46,10 @@ export default function FeaturedServices() {
         <TabList>
           <Tab
             _selected={{
-              color: "secondary",
+              color: "primary",
               boxShadow: "none",
               borderBottom: "1px",
-              borderBottomColor: "secondary",
+              borderBottomColor: "primary",
               mx: "10px"
             }}
           >
@@ -35,10 +57,10 @@ export default function FeaturedServices() {
           </Tab>
           <Tab
             _selected={{
-              color: "secondary",
+              color: "primary",
               boxShadow: "none",
               borderBottom: "1px",
-              borderBottomColor: "secondary",
+              borderBottomColor: "primary",
               mx: "10px"
             }}
           >
@@ -46,10 +68,10 @@ export default function FeaturedServices() {
           </Tab>
           <Tab
             _selected={{
-              color: "secondary",
+              color: "primary",
               boxShadow: "none",
               borderBottom: "1px",
-              borderBottomColor: "secondary",
+              borderBottomColor: "primary",
               mx: "10px"
             }}
           >
@@ -83,9 +105,9 @@ export default function FeaturedServices() {
               }}
               className="mySwiperTab"
             >
-              {["1", "2", "3", "4", "5", "6", "7", "8"].map((item, index) => (
+              {data.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Card title="Marketing digital" />
+                  <Card title={item.title} price={item.price} img={item.img} />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -115,9 +137,9 @@ export default function FeaturedServices() {
               }}
               className="mySwiperTab"
             >
-              {["1", "2", "3", "4", "5", "6", "7", "8"].map((item, index) => (
+              {data.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Card title="Desarrollo web" />
+                  <Card title={item.title} price={item.price} img={item.img} />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -147,9 +169,9 @@ export default function FeaturedServices() {
               }}
               className="mySwiperTab"
             >
-              {["1", "2", "3", "4", "5", "6", "7", "8"].map((item, index) => (
+              {data.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Card title="Programacion" />
+                  <Card title={item.title} price={item.price} img={item.img} />
                 </SwiperSlide>
               ))}
             </Swiper>

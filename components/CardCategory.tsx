@@ -24,11 +24,11 @@ export default function Card({ title }) {
           <Flex align="center" justify="space-between" w="full" p="3">
             <Flex align="center">
               <ZIcon name="star" />
-              <Text fontSize="sm" className={styles.bold200} color="secondary">
+              <Text fontSize="sm" className={styles.bold200} color="primary">
                 4.0
               </Text>
             </Flex>
-            <Text fontSize="sm" className={styles.bold200} color="secondary">
+            <Text fontSize="sm" className={styles.bold200} color="primary">
               S/. 200
             </Text>
           </Flex>
@@ -38,7 +38,7 @@ export default function Card({ title }) {
             </Text>
           </Flex>
           <Flex align="center" justify="flex-start">
-            <Text fontSize="sm" className={styles.bold200} color="secondary">
+            <Text fontSize="sm" className={styles.bold200} color="primary">
               Por Luis Sotelo
             </Text>
           </Flex>

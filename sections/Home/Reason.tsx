@@ -5,7 +5,10 @@ import ZIcon from "../../components/Icon/ZIcon"
 
 export default function OurCategories() {
   return (
-    <div className={styles.infoContainer}>
+    <div
+      className={styles.infoContainer}
+      style={{ backgroundColor: "var(--secondary)" }}
+    >
       <div className={styles.infoWrapper}>
         <div className={styles.infoRowInvert}>
           <Flex align="center" justify="center" py={10}>
@@ -35,7 +38,7 @@ export default function OurCategories() {
               <Grid templateColumns="repeat(1, 1fr)" gap={3}>
                 <Flex align="center">
                   <Circle w="45px" h="45px" bg="circleicons">
-                    <ZIcon name="pencil" color="secondary" />
+                    <ZIcon name="border" color="primary" />
                   </Circle>
 
                   <Text fontSize="md" className={styles.ml3}>
@@ -45,7 +48,7 @@ export default function OurCategories() {
 
                 <Flex align="center">
                   <Circle w="45px" h="45px" bg="circleicons">
-                    <ZIcon name="pencil" color="secondary" />
+                    <ZIcon name="energy" color="primary" />
                   </Circle>
 
                   <Text fontSize="md" className={styles.ml3}>
@@ -55,7 +58,7 @@ export default function OurCategories() {
 
                 <Flex align="center">
                   <Circle w="45px" h="45px" bg="circleicons">
-                    <ZIcon name="pencil" color="secondary" />
+                    <ZIcon name="border" color="primary" />
                   </Circle>
 
                   <Text fontSize="md" className={styles.ml3}>
@@ -65,7 +68,7 @@ export default function OurCategories() {
 
                 <Flex align="center">
                   <Circle w="45px" h="45px" bg="circleicons">
-                    <ZIcon name="pencil" color="secondary" />
+                    <ZIcon name="energy" color="primary" />
                   </Circle>
 
                   <Text fontSize="md" className={styles.ml3}>
