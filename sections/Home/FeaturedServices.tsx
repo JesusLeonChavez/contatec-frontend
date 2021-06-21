@@ -38,7 +38,7 @@ export default function FeaturedServices() {
   return (
     <div className="generalWrapper">
       <Flex align="center" justify="center" py={10}>
-        <Text fontSize="5xl" className={styles.bold600}>
+        <Text fontSize="5xl" className={styles.bold600} color="primary">
           Servicios destacados
         </Text>
       </Flex>

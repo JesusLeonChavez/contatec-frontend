@@ -4,7 +4,7 @@ export function getColorByName(color: ColorName | undefined) {
   if (color === "secondary") return "var(--secondary)"
   // if (color === 'danger') return `var(--danger)`
   // if (color === 'warning') return `var(--warning)`
-  // if (color === 'white') return `var(--white)`
+  if (color === "white") return `var(--white)`
   // if (color === 'dark') return `var(--dark)`
   // if (color === 'gray') return `var(--gray)`
   // if (color === 'success') return `var(--success)`

@@ -2,13 +2,13 @@
   --primary: #482F51;
   --secondary: #FBD76D;
   --gray:#525252;
+  --white:#FFFF;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  color:var(--primary)
 }
 
 a {
@@ -19,7 +19,7 @@ a {
 * {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  color:var(--primary)
+  /* color:var(--primary); */
 }
 
 .generalWrapper{
