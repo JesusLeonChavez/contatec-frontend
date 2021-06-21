@@ -82,11 +82,11 @@ export default function Login({
             O
           </Text>
           <FacebookLogin
-            // appId="1088597931155576"
-            // autoLoad={true}
+            appId="1088597931155576"
+            autoLoad={true}
             fields="name,email,picture"
-            onClick={() => {}}
-            callback={() => {}}
+            // onClick={() => {}}
+            // callback={() => {}}
             render={renderProps => (
               <Button
                 leftIcon={<ZIcon name="facebookv2" />}
@@ -100,7 +100,7 @@ export default function Login({
             )}
           />
           <GoogleLogin
-            // clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
             render={renderProps => (
               <Button
                 leftIcon={<ZIcon name="google" />}

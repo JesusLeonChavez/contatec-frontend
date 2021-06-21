@@ -105,8 +105,8 @@ export default function Register({
             // appId="1088597931155576"
             // autoLoad={true}
             fields="name,email,picture"
-            onClick={() => {}}
-            callback={() => {}}
+            // onClick={() => {}}
+            // callback={() => {}}
             render={renderProps => (
               <Button
                 leftIcon={<ZIcon name="facebookv2" />}
@@ -120,7 +120,7 @@ export default function Register({
             )}
           />
           <GoogleLogin
-            // clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
             render={renderProps => (
               <Button
                 leftIcon={<ZIcon name="google" />}
