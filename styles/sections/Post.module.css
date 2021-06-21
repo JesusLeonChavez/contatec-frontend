@@ -1,0 +1,31 @@
+.infoContainer{
+  color:#304659;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+}
+
+.infoWrapper{
+    width: 100%;
+    max-width: 1500px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 10px;
+}
+
+.infoRowInvert, .infoRowNoInvert{
+  width: 100%;
+  display: grid;
+  grid-template-columns:repeat(2,1fr) ;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  .infoRowInvert, .infoRowNoInvert {
+    grid-template-columns:repeat(1,100%) ;
+    grid-template-rows:repeat(2,1fr) ;
+  }
+  .infoRowInvert > div:first-child{
+    order: 2;
+  }
+}
