@@ -4,7 +4,12 @@ export default function CategoryTittle() {
     <Box>
       <div className="generalWrapper">
         <Flex align="center" justify="center" py="5">
-          <Text fontSize="5xl" className="bold600" align="center">
+          <Text
+            fontSize="5xl"
+            className="bold600"
+            align="center"
+            color="primary"
+          >
             Elige una catogoría
           </Text>
         </Flex>

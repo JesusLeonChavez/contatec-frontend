@@ -30,7 +30,7 @@
 /* Info */
 
 .infoContainer{
-  color:#304659;
+  color: var(--primary);
 }
 
 .infoWrapper{

@@ -40,7 +40,11 @@ export default function Hero() {
                       // eslint-disable-next-line react/no-children-prop
                       children={<ZIcon name="search" />}
                     />
-                    <Input type="text" placeholder="P. ej: Desarrollo web" />
+                    <Input
+                      type="text"
+                      placeholder="P. ej: Desarrollo web"
+                      bg="white"
+                    />
                   </InputGroup>
                   <Button w={{ md: "3xs" }} variant="primary">
                     Buscar

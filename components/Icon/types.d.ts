@@ -64,6 +64,7 @@ export type IconName =
   | "star"
   | "border"
   | "energy"
+  | "facebookv2"
 
 /**
  * Props SVG, incluyendo name, color, size y weight. No se debe usar el prop style.
