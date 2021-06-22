@@ -280,14 +280,12 @@ a {
   align-items: center;
 }
 
-
 .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 
 .mySwiper  .swiper-button-next, .mySwiper  .swiper-button-prev {
   color: var(--primary);
@@ -313,15 +311,17 @@ a {
   font-size: 1rem;
 }
 
-
-.mySwiper2{
-  width: 200px;
+/* --------------------------SliderBig --------------------------*/
+.mySwiperBig{
+  width: 100%;
+  height: 600px;
+  border-radius: 10px;
 }
-.mySwiper2 .swiper-container{
+.mySwiperBig .swiper-container{
   width: 100%;
   height: 100%;
 }
-.mySwiper2 .swiper-slide{
+.mySwiperBig .swiper-slide{
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -339,11 +339,70 @@ a {
   -webkit-align-items: center;
   align-items: center;
 }
-.mySwiper2 .slide-2{
-  background: blue;
+
+.mySwiperBig .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
+.mySwiperBig  .swiper-button-next, .mySwiperBig  .swiper-button-prev {
+  color: var(--primary);
+  background-color: #fff;
+  border: 1px solid white;
+  box-shadow:0px 1px 2px rgba(0, 0, 0, 0.4) ;
+  border-radius: 50%;
+  padding: 1.3rem;
+}
 
+.mySwiperBig .swiper-button-next::after,.mySwiperBig .swiper-button-prev::after{
+  font-size: 1rem;
+  font-weight:400;
+}
+
+/* --------------------------SliderSmall-----------------------------*/
+.mySwiperSmall{
+  margin: 10px 0;
+  width: 100%;
+  height: 100px;
+
+}
+.mySwiperSmall .swiper-container{
+  width: 100%;
+  height: 100%;
+}
+.mySwiperSmall .swiper-slide{
+
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.mySwiperSmall .slide-2{
+  background: blue;
+}
+.mySwiperSmall .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* -------------------------- SwiperTab --------------------------*/
 .mySwiperTab{
   width:100%;
 }
