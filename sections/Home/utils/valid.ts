@@ -1,6 +1,6 @@
-import { registerValues } from "../type"
+// import { RegisterValues } from "../type"
 
-export const validRegister = (values: registerValues) => {
+export const validRegister = values => {
   const errors = {
     name: "",
     lastName: "",
@@ -23,6 +23,31 @@ export const validRegister = (values: registerValues) => {
     isValid = false
   }
 
+  if (!values.email) {
+    errors.email = "Correo electronico es requerido"
+    isValid = false
+  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    errors.email = "Correo electronico inválido"
+    isValid = false
+  }
+
+  if (!values.password) {
+    errors.password = "Contraseña es requerida"
+    isValid = false
+  } else if (values.password.length < 7) {
+    errors.password = "La contraseña debe ser de 7 carateres o más"
+    isValid = false
+  }
+
+  return { errors, isValid }
+}
+
+export const validLogin = values => {
+  const errors = {
+    email: "",
+    password: ""
+  }
+  let isValid = true
   if (!values.email) {
     errors.email = "Correo electronico es requerido"
     isValid = false

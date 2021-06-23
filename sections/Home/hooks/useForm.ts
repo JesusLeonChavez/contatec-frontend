@@ -1,9 +1,13 @@
 import React, { useState } from "react"
-import { registerValues } from "../type"
+// import { RegisterValues } from "../type"
 
 export const useForm = (
   initialState
-): [registerValues, React.ChangeEventHandler<HTMLInputElement>, () => void] => {
+): [
+  Record<string, string>,
+  React.ChangeEventHandler<HTMLInputElement>,
+  () => void
+] => {
   const [values, setValues] = useState(initialState)
 
   const handleInputChange = e => {

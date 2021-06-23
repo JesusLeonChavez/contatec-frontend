@@ -1,4 +1,4 @@
-// import { useState } from "react"
+import { useState } from "react"
 import {
   Text,
   ModalHeader,
@@ -13,13 +13,12 @@ import {
 } from "@chakra-ui/react"
 import ModalCustom from "../../components/ModalCustom"
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
-import ZIcon from "../../components/Icon/ZIcon"
 import GoogleLogin from "react-google-login"
-import { post } from "../../utils/http"
+import ZIcon from "../../components/Icon/ZIcon"
 import { useForm } from "./hooks/useForm"
 import { useErrorRegister } from "./hooks/useError"
 import { validRegister } from "./utils/valid"
-import { useState } from "react"
+import { post } from "../../utils/http"
 
 type PropsRegister = {
   variant: string
@@ -59,8 +58,8 @@ export default function Register({
       setIsPosting(true)
       const resp = await post("/api/user/register", {
         us_correo: values.email,
-        us_nombre: values.name,
-        us_apellido: values.lastName,
+        us_nombre: values?.name,
+        us_apellido: values?.lastName,
         password: values.password
       })
       setIsPosting(false)
