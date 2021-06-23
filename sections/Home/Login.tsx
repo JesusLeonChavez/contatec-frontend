@@ -52,6 +52,7 @@ export default function Login({
       variant={variant}
       width={width}
       showModalButtonText={showModalButtonText}
+      type="login"
     >
       <ModalHeader>
         <Text align="center" color="primary">

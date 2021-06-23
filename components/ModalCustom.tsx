@@ -5,6 +5,7 @@ import {
   ModalContent,
   useDisclosure
 } from "@chakra-ui/react"
+import { useEffect } from "react"
 
 interface ModalType {
   variant: string
@@ -12,6 +13,9 @@ interface ModalType {
   width?: string
   children?: any
   showModalButtonText: string
+  type: string
+  reset?: () => void
+  resetError?: () => void
 }
 
 export default function ModalCustom({
@@ -21,9 +25,28 @@ export default function ModalCustom({
   showModalButtonText,
   // modalHeader,
   // modalBody,
-  children
+  children,
+  type,
+  reset,
+  resetError
 }: ModalType) {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  useEffect(() => {
+    if (reset && resetError) {
+      if (type === "register") {
+        console.log("register open: ", isOpen)
+        if (!isOpen) {
+          reset()
+          resetError()
+        }
+      }
+      if (type === "login") {
+        if (!isOpen) {
+          reset()
+        }
+      }
+    }
+  }, [isOpen])
   return (
     <>
       <Button variant={variant} size={size} w={width} onClick={onOpen}>

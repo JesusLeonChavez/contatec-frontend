@@ -1,9 +1,11 @@
+// import { useState } from "react"
 import {
   Text,
   ModalHeader,
   ModalBody,
   FormControl,
   FormLabel,
+  FormErrorMessage,
   Input,
   FormHelperText,
   Checkbox,
@@ -14,6 +16,10 @@ import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props
 import ZIcon from "../../components/Icon/ZIcon"
 import GoogleLogin from "react-google-login"
 import { post } from "../../utils/http"
+import { useForm } from "./hooks/useForm"
+import { useErrorRegister } from "./hooks/useError"
+import { validRegister } from "./utils/valid"
+import { useState } from "react"
 
 type PropsRegister = {
   variant: string
@@ -25,26 +31,50 @@ type PropsRegister = {
 export default function Register({
   variant,
   width,
-  showModalButtonText,
-  isLoading
+  showModalButtonText
 }: PropsRegister) {
+  const [values, handleInputChange, reset] = useForm({
+    name: "",
+    lastName: "",
+    email: "",
+    password: ""
+  })
+  const { name, lastName, email, password } = values
+
+  const [errors, setErrors, resetErrors] = useErrorRegister({
+    name: "",
+    lastName: "",
+    email: "",
+    password: ""
+  })
+
+  const [isPosting, setIsPosting] = useState(false)
+
   const handleSubmit = async e => {
     e.preventDefault()
-    const body = {
-      us_correo: "sasisromero10@gmail.com",
-      us_nombre: "Jhon",
-      us_apellido: "Doe",
-      password: "123456"
+    const { errors: errorsForm, isValid } = validRegister(values)
+    setErrors(errorsForm)
+    if (isValid) {
+      console.log("enviando")
+      setIsPosting(true)
+      const resp = await post("/api/user/register", {
+        us_correo: values.email,
+        us_nombre: values.name,
+        us_apellido: values.lastName,
+        password: values.password
+      })
+      setIsPosting(false)
+      console.log("resp: ", resp)
     }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // eslint-disable-next-line no-unused-vars
-    const resp = await post("/api/user/register", body)
   }
   return (
     <ModalCustom
       variant={variant}
       width={width}
       showModalButtonText={showModalButtonText}
+      type="register"
+      reset={reset}
+      resetError={resetErrors}
     >
       <ModalHeader>
         <Text align="center" color="primary">
@@ -54,31 +84,58 @@ export default function Register({
 
       <ModalBody color="primary">
         <form onSubmit={handleSubmit}>
-          <FormControl mb="6" id="first-name" isRequired isInvalid={false}>
+          <FormControl mb="6" id="first-name" isInvalid={!!errors.name}>
             <FormLabel>Nombres</FormLabel>
-            <Input placeholder="P. ej. Liliana Alexandra" />
+            <Input
+              type="text"
+              placeholder="P. ej. Liliana Alexandra"
+              name="name"
+              onChange={handleInputChange}
+              value={name}
+            />
+            <FormErrorMessage>{errors.name}</FormErrorMessage>
           </FormControl>
 
-          <FormControl mb="6" isRequired>
+          <FormControl mb="6" isInvalid={!!errors.lastName}>
             <FormLabel>Apellidos</FormLabel>
 
-            <Input placeholder="P. ej. Solar Rojas" />
+            <Input
+              type="text"
+              placeholder="P. ej. Solar Rojas" // eslint-disable-next-line camelcase
+              name="lastName"
+              onChange={handleInputChange}
+              value={lastName}
+            />
+            <FormErrorMessage>{errors.lastName}</FormErrorMessage>
           </FormControl>
 
-          <FormControl mb="6" isRequired>
+          <FormControl mb="6" isInvalid={!!errors.email}>
             <FormLabel>Correo electrónico</FormLabel>
-            <Input placeholder="P. ej. lilianasolar@gmail.com" />
+            <Input
+              type="email"
+              placeholder="P. ej. lilianasolar@gmail.com"
+              name="email"
+              onChange={handleInputChange}
+              value={email}
+            />
+            <FormErrorMessage>{errors.email}</FormErrorMessage>
           </FormControl>
 
-          <FormControl mb="6" isRequired>
+          <FormControl mb="6" isInvalid={!!errors.password}>
             <FormLabel>Contraseña</FormLabel>
 
-            <Input placeholder="P. ej. lilso21" />
-
+            <Input
+              type="password"
+              placeholder="P. ej. lilso21"
+              name="password"
+              onChange={handleInputChange}
+              value={password}
+            />
             <FormHelperText>Debe tener como minimo 7 caracteres</FormHelperText>
+            <FormErrorMessage>{errors.password}</FormErrorMessage>
           </FormControl>
 
-          <FormControl mb="6" isRequired>
+          <FormControl mb="6">
             <Checkbox colorScheme="purple" color="whiteAlpha.100">
               <Text fontSize="xs" color="primary">
                 Acepto los
@@ -92,7 +149,7 @@ export default function Register({
             variant="primary"
             my={2}
             type="submit"
-            isLoading={isLoading}
+            isLoading={isPosting}
           >
             Registrate
           </Button>
