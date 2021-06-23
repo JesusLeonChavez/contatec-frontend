@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { useState } from "react"
 import {
   Text,
@@ -12,9 +13,9 @@ import {
   Button
 } from "@chakra-ui/react"
 import ModalCustom from "../../components/ModalCustom"
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
-import GoogleLogin from "react-google-login"
-import ZIcon from "../../components/Icon/ZIcon"
+// import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
+// import GoogleLogin from "react-google-login"
+// import ZIcon from "../../components/Icon/ZIcon"
 import { useForm } from "./hooks/useForm"
 import { useErrorRegister } from "./hooks/useError"
 import { validRegister } from "./utils/valid"
@@ -32,6 +33,7 @@ export default function Register({
   width,
   showModalButtonText
 }: PropsRegister) {
+  const router = useRouter()
   const [values, handleInputChange, reset] = useForm({
     name: "",
     lastName: "",
@@ -63,9 +65,11 @@ export default function Register({
         password: values.password
       })
       setIsPosting(false)
+      router.push("/active-message")
       console.log("resp: ", resp)
     }
   }
+
   return (
     <ModalCustom
       variant={variant}
@@ -152,45 +156,6 @@ export default function Register({
           >
             Registrate
           </Button>
-          <Text fontSize="xs" color="primary" align="center">
-            O
-          </Text>
-          <FacebookLogin
-            // appId="1088597931155576"
-            // autoLoad={true}
-            fields="name,email,picture"
-            // onClick={() => {}}
-            // callback={() => {}}
-            render={renderProps => (
-              <Button
-                leftIcon={<ZIcon name="facebookv2" />}
-                isFullWidth
-                my={2}
-                variant="facebook"
-                onClick={renderProps.onClick}
-              >
-                Registrate con Facebook
-              </Button>
-            )}
-          />
-          <GoogleLogin
-            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-            render={renderProps => (
-              <Button
-                leftIcon={<ZIcon name="google" />}
-                isFullWidth
-                my={2}
-                variant="google"
-                onClick={renderProps.onClick}
-              >
-                Registrate con Google
-              </Button>
-            )}
-            // buttonText="Login"
-            // onSuccess={responseGoogle}
-            // onFailure={responseGoogle}
-            // cookiePolicy={'single_host_origin'}
-          />
         </form>
       </ModalBody>
     </ModalCustom>

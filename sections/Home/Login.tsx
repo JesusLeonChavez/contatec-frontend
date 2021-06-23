@@ -16,6 +16,7 @@ import GoogleLogin from "react-google-login"
 import { useForm } from "./hooks/useForm"
 import { useErrorLogin } from "./hooks/useError"
 import { validLogin } from "./utils/valid"
+import { post } from "../../utils/http"
 // import { post } from "../../utils/http"
 
 type PropsRegister = {
@@ -51,6 +52,11 @@ export default function Login({
     setErrors(errorsForm)
     if (isValid) {
       console.log("enviando")
+      const respLogin = await post("/api/user/login", {
+        us_correo: values.email,
+        password: values.password
+      })
+      console.log("respLogin: ", respLogin)
       // setIsPosting(true)
       // const resp = await post("/api/user/register", {
       //   us_correo: values.email,
@@ -61,12 +67,12 @@ export default function Login({
       // setIsPosting(false)
       // console.log("resp: ", resp)
     }
-    const body = {
-      us_correo: "sasisromero10@gmail.com",
-      password: "123456"
-    }
+    // const body = {
+    //   us_correo: "sasisromero10@gmail.com",
+    //   password: "123456"
+    // }
 
-    console.log("body: ", body)
+    // console.log("body: ", body)
 
     // const respLogin = await post("/api/user/login", body)
     // TODO: si el logeo fue exitoso en estado AUTH colocar isLogged true
@@ -75,6 +81,27 @@ export default function Login({
     // console.log("resp: ", respLogin)
   }
 
+  const handleFacebook = async res => {
+    const { accessToken, userID } = res
+    try {
+      const resp = await post("/api/user/facebook_login", {
+        accessToken,
+        userID
+      })
+      console.log("resFB: ", resp)
+    } catch (err) {
+      console.log("err: ", err)
+    }
+  }
+  const handleGoogle = async res => {
+    const { tokenId } = res
+    try {
+      const resp = await post("/api/user/google_login", { tokenId })
+      console.log("resGoogle: ", resp)
+    } catch (err) {
+      console.log("err: ", err)
+    }
+  }
   return (
     <ModalCustom
       variant={variant}
@@ -121,11 +148,13 @@ export default function Login({
             O
           </Text>
           <FacebookLogin
-            appId="1088597931155576"
-            autoLoad={true}
+            appId="496057688285326"
+            autoLoad={false}
             fields="name,email,picture"
             // onClick={() => {}}
-            // callback={() => {}}
+            callback={res => {
+              handleFacebook(res)
+            }}
             render={renderProps => (
               <Button
                 leftIcon={<ZIcon name="facebookv2" />}
@@ -139,7 +168,7 @@ export default function Login({
             )}
           />
           <GoogleLogin
-            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+            clientId="474899151330-hdavkur1j29cii1n65o2m23h682kem04.apps.googleusercontent.com"
             render={renderProps => (
               <Button
                 leftIcon={<ZIcon name="google" />}
@@ -151,10 +180,13 @@ export default function Login({
                 Inicia sesión con Google
               </Button>
             )}
-            // buttonText="Login"
-            // onSuccess={responseGoogle}
-            // onFailure={responseGoogle}
-            // cookiePolicy={'single_host_origin'}
+            onSuccess={responseGoogleS => {
+              handleGoogle(responseGoogleS)
+            }}
+            onFailure={responseGoogleF =>
+              console.log("responseGoogleF: ", responseGoogleF)
+            }
+            cookiePolicy={"single_host_origin"}
           />
         </form>
       </ModalBody>
