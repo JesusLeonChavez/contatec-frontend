@@ -11,7 +11,7 @@ export const ButtonStyles = {
       bg: "primary",
       color: "#fff",
       _hover: {
-        bg: whiten("primary", 20)
+        bg: darken("primary", 10)
       },
       _active: {
         transform: "scale(0.9)"

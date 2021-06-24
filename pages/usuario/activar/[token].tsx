@@ -1,10 +1,22 @@
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { post } from "../../../utils/http"
-import { Button } from "@chakra-ui/react"
+import { useToast } from "@chakra-ui/react"
+import ActiveAccount from "../../../sections/User/ActiveAccount"
 
 export default function Activar() {
   const router = useRouter()
+  const toast = useToast()
+  const showToast = errMessage => {
+    toast({
+      title: "Error al activar cuenta.",
+      description: `${errMessage}`,
+      position: "top",
+      status: "error",
+      duration: 9000,
+      isClosable: true
+    })
+  }
 
   // eslint-disable-next-line camelcase
   useEffect(() => {
@@ -17,19 +29,16 @@ export default function Activar() {
       // eslint-disable-next-line camelcase
       activation_token
     })
-      .then(res => console.log("respActivarToken: ", res))
+      .then(res => {
+        if (res.data.name === "JsonWebTokenError") {
+          showToast("JWT malformado")
+        }
+      })
       .catch(respError => console.log("respError: ", respError))
   }, [router])
   return (
-    <div>
-      <h1>Activa token</h1>
-      <Button
-        onClick={() => {
-          router.push("/")
-        }}
-      >
-        Iniciar sesion
-      </Button>
-    </div>
+    <>
+      <ActiveAccount router={router} />
+    </>
   )
 }

@@ -1,14 +1,6 @@
-import {
-  Text,
-  Flex
-  // Tabs,
-  // TabList,
-  // TabPanels,
-  // Tab,
-  // TabPanel
-} from "@chakra-ui/react"
+import { Text, Flex } from "@chakra-ui/react"
 import ZIcon from "../../components/Icon/ZIcon"
-import styles from "../../styles/sections/Post.module.css"
+import styles from "../../styles/sections/ActiveMessage.module.css"
 
 export default function ActiveMessage() {
   return (
@@ -18,10 +10,19 @@ export default function ActiveMessage() {
     >
       <div className={styles.infoWrapper}>
         <Flex direction="column" align="center" justify="center">
-          <ZIcon name="logo" color="primary" size="40" />
-          <Text fontSize="6xl" align="center" color="primary">
-            Porfavor revise su correo electrónico para verificarlo
+          <Text
+            fontSize="4xl"
+            align="center"
+            color="primary"
+            className="bold600"
+          >
+            ¡ Gracias por registrarse con nosotros !
           </Text>
+          <Text fontSize="2xl" align="center" color="primary">
+            Se ha enviado un mensaje de confirmación al correo proporcionado
+            para poder iniciar sesión
+          </Text>
+          <ZIcon name="logo" color="primary" size={40} />
         </Flex>
       </div>
     </div>
