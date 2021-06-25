@@ -14,6 +14,7 @@ import {
   useToast
 } from "@chakra-ui/react"
 import { useEffect } from "react"
+import Link from "next/link"
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
 import ZIcon from "../../components/Icon/ZIcon"
 import GoogleLogin from "react-google-login"
@@ -209,6 +210,11 @@ export default function Login({
                 }
                 cookiePolicy={"single_host_origin"}
               />
+              <Text className="bold600" fontSize="lg" align="center" my="3">
+                <Link href="/restablecer-contrasena">
+                  <a>¿Olvido su contraseña?</a>
+                </Link>
+              </Text>
             </form>
           </ModalBody>
         </ModalContent>

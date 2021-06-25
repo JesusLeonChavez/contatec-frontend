@@ -28,7 +28,7 @@ export default function FormReset() {
           type="email"
           placeholder="Escribe tu correo aquí"
         />
-        <Button variant="secondary" className={styles.Boton}>
+        <Button variant="primary" className={styles.Boton}>
           Enviar
         </Button>
       </div>
