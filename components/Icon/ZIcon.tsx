@@ -51,6 +51,7 @@ import Star from "./Star"
 import Border from "./Border"
 import Energy from "./Energy"
 import Facebookv2 from "./Facebookv2"
+import Dowload from "./Dowload"
 
 import { PropsIcon } from "./types"
 function VIcon({
@@ -167,6 +168,8 @@ function VIcon({
       return <Menu {...props} style={style} color={_color} />
     case "calendar":
       return <Calendar {...props} style={style} color={_color} />
+    case "dowload":
+      return <Dowload {...props} style={style} color={_color} />
     default:
       return null
   }
