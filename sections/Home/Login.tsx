@@ -73,6 +73,9 @@ export default function Login({
       console.log("respLogin: ", res)
       if (res.data.status) {
         showToast(res.data.message)
+      } else {
+        const accessToken = await post("/api/user/refresh_token", {})
+        console.log("accessToken: ", accessToken)
       }
       // setIsPosting(true)
       // const resp = await post("/api/user/register", {
@@ -96,6 +99,35 @@ export default function Login({
     // TODO: Implementar un efecto dentro del provider que sea dependiene del isLogged y de los dispatch que se haga para que se aplique el efecto de verificar que este logeado
 
     // console.log("resp: ", respLogin)
+
+    // const headers = new Headers()
+    // headers.append("Content-Type", "application/json")
+    // headers.append("Accept", "application/json")
+    // const res = await fetch("https://contatec.herokuapp.com/api/user/login", {
+    //   headers: headers,
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     us_correo: values.email,
+    //     password: values.password
+    //   }),
+    //   credentials: "include"
+    // })
+    // console.log("respLogin: ", res)
+
+    // const data = await res.json()
+    // console.log("datapLogin: ", data)
+
+    // const accessToken = await fetch(
+    //   "https://contatec.herokuapp.com/api/user/refresh_token",
+    //   {
+    //     headers: headers,
+    //     method: "POST",
+    //     body: null,
+    //     credentials: "include"
+    //   }
+    // )
+    // const dataToken = await accessToken.json()
+    // console.log("accessToken: ", dataToken)
   }
 
   const handleFacebook = async res => {

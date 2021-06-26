@@ -42,57 +42,32 @@
 
   text-align: center;
 
-  color: #304659;
+  color: var(--primary);
 }
 
 .p{
   width: 339px;
   height: 54px;
   margin-top: 15px;
-
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 27px;
-  /* or 169% */
-
-
-  color: #525252;
+  color: var(--primary);
 }
 
 .Label{
   width: 100%;
   height: 20px;
-
   margin-top: 29px;
   margin-bottom: 10px;
-
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-
-  color: #525252;
-}
-
-.Entrada{
-  border: 1px #000;
-  border-style: solid;
-  border-radius: 5px;
-  background-color: transparent;
-  height: 30px;
-  width: 80%;
-  margin-top: 10px;
-
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 18px;
-
-  color: #636363;
+  color: var(--primary);
 }
 
 .Boton{
