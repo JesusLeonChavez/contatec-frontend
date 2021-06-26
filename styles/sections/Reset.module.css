@@ -11,7 +11,7 @@
 }
 
 .conteinerConFondo{
-  background-image: url('../../public/Image.jpg');
+  background-image: url('../../public/ReImage.jpg');
   width: inherit;
   display: flex;
   justify-content: center;
