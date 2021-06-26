@@ -3,14 +3,17 @@ import {
   FormControl,
   Input,
   Button,
-  FormErrorMessage
+  FormErrorMessage,
+  useToast
 } from "@chakra-ui/react"
+import { useState } from "react"
 import Link from "next/link"
 import styles from "../../styles/sections/Reset.module.css"
 import ZIcon from "../../components/Icon/Logo"
 import { useForm } from "./hooks/useForm"
 import { useErrorReset } from "./hooks/useError"
 import { validReset } from "./utils/valid"
+import { post } from "../../utils/http"
 
 export default function FormReset() {
   const [values, handleInputChange] = useForm({
@@ -20,14 +23,43 @@ export default function FormReset() {
   const [errors, setErrors] = useErrorReset({
     email: ""
   })
-  const { email } = values
 
-  const handleSubmit = e => {
+  const toast = useToast()
+  const showToast = (type, title, message) => {
+    toast({
+      title: `${title}`,
+      description: `${message}`,
+      position: "top",
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      status: `${type}`,
+      duration: 9000,
+      isClosable: true
+    })
+  }
+  const { email } = values
+  const [isPosting, setIsPosting] = useState(false)
+  const handleSubmit = async e => {
     e.preventDefault()
     const { errors: errorsForm, isValid } = validReset(values)
     setErrors(errorsForm)
     if (isValid) {
       console.log("enviando correo")
+      setIsPosting(true)
+      const resp = await post("/api/user/forgot", {
+        us_correo: values.email
+      })
+      if (resp.data?.statusCode) {
+        showToast("error", "Error en el envío", resp.data?.message[0])
+      } else {
+        showToast(
+          "success",
+          "Envío exitoso.",
+          "Se envio un mensaje a su correo electrónico"
+        )
+      }
+      console.log("resp: ", resp)
+      setIsPosting(false)
     }
   }
 
@@ -63,7 +95,12 @@ export default function FormReset() {
             />
             <FormErrorMessage>{errors.email}</FormErrorMessage>
           </FormControl>
-          <Button variant="primary" className={styles.Boton} type="submit">
+          <Button
+            variant="primary"
+            className={styles.Boton}
+            type="submit"
+            isLoading={isPosting}
+          >
             Enviar
           </Button>
         </form>

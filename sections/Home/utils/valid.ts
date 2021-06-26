@@ -1,5 +1,4 @@
-// import { RegisterValues } from "../type"
-
+import { regexEmail, regexOnlyString } from "../../../utils/regex"
 export const validRegister = values => {
   const errors = {
     name: "",
@@ -11,14 +10,14 @@ export const validRegister = values => {
   if (!values.name.trim()) {
     errors.name = "Nombre es requerido"
     isValid = false
-  } else if (!/^[A-Za-z]+/.test(values.name.trim())) {
+  } else if (!regexOnlyString(values.name.trim())) {
     errors.name = "Ingrese un nombre válido"
     isValid = false
   }
   if (!values.lastName.trim()) {
     errors.lastName = "Apellido es requerido"
     isValid = false
-  } else if (!/^[A-Za-z]+/.test(values.name.trim())) {
+  } else if (!regexOnlyString(values.name.trim())) {
     errors.lastName = "Ingrese un apellido válido"
     isValid = false
   }
@@ -26,7 +25,7 @@ export const validRegister = values => {
   if (!values.email) {
     errors.email = "Correo electronico es requerido"
     isValid = false
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+  } else if (!regexEmail(values.email)) {
     errors.email = "Correo electronico inválido"
     isValid = false
   }
@@ -51,7 +50,7 @@ export const validLogin = values => {
   if (!values.email) {
     errors.email = "Correo electronico es requerido"
     isValid = false
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+  } else if (!regexEmail(values.email)) {
     errors.email = "Correo electronico inválido"
     isValid = false
   }
