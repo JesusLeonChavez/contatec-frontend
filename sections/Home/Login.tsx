@@ -22,7 +22,6 @@ import { useForm } from "./hooks/useForm"
 import { useErrorLogin } from "./hooks/useError"
 import { validLogin } from "./utils/valid"
 import { post } from "../../utils/http"
-// import { axios } from "axios"
 
 type PropsRegister = {
   variant: string
@@ -71,19 +70,6 @@ export default function Login({
         us_correo: values.email,
         password: values.password
       })
-      // const res = await axios.post(
-      //   "https://contatec.herokuapp.com/api/user/login",
-      //   {
-      //     us_correo: values.email,
-      //     password: values.password
-      //   },
-      //   { withCredentials: true }
-      // )
-      // const accessToken = await axios.post(
-      //   "https://contatec.herokuapp.com/api/user/refresh_token",
-      //   null,
-      //   { withCredentials: true }
-      // )
       console.log("respLogin: ", res)
       if (res.data.status) {
         showToast(res.data.message)
