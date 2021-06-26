@@ -8,7 +8,7 @@ export default function Assessment() {
         <Grid templateColumns={{ base: "100%", lg: "70% 30%" }}>
           <Box>
             <Box>
-              <Text fontSize="xl" className="bold600">
+              <Text fontSize="x1" className="bold600">
                 Valoraciones
               </Text>
               <Flex align="center" justify="space-between">

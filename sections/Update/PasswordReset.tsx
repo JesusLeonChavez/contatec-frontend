@@ -1,9 +1,8 @@
 import { Link, FormLabel, Input, Button } from "@chakra-ui/react"
 import styles from "../../styles/sections/Reset.module.css"
 import ZIcon from "../../components/Icon/Logo"
-// import Image from "next/image"
 
-export default function FormReset() {
+export default function FormPassword() {
   return (
     <div className={styles.conteiner}>
       <div className={styles.conteinerBlanco}>
@@ -18,19 +17,25 @@ export default function FormReset() {
       <div className={styles.conteinerConFondo}></div>
       <div className={styles.conteinerForm}>
         <h1 className={styles.h1}>Restablecer Contraseña</h1>
-        <p className={styles.p}>
-          Ingresa el correo asociado a tu cuenta y nos comunicaremos contigo
-        </p>
-        <FormLabel className={styles.Label}>Correo Electrónico *</FormLabel>
+        <p className={styles.p}>Inresa su nueva contraseña</p>
+        <FormLabel className={styles.Label}>Nueva contraseña *</FormLabel>
         <Input
           borderColor="black.100"
           bg="white"
           className={styles.Entrada}
-          type="email"
-          placeholder="Escribe tu correo aquí"
+          type="password"
+          placeholder="Escribe tu contraseña aquí"
+        />
+        <FormLabel className={styles.Label}>Confirmar contraseña *</FormLabel>
+        <Input
+          borderColor="black.100"
+          bg="white"
+          className={styles.Entrada}
+          type="password"
+          placeholder="Escribe tu contraseña aquí"
         />
         <Button variant="primary" className={styles.Boton}>
-          Enviar
+          Aceptar
         </Button>
       </div>
     </div>
