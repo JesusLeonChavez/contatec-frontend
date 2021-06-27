@@ -11,11 +11,11 @@
 
 .conteinerConFondo{
   background: #FBD76D;
-  height: 150px;
+  height: 100px;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content:left;
+  align-items:center;
 }
 
 .conteinerForm{
@@ -99,13 +99,13 @@
   color: #525252;
 }
 
-.Boton{
+.Button{
   border-radius: 5px;
   float:left;
   margin-right: auto;
 }
 
-.Entrada{
+.Input{
   width: 60%;
   flex-direction:row;
   display: grid;
