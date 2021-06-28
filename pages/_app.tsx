@@ -11,11 +11,11 @@ import { newTheme } from "../styles/theme"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <DataProvider>
-      <ChakraProvider theme={newTheme}>
+    <ChakraProvider theme={newTheme}>
+      <DataProvider>
         <Component {...pageProps} />
-      </ChakraProvider>
-    </DataProvider>
+      </DataProvider>
+    </ChakraProvider>
   )
 }
 
