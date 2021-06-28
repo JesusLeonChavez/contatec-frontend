@@ -5,10 +5,13 @@ const reducers = (state, action) => {
     case ACTIONS.AUTH:
       return {
         ...state,
-
         auth: action.payload
       }
-
+    case ACTIONS.AUTH_READY:
+      return {
+        ...state,
+        authReady: action.payload
+      }
     default:
       return state
   }

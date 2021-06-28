@@ -63,89 +63,26 @@ export default function Login({
   const handleSubmit = async e => {
     e.preventDefault()
     const { errors: errorsForm, isValid } = validLogin(values)
-    console.log(errorsForm)
     setErrors(errorsForm)
     if (isValid) {
-      console.log("enviando")
       const res = await post("/api/user/login", {
         us_correo: values.email,
         password: values.password
       })
-      // const res = await axios.post(
-      //   "https://contatec.herokuapp.com/api/user/login",
-      //   {
-      //     us_correo: values.email,
-      //     password: values.password
-      //   },
-      //   { withCredentials: true }
-      // )
-      // const accessToken = await axios.post(
-      //   "https://contatec.herokuapp.com/api/user/refresh_token",
-      //   null,
-      //   { withCredentials: true }
-      // )
-      console.log("respLogin: ", res)
       if (res.data.status) {
         showToast(res.data.message)
       } else {
-        const accessToken = await post("/api/user/refresh_token", {})
-        console.log("accessToken: ", accessToken)
+        window.location.reload()
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        localStorage.setItem("isLogged", true)
       }
-      // setIsPosting(true)
-      // const resp = await post("/api/user/register", {
-      //   us_correo: values.email,
-      //   us_nombre: values?.name,
-      //   us_apellido: values?.lastName,
-      //   password: values.password
-      // })
-      // setIsPosting(false)
-      // console.log("resp: ", resp)
     }
-    // const body = {
-    //   us_correo: "sasisromero10@gmail.com",
-    //   password: "123456"
-    // }
-
-    // console.log("body: ", body)
-
-    // const respLogin = await post("/api/user/login", body)
-    // TODO: si el logeo fue exitoso en estado AUTH colocar isLogged true
-    // TODO: Implementar un efecto dentro del provider que sea dependiene del isLogged y de los dispatch que se haga para que se aplique el efecto de verificar que este logeado
-
-    // console.log("resp: ", respLogin)
-
-    // const headers = new Headers()
-    // headers.append("Content-Type", "application/json")
-    // headers.append("Accept", "application/json")
-    // const res = await fetch("https://contatec.herokuapp.com/api/user/login", {
-    //   headers: headers,
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     us_correo: values.email,
-    //     password: values.password
-    //   }),
-    //   credentials: "include"
-    // })
-    // console.log("respLogin: ", res)
-
-    // const data = await res.json()
-    // console.log("datapLogin: ", data)
-
-    // const accessToken = await fetch(
-    //   "https://contatec.herokuapp.com/api/user/refresh_token",
-    //   {
-    //     headers: headers,
-    //     method: "POST",
-    //     body: null,
-    //     credentials: "include"
-    //   }
-    // )
-    // const dataToken = await accessToken.json()
-    // console.log("accessToken: ", dataToken)
   }
-
+  // TODO: error en login fb y google
   const handleFacebook = async res => {
     const { accessToken, userID } = res
+    console.log("respues de libreria FB: ", res)
     try {
       const resp = await post("/api/user/facebook_login", {
         accessToken,
@@ -158,6 +95,7 @@ export default function Login({
   }
   const handleGoogle = async res => {
     const { tokenId } = res
+    console.log("respues de libreria Google: ", res)
     try {
       const resp = await post("/api/user/google_login", { tokenId })
       console.log("resGoogle: ", resp)
