@@ -104,13 +104,13 @@ export default function Login({
         // @ts-ignore
         localStorage.setItem("isLogged", true)
         localStorage.setItem("typeLogged", "facebook")
-        dispatch({
-          type: "USER",
-          payload: {
-            name: "facebook user",
-            lastname: "facebook lastaname"
-          }
-        })
+        // dispatch({
+        //   type: "USER",
+        //   payload: {
+        //     name: "facebook user",
+        //     lastname: "facebook lastaname"
+        //   }
+        // })
       }
     } catch (err) {
       console.log("err: ", err)
@@ -120,23 +120,23 @@ export default function Login({
     const { tokenId } = res
     console.log("respues de libreria Google: ", res)
     try {
-      const resp = await post("/api/user/google_login", { tokenId })
-      console.log("resGoogle: ", resp)
-      if (resp.data.status) {
+      const res = await post("/api/user/google_login", { tokenId })
+      console.log("resGoogle: ", res)
+      if (res.data.status) {
         showToast(res.data.message)
       } else {
         dispatch({ type: "AUTH_TYPE", payload: "google" })
-        dispatch({
-          type: "USER",
-          payload: {
-            name: "google user",
-            lastname: "google lastaname"
-          }
-        })
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         localStorage.setItem("isLogged", true)
         localStorage.setItem("typeLogged", "google")
+        // dispatch({
+        //   type: "USER",
+        //   payload: {
+        //     name: "google user",
+        //     lastname: "google lastaname"
+        //   }
+        // })
       }
     } catch (err) {
       console.log("err: ", err)

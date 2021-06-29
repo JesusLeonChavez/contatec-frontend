@@ -19,8 +19,7 @@ export const DataProvider = ({ children }) => {
   const initialState = {
     auth: {},
     authReady: false,
-    authType: "none",
-    user: {}
+    authType: "none"
   }
   const [state, dispatch] = useReducer(reducers, initialState)
   const { authType } = state
@@ -51,43 +50,29 @@ export const DataProvider = ({ children }) => {
             return showToast("Error con el token de acceso")
           }
           console.log("accessToken: ", accessToken.data.access_token)
-          if (typeLogged === "normal") {
-            console.log("setAuth: ", accessToken.data.access_token)
-            setAuth(accessToken.data.access_token)
-            const user = await get("/api/user/info")
-            if (user.data.msg === "Autenticación inválida") {
-              return showToast("Error al recuperar datos del usuario")
-            }
-            dispatch({
-              type: "AUTH",
-              payload: {
-                access_token: accessToken.data.access_token
-              }
-            })
-            dispatch({
-              type: "USER",
-              payload: user.data
-            })
-          }
 
+          console.log("setAuth: ", accessToken.data.access_token)
+          setAuth(accessToken.data.access_token)
+          const user = await get("/api/user/info")
+          if (user.data.msg === "Autenticación inválida") {
+            return showToast("Error al recuperar datos del usuario")
+          }
+          dispatch({
+            type: "AUTH",
+            payload: {
+              access_token: accessToken.data.access_token,
+              user: user.data
+            }
+          })
+          if (typeLogged === "normal") {
+            dispatch({ type: "AUTH_TYPE", payload: "normal" })
+          }
           if (typeLogged === "facebook") {
-            console.log("logeado con fb")
-            dispatch({
-              type: "AUTH",
-              payload: {
-                access_token: accessToken.data.access_token
-              }
-            })
+            dispatch({ type: "AUTH_TYPE", payload: "facebook" })
           }
 
           if (typeLogged === "google") {
-            console.log("logeado con google")
-            dispatch({
-              type: "AUTH",
-              payload: {
-                access_token: accessToken.data.access_token
-              }
-            })
+            dispatch({ type: "AUTH_TYPE", payload: "google" })
           }
         } catch (err) {
           console.log("error: ", err)
