@@ -70,6 +70,8 @@ export default function Navbar() {
         </ul>
         {authReady ? (
           <>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             {Object.keys(auth).length === 0 ? (
               <ul>
                 <Flex align="center" justify="center" mx="1">

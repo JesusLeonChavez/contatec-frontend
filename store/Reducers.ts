@@ -12,6 +12,16 @@ const reducers = (state, action) => {
         ...state,
         authReady: action.payload
       }
+    case ACTIONS.AUTH_TYPE:
+      return {
+        ...state,
+        authType: action.payload
+      }
+    case ACTIONS.USER:
+      return {
+        ...state,
+        user: action.payload
+      }
     default:
       return state
   }

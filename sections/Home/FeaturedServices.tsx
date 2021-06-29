@@ -30,8 +30,8 @@ export default function FeaturedServices() {
       img: "/assets/marketing/marketing3.png"
     },
     {
-      title: "SEO Y SEM",
-      price: "100",
+      title: "Marketing de contenido",
+      price: "300",
       img: "/assets/marketing/marketing4.png"
     }
   ]

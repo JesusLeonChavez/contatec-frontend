@@ -13,7 +13,7 @@ import {
   useDisclosure,
   useToast
 } from "@chakra-ui/react"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import Link from "next/link"
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
 import ZIcon from "../../components/Icon/ZIcon"
@@ -22,6 +22,7 @@ import { useForm } from "./hooks/useForm"
 import { useErrorLogin } from "./hooks/useError"
 import { validLogin } from "./utils/valid"
 import { post } from "../../utils/http"
+import { DataContext } from "../../store/GlobalState"
 // import { axios } from "axios"
 
 type PropsRegister = {
@@ -36,6 +37,8 @@ export default function Login({
   width,
   showModalButtonText
 }: PropsRegister) {
+  // eslint-disable-next-line no-unused-vars
+  const { state, dispatch } = useContext(DataContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [values, handleInputChange, reset] = useForm({
     email: "",
@@ -72,10 +75,12 @@ export default function Login({
       if (res.data.status) {
         showToast(res.data.message)
       } else {
-        window.location.reload()
+        // window.location.reload()
+        dispatch({ type: "AUTH_TYPE", payload: "normal" })
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         localStorage.setItem("isLogged", true)
+        localStorage.setItem("typeLogged", "normal")
       }
     }
   }
@@ -84,11 +89,29 @@ export default function Login({
     const { accessToken, userID } = res
     console.log("respues de libreria FB: ", res)
     try {
-      const resp = await post("/api/user/facebook_login", {
+      const res = await post("/api/user/facebook_login", {
         accessToken,
         userID
       })
-      console.log("resFB: ", resp)
+      console.log("resFB: ", res)
+      if (res.data.status) {
+        console.log("error en fb")
+        showToast(res.data.message)
+      } else {
+        console.log("aparentemete correcto")
+        dispatch({ type: "AUTH_TYPE", payload: "facebook" })
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        localStorage.setItem("isLogged", true)
+        localStorage.setItem("typeLogged", "facebook")
+        dispatch({
+          type: "USER",
+          payload: {
+            name: "facebook user",
+            lastname: "facebook lastaname"
+          }
+        })
+      }
     } catch (err) {
       console.log("err: ", err)
     }
@@ -99,6 +122,22 @@ export default function Login({
     try {
       const resp = await post("/api/user/google_login", { tokenId })
       console.log("resGoogle: ", resp)
+      if (resp.data.status) {
+        showToast(res.data.message)
+      } else {
+        dispatch({ type: "AUTH_TYPE", payload: "google" })
+        dispatch({
+          type: "USER",
+          payload: {
+            name: "google user",
+            lastname: "google lastaname"
+          }
+        })
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        localStorage.setItem("isLogged", true)
+        localStorage.setItem("typeLogged", "google")
+      }
     } catch (err) {
       console.log("err: ", err)
     }
@@ -110,6 +149,7 @@ export default function Login({
       resetErrors()
     }
   }, [isOpen])
+
   return (
     <>
       <Button variant={variant} w={width} onClick={onOpen}>
