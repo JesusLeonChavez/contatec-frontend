@@ -30,7 +30,11 @@ export default function Activar() {
       activation_token
     })
       .then(res => {
-        if (res.data.name === "JsonWebTokenError") {
+        console.log("respToke:", res)
+        if (
+          res.data.name === "JsonWebTokenError" ||
+          res.data.name === "TokenExpiredError"
+        ) {
           showToast("JWT malformado")
         }
       })

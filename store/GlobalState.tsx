@@ -1,9 +1,19 @@
-import { createContext, useEffect, useReducer } from "react"
+import React, { createContext, useEffect, useReducer } from "react"
 import { get, post, setAuth } from "../utils/http"
 import reducers from "./Reducers"
 import { useToast } from "@chakra-ui/react"
 
-export const DataContext = createContext()
+type InitialStateType = {
+  auth?: Record<string, unknown>
+  authReady?: boolean
+}
+export const DataContext = createContext<{
+  state: InitialStateType
+  dispatch: React.Dispatch<any>
+}>({
+  state: {},
+  dispatch: () => null
+})
 
 export const DataProvider = ({ children }) => {
   const initialState = { auth: {}, authReady: false }
@@ -57,8 +67,10 @@ export const DataProvider = ({ children }) => {
   }, [])
 
   return (
-    <DataContext.Provider value={{ state, dispatch }}>
-      {children}
-    </DataContext.Provider>
+    <>
+      <DataContext.Provider value={{ state, dispatch }}>
+        {children}
+      </DataContext.Provider>
+    </>
   )
 }

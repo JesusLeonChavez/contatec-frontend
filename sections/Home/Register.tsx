@@ -29,6 +29,7 @@ type PropsRegister = {
   isLoading?: boolean
 }
 
+// TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
 export default function Register({
   variant,
   width,
