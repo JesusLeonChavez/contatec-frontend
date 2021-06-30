@@ -3,7 +3,7 @@ import styles from "../styles/components/Navbar.module.css"
 import ZIcon from "../components/Icon/Logo"
 import Register from "../sections/Home/Register"
 import Login from "../sections/Home/Login"
-import { Flex, Button, Box } from "@chakra-ui/react"
+import { Flex, Button, Box, Text } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { DataContext } from "../store/GlobalState"
 import React, { useContext } from "react"
@@ -79,7 +79,6 @@ export default function Navbar() {
                     variant="light"
                     width="4xs"
                     showModalButtonText=" Inicio Sesión"
-                    isLoading={false}
                   />
                 </Flex>
                 <Flex align="center" justify="center">
@@ -87,7 +86,6 @@ export default function Navbar() {
                     variant="primary"
                     width="4xs"
                     showModalButtonText="Registrate"
-                    isLoading={false}
                   />
                 </Flex>
               </ul>
@@ -96,7 +94,9 @@ export default function Navbar() {
             )}
           </>
         ) : (
-          <Box w="5">Entrando ...</Box>
+          <Box>
+            <Text>Entrando ...</Text>
+          </Box>
         )}
       </nav>
     </div>

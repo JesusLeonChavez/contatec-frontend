@@ -14,19 +14,18 @@ import {
   FormHelperText,
   Checkbox,
   Button,
-  useDisclosure,
-  useToast
+  useDisclosure
 } from "@chakra-ui/react"
-import { useForm } from "./hooks/useForm"
-import { useErrorRegister } from "./hooks/useError"
+import { useForm } from "../../utils/hooks/useForm"
+import { useError } from "../../utils/hooks/useError"
 import { validRegister } from "./utils/valid"
 import { post } from "../../utils/http"
+import showToast from "../../components/Toast"
 
 type PropsRegister = {
   variant: string
   width: string
   showModalButtonText: string
-  isLoading?: boolean
 }
 
 // TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
@@ -36,7 +35,6 @@ export default function Register({
   showModalButtonText
 }: PropsRegister) {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const toast = useToast()
 
   const router = useRouter()
   const [values, handleInputChange, reset] = useForm({
@@ -47,7 +45,7 @@ export default function Register({
   })
   const { name, lastName, email, password } = values
 
-  const [errors, setErrors, resetErrors] = useErrorRegister({
+  const [errors, setErrors, resetErrors] = useError({
     name: "",
     lastName: "",
     email: "",
@@ -56,16 +54,6 @@ export default function Register({
 
   const [isPosting, setIsPosting] = useState(false)
 
-  const showToast = errMessage => {
-    toast({
-      title: "Error al registrarse.",
-      description: `${errMessage}`,
-      position: "top",
-      status: "error",
-      duration: 9000,
-      isClosable: true
-    })
-  }
   const handleSubmit = async e => {
     e.preventDefault()
     const { errors: errorsForm, isValid } = validRegister(values)
@@ -81,7 +69,7 @@ export default function Register({
       setIsPosting(false)
 
       if (resp.data.response?.error) {
-        showToast(resp.data.response?.error)
+        showToast("Error al registrarse", resp.data.response?.error, "error")
       } else {
         router.push("/active-message")
       }
@@ -179,6 +167,7 @@ export default function Register({
                 my={2}
                 type="submit"
                 isLoading={isPosting}
+                className="buttonDisabledPrimary"
               >
                 Registrate
               </Button>

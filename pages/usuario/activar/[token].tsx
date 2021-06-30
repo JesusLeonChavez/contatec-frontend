@@ -1,22 +1,11 @@
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { post } from "../../../utils/http"
-import { useToast } from "@chakra-ui/react"
 import ActiveAccount from "../../../sections/User/ActiveAccount"
+import showToast from "../../../components/Toast"
 
 export default function Activar() {
   const router = useRouter()
-  const toast = useToast()
-  const showToast = errMessage => {
-    toast({
-      title: "Error al activar cuenta.",
-      description: `${errMessage}`,
-      position: "top",
-      status: "error",
-      duration: 9000,
-      isClosable: true
-    })
-  }
 
   // eslint-disable-next-line camelcase
   useEffect(() => {
@@ -35,7 +24,7 @@ export default function Activar() {
           res.data.name === "JsonWebTokenError" ||
           res.data.name === "TokenExpiredError"
         ) {
-          showToast("JWT malformado")
+          showToast("Error al activar cuenta.", "JWT malformado", "error")
         }
       })
       .catch(respError => console.log("respError: ", respError))

@@ -10,20 +10,19 @@ import {
   FormErrorMessage,
   Input,
   Button,
-  useDisclosure,
-  useToast
+  useDisclosure
 } from "@chakra-ui/react"
 import { useContext, useEffect } from "react"
 import Link from "next/link"
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
 import ZIcon from "../../components/Icon/ZIcon"
 import GoogleLogin from "react-google-login"
-import { useForm } from "./hooks/useForm"
-import { useErrorLogin } from "./hooks/useError"
+import { useForm } from "../../utils/hooks/useForm"
+import { useError } from "../../utils/hooks/useError"
 import { validLogin } from "./utils/valid"
 import { post } from "../../utils/http"
 import { DataContext } from "../../store/GlobalState"
-// import { axios } from "axios"
+import showToast from "../../components/Toast"
 
 type PropsRegister = {
   variant: string
@@ -46,23 +45,13 @@ export default function Login({
   })
   const { email, password } = values
 
-  const [errors, setErrors, resetErrors] = useErrorLogin({
+  const [errors, setErrors, resetErrors] = useError({
     name: "",
     lastName: "",
     email: "",
     password: ""
   })
-  const toast = useToast()
-  const showToast = errMessage => {
-    toast({
-      title: "Error al iniciar sesión.",
-      description: `${errMessage}`,
-      position: "top",
-      status: "error",
-      duration: 9000,
-      isClosable: true
-    })
-  }
+
   const handleSubmit = async e => {
     e.preventDefault()
     const { errors: errorsForm, isValid } = validLogin(values)
@@ -73,7 +62,7 @@ export default function Login({
         password: values.password
       })
       if (res.data.status) {
-        showToast(res.data.message)
+        showToast("Error al iniciar sesión.", res.data.message, "error")
       } else {
         // window.location.reload()
         dispatch({ type: "AUTH_TYPE", payload: "normal" })
@@ -94,9 +83,13 @@ export default function Login({
         userID
       })
       console.log("resFB: ", res)
-      if (res.data.status) {
+      if (res.data.status || res.data.error) {
         console.log("error en fb")
-        showToast(res.data.message)
+        showToast(
+          "Error al iniciar sesión.",
+          "No se pudo iniciar sesión con FB",
+          "error"
+        )
       } else {
         console.log("aparentemete correcto")
         dispatch({ type: "AUTH_TYPE", payload: "facebook" })
@@ -104,13 +97,6 @@ export default function Login({
         // @ts-ignore
         localStorage.setItem("isLogged", true)
         localStorage.setItem("typeLogged", "facebook")
-        // dispatch({
-        //   type: "USER",
-        //   payload: {
-        //     name: "facebook user",
-        //     lastname: "facebook lastaname"
-        //   }
-        // })
       }
     } catch (err) {
       console.log("err: ", err)
@@ -123,20 +109,13 @@ export default function Login({
       const res = await post("/api/user/google_login", { tokenId })
       console.log("resGoogle: ", res)
       if (res.data.status) {
-        showToast(res.data.message)
+        showToast("Error al iniciar sesión.", res.data.message, "error")
       } else {
         dispatch({ type: "AUTH_TYPE", payload: "google" })
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         localStorage.setItem("isLogged", true)
         localStorage.setItem("typeLogged", "google")
-        // dispatch({
-        //   type: "USER",
-        //   payload: {
-        //     name: "google user",
-        //     lastname: "google lastaname"
-        //   }
-        // })
       }
     } catch (err) {
       console.log("err: ", err)
@@ -187,7 +166,13 @@ export default function Login({
                 />
                 <FormErrorMessage>{errors.password}</FormErrorMessage>
               </FormControl>
-              <Button width="full" variant="primary" my={2} type="submit">
+              <Button
+                width="full"
+                variant="primary"
+                my={2}
+                type="submit"
+                className="buttonDisabledPrimary"
+              >
                 Inicia sesión
               </Button>
               <Text fontSize="xs" color="primary" align="center">

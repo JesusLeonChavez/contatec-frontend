@@ -3,33 +3,20 @@ import {
   FormControl,
   FormErrorMessage,
   Input,
-  Button,
-  useToast
+  Button
 } from "@chakra-ui/react"
 import Link from "next/link"
 import styles from "../../styles/sections/Reset.module.css"
 import ZIcon from "../../components/Icon/Logo"
-import { useForm } from "./hooks/useForm"
-import { useErrorNewPassword } from "./hooks/useError"
+import { useForm } from "../../utils/hooks/useForm"
+import { useError } from "../../utils/hooks/useError"
 import { validNewPassword } from "./utils/valid"
 import { post, setAuth } from "../../utils/http"
 import { useState } from "react"
+import showToast from "../../components/Toast"
 
-export default function FormPassword({ router }) {
+export default function PasswordReset({ router }) {
   const [isPosting, setIsPosting] = useState(false)
-  const toast = useToast()
-  const showToast = (type, title, message) => {
-    toast({
-      title: `${title}`,
-      description: `${message}`,
-      position: "top",
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      status: `${type}`,
-      duration: 9000,
-      isClosable: true
-    })
-  }
 
   // eslint-disable-next-line camelcase
 
@@ -37,7 +24,7 @@ export default function FormPassword({ router }) {
     password: "",
     password2: ""
   })
-  const [errors, setErrors] = useErrorNewPassword({
+  const [errors, setErrors] = useError({
     password: "",
     password2: ""
   })
@@ -62,15 +49,15 @@ export default function FormPassword({ router }) {
           setIsPosting(false)
           if (res.data.msg === "Autenticación inválida") {
             showToast(
-              "error",
               "Error al restablecer contraseña",
-              "JWT expirado"
+              "JWT expirado",
+              "error"
             )
           } else {
             showToast(
-              "success",
               "Éxito al restablecer contraseña",
-              "Se restableció contraseña correctamente"
+              "Se restableció contraseña correctamente",
+              "success"
             )
             router.push("/")
           }
@@ -128,7 +115,7 @@ export default function FormPassword({ router }) {
           <Button
             variant="primary"
             type="submit"
-            className={styles.Boton}
+            className="buttonDisabledPrimary"
             isLoading={isPosting}
           >
             Aceptar

@@ -22,6 +22,15 @@ a {
   /* color:var(--primary); */
 }
 
+.buttonDisabledPrimary:disabled:hover{
+  background-color: var(--primary) !important;
+}
+.buttonDisabledSecondary:disabled:hover{
+  background-color: var(--secondary) !important;
+}
+
+
+
 .generalWrapper{
   max-width: 1300px;
   margin: 0 auto;

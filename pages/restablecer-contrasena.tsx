@@ -1,4 +1,4 @@
-import FormReset from "../sections/Reset/FormReset"
+import FormReset from "../sections/ResetPassword/FormReset"
 
 export default function Reset() {
   return (

@@ -70,29 +70,6 @@
   color: var(--primary);
 }
 
-.Boton{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-top: 19px;
-
-  width: 80%;
-  height: 41px;
-
-  background: #304659;
-  border-radius: 5px;
-
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 25px;
-
-  text-align: center;
-  color: #FFFFFF;
-}
-
 @media only screen and(max-width: 330px){
 
   .conteinerConFondo{

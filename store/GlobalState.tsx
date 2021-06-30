@@ -40,9 +40,7 @@ export const DataProvider = ({ children }) => {
       console.log("ejecutando efecto")
       const isLogged = localStorage.getItem("isLogged")
       const typeLogged = localStorage.getItem("typeLogged")
-      console.log("islogged: ", isLogged)
       if (isLogged) {
-        console.log("entro is Logged")
         try {
           const accessToken = await post("/api/user/refresh_token", {})
           if (accessToken.data.status) {
@@ -50,7 +48,6 @@ export const DataProvider = ({ children }) => {
             return showToast("Error con el token de acceso")
           }
           console.log("accessToken: ", accessToken.data.access_token)
-
           console.log("setAuth: ", accessToken.data.access_token)
           setAuth(accessToken.data.access_token)
           const user = await get("/api/user/info")

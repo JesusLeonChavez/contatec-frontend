@@ -17,7 +17,7 @@ export const validRegister = values => {
   if (!values.lastName.trim()) {
     errors.lastName = "Apellido es requerido"
     isValid = false
-  } else if (!regexOnlyString(values.name.trim())) {
+  } else if (!regexOnlyString(values.lastName.trim())) {
     errors.lastName = "Ingrese un apellido válido"
     isValid = false
   }
