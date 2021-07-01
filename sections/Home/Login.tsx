@@ -12,7 +12,7 @@ import {
   Button,
   useDisclosure
 } from "@chakra-ui/react"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import Link from "next/link"
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
 import ZIcon from "../../components/Icon/ZIcon"
@@ -39,6 +39,7 @@ export default function Login({
   // eslint-disable-next-line no-unused-vars
   const { state, dispatch } = useContext(DataContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [isPosting, setIsPosting] = useState(false)
   const [values, handleInputChange, reset] = useForm({
     email: "",
     password: ""
@@ -57,10 +58,12 @@ export default function Login({
     const { errors: errorsForm, isValid } = validLogin(values)
     setErrors(errorsForm)
     if (isValid) {
+      setIsPosting(true)
       const res = await post("/api/user/login", {
         us_correo: values.email,
         password: values.password
       })
+      setIsPosting(false)
       if (res.data.status) {
         showToast("Error al iniciar sesión.", res.data.message, "error")
       } else {
@@ -172,6 +175,7 @@ export default function Login({
                 my={2}
                 type="submit"
                 className="buttonDisabledPrimary"
+                isLoading={isPosting}
               >
                 Inicia sesión
               </Button>
