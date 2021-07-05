@@ -1,4 +1,5 @@
 import { regexEmail, regexOnlyString } from "../../../utils/regex"
+import { errorForm } from "../../../utils/types"
 export const validRegister = values => {
   const errors = {
     name: "",
@@ -8,33 +9,33 @@ export const validRegister = values => {
   }
   let isValid = true
   if (!values.name.trim()) {
-    errors.name = "Nombre es requerido"
+    errors.name = errorForm.EMPTY_NAME
     isValid = false
   } else if (!regexOnlyString(values.name.trim())) {
-    errors.name = "Ingrese un nombre válido"
+    errors.name = errorForm.INVALID_NAME
     isValid = false
   }
   if (!values.lastName.trim()) {
-    errors.lastName = "Apellido es requerido"
+    errors.lastName = errorForm.EMPTY_LASTNAME
     isValid = false
   } else if (!regexOnlyString(values.lastName.trim())) {
-    errors.lastName = "Ingrese un apellido válido"
+    errors.lastName = errorForm.INVALID_LASTNAME
     isValid = false
   }
 
   if (!values.email) {
-    errors.email = "Correo electronico es requerido"
+    errors.email = errorForm.EMPTY_EMAIL
     isValid = false
   } else if (!regexEmail(values.email)) {
-    errors.email = "Correo electronico inválido"
+    errors.email = errorForm.INVALID_EMAIL
     isValid = false
   }
 
   if (!values.password) {
-    errors.password = "Contraseña es requerida"
+    errors.password = errorForm.EMPTY_PASSWORD
     isValid = false
   } else if (values.password.length < 7) {
-    errors.password = "La contraseña debe ser de 7 carateres o más"
+    errors.password = errorForm.SHORT_PASSWORD
     isValid = false
   }
 
@@ -48,18 +49,18 @@ export const validLogin = values => {
   }
   let isValid = true
   if (!values.email) {
-    errors.email = "Correo electronico es requerido"
+    errors.email = errorForm.EMPTY_EMAIL
     isValid = false
   } else if (!regexEmail(values.email)) {
-    errors.email = "Correo electronico inválido"
+    errors.email = errorForm.INVALID_EMAIL
     isValid = false
   }
 
   if (!values.password) {
-    errors.password = "Contraseña es requerida"
+    errors.password = errorForm.EMPTY_PASSWORD
     isValid = false
   } else if (values.password.length < 7) {
-    errors.password = "La contraseña debe ser de 7 carateres o más"
+    errors.password = errorForm.SHORT_PASSWORD
     isValid = false
   }
 

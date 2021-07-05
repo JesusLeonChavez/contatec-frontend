@@ -1,3 +1,4 @@
+import { errorForm } from "../../../utils/types"
 export const validNewPassword = values => {
   const errors = {
     password: "",
@@ -7,20 +8,20 @@ export const validNewPassword = values => {
   let isValid = true
 
   if (!values.password) {
-    errors.password = "Contraseña es requerida"
+    errors.password = errorForm.EMPTY_PASSWORD
     isValid = false
   } else if (values.password.length < 7) {
-    errors.password = "La contraseña debe ser de 7 carateres o más"
+    errors.password = errorForm.SHORT_PASSWORD
     isValid = false
   }
   if (!values.password2) {
-    errors.password2 = "Contraseña es requerida"
+    errors.password2 = errorForm.EMPTY_PASSWORD
     isValid = false
   } else if (values.password2.length < 7) {
-    errors.password2 = "La contraseña debe ser de 7 carateres o más"
+    errors.password2 = errorForm.SHORT_PASSWORD
     isValid = false
   } else if (values.password2 !== values.password) {
-    errors.password2 = "La contraseñas no coinciden"
+    errors.password2 = errorForm.UNMATCH_PASSWORD
     isValid = false
   }
 
