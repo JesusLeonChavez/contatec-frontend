@@ -1,16 +1,16 @@
-.conteiner{
+.conteiner {
   width: 100%;
   height: 100vh;
   flex-direction: column;
-  display:flex;
+  display: flex;
   /*padding-top: 15rem;*/
   /*padding-bottom: 15rem;*/
   /*overflow:hidden;*/
   margin-bottom: 3rem;
 }
 
-.conteinerConFondo{
-  background: #FBD76D;
+.conteinerConFondo {
+  background: #fbd76d;
   height: 150px;
   width: 100%;
   display: flex;
@@ -18,29 +18,29 @@
   align-items: center;
 }
 
-.conteinerForm{
+.conteinerForm {
   display: flex;
   margin: auto;
   width: 600px;
 }
 
-.continerSup{
-  display:flex;
-  justify-content:space-around;
+.continerSup {
+  display: flex;
+  justify-content: space-around;
 }
 
-.conteinerList{
+.conteinerList {
   display: flex;
   flex-direction: column;
-  width:200px;
+  width: 200px;
   height: 300px;
-  top:50%;
-  right:50%;
+  top: 50%;
+  right: 50%;
   transform: translate(-90%, 25%);
 }
 
-.titlesub{
-  font-family: Poppins;
+.titlesub {
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 25px;
@@ -49,8 +49,8 @@
   color: #304659;
 }
 
-.linksub{
-  font-family: Poppins;
+.linksub {
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -59,13 +59,13 @@
   color: #304659;
 }
 
-.labelPrincipal{
+.labelPrincipal {
   text-align: left;
 
   margin-top: 29px;
   margin-bottom: 10px;
 
-  font-family: Poppins;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
@@ -74,12 +74,12 @@
   color: #304659;
 }
 
-.labelsub{
+.labelsub {
   text-align: left;
 
   width: 800px;
 
-  font-family: Poppins;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -90,8 +90,8 @@
   color: #304659;
 }
 
-.label{
-  font-family: Poppins;
+.label {
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -99,17 +99,17 @@
   color: #525252;
 }
 
-.Boton{
+.Boton {
   border-radius: 5px;
-  float:left;
+  float: left;
   margin-right: auto;
 }
 
-.Entrada{
+.Entrada {
   width: 60%;
-  flex-direction:row;
+  flex-direction: row;
   display: grid;
-  grid-template-columns:350px 350px;
+  grid-template-columns: 350px 350px;
   grid-gap: 30px;
   float: left;
   margin-top: 12px;
