@@ -5,8 +5,12 @@
 /.pnp
 .pnp.js
 
+
 # testing
 /coverage
+.scannerwork
+sonar-project.properties
+
 
 # next.js
 /.next/

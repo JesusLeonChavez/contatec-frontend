@@ -1,4 +1,4 @@
-.conteiner{
+.conteiner {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -6,12 +6,12 @@
   position: relative;
 }
 
-.conteinerBlanco{
+.conteinerBlanco {
   width: 345px;
 }
 
-.conteinerConFondo{
-  background-image: url('../../public/ReImage.jpg');
+.conteinerConFondo {
+  background-image: url("../../public/ReImage.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -20,21 +20,21 @@
   align-items: center;
 }
 
-.conteinerForm{
+.conteinerForm {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top:50%;
-  right:50%;
+  top: 50%;
+  right: 50%;
   transform: translate(50%, -50%);
 }
 
-.h1{
+.h1 {
   width: 338.92px;
   height: 30px;
   margin-bottom: 29px;
 
-  font-family: Poppins;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 25px;
@@ -45,11 +45,11 @@
   color: var(--primary);
 }
 
-.p{
+.p {
   width: 339px;
   height: 54px;
   margin-top: 15px;
-  font-family: Poppins;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -57,12 +57,12 @@
   color: var(--primary);
 }
 
-.Label{
+.Label {
   width: 100%;
   height: 20px;
   margin-top: 29px;
   margin-bottom: 10px;
-  font-family: Poppins;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -70,22 +70,43 @@
   color: var(--primary);
 }
 
-@media only screen and(max-width: 330px){
+.Boton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 19px;
 
-  .conteinerConFondo{
+  width: 80%;
+  height: 41px;
+
+  background: #304659;
+  border-radius: 5px;
+
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 25px;
+
+  text-align: center;
+  color: #ffffff;
+}
+
+@media only screen and(max-width: 330px) {
+  .conteinerConFondo {
     max-width: 100%;
     height: auto;
     position: fixed;
   }
 
-  .conteinerForm{
+  .conteinerForm {
     flex-direction: column;
     justify-content: space-evenly;
     height: 720px;
   }
 
-  .h1{
+  .h1 {
     font-size: 10px;
   }
-
 }

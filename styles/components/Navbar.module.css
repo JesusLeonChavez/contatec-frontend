@@ -20,7 +20,6 @@
 
 .navbarWrapper ul li{
     padding:0.5rem  1rem;
-
     transition: all 0.1s linear;
 }
 .navbarWrapper ul li:hover{
