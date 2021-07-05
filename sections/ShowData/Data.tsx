@@ -1,34 +1,36 @@
 import styles from "../../styles/sections/Show.module.css"
-import { FormLabel, Input, Button, Text } from "@chakra-ui/react"
+import { FormLabel, Input, Button, Text, FormControl } from "@chakra-ui/react"
 
 export default function Show() {
   return (
     <div>
-      <Text className={styles.labelPrincipal}>Datos personales</Text>
-      <p className={styles.labelsub}>
+      <Text color="primary" className={styles.labelPrincipal}>
+        Datos personales
+      </Text>
+      <p color="primary" className={styles.labelsub}>
         Puedes cambiar los datos de tu perfil cuantas veces lo consideres
         necesario.
       </p>
-      <div className={styles.Entrada}>
-        <div>
+      <div color="primary" className={styles.Input}>
+        <FormControl>
           <FormLabel className={styles.label}>Nombres</FormLabel>
           <Input
             borderColor="black.100"
             type="text"
-            className={styles.Entrada}
+            className={styles.Input}
             placeholder="Escribe tus nombres aquí"
           />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl>
           <FormLabel className={styles.label}>Apellidos</FormLabel>
           <Input
             borderColor="black.100"
             type="text"
-            className={styles.Entrada}
+            className={styles.Input}
             placeholder="Escribe tus apellidos aquí"
           />
-        </div>
-        <div className={styles.Boton}>
+        </FormControl>
+        <div className={styles.Button}>
           <Button variant="primary">Guardar Cambios</Button>
         </div>
       </div>
