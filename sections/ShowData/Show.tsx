@@ -14,8 +14,10 @@ export default function Show() {
         <Tabs align="center" orientation="vertical" variant="unstyled" isLazy>
           <div className={styles.conteinerList}>
             <TabList>
-              <Text className={styles.titlesub}>Mi panel</Text>
-              <div className={styles.linksub}>
+              <Text color="primary" className={styles.titlesub}>
+                Mi panel
+              </Text>
+              <div color="primary" className={styles.linksub}>
                 <Tab>Datos Personales</Tab>
                 <Tab>Contraseña</Tab>
                 <Tab>Realizar Pagos</Tab>

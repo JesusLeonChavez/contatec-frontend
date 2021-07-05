@@ -5,8 +5,10 @@ import ZIcon from "../../components/Icon/ZIcon"
 export default function Show() {
   return (
     <div>
-      <Text className={styles.labelPrincipal}>Historial</Text>
-      <p className={styles.labelsub}>
+      <Text color="primary" className={styles.labelPrincipal}>
+        Historial
+      </Text>
+      <p color="primary" className={styles.labelsub}>
         Puedes ver tu lista de pendientes de pago aquí.
       </p>
       <div>
@@ -16,7 +18,7 @@ export default function Show() {
             <Text size="md">Monto:</Text>
           </Box>
           <Spacer />
-          <Box flex="">
+          <Box p="2">
             <Link>
               <ZIcon name="search" />
             </Link>
@@ -32,7 +34,7 @@ export default function Show() {
             <Text size="md">Monto:</Text>
           </Box>
           <Spacer />
-          <Box>
+          <Box p="2">
             <Link>
               <ZIcon name="search" />
             </Link>
