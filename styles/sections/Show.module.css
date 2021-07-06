@@ -47,12 +47,12 @@
 }
 
 .label {
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
+  /* font-family: "Poppins", sans-serif; */
+  /* font-style: normal; */
   font-weight: 600;
   font-size: 14px;
 
-  color: #525252;
+  /* color: #525252; */
 }
 
 .Button{
