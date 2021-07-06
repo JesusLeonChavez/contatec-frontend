@@ -18,7 +18,7 @@ export default function Show() {
           </Box>
           <Spacer />
           <Box>
-            <Button bg="primary" p={4} color="white" mr="4" my="4">
+            <Button variant="primary" p={4} color="white" mr="4" my="4">
               Pagar
             </Button>
           </Box>

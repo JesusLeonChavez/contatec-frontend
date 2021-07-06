@@ -1,5 +1,5 @@
 import styles from "../../styles/sections/Show.module.css"
-import { Box, Text, Flex, Spacer, Link } from "@chakra-ui/react"
+import { Box, Text, Flex } from "@chakra-ui/react"
 import ZIcon from "../../components/Icon/ZIcon"
 
 export default function Show() {
@@ -11,39 +11,48 @@ export default function Show() {
       <p color="primary" className={styles.labelsub}>
         Puedes ver tu lista de pendientes de pago aquí.
       </p>
-      <div>
-        <Flex backgroundColor="gray.200" padding="2" marginBottom="20px">
-          <Box p="2">
-            <Text size="md">ID:</Text>
-            <Text size="md">Monto:</Text>
+      <Flex justify="start" direction="column">
+        <Flex
+          backgroundColor="gray.200"
+          padding="4"
+          marginBottom="20px"
+          justifyContent="space-between"
+          w="80%"
+        >
+          <Box>
+            <Text size="md" align="start">
+              ID: 1515151
+            </Text>
+            <Text size="md" align="start">
+              Monto: s/2000
+            </Text>
           </Box>
-          <Spacer />
-          <Box p="2">
-            <Link>
-              <ZIcon name="search" />
-            </Link>
-            <Link>
-              <ZIcon name="dowload" />
-            </Link>
-          </Box>
+          <Flex align="center" justify="space-between" w="50px">
+            <ZIcon name="search" pointer size={20} />
+            <ZIcon name="dowload" pointer size={20} />
+          </Flex>
         </Flex>
-
-        <Flex backgroundColor="gray.200" padding="2" marginBottom="20px">
-          <Box p="2">
-            <Text size="md">ID:</Text>
-            <Text size="md">Monto:</Text>
+        <Flex
+          backgroundColor="gray.200"
+          padding="4"
+          marginBottom="20px"
+          justifyContent="space-between"
+          w="80%"
+        >
+          <Box>
+            <Text size="md" align="start">
+              ID: 1515151
+            </Text>
+            <Text size="md" align="start">
+              Monto: s/2000
+            </Text>
           </Box>
-          <Spacer />
-          <Box p="2">
-            <Link>
-              <ZIcon name="search" />
-            </Link>
-            <Link>
-              <ZIcon name="dowload" />
-            </Link>
-          </Box>
+          <Flex align="center" justify="space-between" w="50px">
+            <ZIcon name="search" pointer size={20} />
+            <ZIcon name="dowload" pointer size={20} />
+          </Flex>
         </Flex>
-      </div>
+      </Flex>
     </div>
   )
 }

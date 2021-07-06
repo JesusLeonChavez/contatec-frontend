@@ -6,8 +6,8 @@ export default function Show() {
   return (
     <div>
       <Layout withNav withFooter>
-        <Profile></Profile>
-        <ShowD></ShowD>
+        <Profile />
+        <ShowD />
       </Layout>
     </div>
   )
