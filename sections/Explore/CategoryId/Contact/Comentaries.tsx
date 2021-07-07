@@ -1,6 +1,6 @@
 import { Box, Grid } from "@chakra-ui/react"
 
-import Comentary from "../../components/Comentary"
+import Comentary from "../../../../components/Comentary"
 
 export default function CategoryTittle() {
   return (

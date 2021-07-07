@@ -8,9 +8,10 @@ import {
   ListItem
 } from "@chakra-ui/react"
 import { useState } from "react"
-import ZIcon from "../../components/Icon/ZIcon"
+import ZIcon from "../../../../components/Icon/ZIcon"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Navigation, Thumbs } from "swiper/core"
+import QuotePrice from "./QuotePrice"
 SwiperCore.use([Navigation, Thumbs])
 export default function CategoryTittle({ category }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
@@ -103,7 +104,11 @@ export default function CategoryTittle({ category }) {
                 <UnorderedList spacing={3} px="3">
                   <ListItem>Desde s/.200 o $45</ListItem>
                 </UnorderedList>
-                <Button variant="third">Cotizar servicio</Button>
+                <QuotePrice
+                  variant="third"
+                  width="full"
+                  showModalButtonText="Cotizar servicio"
+                />
               </Grid>
             </Box>
           </Flex>

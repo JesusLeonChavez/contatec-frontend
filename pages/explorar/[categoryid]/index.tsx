@@ -3,7 +3,7 @@ import Head from "next/head"
 import Link from "next/link"
 import { Text, Breadcrumb, BreadcrumbItem } from "@chakra-ui/react"
 import Layout from "../../../components/Layout"
-import CategoryItems from "../../../sections/Explore/CategoryItems"
+import CategoryItems from "../../../sections/Explore/CategoryId/CategoryItems"
 import ZIcon from "../../../components/Icon"
 
 const Category = () => {

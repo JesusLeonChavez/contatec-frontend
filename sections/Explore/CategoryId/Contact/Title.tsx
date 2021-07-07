@@ -1,5 +1,5 @@
 import { Box, Flex, Text, Circle } from "@chakra-ui/react"
-import ZIcon from "../../components/Icon/ZIcon"
+import ZIcon from "../../../../components/Icon/ZIcon"
 
 export default function CategoryTittle({ title }) {
   return (

@@ -1,6 +1,6 @@
 import { Box, Grid } from "@chakra-ui/react"
 import Link from "next/link"
-import CardCategory from "../../components/CardCategory"
+import CardCategory from "../../../components/CardCategory"
 
 export default function CategoryItems({ category }) {
   return (

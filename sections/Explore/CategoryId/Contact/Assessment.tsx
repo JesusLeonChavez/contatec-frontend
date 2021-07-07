@@ -1,6 +1,6 @@
 import { Text, Grid, Box, Flex, Button } from "@chakra-ui/react"
-import ZIcon from "../../components/Icon/ZIcon"
-import Progress from "../../components/Progress"
+import ZIcon from "../../../../components/Icon"
+import Progress from "../../../../components/Progress"
 export default function Assessment() {
   return (
     <Box py="5">
