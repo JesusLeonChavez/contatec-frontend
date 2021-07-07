@@ -19,17 +19,17 @@ export default function Assessment() {
                   <Flex direction="column" justify="space-evenly">
                     <Text fontSize="xs">
                       <Flex>
-                        <ZIcon name="star" />
-                        <ZIcon name="star" />
-                        <ZIcon name="star" />
-                        <ZIcon name="star" />
-                        <ZIcon name="star" />
+                        <ZIcon name="star" color="secondary" />
+                        <ZIcon name="star" color="secondary" />
+                        <ZIcon name="star" color="secondary" />
+                        <ZIcon name="star" color="secondary" />
+                        <ZIcon name="star" color="white" />
                       </Flex>
                     </Text>
                     <Text fontSize="xs">6240 reseñas</Text>
                   </Flex>
                 </Grid>
-                <Button variant="third">Valorar servicio</Button>
+                <Button variant="fourth">Valorar servicio</Button>
               </Flex>
             </Box>
             <Box>

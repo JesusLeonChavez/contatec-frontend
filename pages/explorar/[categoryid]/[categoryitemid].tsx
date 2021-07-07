@@ -1,4 +1,7 @@
 import Head from "next/head"
+import Link from "next/link"
+import { Text, Breadcrumb, BreadcrumbItem } from "@chakra-ui/react"
+import ZIcon from "../../../components/Icon"
 import Layout from "../../../components/Layout"
 import Title from "../../../sections/Contact/Title"
 import PhotosDescription from "../../../sections/Contact/PhotosDescription"
@@ -18,6 +21,41 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout withNav withFooter>
+        <div className="generalWrapper">
+          <Breadcrumb separator={<ZIcon name="arrow-right" />} pt="10">
+            <BreadcrumbItem>
+              <ZIcon
+                name="arrow-leftv2"
+                className="mr1"
+                size={11}
+                pointer
+                onClick={() => {
+                  router.push("/explorar")
+                }}
+              />
+              <Link href="/explorar" as={`/explorar`}>
+                <a>Categoría</a>
+              </Link>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem isCurrentPage>
+              <Link
+                href="/explorar/[categoryid]"
+                as={`/explorar/${categoryid}`}
+              >
+                <a>{categoryid}</a>
+              </Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <Link
+                href="/explorar/[categoryid]"
+                as={`/explorar/${categoryid}`}
+              >
+                <a>{categoryitemid}</a>
+              </Link>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </div>
         <Title title={`Marketing para redes ${categoryitemid}`} />
         <PhotosDescription category={categoryid} />
         <Creator />

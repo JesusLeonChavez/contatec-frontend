@@ -14,7 +14,7 @@ export default function Comentary() {
           <Text>Renata Rojas</Text>
           <Flex align="center">
             <Text>4.0</Text>
-            <ZIcon name="star" />
+            <ZIcon name="star" color="secondary" />
           </Flex>
         </Box>
       </Flex>

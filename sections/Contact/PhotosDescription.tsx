@@ -21,9 +21,9 @@ export default function CategoryTittle({ category }) {
           <Box>
             <Flex align="center" justify="space-between">
               <Grid templateColumns="repeat(2, 1fr)" gap="2">
-                <Button variant="primary">{category}</Button>
+                <Button variant="fourth">{category}</Button>
                 <Flex align="center">
-                  <ZIcon name="star" />
+                  <ZIcon name="star" color="secondary" />
                   <Text>4.0 (2000)</Text>
                 </Flex>
               </Grid>
@@ -80,7 +80,7 @@ export default function CategoryTittle({ category }) {
           <Flex align="center" justify="center" px="3" my="2">
             <Box boxShadow="0px 1px 4px rgba(0, 0, 0, 0.4)" px="6" py="6">
               <Grid templateColumns="repeat(1, 1fr)" gap="5">
-                <Text className="bold600" fontSize="lg">
+                <Text className="bold600" fontSize="lg" color="primary">
                   Description
                 </Text>
                 <Text>
@@ -103,7 +103,7 @@ export default function CategoryTittle({ category }) {
                 <UnorderedList spacing={3} px="3">
                   <ListItem>Desde s/.200 o $45</ListItem>
                 </UnorderedList>
-                <Button variant="primary">Cotizar servicio</Button>
+                <Button variant="third">Cotizar servicio</Button>
               </Grid>
             </Box>
           </Flex>

@@ -18,7 +18,7 @@ export default function CategoryTittle() {
                   Liliana Villanueva
                 </Text>
                 <Text fontSize="sm">Publicista y experta en redes</Text>
-                <Button variant="third">Contactar</Button>
+                <Button variant="primary">Contactar</Button>
               </Grid>
             </Flex>
           </Box>

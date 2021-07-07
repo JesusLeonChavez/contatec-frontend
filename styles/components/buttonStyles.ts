@@ -60,6 +60,21 @@ export const ButtonStyles = {
         boxShadow: "none"
       }
     },
+    fourth: {
+      bg: "#FFFF",
+      color: "primary",
+      border: "1px solid #304659",
+      _hover: {
+        bg: "primary",
+        color: "#fff"
+      },
+      _active: {
+        transform: "scale(0.9)"
+      },
+      _focus: {
+        boxShadow: "none"
+      }
+    },
     google: {
       bg: "#ffff",
       color: "#304659",
