@@ -175,6 +175,9 @@ export default function QuotePrice({
                   placeholder="Escribe un resumen del proyecto aquí"
                   onChange={handleTextArea}
                   value={description}
+                  h="100"
+                  maxLength={100}
+                  resizable="false"
                 />
                 <Box
                   d="flex"
