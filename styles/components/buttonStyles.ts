@@ -47,9 +47,8 @@ export const ButtonStyles = {
       }
     },
     third: {
-      bg: "#FFF",
+      bg: "secondary",
       color: "primary",
-      border: "1px solid #304659",
       _hover: {
         bg: "primary",
         color: "#fff"

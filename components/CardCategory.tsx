@@ -1,11 +1,15 @@
-import { Box, Image, Text, Flex } from "@chakra-ui/react"
+import { Box, Text, Flex } from "@chakra-ui/react"
 import ZIcon from "../components/Icon/ZIcon"
 
 import styles from "../styles/sections/Home.module.css"
+import Image from "next/image"
 
-export default function Card({ title }) {
+type PropsCard = {
+  title: string
+}
+export default function Card({ title }: PropsCard) {
   const property = {
-    imageUrl: "https://bit.ly/2Z4KKcF",
+    imageUrl: "/assets/marketing/marketing1.png",
     imageAlt: "Rear view of modern home with pool",
     beds: 3,
     baths: 2,
@@ -17,12 +21,17 @@ export default function Card({ title }) {
 
   return (
     <Box borderRadius="lg" overflow="hidden" mx="3">
-      <Image src={property.imageUrl} alt={property.imageAlt} h="sm" />
+      <Image
+        src={property.imageUrl}
+        alt={property.imageAlt}
+        height="500"
+        width="500"
+      />
 
-      <Box pr="5" pl="5" pb="5">
+      <Box px="2" pb="5">
         <Flex align="flex-start" justify="center" direction="column">
           <Flex align="center" justify="space-between" w="full" p="3">
-            <Flex align="center">
+            <Flex align="center" w="40px" justify="space-between">
               <ZIcon name="star" />
               <Text fontSize="sm" className={styles.bold200} color="primary">
                 4.0
@@ -33,7 +42,7 @@ export default function Card({ title }) {
             </Text>
           </Flex>
           <Flex align="center" justify="flex-start">
-            <Text fontSize="md" className={styles.bold500}>
+            <Text fontSize="md" className={styles.bold500} color="primary">
               {title}
             </Text>
           </Flex>

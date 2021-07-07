@@ -6,7 +6,7 @@ export default function OurServices() {
     <Box py={{ base: "1", md: "8" }}>
       <div className="generalWrapper">
         <Flex align="center" justify="flex-start" py="5">
-          <Text fontSize="3xl" className="bold500">
+          <Text fontSize="3xl" className="bold500" color="primary">
             Nuestros servicios
           </Text>
         </Flex>

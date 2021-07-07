@@ -7,7 +7,7 @@ export default function InterestedService() {
     <Box py={{ base: "1", md: "8" }}>
       <div className="generalWrapper">
         <Flex align="center" justify="flex-start" py="5">
-          <Text fontSize="3xl" className="bold500">
+          <Text fontSize="3xl" className="bold500" color="primary">
             Servicios que te pueden interesar
           </Text>
         </Flex>

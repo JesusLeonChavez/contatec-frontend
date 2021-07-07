@@ -12,7 +12,7 @@ import ZIcon from "../../components/Icon/ZIcon"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Navigation, Thumbs } from "swiper/core"
 SwiperCore.use([Navigation, Thumbs])
-export default function CategoryTittle() {
+export default function CategoryTittle({ category }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
   return (
     <Box py="6">
@@ -21,7 +21,7 @@ export default function CategoryTittle() {
           <Box>
             <Flex align="center" justify="space-between">
               <Grid templateColumns="repeat(2, 1fr)" gap="2">
-                <Button variant="primary">Marketing</Button>
+                <Button variant="primary">{category}</Button>
                 <Flex align="center">
                   <ZIcon name="star" />
                   <Text>4.0 (2000)</Text>

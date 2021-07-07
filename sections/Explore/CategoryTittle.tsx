@@ -1,4 +1,5 @@
 import { Box, Flex, Text, Button, Grid } from "@chakra-ui/react"
+import Link from "next/link"
 export default function CategoryTittle() {
   return (
     <Box>
@@ -22,12 +23,48 @@ export default function CategoryTittle() {
             lg: "repeat(6, 1fr)"
           }}
         >
-          <Button variant="third">Marketing</Button>
-          <Button variant="third">Desarrollo web</Button>
-          <Button variant="third">Programación</Button>
-          <Button variant="third">Negocios</Button>
-          <Button variant="third">Datos</Button>
-          <Button variant="third">Diseño gráfico</Button>
+          <Link href="/explorar/[categoryid]" as={`/explorar/marketing`}>
+            <a>
+              <Button variant="third" isFullWidth>
+                Marketing
+              </Button>
+            </a>
+          </Link>
+          <Link href="/explorar/[categoryid]" as={`/explorar/desarrollo_web`}>
+            <a>
+              <Button variant="third" isFullWidth>
+                Desarrollo web
+              </Button>
+            </a>
+          </Link>
+          <Link href="/explorar/[categoryid]" as={`/explorar/programacion`}>
+            <a>
+              <Button variant="third" isFullWidth>
+                Programación
+              </Button>
+            </a>
+          </Link>
+          <Link href="/explorar/[categoryid]" as={`/explorar/negocios`}>
+            <a>
+              <Button variant="third" isFullWidth>
+                Negocios
+              </Button>
+            </a>
+          </Link>
+          <Link href="/explorar/[categoryid]" as={`/explorar/datos`}>
+            <a>
+              <Button variant="third" isFullWidth>
+                Datos
+              </Button>
+            </a>
+          </Link>
+          <Link href="/explorar/[categoryid]" as={`/explorar/diseno_grafico`}>
+            <a>
+              <Button variant="third" isFullWidth>
+                Diseño gráfico
+              </Button>
+            </a>
+          </Link>
         </Grid>
       </div>
     </Box>

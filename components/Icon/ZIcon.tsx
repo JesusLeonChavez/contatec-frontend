@@ -52,6 +52,8 @@ import Border from "./Border"
 import Energy from "./Energy"
 import Facebookv2 from "./Facebookv2"
 import Dowload from "./Dowload"
+import ArrowRight from "./ArrowRight"
+import ArrowLeftv2 from "./ArrowLeftv2"
 
 import { PropsIcon } from "./types"
 function VIcon({
@@ -70,6 +72,10 @@ function VIcon({
   }
 
   switch (name) {
+    case "arrow-leftv2":
+      return <ArrowLeftv2 {...props} style={style} color={_color} />
+    case "arrow-right":
+      return <ArrowRight {...props} style={style} color={_color} />
     case "facebookv2":
       return <Facebookv2 {...props} style={style} color={_color} />
     case "border":

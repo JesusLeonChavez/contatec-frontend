@@ -1,7 +1,7 @@
 import { Box, Flex, Text, Circle } from "@chakra-ui/react"
 import ZIcon from "../../components/Icon/ZIcon"
 
-export default function CategoryTittle() {
+export default function CategoryTittle({ title }) {
   return (
     <Box>
       <div className="generalWrapper">
@@ -14,7 +14,7 @@ export default function CategoryTittle() {
               color="primary"
               mr="3"
             >
-              Marketing para redes
+              {title}
             </Text>
             <Circle
               w="45px"
