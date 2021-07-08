@@ -32,7 +32,8 @@ export default function Navbar() {
     await get("/api/user/logout")
     console.log("log out")
     dispatch({ type: "AUTH", payload: {} })
-    return router.push("/")
+    // return router.push("/")
+    return window.location.reload()
   }
 
   const loggedRouter = () => {

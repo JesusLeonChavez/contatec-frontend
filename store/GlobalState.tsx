@@ -47,8 +47,8 @@ export const DataProvider = ({ children }) => {
             localStorage.removeItem("isLogged")
             return showToast("Error con el token de acceso")
           }
-          console.log("accessToken: ", accessToken.data.access_token)
-          console.log("setAuth: ", accessToken.data.access_token)
+          // console.log("accessToken: ", accessToken.data.access_token)
+          // console.log("setAuth: ", accessToken.data.access_token)
           setAuth(accessToken.data.access_token)
           const user = await get("/api/user/info")
           if (user.data.msg === "Autenticación inválida") {
