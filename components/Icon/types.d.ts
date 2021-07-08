@@ -68,6 +68,8 @@ export type IconName =
   | "dowload"
   | "arrow-right"
   | "arrow-leftv2"
+  | "avatar"
+  | "ring"
 
 /**
  * Props SVG, incluyendo name, color, size y weight. No se debe usar el prop style.

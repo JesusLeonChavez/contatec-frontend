@@ -54,6 +54,8 @@ import Facebookv2 from "./Facebookv2"
 import Dowload from "./Dowload"
 import ArrowRight from "./ArrowRight"
 import ArrowLeftv2 from "./ArrowLeftv2"
+import Avatar from "./Avatar"
+import Ring from "./Ring"
 
 import { PropsIcon } from "./types"
 function VIcon({
@@ -72,6 +74,10 @@ function VIcon({
   }
 
   switch (name) {
+    case "ring":
+      return <Ring {...props} style={style} color={_color} />
+    case "avatar":
+      return <Avatar {...props} style={style} color={_color} />
     case "arrow-leftv2":
       return <ArrowLeftv2 {...props} style={style} color={_color} />
     case "arrow-right":

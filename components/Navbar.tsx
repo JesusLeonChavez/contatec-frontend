@@ -1,9 +1,21 @@
 import Link from "next/link"
 import styles from "../styles/components/Navbar.module.css"
-import ZIcon from "../components/Icon/Logo"
+import ZIcon from "../components/Icon"
 import Register from "../sections/Home/Register"
 import Login from "../sections/Home/Login"
-import { Flex, Button, Box, Text } from "@chakra-ui/react"
+import {
+  Flex,
+  Button,
+  Box,
+  Text,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverArrow,
+  PopoverCloseButton
+} from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { DataContext } from "../store/GlobalState"
 import React, { useContext } from "react"
@@ -25,13 +37,71 @@ export default function Navbar() {
 
   const loggedRouter = () => {
     return (
-      <ul>
-        <Flex align="center" justify="center" mx="1">
-          <Button variant="primary" width="4xs" onClick={handleLogout}>
-            Log out
-          </Button>
-        </Flex>
-      </ul>
+      // <ul>
+      //   <Flex align="center" justify="center" mx="1">
+      //     <Button variant="primary" width="4xs" onClick={handleLogout}>
+      //       Log out
+      //     </Button>
+      //   </Flex>
+      // </ul>
+      <Flex align="center">
+        <Popover placement="bottom-end">
+          <PopoverTrigger>
+            <Box px="4" position="relative">
+              {/* <ZIcon name="ring" color="primary" size={20} pointer /> */}
+              <Text cursor="pointer">Mis mensajes</Text>
+              <Box
+                h="2"
+                w="2"
+                bg="red"
+                borderRadius="50"
+                position="absolute"
+                top="0.5"
+                left="120px"
+              ></Box>
+            </Box>
+          </PopoverTrigger>
+          <PopoverContent w="150" _focus={{ outline: "none" }}>
+            <PopoverArrow />
+            <PopoverCloseButton
+              _focus={{ outline: "none" }}
+              _active={{ outline: "none" }}
+            />
+            <PopoverHeader>
+              <Text color="gray">Mis notificaciones (3)</Text>
+            </PopoverHeader>
+            <PopoverBody>
+              <Box h="200" overflow="auto" minW="xl">
+                {[1, 2, 3, 4, 5, 6].map((notifElement, idx) => (
+                  <Flex color="gray" align="center" py="1" minW="80" key={idx}>
+                    <ZIcon name="avatar" color="primary" size={35} />
+                    <Text px="4">
+                      <b style={{ color: "var(--secondary)" }}>Juancho</b> - Se
+                      acaba de publicar un evento:{" "}
+                      <b style={{ color: "var(--secondary)" }}>Matrimonio</b>
+                    </Text>
+                  </Flex>
+                ))}
+              </Box>
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+        <Popover placement="bottom-end">
+          <PopoverTrigger>
+            <Box px="4">
+              <ZIcon name="avatar" color="primary" size={25} pointer />
+            </Box>
+          </PopoverTrigger>
+          <PopoverContent w="38" _focus={{ outline: "none" }}>
+            <PopoverArrow />
+            <PopoverBody>
+              <Button variant="primary" onClick={handleLogout}>
+                Log out
+              </Button>
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+      </Flex>
     )
   }
 
