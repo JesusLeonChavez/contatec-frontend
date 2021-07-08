@@ -1,19 +1,29 @@
 import {
-  Text,
+  Button,
+  Flex,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
   InputLeftElement,
-  Button,
-  Flex
+  Text
 } from "@chakra-ui/react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import SwiperCore, { Autoplay, Navigation } from "swiper/core"
-import styles from "../../styles/sections/Home.module.css"
-import ZIcon from "../../components/Icon/ZIcon"
+import algoliasearch from "algoliasearch/lite"
 import Image from "next/image"
+import { InstantSearch } from "react-instantsearch-dom"
+import SwiperCore, { Autoplay, Navigation } from "swiper/core"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { CustomAutocomplete } from "../../components/AutoComplete"
+import ZIcon from "../../components/Icon/ZIcon"
+import styles from "../../styles/sections/Home.module.css"
+
 SwiperCore.use([Autoplay, Navigation])
+
+const searchClient = algoliasearch(
+  "0NFYRQ1V2T",
+  "faca7db58b1efd435cccac7fcba685b8"
+)
+
 export default function Hero() {
   return (
     <div className={styles.containerHero}>
@@ -30,6 +40,12 @@ export default function Hero() {
             Decubre hoy el mejor servicio para tu negocio
           </Text>
           <div>
+            <InstantSearch
+              indexName="contatec-search"
+              searchClient={searchClient}
+            >
+              <CustomAutocomplete />
+            </InstantSearch>
             <div>
               <FormControl id="text">
                 <FormLabel>Busca el tema de tu interés</FormLabel>
