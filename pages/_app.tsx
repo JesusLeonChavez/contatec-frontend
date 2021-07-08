@@ -4,11 +4,11 @@ import "swiper/components/navigation/navigation.min.css"
 import "swiper/components/pagination/pagination.min.css"
 import "swiper/components/thumbs/thumbs.min.css"
 import "swiper/components/scrollbar/scrollbar.min.css"
+import "instantsearch.css/themes/satellite.css"
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
 import { DataProvider } from "../store/GlobalState"
 import { newTheme } from "../styles/theme"
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={newTheme}>

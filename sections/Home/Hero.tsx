@@ -1,20 +1,21 @@
 import {
-  Text,
+  Button,
+  Flex,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
   InputLeftElement,
-  Button,
-  Flex
+  Text
 } from "@chakra-ui/react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import SwiperCore, { Autoplay, Navigation } from "swiper/core"
-import styles from "../../styles/sections/Home.module.css"
-import ZIcon from "../../components/Icon/ZIcon"
-import Image from "next/image"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom"
+import Image from "next/image"
+import { InstantSearch } from "react-instantsearch-dom"
+import SwiperCore, { Autoplay, Navigation } from "swiper/core"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { CustomAutocomplete } from "../../components/AutoComplete"
+import ZIcon from "../../components/Icon/ZIcon"
+import styles from "../../styles/sections/Home.module.css"
 
 SwiperCore.use([Autoplay, Navigation])
 
@@ -43,8 +44,7 @@ export default function Hero() {
               indexName="contatec-search"
               searchClient={searchClient}
             >
-              <SearchBox />
-              <Hits />
+              <CustomAutocomplete />
             </InstantSearch>
             <div>
               <FormControl id="text">
