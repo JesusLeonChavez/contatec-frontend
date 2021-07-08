@@ -13,7 +13,16 @@ import SwiperCore, { Autoplay, Navigation } from "swiper/core"
 import styles from "../../styles/sections/Home.module.css"
 import ZIcon from "../../components/Icon/ZIcon"
 import Image from "next/image"
+import algoliasearch from "algoliasearch/lite"
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom"
+
 SwiperCore.use([Autoplay, Navigation])
+
+const searchClient = algoliasearch(
+  "0NFYRQ1V2T",
+  "faca7db58b1efd435cccac7fcba685b8"
+)
+
 export default function Hero() {
   return (
     <div className={styles.containerHero}>
@@ -30,6 +39,13 @@ export default function Hero() {
             Decubre hoy el mejor servicio para tu negocio
           </Text>
           <div>
+            <InstantSearch
+              indexName="contatec-search"
+              searchClient={searchClient}
+            >
+              <SearchBox />
+              <Hits />
+            </InstantSearch>
             <div>
               <FormControl id="text">
                 <FormLabel>Busca el tema de tu interés</FormLabel>
