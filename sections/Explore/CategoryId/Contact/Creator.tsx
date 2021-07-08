@@ -1,4 +1,5 @@
-import { Box, Grid, Flex, Avatar, Text, Button } from "@chakra-ui/react"
+import { Box, Grid, Flex, Avatar, Text } from "@chakra-ui/react"
+import ContactWorkerModal from "./ContactWorkerModal"
 
 export default function CategoryTittle() {
   return (
@@ -18,7 +19,12 @@ export default function CategoryTittle() {
                   Liliana Villanueva
                 </Text>
                 <Text fontSize="sm">Publicista y experta en redes</Text>
-                <Button variant="primary">Contactar</Button>
+                {/* <Button variant="primary">Contactar</Button> */}
+                <ContactWorkerModal
+                  variant="primary"
+                  width="full"
+                  showModalButtonText="Contactar"
+                />
               </Grid>
             </Flex>
           </Box>

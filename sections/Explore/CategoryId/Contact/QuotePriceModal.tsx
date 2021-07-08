@@ -1,4 +1,4 @@
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 
 import { useState, useEffect } from "react"
 
@@ -36,29 +36,28 @@ type PropsRegister = {
 
 // TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
 
-export default function QuotePrice({
+export default function QuotePriceModal({
   variant,
   width,
   showModalButtonText
 }: PropsRegister) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [description, setDescription] = useState("")
-  const router = useRouter()
+  // const router = useRouter()
 
   const [values, handleInputChange, reset] = useForm({
     name: "",
     budget: "",
-    date: "",
-    descripcion: ""
+    date: ""
   })
 
-  const { name, budget, date, descripcion } = values
+  const { name, budget, date } = values
 
   const [errors, setErrors, resetErrors] = useError({
     name: "",
     budget: "",
     date: "",
-    descripcion: ""
+    description: ""
   })
 
   const handleTextArea = e => {
@@ -70,7 +69,7 @@ export default function QuotePrice({
 
   const handleSubmit = async e => {
     e.preventDefault()
-
+    // TODO: cambiar valid register
     const { errors: errorsForm, isValid } = validRegister(values)
 
     setErrors(errorsForm)
@@ -114,7 +113,7 @@ export default function QuotePrice({
 
         <ModalContent>
           <ModalHeader>
-            <Text align="center" color="primary" py="2">
+            <Text align="center" color="primary" py="2" fontSize="2xl">
               Cotizar servicio
             </Text>
             <Text
@@ -188,7 +187,7 @@ export default function QuotePrice({
                 >
                   <span>{description.length}/100</span>
                 </Box>
-                <FormErrorMessage>{errors.descripcion}</FormErrorMessage>
+                <FormErrorMessage>{errors.description}</FormErrorMessage>
               </FormControl>
 
               <Button
