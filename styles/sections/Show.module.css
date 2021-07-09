@@ -2,68 +2,16 @@
   background: var(--secondary);
 }
 
-.titlesub {
-  font-weight: 600;
-  font-size: 25px;
-}
-
-.linksub {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 50px;
-  color: #304659;
-}
-
-.labelPrincipal {
+.mainLabel {
   text-align: left;
-
   margin-top: 29px;
   margin-bottom: 10px;
-
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
   font-weight: 600;
   font-size: 30px;
-  line-height: 50px;
-
-  color: #304659;
 }
 
-.labelsub {
-  text-align: left;
-
-  width: 800px;
-
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 50px;
-
-  margin-bottom: 18px;
-
-  color: #304659;
-}
-
-.label {
-  /* font-family: "Poppins", sans-serif; */
-  /* font-style: normal; */
-  font-weight: 600;
-  font-size: 14px;
-
-  /* color: #525252; */
-}
-
-.Button{
-  border-radius: 5px;
-  float: left;
-  margin-right: auto;
-}
-
-.Input{
+.divContainerForm{
   width: 60%;
-  flex-direction: row;
   display: grid;
   grid-template-columns: 350px 350px;
   grid-gap: 30px;
