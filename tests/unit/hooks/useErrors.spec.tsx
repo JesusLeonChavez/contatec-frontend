@@ -27,30 +27,6 @@ describe("pruebas en useError", () => {
     expect(typeof resetErrors).toBe("function")
   })
 
-  // test("debe de cambiar los valores del formulario (cambiar name)", () => {
-  //   const { result } = renderHook(() => useForm(initialForm))
-
-  //   const [, handleInputChange] = result.current
-
-  //   act(() => {
-  //     handleInputChange({
-  //       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-
-  //       // @ts-ignore
-
-  //       target: {
-  //         name: "name",
-
-  //         value: "melisa"
-  //       }
-  //     })
-  //   })
-
-  //   const [formValue] = result.current
-
-  //   expect(formValue).toEqual({ ...initialForm, name: "melisa" })
-  // })
-
   test("debe de reestablecer los errores con RESET", () => {
     const { result } = renderHook(() => useError(initialForm))
 
