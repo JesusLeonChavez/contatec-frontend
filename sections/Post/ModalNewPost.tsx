@@ -139,22 +139,23 @@ export default function ModalNewPost({
 
         <ModalContent>
           <ModalHeader>
-            <Text align="center" color="primary" py="2" fontSize="2xl">
+            <Text align="center" color="primary" py="2" fontSize="xl">
               Nuevo servicio
             </Text>
           </ModalHeader>
 
           <ModalBody color="primary" px="10">
             <form onSubmit={handleSubmit}>
-              <Text color="primary" fontSize="xl" fontWeight="medium">
+              <Text color="primary" fontSize="lg" fontWeight="medium">
                 Encabezado
               </Text>
               <FormControl mb="2" id="first-name" isInvalid={!!errors.name}>
-                <FormLabel color="letter" fontWeight="light">
+                <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Nombres del servicio
                 </FormLabel>
 
                 <Input
+                  fontSize="sm"
                   type="text"
                   placeholder="Escribe nombre del servicio aquí"
                   name="name"
@@ -162,7 +163,7 @@ export default function ModalNewPost({
                   value={name}
                 />
 
-                <FormErrorMessage>{errors.name}</FormErrorMessage>
+                <FormErrorMessage fontSize="sm">{errors.name}</FormErrorMessage>
               </FormControl>
 
               <Grid templateColumns="repeat(2,1fr)" gap="6">
@@ -180,10 +181,11 @@ export default function ModalNewPost({
                   <FormErrorMessage>{errors.budget}</FormErrorMessage>
                 </FormControl> */}
                 <FormControl mb="2" isInvalid={!!errors.budget}>
-                  <FormLabel color="letter" fontWeight="light">
+                  <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Categoría
                   </FormLabel>
                   <Select
+                    fontSize="sm"
                     placeholder="Elige una categoría"
                     variant="outline"
                     name="state"
@@ -197,13 +199,16 @@ export default function ModalNewPost({
                       Categoria 2
                     </option>
                   </Select>
-                  <FormErrorMessage>{errors.budget}</FormErrorMessage>
+                  <FormErrorMessage fontSize="sm">
+                    {errors.budget}
+                  </FormErrorMessage>
                 </FormControl>
                 <FormControl mb="2" isInvalid={!!errors.budget}>
-                  <FormLabel color="letter" fontWeight="light">
+                  <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Archivos adjuntos
                   </FormLabel>
                   <Select
+                    fontSize="sm"
                     placeholder="Archivos adjuntos"
                     variant="outline"
                     name="state"
@@ -217,7 +222,9 @@ export default function ModalNewPost({
                       Archivo 2
                     </option>
                   </Select>
-                  <FormErrorMessage>{errors.budget}</FormErrorMessage>
+                  <FormErrorMessage fontSize="sm">
+                    {errors.budget}
+                  </FormErrorMessage>
                 </FormControl>
 
                 {/* <FormControl mb="6" isInvalid={!!errors.date}>
@@ -236,11 +243,12 @@ export default function ModalNewPost({
               </Grid>
 
               <FormControl isInvalid={!!errors.descripcion}>
-                <FormLabel color="letter" fontWeight="light">
+                <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Contenido breve
                 </FormLabel>
 
                 <Textarea
+                  fontSize="sm"
                   placeholder="Escribe tu contenido breve aquí"
                   onChange={handleInputChange}
                   value={description}
@@ -253,7 +261,7 @@ export default function ModalNewPost({
                   d="flex"
                   justifyContent="flex-end"
                   color="gray"
-                  fontSize="sm"
+                  fontSize="xs"
                   pt="2"
                 >
                   <span>{description.length}/100</span>
@@ -261,15 +269,16 @@ export default function ModalNewPost({
 
                 <FormErrorMessage>{errors.description}</FormErrorMessage>
               </FormControl>
-              <Text color="primary" fontSize="xl" fontWeight="medium">
+              <Text color="primary" fontSize="lg" fontWeight="medium">
                 Descripción
               </Text>
               <FormControl mb="2" isInvalid={!!errors.descripcion}>
-                <FormLabel color="letter" fontWeight="light">
+                <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Contenido detallado
                 </FormLabel>
 
                 <Textarea
+                  fontSize="sm"
                   placeholder="Escribe tu contenido detallado aquí"
                   onChange={handleInputChange}
                   value={description}
@@ -282,20 +291,23 @@ export default function ModalNewPost({
                   d="flex"
                   justifyContent="flex-end"
                   color="gray"
-                  fontSize="sm"
+                  fontSize="xs"
                   pt="2"
                 >
                   <span>{description.length}/100</span>
                 </Box>
 
-                <FormErrorMessage>{errors.description}</FormErrorMessage>
+                <FormErrorMessage fontSize="sm">
+                  {errors.description}
+                </FormErrorMessage>
               </FormControl>
               <FormControl mb="2" id="first-name" isInvalid={!!errors.name}>
-                <FormLabel color="letter" fontWeight="light">
+                <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Ingresa lo que incluye el servicio
                 </FormLabel>
 
                 <Input
+                  fontSize="sm"
                   type="text"
                   placeholder="Presiona ENTER para ingresar un dato"
                   name="name"
@@ -303,14 +315,15 @@ export default function ModalNewPost({
                   value={name}
                 />
 
-                <FormErrorMessage>{errors.name}</FormErrorMessage>
+                <FormErrorMessage fontSize="sm">{errors.name}</FormErrorMessage>
               </FormControl>
               <FormControl mb="2" id="first-name" isInvalid={!!errors.name}>
-                <FormLabel color="letter" fontWeight="light">
+                <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Precio
                 </FormLabel>
 
                 <Input
+                  fontSize="sm"
                   type="text"
                   placeholder="S/."
                   name="name"
@@ -322,6 +335,7 @@ export default function ModalNewPost({
               </FormControl>
 
               <Button
+                fontSize="sm"
                 width="full"
                 variant="primary"
                 type="submit"
