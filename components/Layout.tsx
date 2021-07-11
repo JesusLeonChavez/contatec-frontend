@@ -1,12 +1,18 @@
+import React from "react"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
-function Layout({ children, withNav, withFooter }) {
+interface LayoutProps {
+  children?: React.ReactNode
+  withNav: boolean
+  withFooter: boolean
+}
+function Layout({ children, withNav, withFooter }: LayoutProps) {
   return (
-    <div>
+    <>
       {withNav && <Navbar />}
       {children}
       {withFooter && <Footer />}
-    </div>
+    </>
   )
 }
 

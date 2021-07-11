@@ -4,7 +4,7 @@ import styles from "../styles/sections/Home.module.css"
 export default function Card({ title, price, img }) {
   return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
-      <Image src={img} alt="Prueba img" height="300" width="300" />
+      <Image src={img} alt={title} height="300" width="300" />
 
       <Box p="5">
         <Flex align="center" justify="center" direction="column">

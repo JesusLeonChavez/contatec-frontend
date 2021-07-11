@@ -21,7 +21,11 @@ export default function InterestedService() {
           }}
         >
           {["1", "2", "3", "4"].map(item => (
-            <CardCategory key={item} title="Marketing digital" />
+            <CardCategory
+              key={item}
+              title="Marketing digital"
+              imageUrl="/assets/marketing/marketing1.png"
+            />
           ))}
         </Grid>
       </div>

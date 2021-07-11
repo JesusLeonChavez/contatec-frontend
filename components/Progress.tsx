@@ -1,6 +1,15 @@
 import { Progress, Flex, Text, Grid, Box } from "@chakra-ui/react"
 import ZIcon from "./Icon/ZIcon"
-export default function ProgressValoration({ value, start, quantity }) {
+interface ProgressProps {
+  value: number
+  start: string
+  quantity: number
+}
+export default function ProgressValoration({
+  value,
+  start,
+  quantity
+}: ProgressProps) {
   return (
     <Grid templateColumns="80% 20%" py="1">
       <Progress colorScheme="yellow" size="lg" value={value} borderRadius="5" />
