@@ -1,7 +1,7 @@
 import { Input } from "@chakra-ui/react"
 import { connectAutoComplete } from "react-instantsearch-dom"
 // Aplicar  estilos
-const Autocomplete = ({ hits, currentRefinement, refine }) => {
+export const Autocomplete = ({ hits, currentRefinement, refine }) => {
   return (
     <ul style={{ textDecoration: "none", listStyle: "none" }}>
       <li>
