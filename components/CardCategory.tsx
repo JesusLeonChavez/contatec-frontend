@@ -6,27 +6,12 @@ import Image from "next/image"
 
 type PropsCard = {
   title: string
+  imageUrl: string
 }
-export default function Card({ title }: PropsCard) {
-  const property = {
-    imageUrl: "/assets/marketing/marketing1.png",
-    imageAlt: "Rear view of modern home with pool",
-    beds: 3,
-    baths: 2,
-    title: "Modern home in city center in the heart of historic Los Angeles",
-    formattedPrice: "$1,900.00",
-    reviewCount: 34,
-    rating: 4
-  }
-
+export default function CardCategory({ title, imageUrl }: PropsCard) {
   return (
     <Box borderRadius="lg" overflow="hidden" mx="3">
-      <Image
-        src={property.imageUrl}
-        alt={property.imageAlt}
-        height="500"
-        width="500"
-      />
+      <Image src={imageUrl} alt={title} height="500" width="500" />
 
       <Box px="2" pb="5">
         <Flex align="flex-start" justify="center" direction="column">

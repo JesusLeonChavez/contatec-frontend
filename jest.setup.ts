@@ -1,15 +1,16 @@
-import '@testing-library/jest-dom'
-import '@testing-library/jest-dom/extend-expect'
+import "@testing-library/jest-dom"
+import "@testing-library/jest-dom/extend-expect"
 module.exports = {
-  roots: ['<rootDir>/tests'],
+  roots: ["<rootDir>/tests"],
   testPathIgnorePatterns: [
-    '<rootDir>/.next/',
-    '<rootDir>/node_modules/',
-    '<rootDir>/dist'
+    "<rootDir>/.next/",
+    "<rootDir>/node_modules/",
+    "<rootDir>/dist",
+    "<rootDir>/components/Icon/"
   ],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest'
+    "^.+\\.tsx?$": "ts-jest"
   },
-  testRegex: '(/tests/.*|(\\.|/)(test|spec))\\.tsx?$',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
+  testRegex: "(/tests/.*|(\\.|/)(test|spec))\\.tsx?$",
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"]
 }

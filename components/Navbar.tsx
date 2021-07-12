@@ -23,7 +23,7 @@ import { get } from "../utils/http"
 
 export default function Navbar() {
   const router = useRouter()
-  const activeRoute = router.pathname.split("/")[1]
+  const activeRoute = router?.pathname.split("/")[1]
   const { state, dispatch } = useContext(DataContext)
   const { auth, authReady } = state
 

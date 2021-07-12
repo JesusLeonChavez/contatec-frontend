@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { ColorName } from "./types"
 export function getColorByName(color: ColorName | undefined) {
   if (color === "primary") return "var(--primary)"

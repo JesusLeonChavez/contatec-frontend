@@ -20,7 +20,10 @@ export default function CategoryItems({ category }) {
               as={`/explorar/${category}/item${item}`}
             >
               <a>
-                <CardCategory title="Marketing digital en category" />
+                <CardCategory
+                  title="Marketing digital en category"
+                  imageUrl="/assets/marketing/marketing1.png"
+                />
               </a>
             </Link>
           ))}
