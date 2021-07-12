@@ -59,6 +59,12 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
-    }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist",
+      "<rootDir>/components/Icon/"
+    ]
   }
 }
