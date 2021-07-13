@@ -5,7 +5,8 @@ module.exports = {
   testPathIgnorePatterns: [
     "<rootDir>/.next/",
     "<rootDir>/node_modules/",
-    "<rootDir>/dist"
+    "<rootDir>/dist",
+    "<rootDir>/components/Icon/"
   ],
   transform: {
     "^.+\\.tsx?$": "ts-jest"

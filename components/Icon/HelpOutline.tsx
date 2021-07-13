@@ -1,4 +1,5 @@
-import * as React from 'react'
+/* istanbul ignore file */
+import * as React from "react"
 
 function HelpOutline(props) {
   return (

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Transformar de svg a componente de React
  * {@link https://react-svgr.com/playground/?icon=true}

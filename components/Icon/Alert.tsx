@@ -1,4 +1,5 @@
-import * as React from 'react'
+/* istanbul ignore file */
+import * as React from "react"
 
 export default function Alert(props) {
   return (
