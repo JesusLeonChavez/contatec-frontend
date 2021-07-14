@@ -4,6 +4,7 @@ export default function Selectd() {
   return (
     <Box>
       <Select
+        width="250px"
         cursorColor="primary"
         focusBorderColor="primary"
         boderColor="primary"
