@@ -1,39 +1,52 @@
 import styles from "../../styles/sections/Show.module.css"
-import { FormLabel, Input, Button, Text, FormControl } from "@chakra-ui/react"
+import {
+  FormLabel,
+  Input,
+  Button,
+  Text,
+  FormControl,
+  Box
+} from "@chakra-ui/react"
 
 export default function Show() {
   return (
     <div>
-      <Text color="primary" className={styles.labelPrincipal}>
+      <Text color="primary" className={styles.mainLabel}>
         Contraseña
       </Text>
-      <p color="primary" className={styles.labelsub}>
+      <Text color="primary" align="start" fontWeight="medium" pb="2">
         Puedes cambiar tu contraseña cuantas veces lo necesites. Te recomendamos
         utilizar numeros y letras.
-      </p>
-      <div className={styles.Input}>
+      </Text>
+      <Box className={styles.divContainerForm}>
         <FormControl>
-          <FormLabel className={styles.label}>Contraseña actual</FormLabel>
+          <FormLabel fontWeight="medium" color="primary">
+            Contraseña actual
+          </FormLabel>
           <Input
-            borderColor="black.100"
-            type={"password"}
-            placeholder="Ingrese contraseña actual"
-            className={styles.Input}
+            type="password"
+            my="3"
+            placeholder="Escribe tu contraseña actual aquí"
+            _active={{ borderColor: "primary" }}
+            _focus={{ borderColor: "primary" }}
           />
         </FormControl>
         <FormControl>
-          <FormLabel className={styles.label}>Nueva contraseña</FormLabel>
+          <FormLabel fontWeight="medium" color="primary">
+            Nueva contraseña
+          </FormLabel>
           <Input
-            borderColor="black.100"
-            type={"password"}
-            placeholder="Ingrese contraseña nueva"
-            className={styles.Input}
+            type="password"
+            my="3"
+            placeholder="Escribe tu contraseña nueva aquí"
+            _active={{ borderColor: "primary" }}
+            _focus={{ borderColor: "primary" }}
           />
         </FormControl>
-        <div className={styles.Button}>
-          <Button variant="primary">Guardar Cambios</Button>
-        </div>
-      </div>
+        <Button variant="primary" w="3xs">
+          Guardar Cambios
+        </Button>
+      </Box>
     </div>
   )
 }

@@ -1,42 +1,59 @@
 import styles from "../../styles/sections/Show.module.css"
-import { Box, Text, Button, Flex, Spacer, FormControl } from "@chakra-ui/react"
+import { Box, Text, Button, Flex } from "@chakra-ui/react"
 
 export default function Show() {
   return (
     <div>
-      <Text color="primary" className={styles.labelPrincipal}>
+      <Text color="primary" className={styles.mainLabel}>
         Realizar Pago
       </Text>
-      <p color="primary" className={styles.labelsub}>
+      <Text color="primary" align="start" fontWeight="medium" pb="4">
         Puedes revisar tu lista de pendientes de pago aquí.
-      </p>
-      <FormControl>
-        <Flex backgroundColor="gray.200" padding="2" marginBottom="20px">
-          <Box p="2">
-            <Text size="md">Nombre del servicio:</Text>
-            <Text size="md">Monto:</Text>
-          </Box>
-          <Spacer />
+      </Text>
+      <Flex justify="start" direction="column">
+        <Flex
+          backgroundColor="gray.200"
+          padding="4"
+          marginBottom="20px"
+          justifyContent="space-between"
+          w="80%"
+        >
           <Box>
-            <Button variant="primary" p={4} color="white" mr="4" my="4">
+            <Text size="md" align="start">
+              Nombre del servicio: Marketing digital
+            </Text>
+            <Text size="md" align="start">
+              Monto: S/ 2000
+            </Text>
+          </Box>
+          <Flex align="center" justify="space-between" w="100px">
+            <Button variant="primary" p={4} color="white">
               Pagar
             </Button>
-          </Box>
+          </Flex>
         </Flex>
-
-        <Flex backgroundColor="gray.200" padding="2" marginBottom="20px">
-          <Box p="2">
-            <Text size="md">Nombre del servicio:</Text>
-            <Text size="md">Monto:</Text>
-          </Box>
-          <Spacer />
+        <Flex
+          backgroundColor="gray.200"
+          padding="4"
+          marginBottom="20px"
+          justifyContent="space-between"
+          w="80%"
+        >
           <Box>
-            <Button bg="primary" p={4} color="white" mr="4" my="4">
+            <Text size="md" align="start">
+              Nombre del servicio: Desarrollo web
+            </Text>
+            <Text size="md" align="start">
+              Monto: S/ 2000
+            </Text>
+          </Box>
+          <Flex align="center" justify="space-between" w="100px">
+            <Button variant="primary" p={4} color="white">
               Pagar
             </Button>
-          </Box>
+          </Flex>
         </Flex>
-      </FormControl>
+      </Flex>
     </div>
   )
 }

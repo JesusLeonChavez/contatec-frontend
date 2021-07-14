@@ -5,12 +5,12 @@ import ZIcon from "../../components/Icon/ZIcon"
 export default function Show() {
   return (
     <div>
-      <Text color="primary" className={styles.labelPrincipal}>
+      <Text color="primary" className={styles.mainLabel}>
         Historial
       </Text>
-      <p color="primary" className={styles.labelsub}>
+      <Text color="primary" align="start" fontWeight="medium" pb="4">
         Puedes ver tu lista de pendientes de pago aquí.
-      </p>
+      </Text>
       <Flex justify="start" direction="column">
         <Flex
           backgroundColor="gray.200"

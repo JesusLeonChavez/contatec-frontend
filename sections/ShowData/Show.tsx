@@ -1,4 +1,3 @@
-import styles from "../../styles/sections/Show.module.css"
 import ShowData from "../../sections/ShowData/Data"
 import ShowPassword from "../../sections/ShowData/Password"
 import ShowPay from "../../sections/ShowData/Pay"
@@ -11,12 +10,10 @@ export default function ShowD() {
     <>
       <div className="generalWrapper" style={{ padding: "50px 10px" }}>
         <Tabs align="center" orientation="vertical" variant="unstyled" isLazy>
-          {/* <div className={styles.conteinerList}> */}
-          <TabList>
-            <Text color="primary" className={styles.titlesub}>
+          <TabList ml="25">
+            <Text color="primary" fontWeight="medium" fontSize="25px">
               Mi panel
             </Text>
-            {/* <div color="primary" className={styles.linksub}> */}
             <Tab
               _selected={{
                 color: "primary",
@@ -63,11 +60,8 @@ export default function ShowD() {
             >
               Metódos de pago
             </Tab>
-            {/* </div> */}
           </TabList>
-          {/* </div> */}
-          {/* <div className={styles.conteinerForm}> */}
-          <TabPanels h="400px" pl="10%">
+          <TabPanels h="500px" pl="10%">
             <TabPanel>
               <ShowData />
             </TabPanel>
@@ -84,7 +78,6 @@ export default function ShowD() {
               <ShowMethods />
             </TabPanel>
           </TabPanels>
-          {/* </div> */}
         </Tabs>
       </div>
     </>
