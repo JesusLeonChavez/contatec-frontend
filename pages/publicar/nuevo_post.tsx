@@ -1,6 +1,10 @@
 import Head from "next/head"
-import Layout from "../components/Layout"
-import GetStarted from "../sections/Post/GetStarted"
+import React from "react"
+
+import Layout from "../../components/Layout"
+
+import NewListPost from "../../sections/Post/NewListPost"
+
 export default function Explorar() {
   return (
     <div>
@@ -11,7 +15,7 @@ export default function Explorar() {
       </Head>
 
       <Layout withNav withFooter>
-        <GetStarted />
+        <NewListPost />
       </Layout>
     </div>
   )
