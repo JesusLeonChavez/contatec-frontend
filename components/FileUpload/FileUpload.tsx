@@ -74,6 +74,7 @@ export default function FileUpload({
 }: FileUploadProps) {
   const [collapse, setCollapse] = React.useState(false)
   const [errorSupport, setErrorSupport] = React.useState(false)
+  const toggleFocus = React.useRef(null)
   const handleOut = React.useCallback(
     ev => {
       if (!ev.target.closest("._FileUpload")) {
@@ -91,6 +92,7 @@ export default function FileUpload({
   }, [handleOut])
 
   function handleCollapse(value) {
+    toggleFocus.current.classList.toggle(styles.focus)
     if (!value) {
       setErrorSupport(false)
     }
@@ -131,6 +133,7 @@ export default function FileUpload({
         fullWidth={fullWidth}
       >
         <div
+          ref={toggleFocus}
           className={styles.fileUploadHead}
           outline={outline}
           disabled={disabled}
@@ -138,7 +141,7 @@ export default function FileUpload({
           onClick={() => handleCollapse(collapse)}
           {...props}
         >
-          <i className="fa fa-paperclip mr-4 clip" />
+          <i className="fas fa-paperclip mr-4"/>
           <div className={styles.containerBadge}>
             <p className="mr2">{placeholder}</p>
             {new_files.length > 0 && (
@@ -164,7 +167,7 @@ export default function FileUpload({
             <div className={styles.containerFileItems}>
               {!readOnly && new_files.length === 0 && (
                 <div className={styles.dragDropStyled}>
-                  <i className="fa fa-cloud-upload mb-2" />
+                  <i className="fas fa-cloud-upload-alt mb2" />
                   <p className={styles.text}>Arrastra y suelta archivos</p>
                   <p className={`mt2 ${styles.text}`}>
                     Archivos soportados: {extensions?.join(", ")}

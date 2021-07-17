@@ -16,8 +16,8 @@ export default function FileItem({ file, onDelete }) {
             <div className={styles.fileItemStyled}>
               {
                 <>
-                  {/* <Icon className="mr-1 icon-file" name={file.icon} /> */}
-                  <IconNew name="alarm" />
+                  {/* <Icon  name={file.icon} /> */}
+                  <IconNew name="alarm" className="mr1" />
 
                   <p className="mr-2">{file.name}</p>
 
@@ -28,7 +28,7 @@ export default function FileItem({ file, onDelete }) {
                       download={file.name}
                       title={file.name}
                     >
-                      <IconNew name="download" />
+                      <IconNew name="dowload" />
                     </a>
                   )}
 
@@ -36,6 +36,7 @@ export default function FileItem({ file, onDelete }) {
                     <span>
                       <IconNew
                         name="exclamation-circle"
+                        pointer
                         // color="var(--danger)"
                         // hover="var(--danger)"
                       />
@@ -45,7 +46,7 @@ export default function FileItem({ file, onDelete }) {
               }
 
               {props.remove && !props.readOnly && (
-                <IconNew className="ml-2" name="trash-o" onClick={onDelete} />
+                <IconNew className="ml2" name="trash" onClick={onDelete} pointer/>
               )}
             </div>
           )}
