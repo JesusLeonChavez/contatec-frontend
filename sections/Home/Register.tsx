@@ -21,7 +21,6 @@ import { useError } from "../../utils/hooks/useError"
 import { validRegister } from "./utils/valid"
 import { post } from "../../utils/http"
 import showToast from "../../components/Toast"
-import FileUpload from "../../components/FileUpload/FileUpload"
 
 type PropsRegister = {
   variant: string
@@ -136,8 +135,6 @@ export default function Register({
                 />
                 <FormErrorMessage>{errors.email}</FormErrorMessage>
               </FormControl>
-
-              <FileUpload fullWidth />
               <FormControl mb="6" isInvalid={!!errors.password}>
                 <FormLabel>Contraseña</FormLabel>
 
