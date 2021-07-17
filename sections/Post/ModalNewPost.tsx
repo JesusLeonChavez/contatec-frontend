@@ -26,6 +26,7 @@ import { useForm } from "../../utils/hooks/useForm"
 import { useError } from "../../utils/hooks/useError"
 
 import { validRegister } from "./utils/valid"
+import FileUpload from "../../components/FileUpload/FileUpload"
 
 // import { post } from "../../../../utils/http"
 
@@ -82,6 +83,7 @@ export default function ModalNewPost({
 
   const [isPosting, setIsPosting] = useState(false)
 
+  const [imagesFile, setImagesFile ] = useState([])
   const handleSubmit = async e => {
     e.preventDefault()
 
@@ -93,7 +95,7 @@ export default function ModalNewPost({
 
     if (isValid) {
       setIsPosting(true)
-
+//-------------------------
       // const resp = await post("/api/user/register", {
 
       //   us_correo: values.date,
@@ -105,9 +107,9 @@ export default function ModalNewPost({
       //   descripcion: values.descripcion
 
       // })
-
+// ----------------------------
       setIsPosting(false)
-
+// ----------------------------
       // if (resp.data.response?.error) {
 
       //   showToast("Error al registrarse", resp.data.response?.error, "error")
@@ -117,16 +119,28 @@ export default function ModalNewPost({
       //   router.push("/active-message")
 
       // }
+      console.log(imagesFile)
     }
   }
+  // useEffect(() => {
+  //   if (!isOpen) {
+  //     reset()
 
-  useEffect(() => {
-    if (!isOpen) {
-      reset()
+  //     resetErrors()
+  //   }
+  // }, [isOpen])
 
-      resetErrors()
-    }
-  }, [isOpen])
+  function handleDrop (files) {
+    // const images_file = imagesFile
+    //@ts-ignore
+    setImagesFile([...imagesFile, ...files])
+  }
+
+
+  function handleDelete (index) {
+    const images_file = imagesFile.filter((img, i) => i !== index)
+    setImagesFile(images_file)
+  }
 
   return (
     <>
@@ -134,7 +148,7 @@ export default function ModalNewPost({
         {showModalButtonText}
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
+      <Modal isOpen={isOpen} onClose={onClose} isCentered size="3xl">
         <ModalOverlay />
 
         <ModalContent>
@@ -207,25 +221,12 @@ export default function ModalNewPost({
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Archivos adjuntos
                   </FormLabel>
-                  <Select
-                    fontSize="sm"
-                    placeholder="Archivos adjuntos"
-                    variant="outline"
-                    name="state"
-                    onChange={handleInputChange}
-                    // value={state}
-                  >
-                    <option value="badstate" style={{ color: "var(--black)" }}>
-                      Archivo 1
-                    </option>
-                    <option value="goodstate" style={{ color: "var(--black)" }}>
-                      Archivo 2
-                    </option>
-                  </Select>
+                  <FileUpload fullWidth files={imagesFile} onDrop={handleDrop} onDelete={handleDelete} remove/>
                   <FormErrorMessage fontSize="sm">
                     {errors.budget}
                   </FormErrorMessage>
                 </FormControl>
+
 
                 {/* <FormControl mb="6" isInvalid={!!errors.date}>
                   <FormLabel>Fecha límite del proyecto</FormLabel>
