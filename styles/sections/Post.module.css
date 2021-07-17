@@ -20,6 +20,13 @@
   align-items: center;
 }
 
+.newPostRow{
+  width: 100%;
+  display: grid;
+  grid-template-columns:40% 60% ;
+  align-items: center;
+}
+
 @media only screen and (max-width: 1000px) {
   .infoRowInvert, .infoRowNoInvert {
     grid-template-columns:repeat(1,100%) ;

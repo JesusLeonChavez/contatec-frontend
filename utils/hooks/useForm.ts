@@ -5,7 +5,9 @@ export const useForm = (
 ): [
   Record<string, string>,
 
-  React.ChangeEventHandler<HTMLInputElement>,
+  React.ChangeEventHandler<
+    HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+  >,
 
   () => void
 ] => {
