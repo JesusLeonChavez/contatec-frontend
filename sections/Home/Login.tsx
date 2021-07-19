@@ -109,8 +109,10 @@ export default function Login({
     const { tokenId } = res
     console.log("respues de libreria Google: ", res)
     try {
+      setIsPosting(true)
       const res = await post("/api/user/google_login", { tokenId })
       console.log("resGoogle: ", res)
+      setIsPosting(false)
       if (res.data.status) {
         showToast("Error al iniciar sesión.", res.data.message, "error")
       } else {
