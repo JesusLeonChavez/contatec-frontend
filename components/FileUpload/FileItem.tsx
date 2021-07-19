@@ -4,7 +4,7 @@ import React from "react"
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from "prop-types"
 import styles from "../../styles/components/FileUpload.module.css"
-import IconNew from "../Icon"
+import ZIcon from "../Icon"
 import { Consumer } from "./FileUpload"
 
 export default function FileItem({ file, onDelete }) {
@@ -17,7 +17,7 @@ export default function FileItem({ file, onDelete }) {
               {
                 <>
                   {/* <Icon  name={file.icon} /> */}
-                  <IconNew name="alarm" className="mr1" />
+                  <ZIcon name="alarm" className="mr1" />
 
                   <p className="mr-2">{file.name}</p>
 
@@ -28,13 +28,13 @@ export default function FileItem({ file, onDelete }) {
                       download={file.name}
                       title={file.name}
                     >
-                      <IconNew name="dowload" />
+                      <ZIcon name="dowload" />
                     </a>
                   )}
 
                   {file.error && (
                     <span>
-                      <IconNew
+                      <ZIcon
                         name="exclamation-circle"
                         pointer
                         // color="var(--danger)"
@@ -46,7 +46,7 @@ export default function FileItem({ file, onDelete }) {
               }
 
               {props.remove && !props.readOnly && (
-                <IconNew className="ml2" name="trash" onClick={onDelete} pointer/>
+                <ZIcon className="ml2" name="trash" onClick={onDelete} pointer/>
               )}
             </div>
           )}
