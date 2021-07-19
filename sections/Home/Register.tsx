@@ -135,7 +135,6 @@ export default function Register({
                 />
                 <FormErrorMessage>{errors.email}</FormErrorMessage>
               </FormControl>
-
               <FormControl mb="6" isInvalid={!!errors.password}>
                 <FormLabel>Contraseña</FormLabel>
 
@@ -160,7 +159,6 @@ export default function Register({
                   </Text>
                 </Checkbox>
               </FormControl>
-
               <Button
                 width="full"
                 variant="primary"
