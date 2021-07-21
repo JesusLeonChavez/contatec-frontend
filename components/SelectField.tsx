@@ -8,20 +8,18 @@ import ZIcon from "../components/Icon"
 
 const { Provider, Consumer } = React.createContext(false)
 
-/**
- *
- * @template T
- * @typedef {object} Option
- * @property {node} children
- * @property {string|number|boolean} value
- * @property {boolean} readOnly
- * @property {string=} image
- *
- * @param {Option} param0
-
- */
-
-export function Option({ value, children, image, readOnly }) {
+interface PropsOptionComponent {
+  children: React.ReactNode
+  value: string | number | boolean
+  image?: string
+  readOnly?: boolean
+}
+export function Option({
+  value,
+  children,
+  image,
+  readOnly
+}: PropsOptionComponent) {
   // eslint-disable-next-line camelcase
   const image_res = {}
 
@@ -68,32 +66,6 @@ Option.defaultProps = {
   readOnly: false
 }
 
-/**
- * @typedef {object} PropsSelectField
- * @property {{ label: string, value: string|number } |boolean} option
- * @property {function(object):void=} onChange
- * @property {boolean=} fullWidth
- * @property {boolean=} loading
- * @property {boolean=} disabled
- * @property {boolean=} readOnly
- * @property {string=} className
- * @property {string=} id
- * @property {object=} style
- * @property {boolean=} light
- * @property {string=} minWidth
- * @property {function(string):void=} onSearch
- * @property {boolean=} search
- * @property {string=} placeholder
- * @property {string=} name
- * @property {string=} errorHelper
- * @property {boolean=} required
- * @property {function():void=} onScroll
- * @property {number=} length
- * @property {boolean=} hasMore
- * @property {boolean=} transparent
- *
- * @param {PropsSelectField & { children: any } } param0
- */
 type PropsOption = { label: string; value: string } | boolean
 
 interface PropsSelectField {
@@ -113,7 +85,6 @@ interface PropsSelectField {
   placeholder?: string
   name?: string
   required?: boolean
-  onScroll?: () => void
   length?: number
   hasMore?: boolean
   transparent?: boolean
@@ -133,9 +104,6 @@ function SelectField({
   name,
   required,
   readOnly,
-  onScroll,
-  length,
-  hasMore,
   ...props
 }: PropsSelectField) {
   const [open, setOpen] = React.useState(false)
@@ -159,19 +127,11 @@ function SelectField({
   )
 
   React.useEffect(() => {
-    // if (document.getElementById("chakra-modal-92")) {
     document
       .querySelector(".chakra-modal__content")
       .addEventListener("click", handleOut)
-    // }
 
     return () => {
-      if (document.querySelector(".chakra-modal__content")) {
-        console.log("limpiando")
-        document
-          .querySelector(".chakra-modal__content")
-          .removeEventListener("click", handleOut)
-      }
       document.removeEventListener("click", handleOut)
     }
   }, [handleOut])
@@ -207,12 +167,9 @@ function SelectField({
           styles.inputField
         }`}
         value={option ? option.label : ""}
-        // img={option ? option.image : false}
         onClick={handleOut}
-        // fullWidth={fullWidth}
         required={required}
         disabled={disabled}
-        // forReadOnly={readOnly}
         onChange={() => null}
       />
 
@@ -242,13 +199,10 @@ function SelectField({
                 className={`${id} ${search && styles.search} ${
                   option && styles.img
                 } ${fullWidth && styles.fullWidth} ${styles.inputField}`}
-                // search
                 placeholder="Buscar..."
                 value={search ? textSearch : ""}
                 onChange={handleChange}
                 autoComplete="off"
-                // img={option ? option.image : false}
-                // fullWidth
               />
 
               {loading && (
@@ -271,26 +225,7 @@ function SelectField({
             id="scrollableDiv"
             className={`${search && styles.searchFluid} ${styles.optionsFluid}`}
           >
-            {/* {onScroll && (
-              <InfiniteScroll
-                dataLength={length}
-                next={onScroll}
-                hasMore={hasMore}
-                style={{
-                  overflow: "hidden"
-                }}
-                loader={
-                  <FlexCenter>
-                    <Loading scale={1} />
-                  </FlexCenter>
-                }
-                scrollableTarget="scrollableDiv"
-              >
-                {children}
-              </InfiniteScroll>
-            )} */}
-
-            {!onScroll && children}
+            {children}
           </div>
         </div>
       </Provider>
@@ -308,30 +243,6 @@ function SelectField({
       </HelperText> */}
     </div>
   )
-}
-SelectField.propTypes = {
-  option: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  fullWidth: PropTypes.bool,
-  name: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-  loading: PropTypes.bool,
-  children: PropTypes.node,
-  minWidth: PropTypes.string,
-  errorHelper: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  light: PropTypes.bool,
-  transparent: PropTypes.bool,
-  disabled: PropTypes.bool,
-  search: PropTypes.bool,
-  onSearch: PropTypes.func,
-  required: PropTypes.bool,
-  id: PropTypes.string,
-  readOnly: PropTypes.bool,
-  onScroll: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  length: PropTypes.number,
-  hasMore: PropTypes.bool
 }
 
 SelectField.defaultProps = {
@@ -355,14 +266,10 @@ SelectField.defaultProps = {
 
 export default SelectField
 
-/**
- * @typedef {object} PropsCaption
- * @property {any} children
- *
- * @param {PropsCaption} param0
- */
-
-export function Caption({ children }) {
+interface CaptionProps {
+  children: React.ReactNode
+}
+export function Caption({ children }: CaptionProps) {
   return <ul className={styles.captionContainer}>{children}</ul>
 }
 
