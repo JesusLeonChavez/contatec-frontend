@@ -29,6 +29,7 @@ import { validRegister } from "./utils/valid"
 import FileUpload from "../../components/FileUpload/FileUpload"
 import showToast from "../../components/Toast"
 import { imageUpload } from "../../utils/imageUpload"
+import SelectField, { Option } from "../../components/SelectField"
 
 // import { post } from "../../../../utils/http"
 
@@ -134,6 +135,7 @@ export default function ModalNewPost({
       // if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
       // console.log([...imgOldURL, ...media])
       // ---------------------------------------------------------
+      console.log(category)
     }
   }
   useEffect(() => {
@@ -160,6 +162,10 @@ export default function ModalNewPost({
     // eslint-disable-next-line camelcase
     const images_file = imagesFile.filter((img, i) => i !== index)
     setImagesFile(images_file)
+  }
+  const [category, setCategory] = useState(null)
+  function handleChangeSelect(option) {
+    setCategory(option)
   }
 
   return (
@@ -218,7 +224,7 @@ export default function ModalNewPost({
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Categoría
                   </FormLabel>
-                  <Select
+                  {/* <Select
                     fontSize="sm"
                     placeholder="Elige una categoría"
                     variant="outline"
@@ -232,7 +238,26 @@ export default function ModalNewPost({
                     <option value="goodstate" style={{ color: "var(--black)" }}>
                       Categoria 2
                     </option>
-                  </Select>
+                  </Select> */}
+                  <SelectField
+                    fullWidth
+                    required
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    option={category}
+                    search
+                    placeholder="Seleccionar ubicación gaa "
+                    onChange={handleChangeSelect}
+                  >
+                    {[
+                      { label: "hola", value: 1 },
+                      { label: "chau", value: 2 }
+                    ].map((ubicacion, idx) => (
+                      <Option key={idx} value={ubicacion.value}>
+                        {ubicacion.label}
+                      </Option>
+                    ))}
+                  </SelectField>
                   <FormErrorMessage fontSize="sm">
                     {errors.budget}
                   </FormErrorMessage>

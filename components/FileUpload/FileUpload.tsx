@@ -7,6 +7,7 @@ import PropTypes from "prop-types"
 import { setFiles, getIconString } from "./utils"
 import styles from "../../styles/components/FileUpload.module.css"
 import FileItem from "./FileItem"
+import ZIcon from "../../components/Icon"
 export const { Provider, Consumer } = React.createContext(false)
 export function FileLink(
   filename,
@@ -160,7 +161,8 @@ export default function FileUpload({
               <div className={styles.badge}> {new_files.length} </div>
             )}
           </div>
-          <i className="fa fa-angle-down mr-1" />
+          {/* <i className="fa fa-angle-down mr-1" /> */}
+          <ZIcon name="arrow-bottom" className="mr1" />
         </div>
         <div
           className={
