@@ -1,0 +1,18 @@
+.select{
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: 350px;
+}
+
+.selectSelect{
+  display: inline-block;
+  width: 350px;
+  padding: 13px 18px;
+  outline: 0;
+  border: 1px solid #482f51;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #b9b9b9;
+  appearance: none;
+}

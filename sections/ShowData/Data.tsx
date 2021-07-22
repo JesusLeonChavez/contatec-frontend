@@ -7,10 +7,17 @@ import {
   FormControl,
   Box
 } from "@chakra-ui/react"
+// import Category from "../../components/SelectCategory"
+import Datepicker from "../../components/SelectDatepicker"
 
 export default function Show() {
   return (
     <div>
+      {/* <Category
+        width="140px"
+        options={["Jupiter", "Marte", "Saturno", "Urano", "Tierra"]}
+      /> */}
+      <Datepicker></Datepicker>
       <Text color="primary" className={styles.mainLabel}>
         Datos personales
       </Text>
