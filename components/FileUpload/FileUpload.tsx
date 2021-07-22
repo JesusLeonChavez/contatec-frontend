@@ -7,6 +7,7 @@ import PropTypes from "prop-types"
 import { setFiles, getIconString } from "./utils"
 import styles from "../../styles/components/FileUpload.module.css"
 import FileItem from "./FileItem"
+import ZIcon from "../../components/Icon"
 export const { Provider, Consumer } = React.createContext(false)
 export function FileLink(
   filename,
@@ -103,17 +104,29 @@ export default function FileUpload({
     const _files = ev.target.files
     let availabale_files = []
     let notSupport = false
+    let validImage = false
     // eslint-disable-next-line array-callback-return
     availabale_files = Object.values(_files).filter(item => {
       const ext = item.name
         .substring(item.name.lastIndexOf(".") + 1)
         .toLowerCase()
+      const size = item.size
       if (extensions.includes(ext)) {
         item.extension = ext
-        return item
+        validImage = true
       } else if (!notSupport) {
         notSupport = true
       }
+      if (size <= 1024 * 1024) {
+        validImage = true
+      } else if (!notSupport) {
+        notSupport = true
+      }
+
+      if (validImage) {
+        return item
+      }
+      // console.log("gaaa: ", item)
     })
 
     if (!notSupport) {
@@ -141,14 +154,15 @@ export default function FileUpload({
           onClick={() => handleCollapse(collapse)}
           {...props}
         >
-          <i className="fas fa-paperclip mr-4"/>
+          <i className="fas fa-paperclip mr-4" />
           <div className={styles.containerBadge}>
             <p className="mr2">{placeholder}</p>
             {new_files.length > 0 && (
               <div className={styles.badge}> {new_files.length} </div>
             )}
           </div>
-          <i className="fa fa-angle-down mr-1" />
+          {/* <i className="fa fa-angle-down mr-1" /> */}
+          <ZIcon name="arrow-bottom" className="mr1" />
         </div>
         <div
           className={
@@ -161,7 +175,7 @@ export default function FileUpload({
           <div className={styles.fileUploadBodyTop}>
             {errorSupport && (
               <p className={styles.textNotSupport}>
-                Error: archivo a cargar no soportado
+                Error: Archivo a cargar no soportado
               </p>
             )}
             <div className={styles.containerFileItems}>

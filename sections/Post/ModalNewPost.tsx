@@ -27,6 +27,9 @@ import { useError } from "../../utils/hooks/useError"
 
 import { validRegister } from "./utils/valid"
 import FileUpload from "../../components/FileUpload/FileUpload"
+import showToast from "../../components/Toast"
+import { imageUpload } from "../../utils/imageUpload"
+import SelectField, { Option } from "../../components/SelectField"
 
 // import { post } from "../../../../utils/http"
 
@@ -40,6 +43,11 @@ type PropsRegister = {
   showModalButtonText: string
 }
 
+interface ImageProps {
+  // eslint-disable-next-line camelcase
+  public_id: string
+  url: string
+}
 // TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
 
 export default function ModalNewPost({
@@ -83,7 +91,7 @@ export default function ModalNewPost({
 
   const [isPosting, setIsPosting] = useState(false)
 
-  const [imagesFile, setImagesFile ] = useState([])
+  const [imagesFile, setImagesFile] = useState<any>([])
   const handleSubmit = async e => {
     e.preventDefault()
 
@@ -95,7 +103,7 @@ export default function ModalNewPost({
 
     if (isValid) {
       setIsPosting(true)
-//-------------------------
+      // -------------------------
       // const resp = await post("/api/user/register", {
 
       //   us_correo: values.date,
@@ -107,9 +115,9 @@ export default function ModalNewPost({
       //   descripcion: values.descripcion
 
       // })
-// ----------------------------
+      // ----------------------------
       setIsPosting(false)
-// ----------------------------
+      // ----------------------------
       // if (resp.data.response?.error) {
 
       //   showToast("Error al registrarse", resp.data.response?.error, "error")
@@ -119,27 +127,45 @@ export default function ModalNewPost({
       //   router.push("/active-message")
 
       // }
+      // ---------------------------------------------------------
       console.log(imagesFile)
+      // let media: ImageProps[] = []
+      // const imgNewURL = imagesFile.filter(img => !img.url)
+      // const imgOldURL = imagesFile.filter(img => img.url)
+      // if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
+      // console.log([...imgOldURL, ...media])
+      // ---------------------------------------------------------
+      console.log(category)
     }
   }
-  // useEffect(() => {
-  //   if (!isOpen) {
-  //     reset()
+  useEffect(() => {
+    if (!isOpen) {
+      // reset()
+      setImagesFile([])
+      // resetErrors()
+    }
+  }, [isOpen])
 
-  //     resetErrors()
-  //   }
-  // }, [isOpen])
-
-  function handleDrop (files) {
-    // const images_file = imagesFile
-    //@ts-ignore
+  function handleDrop(files) {
+    if (imagesFile.length >= 5) {
+      showToast(
+        "Error al cargar imagen",
+        "Numero de elementos maximo: 5",
+        "error"
+      )
+      return
+    }
     setImagesFile([...imagesFile, ...files])
   }
 
-
-  function handleDelete (index) {
+  function handleDelete(index) {
+    // eslint-disable-next-line camelcase
     const images_file = imagesFile.filter((img, i) => i !== index)
     setImagesFile(images_file)
+  }
+  const [category, setCategory] = useState(null)
+  function handleChangeSelect(option) {
+    setCategory(option)
   }
 
   return (
@@ -148,7 +174,7 @@ export default function ModalNewPost({
         {showModalButtonText}
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} isCentered size="3xl">
+      <Modal isOpen={isOpen} onClose={onClose} size="3xl">
         <ModalOverlay />
 
         <ModalContent>
@@ -198,7 +224,7 @@ export default function ModalNewPost({
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Categoría
                   </FormLabel>
-                  <Select
+                  {/* <Select
                     fontSize="sm"
                     placeholder="Elige una categoría"
                     variant="outline"
@@ -212,7 +238,26 @@ export default function ModalNewPost({
                     <option value="goodstate" style={{ color: "var(--black)" }}>
                       Categoria 2
                     </option>
-                  </Select>
+                  </Select> */}
+                  <SelectField
+                    fullWidth
+                    required
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    option={category}
+                    search
+                    placeholder="Seleccionar ubicación gaa "
+                    onChange={handleChangeSelect}
+                  >
+                    {[
+                      { label: "hola", value: 1 },
+                      { label: "chau", value: 2 }
+                    ].map((ubicacion, idx) => (
+                      <Option key={idx} value={ubicacion.value}>
+                        {ubicacion.label}
+                      </Option>
+                    ))}
+                  </SelectField>
                   <FormErrorMessage fontSize="sm">
                     {errors.budget}
                   </FormErrorMessage>
@@ -221,12 +266,18 @@ export default function ModalNewPost({
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Archivos adjuntos
                   </FormLabel>
-                  <FileUpload fullWidth files={imagesFile} onDrop={handleDrop} onDelete={handleDelete} remove/>
+                  <FileUpload
+                    fullWidth
+                    files={imagesFile}
+                    onDrop={handleDrop}
+                    onDelete={handleDelete}
+                    extensions={["jpg", "png"]}
+                    remove
+                  />
                   <FormErrorMessage fontSize="sm">
                     {errors.budget}
                   </FormErrorMessage>
                 </FormControl>
-
 
                 {/* <FormControl mb="6" isInvalid={!!errors.date}>
                   <FormLabel>Fecha límite del proyecto</FormLabel>
