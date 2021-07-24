@@ -1,7 +1,7 @@
 import { Box, Flex, Text, Circle } from "@chakra-ui/react"
 import ZIcon from "../../../../components/Icon/ZIcon"
-
-export default function CategoryTittle({ title }) {
+import { toCapitalFirstLetter } from "../../../../utils/toCapital"
+export default function CategoryTittle({ title, briefDescription }) {
   return (
     <Box>
       <div className="generalWrapper">
@@ -14,7 +14,7 @@ export default function CategoryTittle({ title }) {
               color="primary"
               mr="3"
             >
-              {title}
+              {toCapitalFirstLetter(title)}
             </Text>
             <Circle
               w="45px"
@@ -26,8 +26,7 @@ export default function CategoryTittle({ title }) {
             </Circle>
           </Flex>
           <Text fontSize="lg" align="start" color="primary">
-            Explora tu creatividad con nuevas técnicas en redes y mejora el
-            alcance a tu público objetivo
+            {toCapitalFirstLetter(briefDescription)}
           </Text>
         </Box>
       </div>

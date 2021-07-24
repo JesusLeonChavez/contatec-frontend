@@ -96,6 +96,15 @@ export default function Navbar() {
           <PopoverContent w="38" _focus={{ outline: "none" }}>
             <PopoverArrow />
             <PopoverBody>
+              <Box fullWidth>
+                <Link href="/mostrar-datos">
+                  <a>
+                    <Button variant="secondary" fullWidth>
+                      Perfil
+                    </Button>
+                  </a>
+                </Link>
+              </Box>
               <Button variant="primary" onClick={handleLogout}>
                 Log out
               </Button>

@@ -20,7 +20,7 @@ export const DataProvider = ({ children }) => {
     auth: {},
     authReady: false,
     authType: "none",
-    category: []
+    categories: []
   }
   const [state, dispatch] = useReducer(reducers, initialState)
   const { authType } = state

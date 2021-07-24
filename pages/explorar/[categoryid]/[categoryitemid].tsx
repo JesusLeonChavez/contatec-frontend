@@ -1,6 +1,7 @@
+/* eslint-disable camelcase */
 import Head from "next/head"
 import Link from "next/link"
-import { Breadcrumb, BreadcrumbItem } from "@chakra-ui/react"
+import { Box, Breadcrumb, BreadcrumbItem, Text } from "@chakra-ui/react"
 import ZIcon from "../../../components/Icon"
 import Layout from "../../../components/Layout"
 import Title from "../../../sections/Explore/CategoryId/Contact/Title"
@@ -9,10 +10,53 @@ import Comentaries from "../../../sections/Explore/CategoryId/Contact/Comentarie
 import Creator from "../../../sections/Explore/CategoryId/Contact/Creator"
 import Assessment from "../../../sections/Explore/CategoryId/Contact/Assessment"
 import { useRouter } from "next/router"
+import { toCapitalFirstLetter } from "../../../utils/toCapital"
+import { DataContext } from "../../../store/GlobalState"
+import { useContext } from "react"
 
-export default function Home() {
+interface PropsUserPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  us_correo: string
+  us_nombre: string
+  us_apellido: string
+  avatar: string
+}
+
+interface PropsCategoryPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  cat_nombre: string
+  cat_descripcion: string
+}
+interface PropsPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  pst_isActive: boolean
+  pst_descripcion_corta: string
+  pst_nombre: string
+  pst_descripcion_incluye: string
+  pst_descripcion: string
+  pst_imagen_1: string
+  pst_imagen_2: string
+  pst_imagen_3: string
+  pst_imagen_4: string
+  pst_imagen_5: string
+  pst_precioBase: number
+  pstUsuarioId: PropsUserPost
+  pstCategoriaId: PropsCategoryPost
+}
+
+interface PropsMain {
+  post: PropsPost
+}
+export default function Post({ post }: PropsMain) {
   const router = useRouter()
-  const { categoryid, categoryitemid } = router.query
+  const { state } = useContext(DataContext)
+  const { authReady } = state
   return (
     <div>
       <Head>
@@ -21,46 +65,64 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout withNav withFooter>
-        <div className="generalWrapper">
-          <Breadcrumb separator={<ZIcon name="arrow-right" />} pt="10">
-            <BreadcrumbItem>
-              <ZIcon
-                name="arrow-leftv2"
-                className="mr1"
-                size={11}
-                pointer
-                onClick={() => {
-                  router.push("/explorar")
-                }}
-              />
-              <Link href="/explorar" as={`/explorar`}>
-                <a>Categoría</a>
-              </Link>
-            </BreadcrumbItem>
+        {authReady ? (
+          <>
+            <div className="generalWrapper">
+              <Breadcrumb separator={<ZIcon name="arrow-right" />} pt="10">
+                <BreadcrumbItem>
+                  <ZIcon
+                    name="arrow-leftv2"
+                    className="mr1"
+                    size={11}
+                    pointer
+                    onClick={() => {
+                      router.push("/explorar")
+                    }}
+                  />
+                  <Link href="/explorar" as={`/explorar`}>
+                    <a>Categoría</a>
+                  </Link>
+                </BreadcrumbItem>
 
-            <BreadcrumbItem isCurrentPage>
-              <Link
-                href="/explorar/[categoryid]"
-                as={`/explorar/${categoryid}`}
-              >
-                <a>{categoryid}</a>
-              </Link>
-            </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
-              <Link
-                href="/explorar/[categoryid]"
-                as={`/explorar/${categoryid}`}
-              >
-                <a>{categoryitemid}</a>
-              </Link>
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </div>
-        <Title title={`Marketing para redes ${categoryitemid}`} />
-        <PhotosDescription category={categoryid} />
-        <Creator />
-        <Assessment />
-        <Comentaries />
+                <BreadcrumbItem isCurrentPage>
+                  <Link
+                    href="/explorar/[categoryid]"
+                    as={`/explorar/${post.pstCategoriaId.id}`}
+                  >
+                    <a>{post.pstCategoriaId.cat_nombre}</a>
+                  </Link>
+                </BreadcrumbItem>
+                <BreadcrumbItem isCurrentPage>
+                  <Link
+                    href="/explorar/[categoryid]/[categoryitemid]"
+                    as={`/explorar/${post.pstCategoriaId.id}/${post.id}`}
+                  >
+                    <a>{toCapitalFirstLetter(post.pst_nombre)}</a>
+                  </Link>
+                </BreadcrumbItem>
+              </Breadcrumb>
+            </div>
+            <Title
+              title={post.pst_nombre}
+              briefDescription={post.pst_descripcion_corta}
+            />
+            <PhotosDescription post={post} />
+            <Creator />
+            <Assessment />
+            <Comentaries />
+          </>
+        ) : (
+          <Box
+            d="flex"
+            alignItems="center"
+            justifyContent="center"
+            w="full"
+            h="3xl"
+          >
+            {/* TODO: Agregar imagen */}
+            <Text>Cargando...</Text>
+          </Box>
+        )}
       </Layout>
     </div>
   )
@@ -68,12 +130,13 @@ export default function Home() {
 
 export const getServerSideProps = async context => {
   const id = context.params.categoryitemid
+  console.log("id: ", id)
   const res = await fetch(`${process.env.API_BASE_URL}/api/post/${id}`)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const data = await res.json()
   console.log("dataPost: ", data)
   return {
-    props: { category_posts: data }
+    props: { post: data }
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
   Box,
   Flex,
@@ -12,9 +13,51 @@ import ZIcon from "../../../../components/Icon/ZIcon"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Navigation, Thumbs } from "swiper/core"
 import QuotePriceModal from "./QuotePriceModal"
+import { toCapitalFirstLetter } from "../../../../utils/toCapital"
 SwiperCore.use([Navigation, Thumbs])
-export default function CategoryTittle({ category }) {
+interface PropsUserPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  us_correo: string
+  us_nombre: string
+  us_apellido: string
+  avatar: string
+}
+
+interface PropsCategoryPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  cat_nombre: string
+  cat_descripcion: string
+}
+interface PropsPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  pst_isActive: boolean
+  pst_descripcion_corta: string
+  pst_nombre: string
+  pst_descripcion_incluye: string
+  pst_descripcion: string
+  pst_imagen_1: string
+  pst_imagen_2: string
+  pst_imagen_3: string
+  pst_imagen_4: string
+  pst_imagen_5: string
+  pst_precioBase: number
+  pstUsuarioId: PropsUserPost
+  pstCategoriaId: PropsCategoryPost
+}
+
+interface PropsMain {
+  post: PropsPost
+}
+export default function CategoryTittle({ post }: PropsMain) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
+
+  // TODO: colocar los tags, la descripcion detallada, la fecha de publicacion, recarga de pagina
   return (
     <Box py="6">
       <div className="generalWrapper">
@@ -22,7 +65,9 @@ export default function CategoryTittle({ category }) {
           <Box>
             <Flex align="center" justify="space-between">
               <Grid templateColumns="repeat(2, 1fr)" gap="2">
-                <Button variant="fourth">{category}</Button>
+                <Button variant="fourth">
+                  {toCapitalFirstLetter(post.pstCategoriaId.cat_nombre)}
+                </Button>
                 <Flex align="center">
                   <ZIcon name="star" color="secondary" />
                   <Text>4.0 (2000)</Text>
@@ -39,16 +84,19 @@ export default function CategoryTittle({ category }) {
                 className="mySwiperBig"
               >
                 <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  <img src={post.pst_imagen_1} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                  <img src={post.pst_imagen_2} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                  <img src={post.pst_imagen_3} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                  <img src={post.pst_imagen_4} />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={post.pst_imagen_5} />
                 </SwiperSlide>
               </Swiper>
               <Swiper
@@ -64,16 +112,19 @@ export default function CategoryTittle({ category }) {
                 className="mySwiperSmall"
               >
                 <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  <img src={post.pst_imagen_1} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                  <img src={post.pst_imagen_2} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                  <img src={post.pst_imagen_3} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                  <img src={post.pst_imagen_4} />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={post.pst_imagen_5} />
                 </SwiperSlide>
               </Swiper>
             </Box>

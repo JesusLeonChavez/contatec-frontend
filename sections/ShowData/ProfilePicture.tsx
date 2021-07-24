@@ -2,7 +2,7 @@ import styles from "../../styles/sections/Show.module.css"
 import { Flex, Avatar, Text, Circle } from "@chakra-ui/react"
 import ZIcon from "../../components/Icon/ZIcon"
 
-export default function ProfilePicture() {
+export default function ProfilePicture({ auth }) {
   return (
     <div
       className={styles.containerWithBackground}
@@ -13,8 +13,8 @@ export default function ProfilePicture() {
           <Flex align="center" position="absolute" top="200px">
             <Avatar
               size="2xl"
-              name="Oshigaki Kisame"
-              src="https://bit.ly/broken-link"
+              name={`${auth.user?.us_nombre} ${auth.user?.us_apellido}`}
+              src={auth.user?.avatar}
               mx="1"
               position="relative"
             >
@@ -37,7 +37,7 @@ export default function ProfilePicture() {
             className="bold500"
             fontSize="35px"
           >
-            Lucy León Raskov
+            {`${auth.user?.us_nombre} ${auth.user?.us_apellido}`}
           </Text>
         </Flex>
       </div>

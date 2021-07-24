@@ -34,12 +34,9 @@ interface Post {
 }
 
 interface PropsCard {
-  title: string
-  imageUrl: string
   post: Post
 }
-export default function CardCategory({ title, imageUrl, post }: PropsCard) {
-  console.log(post.pstUsuarioId)
+export default function CardCategory({ post }: PropsCard) {
   return (
     <Box borderRadius="lg" overflow="hidden" mx="3">
       <Image

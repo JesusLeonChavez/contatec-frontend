@@ -46,11 +46,7 @@ export default function CategoryItems({ category }) {
                 as={`/explorar/${category.id}/${post.id}`}
               >
                 <a>
-                  <CardCategory
-                    post={post}
-                    title={post.pst_nombre}
-                    imageUrl={post.pst_imagen_1}
-                  />
+                  <CardCategory post={post} />
                 </a>
               </Link>
             ))}

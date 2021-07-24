@@ -5,7 +5,7 @@ import ShowHistory from "../../sections/ShowData/History"
 import ShowMethods from "../../sections/ShowData/Methods"
 import { TabList, TabPanels, TabPanel, Tab, Tabs, Text } from "@chakra-ui/react"
 
-export default function ShowD() {
+export default function ShowD({ auth }) {
   return (
     <>
       <div className="generalWrapper" style={{ padding: "50px 10px" }}>
