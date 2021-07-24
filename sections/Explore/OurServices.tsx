@@ -1,5 +1,5 @@
 import { Box, Flex, Grid, Text } from "@chakra-ui/react"
-import CardCategory from "../../components/CardCategory"
+import CardCategoryTemporal from "../../components/CardCategoryTemporal"
 
 export default function OurServices() {
   return (
@@ -20,7 +20,7 @@ export default function OurServices() {
           }}
         >
           {["1", "2", "3", "4"].map(item => (
-            <CardCategory
+            <CardCategoryTemporal
               key={item}
               title="Marketing digital"
               imageUrl="/assets/marketing/marketing1.png"
