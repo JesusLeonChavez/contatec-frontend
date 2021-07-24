@@ -9,6 +9,8 @@ export const errorForm = {
   EMPTY_TAG: "Es necesario ingresar al menos un tag",
   EMPTY_RATE: "Puntuación requerida",
   EMPTY_ISSUE: "Asunto es requerido",
+  EMPTY_DATE: "Fecha es requerida",
+  EMPTY_BUDGET: "Presupuesto es requerido",
   INVALID_NAME: "Ingrese un nombre válido",
   INVALID_LASTNAME: "Ingrese un apellido válido",
   INVALID_EMAIL: "Correo electronico inválido",
@@ -16,6 +18,7 @@ export const errorForm = {
   INVALID_PRICE: "Precio inválido",
   INVALID_FILE: "Debe seleccionar 5 archivos",
   INVALID_ISSUE: "Ingrese un asunto válido",
+  INVALID_BUDGET: "Ingrese un presupuesto válido",
   SHORT_PASSWORD: "La contraseña debe ser de 7 carateres o más",
   UNMATCH_PASSWORD: "La contraseña debe ser de 7 carateres o más"
 }

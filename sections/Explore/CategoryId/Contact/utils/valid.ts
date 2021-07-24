@@ -1,4 +1,4 @@
-import { regexOnlyString } from "../../../../../utils/regex"
+import { regexDecimal, regexOnlyString } from "../../../../../utils/regex"
 
 import { errorForm } from "../../../../../utils/types"
 
@@ -46,6 +46,47 @@ export const validContactWorker = values => {
     isValid = false
   } else if (!regexOnlyString(values.message.trim())) {
     errors.message = errorForm.INVALID_TEXT_AREA
+    isValid = false
+  }
+
+  return { errors, isValid }
+}
+
+export const validQuote = values => {
+  const errors = {
+    name: "",
+    date: "",
+    budget: "",
+    description: ""
+  }
+  let isValid = true
+
+  if (!values.name.trim()) {
+    errors.name = errorForm.EMPTY_NAME
+    isValid = false
+  } else if (!regexOnlyString(values.name.trim())) {
+    errors.name = errorForm.INVALID_NAME
+    isValid = false
+  }
+  if (!values.date.trim()) {
+    errors.date = errorForm.EMPTY_DATE
+    isValid = false
+  }
+
+  if (!values.budget) {
+    errors.budget = errorForm.EMPTY_BUDGET
+    isValid = false
+  } else if (!regexDecimal(values.budget)) {
+    errors.budget = errorForm.INVALID_BUDGET
+    isValid = false
+  }
+
+  if (!values.description.trim()) {
+    errors.description = errorForm.EMPTY_TEXT_AREA
+
+    isValid = false
+  } else if (!regexOnlyString(values.description.trim())) {
+    errors.description = errorForm.INVALID_TEXT_AREA
     isValid = false
   }
 

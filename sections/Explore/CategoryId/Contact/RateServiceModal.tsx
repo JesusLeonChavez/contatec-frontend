@@ -58,7 +58,7 @@ export default function ContactWorkerModal({
     if (isValid) {
       const body = {
         rate,
-        description
+        description: description.toLocaleLowerCase()
       }
       console.log(body)
       setIsPosting(true)

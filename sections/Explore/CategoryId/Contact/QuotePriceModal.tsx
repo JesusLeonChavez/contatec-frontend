@@ -16,12 +16,14 @@ import {
   Button,
   useDisclosure,
   Textarea,
-  Box
+  Box,
+  NumberInput,
+  NumberInputField
 } from "@chakra-ui/react"
 
 import { useForm } from "../../../../utils/hooks/useForm"
 import { useError } from "../../../../utils/hooks/useError"
-import { validRate } from "./utils/valid"
+import { validQuote } from "./utils/valid"
 // import { post } from "../../../../utils/http"
 // import showToast from "../../../../components/Toast"
 
@@ -41,39 +43,41 @@ export default function QuotePriceModal({
   showModalButtonText
 }: PropsRegister) {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [description, setDescription] = useState("")
   // const router = useRouter()
 
   const [values, handleInputChange, reset] = useForm({
     name: "",
-    budget: "",
-    date: ""
-  })
-
-  const { name, budget, date } = values
-
-  const [errors, setErrors, resetErrors] = useError({
-    name: "",
-    budget: "",
     date: "",
+    budget: "",
     description: ""
   })
 
-  const handleTextArea = e => {
-    const inputValue = e.target.value
-    setDescription(inputValue)
-  }
+  const { name, date, budget, description } = values
+
+  const [errors, setErrors, resetErrors] = useError({
+    name: "",
+    date: "",
+    budget: "",
+    description: ""
+  })
 
   const [isPosting, setIsPosting] = useState(false)
 
   const handleSubmit = async e => {
     e.preventDefault()
     // TODO: cambiar valid register
-    const { errors: errorsForm, isValid } = validRate(values, 0)
+    const { errors: errorsForm, isValid } = validQuote(values)
 
     setErrors(errorsForm)
 
     if (isValid) {
+      const body = {
+        name: name.toLocaleLowerCase(),
+        date,
+        budget: Number(budget),
+        description
+      }
+      console.log(body)
       setIsPosting(true)
       setIsPosting(false)
     }
@@ -128,13 +132,22 @@ export default function QuotePriceModal({
               <Grid templateColumns="repeat(2,1fr)" gap="6">
                 <FormControl mb="6" isInvalid={!!errors.budget}>
                   <FormLabel>Presupuesto</FormLabel>
-                  <Input
+                  {/* <Input
                     type="text"
                     placeholder="s/" // eslint-disable-next-line camelcase
                     name="budget"
                     onChange={handleInputChange}
                     value={budget}
-                  />
+                  /> */}
+                  <NumberInput min={0}>
+                    <NumberInputField
+                      fontSize="sm"
+                      placeholder="S/."
+                      name="budget"
+                      onChange={handleInputChange}
+                      value={budget}
+                    />
+                  </NumberInput>
                   <FormErrorMessage>{errors.budget}</FormErrorMessage>
                 </FormControl>
                 <FormControl mb="6" isInvalid={!!errors.date}>
@@ -150,11 +163,12 @@ export default function QuotePriceModal({
                 </FormControl>
               </Grid>
 
-              <FormControl mb="2" isInvalid={!!errors.descripcion}>
-                <FormLabel>Descripción</FormLabel>
+              <FormControl mb="2" isInvalid={!!errors.description}>
+                <FormLabel>Descripciónx</FormLabel>
                 <Textarea
                   placeholder="Escribe un resumen del proyecto aquí"
-                  onChange={handleTextArea}
+                  onChange={handleInputChange}
+                  name="description"
                   value={description}
                   h="100"
                   maxLength={100}
@@ -162,14 +176,16 @@ export default function QuotePriceModal({
                 />
                 <Box
                   d="flex"
-                  justifyContent="flex-end"
+                  justifyContent="space-between"
                   color="gray"
                   fontSize="sm"
-                  pt="2"
                 >
-                  <span>{description.length}/100</span>
+                  {!errors.description && <Box w="3"></Box>}
+                  <FormErrorMessage>{errors.description}</FormErrorMessage>
+                  <span style={{ paddingTop: "10px" }}>
+                    {description.length}/100
+                  </span>
                 </Box>
-                <FormErrorMessage>{errors.description}</FormErrorMessage>
               </FormControl>
 
               <Button

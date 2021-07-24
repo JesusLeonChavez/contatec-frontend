@@ -66,6 +66,11 @@ export default function ContactWorkerModal({
     setErrors(errorsForm)
 
     if (isValid) {
+      const body = {
+        issue: issue.toLocaleLowerCase(),
+        message: message.toLocaleLowerCase()
+      }
+      console.log(body)
       setIsPosting(true)
       setIsPosting(false)
     }

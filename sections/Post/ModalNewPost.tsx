@@ -103,9 +103,9 @@ export default function ModalNewPost({
       // console.log([...imgOldURL, ...media])
       // -------------------------------------------------------------
       const body = {
-        name: values.name,
-        brief_content: values.brief_content,
-        description: values.description,
+        name: values.name.toLocaleLowerCase(),
+        brief_content: values.brief_content.toLocaleLowerCase(),
+        description: values.description.toLocaleLowerCase(),
         price: Number(values.price),
         category,
         imagesFile,
