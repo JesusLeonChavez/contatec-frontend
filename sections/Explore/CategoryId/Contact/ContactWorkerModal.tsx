@@ -1,7 +1,7 @@
 // import { useRouter } from "next/router"
 
 import { useState, useEffect } from "react"
-
+import { format } from "date-fns"
 import {
   Text,
   ModalHeader,
@@ -23,7 +23,7 @@ import {
 
 import { useForm } from "../../../../utils/hooks/useForm"
 import { useError } from "../../../../utils/hooks/useError"
-import { validRegister } from "./utils/valid"
+import { validContactWorker } from "./utils/valid"
 
 // import { post } from "../../../../utils/http"
 
@@ -43,53 +43,31 @@ export default function ContactWorkerModal({
   showModalButtonText
 }: PropsRegister) {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const [description, setDescription] = useState("")
-
   // const router = useRouter()
 
   const [values, handleInputChange, reset] = useForm({
-    issue: ""
+    issue: "",
+    message: ""
   })
 
-  const { issue } = values
+  const { issue, message } = values
 
   const [errors, setErrors, resetErrors] = useError({
     issue: "",
-    description: ""
+    message: ""
   })
-
-  const handleTextArea = e => {
-    const inputValue = e.target.value
-
-    setDescription(inputValue)
-  }
 
   const [isPosting, setIsPosting] = useState(false)
 
   const handleSubmit = async e => {
     e.preventDefault()
     // TODO: cambiar valid register
-    const { errors: errorsForm, isValid } = validRegister(values)
+    const { errors: errorsForm, isValid } = validContactWorker(values)
     setErrors(errorsForm)
 
     if (isValid) {
       setIsPosting(true)
-
-      // const resp = await post("/api/user/register", {
-      //   us_correo: values.date,
-      //   us_nombre: values?.name,
-      //   us_apellido: values?.budget,
-      //   descripcion: values.descripcion
-      // })
-
       setIsPosting(false)
-
-      // if (resp.data.response?.error) {
-      //   showToast("Error al registrarse", resp.data.response?.error, "error")
-      // } else {
-      //   router.push("/active-message")
-      // }
     }
   }
 
@@ -123,7 +101,7 @@ export default function ContactWorkerModal({
               py="2"
               fontWeight="light"
             >
-              Horal local: 11:30
+              Horal local: {format(new Date(), "HH:mm")}
             </Text>
             <Flex direction="column" align="center" justify="center">
               <Avatar
@@ -151,16 +129,17 @@ export default function ContactWorkerModal({
                   value={issue}
                 />
 
-                <FormErrorMessage>{errors.name}</FormErrorMessage>
+                <FormErrorMessage>{errors.issue}</FormErrorMessage>
               </FormControl>
 
-              <FormControl mb="2" isInvalid={!!errors.descripcion}>
+              <FormControl mb="2" isInvalid={!!errors.message}>
                 <FormLabel>Mensaje</FormLabel>
 
                 <Textarea
                   placeholder="Escribe un resumen del proyecto aquí"
-                  onChange={handleTextArea}
-                  value={description}
+                  onChange={handleInputChange}
+                  name="message"
+                  value={message}
                   h="100"
                   maxLength={100}
                   resizable="false"
@@ -168,15 +147,16 @@ export default function ContactWorkerModal({
 
                 <Box
                   d="flex"
-                  justifyContent="flex-end"
+                  justifyContent="space-between"
                   color="gray"
                   fontSize="sm"
-                  pt="2"
                 >
-                  <span>{description.length}/100</span>
+                  {!errors.message && <Box w="3"></Box>}
+                  <FormErrorMessage>{errors.message}</FormErrorMessage>
+                  <span style={{ paddingTop: "10px" }}>
+                    {message.length}/100
+                  </span>
                 </Box>
-
-                <FormErrorMessage>{errors.description}</FormErrorMessage>
               </FormControl>
 
               <Button

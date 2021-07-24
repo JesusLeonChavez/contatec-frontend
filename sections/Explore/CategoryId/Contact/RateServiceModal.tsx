@@ -1,7 +1,6 @@
 // import { useRouter } from "next/router"
-
 import { useState, useEffect } from "react"
-
+import { format } from "date-fns"
 import {
   Text,
   ModalHeader,
@@ -100,7 +99,7 @@ export default function ContactWorkerModal({
               py="2"
               fontWeight="light"
             >
-              Horal local: 11:30
+              Horal local: {format(new Date(), "HH:mm")}
             </Text>
           </ModalHeader>
 

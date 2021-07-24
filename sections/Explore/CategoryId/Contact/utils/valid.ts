@@ -24,3 +24,30 @@ export const validRate = (values, rate) => {
 
   return { errors, isValid }
 }
+
+export const validContactWorker = values => {
+  const errors = {
+    issue: "",
+    message: ""
+  }
+  let isValid = true
+
+  if (!values.issue.trim()) {
+    errors.issue = errorForm.EMPTY_ISSUE
+
+    isValid = false
+  } else if (!regexOnlyString(values.issue.trim())) {
+    errors.issue = errorForm.INVALID_ISSUE
+    isValid = false
+  }
+  if (!values.message.trim()) {
+    errors.message = errorForm.EMPTY_TEXT_AREA
+
+    isValid = false
+  } else if (!regexOnlyString(values.message.trim())) {
+    errors.message = errorForm.INVALID_TEXT_AREA
+    isValid = false
+  }
+
+  return { errors, isValid }
+}
