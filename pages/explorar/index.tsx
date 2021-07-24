@@ -37,7 +37,6 @@ export const getServerSideProps = async context => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const data = await res.json()
-  console.log("data: ", data)
   return {
     props: { categories: data }
   }

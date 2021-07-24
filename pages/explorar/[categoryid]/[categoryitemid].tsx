@@ -65,3 +65,15 @@ export default function Home() {
     </div>
   )
 }
+
+export const getServerSideProps = async context => {
+  const id = context.params.categoryitemid
+  const res = await fetch(`${process.env.API_BASE_URL}/api/post/${id}`)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const data = await res.json()
+  console.log("dataPost: ", data)
+  return {
+    props: { category_posts: data }
+  }
+}

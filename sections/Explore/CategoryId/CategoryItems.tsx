@@ -47,8 +47,9 @@ export default function CategoryItems({ category }) {
               >
                 <a>
                   <CardCategory
-                    title="Marketing digital en category"
-                    imageUrl="/assets/marketing/marketing1.png"
+                    post={post}
+                    title={post.pst_nombre}
+                    imageUrl={post.pst_imagen_1}
                   />
                 </a>
               </Link>
