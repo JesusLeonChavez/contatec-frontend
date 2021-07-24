@@ -12,3 +12,8 @@ export function regexOnlyString(string: string) {
 
   return regex.test(string)
 }
+
+export function regexDecimal(number: string) {
+  const regex = /^[0-9]{1,5}$|^[0-9]{1,5}\.[0-9]{1,5}$/
+  return regex.test(number)
+}

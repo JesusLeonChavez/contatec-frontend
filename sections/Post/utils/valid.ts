@@ -1,16 +1,16 @@
-import { regexEmail, regexOnlyString } from "../../../utils/regex"
+import { regexOnlyString, regexDecimal } from "../../../utils/regex"
 
 import { errorForm } from "../../../utils/types"
 
-export const validRegister = values => {
+export const validPost = (values, category, imagesFile, tags) => {
   const errors = {
     name: "",
-
-    lastName: "",
-
-    email: "",
-
-    password: ""
+    brief_content: "",
+    description: "",
+    price: "",
+    category: "",
+    imagesFile: "",
+    tags: ""
   }
 
   let isValid = true
@@ -21,37 +21,46 @@ export const validRegister = values => {
     isValid = false
   } else if (!regexOnlyString(values.name.trim())) {
     errors.name = errorForm.INVALID_NAME
-
     isValid = false
   }
 
-  if (!values.lastName.trim()) {
-    errors.lastName = errorForm.EMPTY_LASTNAME
+  if (!values.brief_content.trim()) {
+    errors.brief_content = errorForm.EMPTY_TEXT_AREA
 
     isValid = false
-  } else if (!regexOnlyString(values.lastName.trim())) {
-    errors.lastName = errorForm.INVALID_LASTNAME
-
-    isValid = false
-  }
-
-  if (!values.email) {
-    errors.email = errorForm.EMPTY_EMAIL
-
-    isValid = false
-  } else if (!regexEmail(values.email)) {
-    errors.email = errorForm.INVALID_EMAIL
-
+  } else if (!regexOnlyString(values.brief_content.trim())) {
+    errors.brief_content = errorForm.INVALID_TEXT_AREA
     isValid = false
   }
 
-  if (!values.password) {
-    errors.password = errorForm.EMPTY_PASSWORD
+  if (!values.description.trim()) {
+    errors.description = errorForm.EMPTY_TEXT_AREA
 
     isValid = false
-  } else if (values.password.length < 7) {
-    errors.password = errorForm.SHORT_PASSWORD
+  } else if (!regexOnlyString(values.description.trim())) {
+    errors.description = errorForm.INVALID_TEXT_AREA
+    isValid = false
+  }
 
+  if (!values.price) {
+    errors.price = errorForm.EMPTY_PRICE
+    isValid = false
+  } else if (!regexDecimal(values.price)) {
+    errors.price = errorForm.INVALID_PRICE
+    isValid = false
+  }
+  if (!category) {
+    errors.category = errorForm.EMPTY_CATEGORY
+    isValid = false
+  }
+
+  if (imagesFile.length !== 5) {
+    errors.imagesFile = errorForm.INVALID_FILE
+    isValid = false
+  }
+
+  if (tags.length < 1) {
+    errors.tags = errorForm.EMPTY_TAG
     isValid = false
   }
 

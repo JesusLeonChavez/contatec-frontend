@@ -88,6 +88,7 @@ interface PropsSelectField {
   length?: number
   hasMore?: boolean
   transparent?: boolean
+  errorHelper?: boolean
 }
 function SelectField({
   children,
@@ -104,6 +105,7 @@ function SelectField({
   name,
   required,
   readOnly,
+  errorHelper,
   ...props
 }: PropsSelectField) {
   const [open, setOpen] = React.useState(false)
@@ -165,7 +167,7 @@ function SelectField({
           readOnly && styles.forReadOnly
         } ${required && styles.required} ${option && styles.img} ${
           styles.inputField
-        }`}
+        } ${errorHelper && styles.errorHelper}`}
         value={option ? option.label : ""}
         onClick={handleOut}
         required={required}
@@ -198,7 +200,7 @@ function SelectField({
                 {...props}
                 className={`${id} ${search && styles.search} ${
                   option && styles.img
-                } ${fullWidth && styles.fullWidth} ${styles.inputField}`}
+                } ${fullWidth && styles.fullWidth} ${styles.inputField} `}
                 placeholder="Buscar..."
                 value={search ? textSearch : ""}
                 onChange={handleChange}

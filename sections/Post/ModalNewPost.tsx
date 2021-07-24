@@ -1,5 +1,7 @@
+/* eslint-disable camelcase */
 // import { useRouter } from "next/router"
-
+import "@pathofdev/react-tag-input/build/index.css"
+import ReactTagInput from "@pathofdev/react-tag-input"
 import { useState, useEffect } from "react"
 
 import {
@@ -18,22 +20,20 @@ import {
   useDisclosure,
   Textarea,
   Box,
-  Select
+  NumberInput,
+  NumberInputField
 } from "@chakra-ui/react"
 
 import { useForm } from "../../utils/hooks/useForm"
-
 import { useError } from "../../utils/hooks/useError"
-
-import { validRegister } from "./utils/valid"
+import { validPost } from "./utils/valid"
 import FileUpload from "../../components/FileUpload/FileUpload"
 import showToast from "../../components/Toast"
-import { imageUpload } from "../../utils/imageUpload"
 import SelectField, { Option } from "../../components/SelectField"
+import { regexOnlyString } from "../../utils/regex"
 
+// import { imageUpload } from "../../utils/imageUpload"
 // import { post } from "../../../../utils/http"
-
-// import showToast from "../../../../components/Toast"
 
 type PropsRegister = {
   variant: string
@@ -43,11 +43,11 @@ type PropsRegister = {
   showModalButtonText: string
 }
 
-interface ImageProps {
-  // eslint-disable-next-line camelcase
-  public_id: string
-  url: string
-}
+// interface ImageProps {
+//
+//   public_id: string
+//   url: string
+// }
 // TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
 
 export default function ModalNewPost({
@@ -58,99 +58,92 @@ export default function ModalNewPost({
   showModalButtonText
 }: PropsRegister) {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const [description, setDescription] = useState("")
-
   // const router = useRouter()
-
   const [values, handleInputChange, reset] = useForm({
     name: "",
-
-    budget: "",
-
-    date: ""
+    brief_content: "",
+    description: "",
+    price: ""
   })
-
-  const { name, budget, date } = values
+  const [category, setCategory] = useState(null)
+  const [tags, setTags] = useState<string[]>([])
+  const [imagesFile, setImagesFile] = useState<any>([])
+  const { name, brief_content, description, price } = values
 
   const [errors, setErrors, resetErrors] = useError({
     name: "",
-
-    budget: "",
-
-    date: "",
-
-    description: ""
+    brief_content: "",
+    description: "",
+    price: "",
+    category: "",
+    imagesFile: "",
+    tags: ""
   })
-
-  const handleTextArea = e => {
-    const inputValue = e.target.value
-
-    setDescription(inputValue)
-  }
 
   const [isPosting, setIsPosting] = useState(false)
 
-  const [imagesFile, setImagesFile] = useState<any>([])
   const handleSubmit = async e => {
     e.preventDefault()
-
-    // TODO: cambiar valid register
-
-    const { errors: errorsForm, isValid } = validRegister(values)
+    const { errors: errorsForm, isValid } = validPost(
+      values,
+      category,
+      imagesFile,
+      tags
+    )
 
     setErrors(errorsForm)
-
     if (isValid) {
       setIsPosting(true)
-      // -------------------------
-      // const resp = await post("/api/user/register", {
-
-      //   us_correo: values.date,
-
-      //   us_nombre: values?.name,
-
-      //   us_apellido: values?.budget,
-
-      //   descripcion: values.descripcion
-
-      // })
-      // ----------------------------
-      setIsPosting(false)
-      // ----------------------------
-      // if (resp.data.response?.error) {
-
-      //   showToast("Error al registrarse", resp.data.response?.error, "error")
-
-      // } else {
-
-      //   router.push("/active-message")
-
-      // }
       // ---------------------------------------------------------
-      console.log(imagesFile)
+      // Uploading Images to Cloudinary
       // let media: ImageProps[] = []
       // const imgNewURL = imagesFile.filter(img => !img.url)
       // const imgOldURL = imagesFile.filter(img => img.url)
       // if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
       // console.log([...imgOldURL, ...media])
+      // -------------------------------------------------------------
+      const body = {
+        name: values.name,
+        brief_content: values.brief_content,
+        description: values.description,
+        price: Number(values.price),
+        category,
+        imagesFile,
+        tags
+      }
+
+      setTimeout(() => {
+        console.log(body)
+        setIsPosting(false)
+      }, 5000)
+
+      // const resp = await post("/api/user/post", body)
+      // ----------------------------
+
+      // ----------------------------
+      // if (resp.data.response?.error) {
+      //   showToast("Error al publicar el servicio", resp.data.response?.error, "error")
+      // } else {
+      //   router.push("/active-message")
+      // }
       // ---------------------------------------------------------
-      console.log(category)
     }
   }
-  useEffect(() => {
-    if (!isOpen) {
-      // reset()
-      setImagesFile([])
-      // resetErrors()
-    }
-  }, [isOpen])
+
+  function handleChangeSelect(option) {
+    setCategory(option)
+  }
+
+  function handleDelete(index) {
+    const images_file = imagesFile.filter((img, i) => i !== index)
+    setImagesFile(images_file)
+  }
 
   function handleDrop(files) {
     if (imagesFile.length >= 5) {
       showToast(
         "Error al cargar imagen",
-        "Numero de elementos maximo: 5",
+        "Número de elementos maximo: 5",
         "error"
       )
       return
@@ -158,15 +151,15 @@ export default function ModalNewPost({
     setImagesFile([...imagesFile, ...files])
   }
 
-  function handleDelete(index) {
-    // eslint-disable-next-line camelcase
-    const images_file = imagesFile.filter((img, i) => i !== index)
-    setImagesFile(images_file)
-  }
-  const [category, setCategory] = useState(null)
-  function handleChangeSelect(option) {
-    setCategory(option)
-  }
+  useEffect(() => {
+    if (!isOpen) {
+      reset()
+      setImagesFile([])
+      setCategory(null)
+      setTags([])
+      resetErrors()
+    }
+  }, [isOpen])
 
   return (
     <>
@@ -191,7 +184,7 @@ export default function ModalNewPost({
               </Text>
               <FormControl mb="2" id="first-name" isInvalid={!!errors.name}>
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
-                  Nombres del servicio
+                  Nombre del servicio
                 </FormLabel>
 
                 <Input
@@ -207,47 +200,19 @@ export default function ModalNewPost({
               </FormControl>
 
               <Grid templateColumns="repeat(2,1fr)" gap="6">
-                {/* <FormControl mb="6" isInvalid={!!errors.budget}>
-                  <FormLabel>Presupuesto</FormLabel>
-
-                  <Input
-                    type="text"
-                    placeholder="s/" // eslint-disable-next-line camelcase
-                    name="budget"
-                    onChange={handleInputChange}
-                    value={budget}
-                  />
-
-                  <FormErrorMessage>{errors.budget}</FormErrorMessage>
-                </FormControl> */}
-                <FormControl mb="2" isInvalid={!!errors.budget}>
+                <FormControl mb="2" isInvalid={!!errors.category}>
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Categoría
                   </FormLabel>
-                  {/* <Select
-                    fontSize="sm"
-                    placeholder="Elige una categoría"
-                    variant="outline"
-                    name="state"
-                    onChange={handleInputChange}
-                    // value={state}
-                  >
-                    <option value="badstate" style={{ color: "var(--black)" }}>
-                      Categoria 1
-                    </option>
-                    <option value="goodstate" style={{ color: "var(--black)" }}>
-                      Categoria 2
-                    </option>
-                  </Select> */}
                   <SelectField
                     fullWidth
                     required
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     option={category}
-                    search
-                    placeholder="Seleccionar ubicación gaa "
+                    placeholder="Seleccione una categoría "
                     onChange={handleChangeSelect}
+                    errorHelper={!!errors.category}
                   >
                     {[
                       { label: "hola", value: 1 },
@@ -259,10 +224,10 @@ export default function ModalNewPost({
                     ))}
                   </SelectField>
                   <FormErrorMessage fontSize="sm">
-                    {errors.budget}
+                    {errors.category}
                   </FormErrorMessage>
                 </FormControl>
-                <FormControl mb="2" isInvalid={!!errors.budget}>
+                <FormControl mb="2" isInvalid={!!errors.imagesFile}>
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Archivos adjuntos
                   </FormLabel>
@@ -273,28 +238,15 @@ export default function ModalNewPost({
                     onDelete={handleDelete}
                     extensions={["jpg", "png"]}
                     remove
+                    errorHelper={!!errors.imagesFile}
                   />
                   <FormErrorMessage fontSize="sm">
-                    {errors.budget}
+                    {errors.imagesFile}
                   </FormErrorMessage>
                 </FormControl>
-
-                {/* <FormControl mb="6" isInvalid={!!errors.date}>
-                  <FormLabel>Fecha límite del proyecto</FormLabel>
-
-                  <Input
-                    type="date"
-                    placeholder="Seleccionar fecha"
-                    name="date"
-                    onChange={handleInputChange}
-                    value={date}
-                  />
-
-                  <FormErrorMessage>{errors.date}</FormErrorMessage>
-                </FormControl> */}
               </Grid>
 
-              <FormControl isInvalid={!!errors.descripcion}>
+              <FormControl isInvalid={!!errors.brief_content}>
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Contenido breve
                 </FormLabel>
@@ -303,7 +255,8 @@ export default function ModalNewPost({
                   fontSize="sm"
                   placeholder="Escribe tu contenido breve aquí"
                   onChange={handleInputChange}
-                  value={description}
+                  name="brief_content"
+                  value={brief_content}
                   h="100"
                   maxLength={100}
                   resizable="false"
@@ -311,20 +264,21 @@ export default function ModalNewPost({
 
                 <Box
                   d="flex"
-                  justifyContent="flex-end"
+                  justifyContent="space-between"
                   color="gray"
                   fontSize="xs"
-                  pt="2"
                 >
-                  <span>{description.length}/100</span>
+                  {!errors.brief_content && <Box w="3"></Box>}
+                  <FormErrorMessage>{errors.brief_content}</FormErrorMessage>
+                  <span style={{ paddingTop: "10px" }}>
+                    {description.length}/100
+                  </span>
                 </Box>
-
-                <FormErrorMessage>{errors.description}</FormErrorMessage>
               </FormControl>
               <Text color="primary" fontSize="lg" fontWeight="medium">
                 Descripción
               </Text>
-              <FormControl mb="2" isInvalid={!!errors.descripcion}>
+              <FormControl mb="2" isInvalid={!!errors.description}>
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Contenido detallado
                 </FormLabel>
@@ -333,6 +287,7 @@ export default function ModalNewPost({
                   fontSize="sm"
                   placeholder="Escribe tu contenido detallado aquí"
                   onChange={handleInputChange}
+                  name="description"
                   value={description}
                   h="100"
                   maxLength={100}
@@ -341,49 +296,63 @@ export default function ModalNewPost({
 
                 <Box
                   d="flex"
-                  justifyContent="flex-end"
+                  justifyContent="space-between"
                   color="gray"
                   fontSize="xs"
-                  pt="2"
                 >
-                  <span>{description.length}/100</span>
+                  {!errors.description && <Box w="3"></Box>}
+                  <FormErrorMessage fontSize="sm">
+                    {errors.description}
+                  </FormErrorMessage>
+                  <span style={{ paddingTop: "10px" }}>
+                    {description.length}/100
+                  </span>
                 </Box>
-
-                <FormErrorMessage fontSize="sm">
-                  {errors.description}
-                </FormErrorMessage>
               </FormControl>
-              <FormControl mb="2" id="first-name" isInvalid={!!errors.name}>
+              <FormControl mb="2" id="first-name" isInvalid={!!errors.tags}>
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Ingresa lo que incluye el servicio
                 </FormLabel>
-
-                <Input
-                  fontSize="sm"
-                  type="text"
+                <ReactTagInput
+                  tags={tags}
+                  onChange={newTags => setTags(newTags)}
                   placeholder="Presiona ENTER para ingresar un dato"
-                  name="name"
-                  onChange={handleInputChange}
-                  value={name}
+                  removeOnBackspace={true}
+                  maxTags={8}
+                  validator={value => {
+                    const isString = regexOnlyString(value)
+                    if (!isString) {
+                      showToast("Tag inválido", "Ingrese solo texto", "error")
+                    }
+                    return isString
+                  }}
                 />
 
-                <FormErrorMessage fontSize="sm">{errors.name}</FormErrorMessage>
+                <FormErrorMessage fontSize="sm">{errors.tags}</FormErrorMessage>
               </FormControl>
-              <FormControl mb="2" id="first-name" isInvalid={!!errors.name}>
+              <FormControl mb="2" id="first-name" isInvalid={!!errors.price}>
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Precio
                 </FormLabel>
 
-                <Input
+                {/* <Input
                   fontSize="sm"
-                  type="text"
+                  type="number"
                   placeholder="S/."
-                  name="name"
+                  name="price"
                   onChange={handleInputChange}
-                  value={name}
-                />
-
-                <FormErrorMessage>{errors.name}</FormErrorMessage>
+                  value={price}
+                /> */}
+                <NumberInput min={0}>
+                  <NumberInputField
+                    fontSize="sm"
+                    placeholder="S/."
+                    name="price"
+                    onChange={handleInputChange}
+                    value={price}
+                  />
+                </NumberInput>
+                <FormErrorMessage>{errors.price}</FormErrorMessage>
               </FormControl>
 
               <Button

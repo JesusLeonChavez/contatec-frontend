@@ -53,6 +53,7 @@ interface FileUploadProps {
   extensions?: Extensions[]
   style?: Record<string, string>
   loading?: boolean
+  errorHelper: boolean
 }
 
 export default function FileUpload({
@@ -71,6 +72,7 @@ export default function FileUpload({
   alignment,
   fullWidth,
   loading,
+  errorHelper,
   ...props
 }: FileUploadProps) {
   const [collapse, setCollapse] = React.useState(false)
@@ -142,12 +144,14 @@ export default function FileUpload({
       <div
         className={`_FileUpload ${className} ${
           fullWidth ? styles.fileUploadStyledFullWidth : styles.fileUploadStyled
-        }`}
+        } `}
         fullWidth={fullWidth}
       >
         <div
           ref={toggleFocus}
-          className={styles.fileUploadHead}
+          className={`${styles.fileUploadHead} ${
+            errorHelper && styles.errorHelper
+          }`}
           outline={outline}
           disabled={disabled}
           required={required}

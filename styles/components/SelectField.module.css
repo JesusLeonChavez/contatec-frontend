@@ -212,3 +212,7 @@
   z-index: 1;
   color: gray;
 }
+
+.errorHelper{
+  border: 2px solid red !important;
+}

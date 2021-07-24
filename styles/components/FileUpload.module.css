@@ -46,11 +46,12 @@
  text-align:center;
  justify-content:space-between;
  cursor: pointer;
- transition: border 0.2s ease-in-out;
+ transition: border 0.1s ease-in-out;
 }
 
 .focus{
   border-color: var(--primary);
+  border-width: 2px;
 }
 
 
@@ -129,7 +130,7 @@
 .dragDropStyled{
   height:180px;
   width:auto;
-  border:1px solid var(--n-silver);
+  border:1px solid var(--gray);
   border-style:dashed;
   border-radius:4px;
   display:flex;
@@ -203,4 +204,6 @@
 .text{
   color: black !important;
 }
-
+.errorHelper{
+  border: 2px solid red !important;
+}
