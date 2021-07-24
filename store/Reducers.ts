@@ -22,6 +22,11 @@ const reducers = (state, action) => {
         ...state,
         user: action.payload
       }
+    case ACTIONS.GET_CATEGORIES:
+      return {
+        ...state,
+        categories: [...action.payload]
+      }
     default:
       return state
   }

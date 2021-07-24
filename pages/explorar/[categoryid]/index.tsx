@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useRouter } from "next/router"
 import Head from "next/head"
 import Link from "next/link"
@@ -6,10 +7,8 @@ import Layout from "../../../components/Layout"
 import CategoryItems from "../../../sections/Explore/CategoryId/CategoryItems"
 import ZIcon from "../../../components/Icon"
 
-const Category = () => {
+export default function Category({ category_posts }) {
   const router = useRouter()
-
-  const { categoryid } = router.query
 
   return (
     <div>
@@ -30,7 +29,7 @@ const Category = () => {
             color="primary"
             py="5"
           >
-            Elige una catogoría
+            Elige una categoría
           </Text>
           <Breadcrumb separator={<ZIcon name="arrow-right" />}>
             <BreadcrumbItem>
@@ -51,17 +50,27 @@ const Category = () => {
             <BreadcrumbItem isCurrentPage>
               <Link
                 href="/explorar/[categoryid]"
-                as={`/explorar/${categoryid}`}
+                as={`/explorar/${category_posts.id}`}
               >
-                <a>{categoryid}</a>
+                <a>{category_posts.cat_nombre}</a>
               </Link>
             </BreadcrumbItem>
           </Breadcrumb>
         </div>
-        <CategoryItems category={categoryid} />
+        <CategoryItems category={category_posts} />
       </Layout>
     </div>
   )
 }
 
-export default Category
+export const getServerSideProps = async context => {
+  const id = context.params.categoryid
+  const res = await fetch(`${process.env.API_BASE_URL}/api/category/${id}`)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const data = await res.json()
+  console.log("data: ", data)
+  return {
+    props: { category_posts: data }
+  }
+}

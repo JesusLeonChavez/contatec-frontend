@@ -2,12 +2,15 @@ import { Text, Grid, Flex } from "@chakra-ui/react"
 
 import Image from "next/image"
 
-import React from "react"
+import React, { useContext } from "react"
+import { DataContext } from "../../store/GlobalState"
 
 import styles from "../../styles/sections/Post.module.css"
 import ModalNewPost from "./ModalNewPost"
 
 export default function NewListPost() {
+  const { state } = useContext(DataContext)
+  const { auth } = state
   return (
     <div className={styles.infoContainer}>
       <div className={styles.infoWrapper}>
@@ -20,7 +23,7 @@ export default function NewListPost() {
                 color="primary"
                 align="center"
               >
-                ¡Hola Lucía!
+                ¡Hola {auth!.user.us_nombre}!
               </Text>
 
               <Text fontSize="xl" align="center">

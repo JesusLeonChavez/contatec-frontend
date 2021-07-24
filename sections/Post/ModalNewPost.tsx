@@ -2,7 +2,7 @@
 // import { useRouter } from "next/router"
 import "@pathofdev/react-tag-input/build/index.css"
 import ReactTagInput from "@pathofdev/react-tag-input"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 
 import {
   Text,
@@ -32,8 +32,10 @@ import showToast from "../../components/Toast"
 import SelectField, { Option } from "../../components/SelectField"
 import { regexOnlyString } from "../../utils/regex"
 
-// import { imageUpload } from "../../utils/imageUpload"
-// import { post } from "../../../../utils/http"
+import { imageUpload } from "../../utils/imageUpload"
+import { post, setAuth } from "../../utils/http"
+
+import { DataContext } from "../../store/GlobalState"
 
 type PropsRegister = {
   variant: string
@@ -43,20 +45,21 @@ type PropsRegister = {
   showModalButtonText: string
 }
 
-// interface ImageProps {
-//
-//   public_id: string
-//   url: string
-// }
+interface ImageProps {
+  public_id: string
+  url: string
+}
 // TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
 
 export default function ModalNewPost({
   variant,
-
   width,
-
   showModalButtonText
 }: PropsRegister) {
+  const { state } = useContext(DataContext)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { auth, categories } = state
   const { isOpen, onOpen, onClose } = useDisclosure()
   // const router = useRouter()
   const [values, handleInputChange, reset] = useForm({
@@ -75,7 +78,7 @@ export default function ModalNewPost({
     brief_content: "",
     description: "",
     price: "",
-    category: "",
+    category: null,
     imagesFile: "",
     tags: ""
   })
@@ -96,36 +99,40 @@ export default function ModalNewPost({
       setIsPosting(true)
       // ---------------------------------------------------------
       // Uploading Images to Cloudinary
-      // let media: ImageProps[] = []
-      // const imgNewURL = imagesFile.filter(img => !img.url)
-      // const imgOldURL = imagesFile.filter(img => img.url)
-      // if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
-      // console.log([...imgOldURL, ...media])
+      let media: ImageProps[] = []
+      const imgNewURL = imagesFile.filter(img => !img.url)
+      const imgOldURL = imagesFile.filter(img => img.url)
+      if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
+      const imagesPost = [...imgOldURL, ...media]
       // -------------------------------------------------------------
       const body = {
-        name: values.name.toLocaleLowerCase(),
-        brief_content: values.brief_content.toLocaleLowerCase(),
-        description: values.description.toLocaleLowerCase(),
-        price: Number(values.price),
-        category,
-        imagesFile,
-        tags
+        pst_imagen_1: imagesPost[0].url,
+        pst_imagen_2: imagesPost[1].url,
+        pst_imagen_3: imagesPost[2].url,
+        pst_imagen_4: imagesPost[3].url,
+        pst_imagen_5: imagesPost[4].url,
+        pst_isActive: true,
+        pst_descripcion: values.description.toLocaleLowerCase(),
+        pst_descripcion_corta: values.brief_content.toLocaleLowerCase(),
+        pst_nombre: values.name.toLocaleLowerCase(),
+        pst_descripcion_incluye: tags,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        pst_categoria: category?.value,
+        pst_precioBase: Number(values.price)
       }
-
-      setTimeout(() => {
-        console.log(body)
-        setIsPosting(false)
-      }, 5000)
-
-      // const resp = await post("/api/user/post", body)
-      // ----------------------------
-
-      // ----------------------------
-      // if (resp.data.response?.error) {
-      //   showToast("Error al publicar el servicio", resp.data.response?.error, "error")
-      // } else {
-      //   router.push("/active-message")
-      // }
+      setAuth(auth!.access_token)
+      const res = await post("/api/post/create", body)
+      setIsPosting(false)
+      if (res.data.response?.error) {
+        return showToast(
+          "Error al publicar el servicio",
+          res.data.response?.error,
+          "error"
+        )
+      } else {
+        onClose()
+      }
       // ---------------------------------------------------------
     }
   }
@@ -214,12 +221,9 @@ export default function ModalNewPost({
                     onChange={handleChangeSelect}
                     errorHelper={!!errors.category}
                   >
-                    {[
-                      { label: "hola", value: 1 },
-                      { label: "chau", value: 2 }
-                    ].map((ubicacion, idx) => (
-                      <Option key={idx} value={ubicacion.value}>
-                        {ubicacion.label}
+                    {categories.map((cat, idx) => (
+                      <Option key={idx} value={cat.id}>
+                        {cat.cat_nombre}
                       </Option>
                     ))}
                   </SelectField>

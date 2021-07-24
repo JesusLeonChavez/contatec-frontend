@@ -64,6 +64,7 @@ export default function Login({
         password: values.password
       })
       setIsPosting(false)
+      console.log("res.data Login: ", res.data)
       if (res.data.status) {
         showToast("Error al iniciar sesión.", res.data.message, "error")
       } else {

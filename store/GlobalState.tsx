@@ -19,7 +19,8 @@ export const DataProvider = ({ children }) => {
   const initialState = {
     auth: {},
     authReady: false,
-    authType: "none"
+    authType: "none",
+    category: []
   }
   const [state, dispatch] = useReducer(reducers, initialState)
   const { authType } = state
@@ -43,6 +44,7 @@ export const DataProvider = ({ children }) => {
       if (isLogged) {
         try {
           const accessToken = await post("/api/user/refresh_token", {})
+          console.log("accessToken: ", accessToken)
           if (accessToken.data.status) {
             localStorage.removeItem("isLogged")
             return showToast("Error con el token de acceso")
@@ -81,6 +83,11 @@ export const DataProvider = ({ children }) => {
       })
     }
     logging()
+    get("/api/category/categories")
+      .then(categories => {
+        dispatch({ type: "GET_CATEGORIES", payload: categories.data })
+      })
+      .catch(() => showToast("Error al recuperar categorias"))
   }, [authType])
 
   return (

@@ -1,6 +1,6 @@
 import { Box, Flex, Text, Button, Grid } from "@chakra-ui/react"
 import Link from "next/link"
-export default function CategoryTittle() {
+export default function CategoryTittle({ categories }) {
   return (
     <Box>
       <div className="generalWrapper">
@@ -23,7 +23,20 @@ export default function CategoryTittle() {
             lg: "repeat(6, 1fr)"
           }}
         >
-          <Link href="/explorar/[categoryid]" as={`/explorar/marketing`}>
+          {categories.map(category => (
+            <Link
+              key={category.id}
+              href="/explorar/[categoryid]"
+              as={`/explorar/${category.id}`}
+            >
+              <a>
+                <Button variant="third" isFullWidth>
+                  {category.cat_nombre}
+                </Button>
+              </a>
+            </Link>
+          ))}
+          {/* <Link href="/explorar/[categoryid]" as={`/explorar/marketing`}>
             <a>
               <Button variant="third" isFullWidth>
                 Marketing
@@ -64,7 +77,7 @@ export default function CategoryTittle() {
                 Diseño gráfico
               </Button>
             </a>
-          </Link>
+          </Link> */}
         </Grid>
       </div>
     </Box>
