@@ -19,12 +19,13 @@ import {
 } from "@chakra-ui/react"
 import ReactStars from "react-rating-stars-component"
 import { useError } from "../../../../utils/hooks/useError"
+import { useForm } from "../../../../utils/hooks/useForm"
 
-// import { validRegister } from "./utils/valid"
+import { validRate } from "./utils/valid"
 // import { post } from "../../../../utils/http"
 // import showToast from "../../../../components/Toast"
 
-type PropsRegister = {
+type PropsModal = {
   variant: string
   width: string
   showModalButtonText: string
@@ -36,62 +37,44 @@ export default function ContactWorkerModal({
   variant,
   width,
   showModalButtonText
-}: PropsRegister) {
+}: PropsModal) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const [description, setDescription] = useState("")
-
-  // const router = useRouter()
-
-  const [errors /* setErrors */, , resetErrors] = useError({
+  const [values, handleInputChange, reset] = useForm({
     description: ""
   })
 
-  const handleTextArea = e => {
-    const inputValue = e.target.value
-
-    setDescription(inputValue)
-  }
+  const { description } = values
+  const [errors, setErrors, resetErrors] = useError({
+    description: ""
+  })
+  const [rate, setRate] = useState(0)
 
   const [isPosting, setIsPosting] = useState(false)
 
   const handleSubmit = async e => {
     e.preventDefault()
-
-    // TODO: cambiar valid register
-
-    // const { errors: errorsForm, isValid } = validRegister(values)
-
-    // setErrors(errorsForm)
-    const isValid = false
+    const { errors: errorsForm, isValid } = validRate(values, rate)
+    setErrors(errorsForm)
     if (isValid) {
+      const body = {
+        rate,
+        description
+      }
+      console.log(body)
       setIsPosting(true)
 
-      // const resp = await post("/api/user/register", {
-      //   us_correo: values.date,
-      //   us_nombre: values?.name,
-      //   us_apellido: values?.budget,
-      //   descripcion: values.descripcion
-      // })
-
       setIsPosting(false)
-
-      // if (resp.data.response?.error) {
-      //   showToast("Error al registrarse", resp.data.response?.error, "error")
-      // } else {
-      //   router.push("/active-message")
-      // }
     }
   }
 
-  const ratingChanged = newRating => {
-    console.log(newRating)
+  const ratingChange = newRating => {
+    setRate(newRating)
   }
 
   useEffect(() => {
     if (!isOpen) {
-      // reset()
-
+      reset()
       resetErrors()
     }
   }, [isOpen])
@@ -123,19 +106,23 @@ export default function ContactWorkerModal({
 
           <ModalBody color="primary" px="10">
             <form onSubmit={handleSubmit}>
-              <FormLabel>Puntuación</FormLabel>
-              <ReactStars
-                count={5}
-                onChange={ratingChanged}
-                size={50}
-                activeColor="#ffd700"
-              />
-              <FormControl mb="2" isInvalid={!!errors.descripcion}>
+              <FormControl mb="2" isInvalid={!!errors.rate}>
+                <FormLabel>Puntuación</FormLabel>
+                <ReactStars
+                  count={5}
+                  onChange={ratingChange}
+                  size={50}
+                  activeColor="#ffd700"
+                />
+                <FormErrorMessage>{errors.rate}</FormErrorMessage>
+              </FormControl>
+              <FormControl mb="2" isInvalid={!!errors.description}>
                 <FormLabel>Comentario</FormLabel>
 
                 <Textarea
                   placeholder="Escribe tu comentario aquí"
-                  onChange={handleTextArea}
+                  onChange={handleInputChange}
+                  name="description"
                   value={description}
                   h="100"
                   maxLength={100}
@@ -144,15 +131,16 @@ export default function ContactWorkerModal({
 
                 <Box
                   d="flex"
-                  justifyContent="flex-end"
+                  justifyContent="space-between"
                   color="gray"
                   fontSize="sm"
-                  pt="2"
                 >
-                  <span>{description.length}/100</span>
+                  {!errors.description && <Box w="3"></Box>}
+                  <FormErrorMessage>{errors.description}</FormErrorMessage>
+                  <span style={{ paddingTop: "10px" }}>
+                    {description.length}/100
+                  </span>
                 </Box>
-
-                <FormErrorMessage>{errors.description}</FormErrorMessage>
               </FormControl>
 
               <Button

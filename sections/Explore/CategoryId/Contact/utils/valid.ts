@@ -1,53 +1,24 @@
-import { regexEmail, regexOnlyString } from "../../../../../utils/regex"
+import { regexOnlyString } from "../../../../../utils/regex"
 
 import { errorForm } from "../../../../../utils/types"
 
-export const validRegister = values => {
+export const validRate = (values, rate) => {
   const errors = {
-    name: "",
-    lastName: "",
-    email: "",
-    password: ""
+    description: "",
+    rate: ""
   }
   let isValid = true
 
-  if (!values.name.trim()) {
-    errors.name = errorForm.EMPTY_NAME
+  if (!values.description.trim()) {
+    errors.description = errorForm.EMPTY_TEXT_AREA
 
     isValid = false
-  } else if (!regexOnlyString(values.name.trim())) {
-    errors.name = errorForm.INVALID_NAME
-
-    isValid = false
-  }
-
-  if (!values.lastName.trim()) {
-    errors.lastName = errorForm.EMPTY_LASTNAME
-
-    isValid = false
-  } else if (!regexOnlyString(values.lastName.trim())) {
-    errors.lastName = errorForm.INVALID_LASTNAME
-
+  } else if (!regexOnlyString(values.description.trim())) {
+    errors.description = errorForm.INVALID_TEXT_AREA
     isValid = false
   }
-
-  if (!values.email) {
-    errors.email = errorForm.EMPTY_EMAIL
-
-    isValid = false
-  } else if (!regexEmail(values.email)) {
-    errors.email = errorForm.INVALID_EMAIL
-
-    isValid = false
-  }
-
-  if (!values.password) {
-    errors.password = errorForm.EMPTY_PASSWORD
-
-    isValid = false
-  } else if (values.password.length < 7) {
-    errors.password = errorForm.SHORT_PASSWORD
-
+  if (rate === 0) {
+    errors.rate = errorForm.EMPTY_RATE
     isValid = false
   }
 

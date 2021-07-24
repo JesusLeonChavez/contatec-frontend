@@ -22,7 +22,7 @@ import {
 
 import { useForm } from "../../../../utils/hooks/useForm"
 import { useError } from "../../../../utils/hooks/useError"
-import { validRegister } from "./utils/valid"
+import { validRate } from "./utils/valid"
 // import { post } from "../../../../utils/http"
 // import showToast from "../../../../components/Toast"
 
@@ -70,30 +70,13 @@ export default function QuotePriceModal({
   const handleSubmit = async e => {
     e.preventDefault()
     // TODO: cambiar valid register
-    const { errors: errorsForm, isValid } = validRegister(values)
+    const { errors: errorsForm, isValid } = validRate(values, 0)
 
     setErrors(errorsForm)
 
     if (isValid) {
       setIsPosting(true)
-
-      // const resp = await post("/api/user/register", {
-      //   us_correo: values.date,
-
-      //   us_nombre: values?.name,
-
-      //   us_apellido: values?.budget,
-
-      //   descripcion: values.descripcion
-      // })
-
       setIsPosting(false)
-
-      // if (resp.data.response?.error) {
-      //   showToast("Error al registrarse", resp.data.response?.error, "error")
-      // } else {
-      //   router.push("/active-message")
-      // }
     }
   }
   useEffect(() => {

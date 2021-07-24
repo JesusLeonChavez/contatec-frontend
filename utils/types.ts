@@ -7,6 +7,7 @@ export const errorForm = {
   EMPTY_PASSWORD: "Contraseña es requerida",
   EMPTY_CATEGORY: "La categoría es requerida",
   EMPTY_TAG: "Es necesario ingresar al menos un tag",
+  EMPTY_RATE: "Puntuación requerida",
   INVALID_NAME: "Ingrese un nombre válido",
   INVALID_LASTNAME: "Ingrese un apellido válido",
   INVALID_EMAIL: "Correo electronico inválido",
