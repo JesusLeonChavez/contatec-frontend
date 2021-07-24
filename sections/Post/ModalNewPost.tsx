@@ -334,15 +334,6 @@ export default function ModalNewPost({
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Precio
                 </FormLabel>
-
-                {/* <Input
-                  fontSize="sm"
-                  type="number"
-                  placeholder="S/."
-                  name="price"
-                  onChange={handleInputChange}
-                  value={price}
-                /> */}
                 <NumberInput min={0}>
                   <NumberInputField
                     fontSize="sm"
