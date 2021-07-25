@@ -16,7 +16,7 @@ export function setAuth(token) {
   headers.append("Authorization", `Bearer ${token}`)
 }
 
-export type Method = "GET" | "PUT" | "DELETE" | "POST"
+export type Method = "GET" | "PUT" | "DELETE" | "POST" | "PATCH"
 
 const signals = new Map()
 
@@ -68,6 +68,9 @@ export async function post(path: string, body: Record<string, any>) {
 
 export async function put(path: string, body: Record<string, any>) {
   return http(path, "PUT", body)
+}
+export async function patch(path: string, body: Record<string, any>) {
+  return http(path, "PATCH", body)
 }
 
 export async function del(path: string) {

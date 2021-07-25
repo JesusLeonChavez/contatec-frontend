@@ -29,7 +29,7 @@ export default function Category({ category_posts }) {
             color="primary"
             py="5"
           >
-            Elige una categoría
+            Elige uno de nuestros servicios
           </Text>
           <Breadcrumb separator={<ZIcon name="arrow-right" />}>
             <BreadcrumbItem>

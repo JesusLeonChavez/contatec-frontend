@@ -33,7 +33,7 @@ import SelectField, { Option } from "../../components/SelectField"
 import { regexOnlyString } from "../../utils/regex"
 
 import { imageUpload } from "../../utils/imageUpload"
-import { post, setAuth } from "../../utils/http"
+import { patch, post, setAuth } from "../../utils/http"
 
 import { DataContext } from "../../store/GlobalState"
 import { toCapitalFirstLetter } from "../../utils/toCapital"
@@ -56,6 +56,7 @@ interface PropsPost {
 type PropsRegister = {
   variant: string
   width: string
+  backgroundColor?: string
   showModalButtonText?: string
   icon?: boolean
   mypost?: PropsPost
@@ -70,6 +71,7 @@ interface ImageProps {
 export default function ModalNewPost({
   variant,
   width,
+  backgroundColor,
   showModalButtonText,
   icon = false,
   mypost
@@ -117,7 +119,6 @@ export default function ModalNewPost({
   const [tags, setTags] = useState<string[]>(initialState.tags)
   const [imagesFile, setImagesFile] = useState<any>(initialState.imagesFiles)
   const { name, brief_content, description, price } = values
-  console.log("images: ", imagesFile)
   const [errors, setErrors, resetErrors] = useError({
     name: "",
     brief_content: "",
@@ -141,6 +142,25 @@ export default function ModalNewPost({
 
     setErrors(errorsForm)
     if (isValid) {
+      if (mypost) {
+        if (
+          values.name === initialState.values.name &&
+          values.brief_content === initialState.values.brief_content &&
+          values.description === initialState.values.description &&
+          values.price === initialState.values.price &&
+          category.value === initialState.category.value &&
+          JSON.stringify(tags) === JSON.stringify(initialState.tags) &&
+          JSON.stringify(imagesFile) ===
+            JSON.stringify(initialState.imagesFiles)
+        ) {
+          return showToast(
+            "Cuidado",
+            "No hizo modificaciones en los campos",
+            "info"
+          )
+        }
+      }
+      console.log("seguir")
       setIsPosting(true)
       // ---------------------------------------------------------
       // Uploading Images to Cloudinary
@@ -167,17 +187,28 @@ export default function ModalNewPost({
         pst_precioBase: Number(values.price)
       }
       setAuth(auth!.access_token)
-      const res = await post("/api/post/create", body)
+      let res
+      if (mypost) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        res = await patch(`/api/post/update/${mypost.id}`, body)
+      } else {
+        res = await post("/api/post/create", body)
+      }
+      console.log("create_edit: ", res)
       setIsPosting(false)
       if (res.data.response?.error) {
         return showToast(
-          "Error al publicar el servicio",
+          `Error al ${mypost ? "editar" : "publicar"} el servicio`,
           res.data.response?.error,
           "error"
         )
       } else {
         onClose()
+        // TODO: hacer que la actualizacion de los post sea por disptach en auth
+        window.location.reload()
       }
+
       // ---------------------------------------------------------
     }
   }
@@ -222,9 +253,14 @@ export default function ModalNewPost({
 
   return (
     <>
-      <Button variant={variant} width={width} onClick={onOpen}>
+      <Button
+        variant={variant}
+        width={width}
+        backgroundColor={backgroundColor}
+        onClick={onOpen}
+      >
         {icon ? (
-          <ZIcon name="pencil" color="white" />
+          <ZIcon name="pencil" color="primary" size={20} />
         ) : (
           <Text>{showModalButtonText}</Text>
         )}

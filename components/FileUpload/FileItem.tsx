@@ -8,7 +8,6 @@ import ZIcon from "../Icon"
 import { Consumer } from "./FileUpload"
 
 export default function FileItem({ file, onDelete }) {
-  console.log(file)
   return (
     <Consumer>
       {props => (
