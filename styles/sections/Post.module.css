@@ -8,7 +8,7 @@
 
 .infoWrapper{
     width: 100%;
-    max-width: 1500px;
+    max-width: 1300px;
     margin-right: auto;
     margin-left: auto;
     padding: 0 10px;
@@ -35,5 +35,8 @@
   }
   .infoRowInvert > div:first-child{
     order: 2;
+  }
+  .newPostRow {
+    grid-template-columns:repeat(1,1fr) ;
   }
 }

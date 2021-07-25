@@ -6,12 +6,14 @@ import { FileLink } from "./FileUpload"
 
 export function setFiles(files) {
   // eslint-disable-next-line camelcase
+  console.log("setfiles: ", files)
   const new_files = []
 
-  files?.forEach(file => {
+  files?.forEach((file, index) => {
     // eslint-disable-next-line no-undef
 
     if (file instanceof File) {
+      console.log("primer if")
       new_files.push({
         name: file.name,
         icon: getIconString(file.name),
@@ -19,19 +21,21 @@ export function setFiles(files) {
         error: false
       })
     } else if (file instanceof FileLink) {
+      console.log("segundo if")
       new_files.push(file)
     } else {
       if (!file.deleted) {
+        console.log("terver if")
         new_files.push({
-          name: file.filename,
+          name: `imagen_${index + 1}`,
           icon: getIconString(file.filename),
-          url: file.url,
+          url: file,
           error: false
         })
       }
     }
   })
-
+  console.log("new_files: ", new_files)
   return new_files
 }
 

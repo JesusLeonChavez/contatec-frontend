@@ -3,7 +3,7 @@
 import "@pathofdev/react-tag-input/build/index.css"
 import ReactTagInput from "@pathofdev/react-tag-input"
 import { useState, useEffect, useContext } from "react"
-
+import ZIcon from "../../components/Icon"
 import {
   Text,
   ModalHeader,
@@ -36,13 +36,29 @@ import { imageUpload } from "../../utils/imageUpload"
 import { post, setAuth } from "../../utils/http"
 
 import { DataContext } from "../../store/GlobalState"
-
+import { toCapitalFirstLetter } from "../../utils/toCapital"
+interface PropsPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  pst_isActive: boolean
+  pst_descripcion_corta: string
+  pst_nombre: string
+  pst_descripcion_incluye: string
+  pst_descripcion: string
+  pst_imagen_1: string
+  pst_imagen_2: string
+  pst_imagen_3: string
+  pst_imagen_4: string
+  pst_imagen_5: string
+  pst_precioBase: number
+}
 type PropsRegister = {
   variant: string
-
   width: string
-
-  showModalButtonText: string
+  showModalButtonText?: string
+  icon?: boolean
+  mypost?: PropsPost
 }
 
 interface ImageProps {
@@ -54,25 +70,54 @@ interface ImageProps {
 export default function ModalNewPost({
   variant,
   width,
-  showModalButtonText
+  showModalButtonText,
+  icon = false,
+  mypost
 }: PropsRegister) {
+  let initialState
+  if (mypost) {
+    initialState = {
+      values: {
+        name: mypost.pst_nombre,
+        brief_content: mypost.pst_descripcion_corta,
+        description: mypost.pst_descripcion,
+        price: mypost.pst_precioBase.toString()
+      },
+      category: { value: 35, label: "Programacion" },
+      imagesFiles: [
+        mypost.pst_imagen_1,
+        mypost.pst_imagen_2,
+        mypost.pst_imagen_3,
+        mypost.pst_imagen_4,
+        mypost.pst_imagen_5
+      ],
+      tags: mypost.pst_descripcion_incluye.split(",")
+    }
+  } else {
+    initialState = {
+      values: {
+        name: "",
+        brief_content: "",
+        description: "",
+        price: ""
+      },
+      category: null,
+      imagesFiles: [],
+      tags: []
+    }
+  }
   const { state } = useContext(DataContext)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { auth, categories } = state
   const { isOpen, onOpen, onClose } = useDisclosure()
   // const router = useRouter()
-  const [values, handleInputChange, reset] = useForm({
-    name: "",
-    brief_content: "",
-    description: "",
-    price: ""
-  })
-  const [category, setCategory] = useState(null)
-  const [tags, setTags] = useState<string[]>([])
-  const [imagesFile, setImagesFile] = useState<any>([])
+  const [values, handleInputChange, reset] = useForm(initialState.values)
+  const [category, setCategory] = useState(initialState.category)
+  const [tags, setTags] = useState<string[]>(initialState.tags)
+  const [imagesFile, setImagesFile] = useState<any>(initialState.imagesFiles)
   const { name, brief_content, description, price } = values
-
+  console.log("images: ", imagesFile)
   const [errors, setErrors, resetErrors] = useError({
     name: "",
     brief_content: "",
@@ -155,23 +200,34 @@ export default function ModalNewPost({
       )
       return
     }
+    console.log("file: ", files)
     setImagesFile([...imagesFile, ...files])
   }
 
   useEffect(() => {
     if (!isOpen) {
       reset()
-      setImagesFile([])
-      setCategory(null)
-      setTags([])
+      if (!post) {
+        setImagesFile([])
+        setCategory(null)
+        setTags([])
+      } else {
+        setImagesFile(initialState.imagesFiles)
+        setCategory(initialState.category)
+        setTags(initialState.tags)
+      }
       resetErrors()
     }
   }, [isOpen])
 
   return (
     <>
-      <Button variant={variant} w={width} onClick={onOpen}>
-        {showModalButtonText}
+      <Button variant={variant} width={width} onClick={onOpen}>
+        {icon ? (
+          <ZIcon name="pencil" color="white" />
+        ) : (
+          <Text>{showModalButtonText}</Text>
+        )}
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size="3xl">
@@ -180,7 +236,7 @@ export default function ModalNewPost({
         <ModalContent>
           <ModalHeader>
             <Text align="center" color="primary" py="2" fontSize="xl">
-              Nuevo servicio
+              {mypost ? "Editar servicio" : "Nuevo Servicio"}
             </Text>
           </ModalHeader>
 
@@ -200,7 +256,7 @@ export default function ModalNewPost({
                   placeholder="Escribe nombre del servicio aquí"
                   name="name"
                   onChange={handleInputChange}
-                  value={name}
+                  value={toCapitalFirstLetter(name)}
                 />
 
                 <FormErrorMessage fontSize="sm">{errors.name}</FormErrorMessage>
@@ -260,7 +316,7 @@ export default function ModalNewPost({
                   placeholder="Escribe tu contenido breve aquí"
                   onChange={handleInputChange}
                   name="brief_content"
-                  value={brief_content}
+                  value={toCapitalFirstLetter(brief_content)}
                   h="100"
                   maxLength={100}
                   resizable="false"
@@ -292,7 +348,7 @@ export default function ModalNewPost({
                   placeholder="Escribe tu contenido detallado aquí"
                   onChange={handleInputChange}
                   name="description"
-                  value={description}
+                  value={toCapitalFirstLetter(description)}
                   h="100"
                   maxLength={100}
                   resizable="false"
@@ -338,7 +394,7 @@ export default function ModalNewPost({
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Precio
                 </FormLabel>
-                <NumberInput min={0}>
+                <NumberInput min={0} defaultValue={price}>
                   <NumberInputField
                     fontSize="sm"
                     placeholder="S/."
@@ -358,7 +414,7 @@ export default function ModalNewPost({
                 isLoading={isPosting}
                 className="buttonDisabledPrimary"
               >
-                Publicar anuncio
+                {mypost ? "Guardar anuncio" : "Publicar anuncio"}
               </Button>
             </form>
           </ModalBody>

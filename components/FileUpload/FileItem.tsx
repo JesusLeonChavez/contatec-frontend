@@ -8,6 +8,7 @@ import ZIcon from "../Icon"
 import { Consumer } from "./FileUpload"
 
 export default function FileItem({ file, onDelete }) {
+  console.log(file)
   return (
     <Consumer>
       {props => (
@@ -18,20 +19,18 @@ export default function FileItem({ file, onDelete }) {
                 <>
                   {/* <Icon  name={file.icon} /> */}
                   <ZIcon name="alarm" className="mr1" />
-
                   <p className="mr-2">{file.name}</p>
 
                   {!file.error && (
                     <a
                       href={file.url}
                       target="blank"
-                      download={file.name}
-                      title={file.name}
+                      download={!file.name && "prueba.png"}
+                      title={!file.name && "prueba.png"}
                     >
-                      <ZIcon name="dowload" />
+                      <ZIcon name="dowload" pointer />
                     </a>
                   )}
-
                   {file.error && (
                     <span>
                       <ZIcon
@@ -46,7 +45,12 @@ export default function FileItem({ file, onDelete }) {
               }
 
               {props.remove && !props.readOnly && (
-                <ZIcon className="ml2" name="trash" onClick={onDelete} pointer/>
+                <ZIcon
+                  className="ml2"
+                  name="trash"
+                  onClick={onDelete}
+                  pointer
+                />
               )}
             </div>
           )}
@@ -58,17 +62,11 @@ export default function FileItem({ file, onDelete }) {
 
 FileItem.propTypes = {
   /**
-
    * file
-
    */
-
   file: PropTypes.object.isRequired,
-
   /**
-
    * onDelete
-
    */
 
   onDelete: PropTypes.func

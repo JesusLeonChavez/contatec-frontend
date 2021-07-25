@@ -7,6 +7,7 @@ import { DataContext } from "../../store/GlobalState"
 
 import styles from "../../styles/sections/Post.module.css"
 import ModalNewPost from "./ModalNewPost"
+import MyPosts from "./MyPosts"
 
 export default function NewListPost() {
   const { state } = useContext(DataContext)
@@ -16,7 +17,11 @@ export default function NewListPost() {
       <div className={styles.infoWrapper}>
         <div className={styles.newPostRow}>
           <Flex align="center" justify="center" py={100}>
-            <Grid templateColumns="repeat(1, 1fr)" gap={8} w={500}>
+            <Grid
+              templateColumns="repeat(1, 1fr)"
+              gap={8}
+              w={{ base: "full", md: 500 }}
+            >
               <Text
                 fontSize="5xl"
                 className="bold600"
@@ -40,7 +45,12 @@ export default function NewListPost() {
             </Grid>
           </Flex>
 
-          <Flex align="center" justify="center" py={10}>
+          <Flex
+            align="center"
+            justify="center"
+            py={10}
+            display={{ base: "none", md: "block" }}
+          >
             <Image
               src="/assets/nuevo_post.png"
               alt="OurCategories"
@@ -49,6 +59,7 @@ export default function NewListPost() {
             />
           </Flex>
         </div>
+        <MyPosts posts={auth?.user.posts} />
       </div>
     </div>
   )
