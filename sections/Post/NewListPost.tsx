@@ -1,4 +1,4 @@
-import { Text, Grid, Flex, Box } from "@chakra-ui/react"
+import { Text, Grid, Flex } from "@chakra-ui/react"
 
 import Image from "next/image"
 
@@ -51,19 +51,18 @@ export default function NewListPost() {
             py={10}
             display={{ base: "none", md: "block" }}
           >
-
-              <Image
+            <Image
               className="imagePost"
-                src="/assets/nuevo_post.png"
-                alt="OurCategories"
-                width={800}
-                height={500}
-              />
-              <style jsx global>{`
-                .imagePost {
-                  border-radius: 100px;
-                }
-              `}</style>
+              src="/assets/nuevo_post.png"
+              alt="OurCategories"
+              width={800}
+              height={500}
+            />
+            <style jsx global>{`
+              .imagePost {
+                border-radius: 100px;
+              }
+            `}</style>
           </Flex>
         </div>
         <MyPosts posts={auth?.user.posts} />

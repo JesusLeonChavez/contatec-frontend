@@ -189,24 +189,26 @@ export default function ModalNewPost({
       setAuth(auth!.access_token)
       let res
       if (mypost) {
+        console.log("editando")
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         res = await patch(`/api/post/update/${mypost.id}`, body)
       } else {
+        console.log("creando")
         res = await post("/api/post/create", body)
       }
       console.log("create_edit: ", res)
       setIsPosting(false)
-      if (res.data.response?.error) {
+      if (res.data?.error) {
         return showToast(
           `Error al ${mypost ? "editar" : "publicar"} el servicio`,
-          res.data.response?.error,
+          res.data?.message[0],
           "error"
         )
       } else {
         onClose()
         // TODO: hacer que la actualizacion de los post sea por disptach en auth
-        window.location.reload()
+        // window.location.reload()
       }
 
       // ---------------------------------------------------------
@@ -367,7 +369,7 @@ export default function ModalNewPost({
                   {!errors.brief_content && <Box w="3"></Box>}
                   <FormErrorMessage>{errors.brief_content}</FormErrorMessage>
                   <span style={{ paddingTop: "10px" }}>
-                    {description.length}/100
+                    {brief_content.length}/100
                   </span>
                 </Box>
               </FormControl>

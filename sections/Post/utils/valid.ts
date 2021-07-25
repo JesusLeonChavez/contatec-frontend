@@ -22,14 +22,21 @@ export const validPost = (values, category, imagesFile, tags) => {
   } else if (!regexOnlyString(values.name.trim())) {
     errors.name = errorForm.INVALID_NAME
     isValid = false
+  } else if (values.name.trim().length < 10) {
+    errors.name = "Debe tener como minimo 10 caracteres"
+    isValid = false
   }
 
+  console.log("tamaño: ")
   if (!values.brief_content.trim()) {
     errors.brief_content = errorForm.EMPTY_TEXT_AREA
 
     isValid = false
   } else if (!regexOnlyString(values.brief_content.trim())) {
     errors.brief_content = errorForm.INVALID_TEXT_AREA
+    isValid = false
+  } else if (values.brief_content.trim().length < 10) {
+    errors.brief_content = "Debe tener como minimo 10 caracteres"
     isValid = false
   }
 
@@ -39,6 +46,9 @@ export const validPost = (values, category, imagesFile, tags) => {
     isValid = false
   } else if (!regexOnlyString(values.description.trim())) {
     errors.description = errorForm.INVALID_TEXT_AREA
+    isValid = false
+  } else if (values.description.trim().length < 10) {
+    errors.description = "Debe tener como minimo 10 caracteres"
     isValid = false
   }
 
