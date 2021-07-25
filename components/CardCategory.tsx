@@ -48,7 +48,7 @@ export default function CardCategory({
   post,
   categoryScreen = true
 }: PropsCard) {
-  const { state } = useContext(DataContext)
+  const { state, dispatch } = useContext(DataContext)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { auth } = state
@@ -62,10 +62,10 @@ export default function CardCategory({
       setOpenProgress(true)
       setAuth(auth!.access_token)
       const res = await del(`/api/post/delete/${post.id}`)
+      dispatch({ type: "DELETE_POST", payload: post.id })
       console.log("delete: ", res)
       // TODO: hacer que la actualizacion de los post sea por disptach en auth
       setOpenProgress(false)
-      window.location.reload()
     } else if (result === false) {
       setOpenDialog(false)
     }
