@@ -6,8 +6,11 @@ import styles from "../styles/sections/Home.module.css"
 import Image from "next/image"
 import ModalNewPost from "../sections/Post/ModalNewPost"
 import { del, setAuth } from "../utils/http"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { DataContext } from "../store/GlobalState"
+import Dialog from "./Dialog"
+import { toCapitalFirstLetter } from "../utils/toCapital"
+import ProgressDialog from "./ProgressDialog"
 
 interface User {
   avatar: string
@@ -49,12 +52,23 @@ export default function CardCategory({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { auth } = state
-  const handleDeletePost = async () => {
-    setAuth(auth!.access_token)
-    const res = await del(`/api/post/delete/${post.id}`)
-    console.log("delete: ", res)
-    // TODO: hacer que la actualizacion de los post sea por disptach en auth
-    window.location.reload()
+  const [openDialog, setOpenDialog] = useState(false)
+  const [openProgress, setOpenProgress] = useState(false)
+  const handleDeletePost = async result => {
+    setOpenDialog(true)
+    if (result === true) {
+      console.log("result: ", result)
+      setOpenDialog(false)
+      setOpenProgress(true)
+      setAuth(auth!.access_token)
+      const res = await del(`/api/post/delete/${post.id}`)
+      console.log("delete: ", res)
+      // TODO: hacer que la actualizacion de los post sea por disptach en auth
+      setOpenProgress(false)
+      window.location.reload()
+    } else if (result === false) {
+      setOpenDialog(false)
+    }
   }
   return (
     <Box borderRadius="lg" overflow="hidden" mx="3">
@@ -111,7 +125,7 @@ export default function CardCategory({
         <Flex align="flex-start" justify="center" direction="column">
           <Flex align="center" justify="flex-start">
             <Text fontSize="md" className={styles.bold500} color="primary">
-              {post?.pst_nombre}
+              {toCapitalFirstLetter(post.pst_nombre)}
             </Text>
           </Flex>
           {categoryScreen && (
@@ -124,6 +138,21 @@ export default function CardCategory({
           )}
         </Flex>
       </Box>
+      {openDialog && (
+        <Dialog
+          title="Eliminar categoría"
+          content={
+            <>
+              Esta seguro que quiere eliminar{" "}
+              <b>{toCapitalFirstLetter(post.pst_nombre)}</b>
+            </>
+          }
+          callbackFunction={handleDeletePost}
+          icon="trash"
+          color="danger"
+        />
+      )}
+      {openProgress && <ProgressDialog content="Eliminando ..." />}
     </Box>
   )
 }

@@ -16,7 +16,11 @@ export const newTheme = extendTheme({
     secondary: "#FBD76D",
     highlight: "#00C9A7",
     circleicons: "#E1E9F0",
-    letter: "#525252"
+    letter: "#525252",
+    danger: "#EF4444",
+    warning: "#FCD34D",
+    success: "#34D399",
+    info: "#3B82F6"
   },
   components: {
     Button

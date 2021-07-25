@@ -16,6 +16,7 @@ export type ColorName =
   | "dark"
   | "gray"
   | "success"
+  | "info"
 export type IconName =
   | "more-h"
   | "more-v"

@@ -102,6 +102,58 @@ export const ButtonStyles = {
       _focus: {
         boxShadow: "none"
       }
+    },
+    danger: {
+      bg: "#EF4444",
+      color: "#ffff",
+      _hover: {
+        bg: darken("#EF4444", 20)
+      },
+      _active: {
+        transform: "scale(0.9)"
+      },
+      _focus: {
+        boxShadow: "none"
+      }
+    },
+    warning: {
+      bg: "#FCD34D",
+      color: "#ffff",
+      _hover: {
+        bg: darken("#FCD34D", 20)
+      },
+      _active: {
+        transform: "scale(0.9)"
+      },
+      _focus: {
+        boxShadow: "none"
+      }
+    },
+    success: {
+      bg: "#34D399",
+      color: "#ffff",
+      _hover: {
+        bg: darken("#34D399", 20)
+      },
+      _active: {
+        transform: "scale(0.9)"
+      },
+      _focus: {
+        boxShadow: "none"
+      }
+    },
+    info: {
+      bg: "#3B82F6",
+      color: "#ffff",
+      _hover: {
+        bg: darken("#3B82F6", 20)
+      },
+      _active: {
+        transform: "scale(0.9)"
+      },
+      _focus: {
+        boxShadow: "none"
+      }
     }
   },
   // default values for `size` and `variant`
