@@ -108,7 +108,7 @@ export default function ModalNewPost({
       tags: []
     }
   }
-  const { state } = useContext(DataContext)
+  const { state, dispatch } = useContext(DataContext)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { auth, categories } = state
@@ -160,6 +160,7 @@ export default function ModalNewPost({
           )
         }
       }
+      // TODO: console log
       console.log("seguir")
       setIsPosting(true)
       // ---------------------------------------------------------
@@ -189,11 +190,15 @@ export default function ModalNewPost({
       setAuth(auth!.access_token)
       let res
       if (mypost) {
+        // TODO: console log
         console.log("editando")
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
+        // TODO: console log
+        console.log("body edicion: ", body)
         res = await patch(`/api/post/update/${mypost.id}`, body)
       } else {
+        // TODO: console log
         console.log("creando")
         res = await post("/api/post/create", body)
       }
@@ -208,7 +213,8 @@ export default function ModalNewPost({
       } else {
         onClose()
         // TODO: hacer que la actualizacion de los post sea por disptach en auth
-        window.location.reload()
+        // window.location.reload()
+        dispatch({ type: "ADD_POST", payload: res.data.data })
       }
 
       // ---------------------------------------------------------

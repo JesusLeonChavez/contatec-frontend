@@ -20,7 +20,8 @@ export const DataProvider = ({ children }) => {
     auth: {},
     authReady: false,
     authType: "none",
-    categories: []
+    categories: [],
+    posts: []
   }
   const [state, dispatch] = useReducer(reducers, initialState)
   const { authType } = state
@@ -38,12 +39,14 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     const logging = async () => {
+      // TODO: console.log
       console.log("ejecutando efecto")
       const isLogged = localStorage.getItem("isLogged")
       const typeLogged = localStorage.getItem("typeLogged")
       if (isLogged) {
         try {
           const accessToken = await post("/api/user/refresh_token", {})
+          // TODO: console.log
           console.log("accessToken: ", accessToken)
           if (accessToken.data.status) {
             localStorage.removeItem("isLogged")
@@ -60,8 +63,22 @@ export const DataProvider = ({ children }) => {
             type: "AUTH",
             payload: {
               access_token: accessToken.data.access_token,
-              user: user.data
+              user: {
+                id: user.data.id,
+                createdAt: user.data.createdAt,
+                updatedAt: user.data.updatedAt,
+                us_correo: user.data.us_correo,
+                us_nombre: user.data.us_nombre,
+                us_apellido: user.data.us_apellido,
+                avatar: user.data.avatar,
+                posts: user.data.posts
+              }
             }
+          })
+
+          dispatch({
+            type: "POSTS",
+            payload: user.data.posts
           })
           if (typeLogged === "normal") {
             dispatch({ type: "AUTH_TYPE", payload: "normal" })

@@ -11,7 +11,9 @@ import MyPosts from "./MyPosts"
 
 export default function NewListPost() {
   const { state } = useContext(DataContext)
-  const { auth } = state
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { auth, posts } = state
   return (
     <div className={styles.infoContainer}>
       <div className={styles.infoWrapper}>
@@ -65,7 +67,7 @@ export default function NewListPost() {
             `}</style>
           </Flex>
         </div>
-        <MyPosts posts={auth?.user.posts} />
+        <MyPosts posts={posts} />
       </div>
     </div>
   )

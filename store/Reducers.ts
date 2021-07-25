@@ -27,6 +27,23 @@ const reducers = (state, action) => {
         ...state,
         categories: [...action.payload]
       }
+    case ACTIONS.POSTS:
+      return {
+        ...state,
+        posts: [...action.payload]
+      }
+    case ACTIONS.ADD_POST:
+      return {
+        ...state,
+        posts: [action.payload, ...state.posts]
+      }
+    case ACTIONS.DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(post => {
+          return post.id !== action.payload
+        })
+      }
     default:
       return state
   }
