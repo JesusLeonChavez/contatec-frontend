@@ -208,7 +208,7 @@ export default function ModalNewPost({
       } else {
         onClose()
         // TODO: hacer que la actualizacion de los post sea por disptach en auth
-        // window.location.reload()
+        window.location.reload()
       }
 
       // ---------------------------------------------------------

@@ -14,6 +14,8 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Navigation, Thumbs } from "swiper/core"
 import QuotePriceModal from "./QuotePriceModal"
 import { toCapitalFirstLetter } from "../../../../utils/toCapital"
+import { format } from "date-fns"
+
 SwiperCore.use([Navigation, Thumbs])
 interface PropsUserPost {
   id: number
@@ -57,6 +59,7 @@ interface PropsMain {
 export default function CategoryTittle({ post }: PropsMain) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
+  const tags = post.pst_descripcion_incluye.split(",")
   // TODO: colocar los tags, la descripcion detallada, la fecha de publicacion, recarga de pagina
   return (
     <Box py="6">
@@ -73,7 +76,9 @@ export default function CategoryTittle({ post }: PropsMain) {
                   <Text>4.0 (2000)</Text>
                 </Flex>
               </Grid>
-              <Text>Publicado el 14/2021</Text>
+              <Text>
+                Publicado el {format(new Date(post.createdAt), "dd/MM/yyyy")}
+              </Text>
             </Flex>
             <Box my="4">
               <Swiper
@@ -135,25 +140,15 @@ export default function CategoryTittle({ post }: PropsMain) {
                 <Text className="bold600" fontSize="lg" color="primary">
                   Description
                 </Text>
-                <Text>
-                  Explorar tu creatividad con nuevas técnica en redes y mejora
-                  el alcance a tu público objetivo.
-                </Text>
-                <Text>
-                  Explorar tu creatividad con nuevas técnica en redes y mejora
-                  el alcance a tu público objetivo.
-                </Text>
+                <Text>{toCapitalFirstLetter(post.pst_descripcion)}</Text>
                 <UnorderedList spacing={3} px="3">
-                  <ListItem>Marketing</ListItem>
-                  <ListItem>Diseño</ListItem>
-                  <ListItem>Marketing</ListItem>
-                  <ListItem>Diseño</ListItem>
-                  <ListItem>Marketing</ListItem>
-                  <ListItem>Diseño</ListItem>
+                  {tags.map((tag, index) => (
+                    <ListItem key={index}>{toCapitalFirstLetter(tag)}</ListItem>
+                  ))}
                 </UnorderedList>
                 <Text>Presupuesto</Text>
                 <UnorderedList spacing={3} px="3">
-                  <ListItem>Desde s/.200 o $45</ListItem>
+                  <ListItem>Desde s/.{post.pst_precioBase}</ListItem>
                 </UnorderedList>
                 <QuotePriceModal
                   variant="third"

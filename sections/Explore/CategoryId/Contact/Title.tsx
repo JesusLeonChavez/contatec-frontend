@@ -1,7 +1,9 @@
 import { Box, Flex, Text, Circle } from "@chakra-ui/react"
 import ZIcon from "../../../../components/Icon/ZIcon"
 import { toCapitalFirstLetter } from "../../../../utils/toCapital"
+import { useRouter } from "next/router"
 export default function CategoryTittle({ title, briefDescription }) {
+  const router = useRouter()
   return (
     <Box>
       <div className="generalWrapper">
@@ -21,6 +23,10 @@ export default function CategoryTittle({ title, briefDescription }) {
               h="45px"
               bg="#fff"
               boxShadow="0px 0.758065px 3.03226px rgba(0, 0, 0, 0.4);"
+              cursor="pointer"
+              onClick={() => {
+                router.push("/publicar/nuevo_post")
+              }}
             >
               <ZIcon name="pencil" color="primary" />
             </Circle>
