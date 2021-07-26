@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog debe renderizarse el componente 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    class="chakra-ui-light"
+  >
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+    <div />
+    <div
+      class="chakra-portal"
+    >
+      <div
+        class="chakra-modal__overlay css-hdd9l7"
+        style="opacity: 0;"
+      />
+      <div
+        data-focus-guard="true"
+        style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+        tabindex="0"
+      />
+      <div
+        data-focus-guard="true"
+        style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+        tabindex="1"
+      />
+      <div
+        data-focus-lock-disabled="false"
+      >
+        <div
+          class="chakra-modal__content-container css-1yb2anq"
+        >
+          <section
+            aria-describedby="chakra-modal--body-1"
+            aria-labelledby="chakra-modal--header-1"
+            aria-modal="true"
+            class="chakra-modal__content css-19hidti"
+            id="chakra-modal-1"
+            role="alertdialog"
+            style="opacity: 0; transform: translateX(0px) translateY(16px) translateZ(0);"
+            tabindex="-1"
+          >
+            <header
+              class="chakra-modal__header css-12vu553"
+              id="chakra-modal--header-1"
+            >
+              tirulo
+            </header>
+            <div
+              class="chakra-modal__body css-iefe8e"
+              id="chakra-modal--body-1"
+            >
+              <svg
+                color="var(--primary)"
+                fill="none"
+                height="1em"
+                style="font-size: 50px;"
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M10.47 9.88h.66l4.157 4.166-1.241 1.241-4.167-4.158v-.658l-.225-.234a5.392 5.392 0 01-3.525 1.309 5.416 5.416 0 115.417-5.417 5.392 5.392 0 01-1.309 3.525l.234.225zM2.38 6.13a3.745 3.745 0 003.75 3.75 3.745 3.745 0 003.75-3.75 3.745 3.745 0 00-3.75-3.75 3.745 3.745 0 00-3.75 3.75z"
+                  fill="var(--primary)"
+                  fill-opacity="0.54"
+                  fill-rule="evenodd"
+                />
+              </svg>
+              <p
+                class="chakra-text css-12inih9"
+              >
+                Contenido
+              </p>
+            </div>
+            <footer
+              class="chakra-modal__footer css-125ai9l"
+            >
+              <button
+                class="chakra-button css-kh6jo1"
+                type="button"
+              >
+                No, cancelar
+              </button>
+              <button
+                class="chakra-button css-1m2lyo8"
+                type="button"
+              >
+                Sí, acepto
+              </button>
+            </footer>
+          </section>
+        </div>
+      </div>
+      <div
+        data-focus-guard="true"
+        style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+        tabindex="0"
+      />
+    </div>
+  </body>,
+  "container": <div />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

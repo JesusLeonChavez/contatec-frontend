@@ -35,33 +35,137 @@ Object {
       />
     </div>
     <div>
-      <ul
-        style="text-decoration: none; list-style: none;"
-      >
-        <li>
-          <input
-            class="chakra-input css-e7pfi5"
-            placeholder="P. ej: Desarrollo web"
-            type="search"
-            value="[object Object]"
-          />
-        </li>
-      </ul>
+      <form>
+        <div
+          class="chakra-form-control css-1kxonj9"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-10m1y3x"
+            for="text"
+            id="text-label"
+          >
+            Busca el tema de tu interés
+          </label>
+          <div
+            class="css-k008qs"
+          >
+            <ul
+              style="text-decoration: none; list-style: none;"
+            >
+              <li>
+                <div
+                  class="chakra-input__group css-1ygfgic"
+                >
+                  <div
+                    class="chakra-input__left-element css-1cw84h2"
+                  >
+                    <svg
+                      color="var(--primary)"
+                      fill="none"
+                      height="1em"
+                      style="font-size: 15px;"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M10.47 9.88h.66l4.157 4.166-1.241 1.241-4.167-4.158v-.658l-.225-.234a5.392 5.392 0 01-3.525 1.309 5.416 5.416 0 115.417-5.417 5.392 5.392 0 01-1.309 3.525l.234.225zM2.38 6.13a3.745 3.745 0 003.75 3.75 3.745 3.745 0 003.75-3.75 3.745 3.745 0 00-3.75-3.75 3.745 3.745 0 00-3.75 3.75z"
+                        fill="var(--primary)"
+                        fill-opacity="0.54"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    autocomplete="off"
+                    class="chakra-input css-aqiwep"
+                    id="text"
+                    name="search"
+                    placeholder="P. ej: Desarrollo web"
+                    type="search"
+                    value="[object Object]"
+                  />
+                </div>
+              </li>
+            </ul>
+            <button
+              class="chakra-button css-xvfn2m"
+              type="submit"
+            >
+              Buscar
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </body>,
   "container": <div>
-    <ul
-      style="text-decoration: none; list-style: none;"
-    >
-      <li>
-        <input
-          class="chakra-input css-e7pfi5"
-          placeholder="P. ej: Desarrollo web"
-          type="search"
-          value="[object Object]"
-        />
-      </li>
-    </ul>
+    <form>
+      <div
+        class="chakra-form-control css-1kxonj9"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-10m1y3x"
+          for="text"
+          id="text-label"
+        >
+          Busca el tema de tu interés
+        </label>
+        <div
+          class="css-k008qs"
+        >
+          <ul
+            style="text-decoration: none; list-style: none;"
+          >
+            <li>
+              <div
+                class="chakra-input__group css-1ygfgic"
+              >
+                <div
+                  class="chakra-input__left-element css-1cw84h2"
+                >
+                  <svg
+                    color="var(--primary)"
+                    fill="none"
+                    height="1em"
+                    style="font-size: 15px;"
+                    viewBox="0 0 16 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M10.47 9.88h.66l4.157 4.166-1.241 1.241-4.167-4.158v-.658l-.225-.234a5.392 5.392 0 01-3.525 1.309 5.416 5.416 0 115.417-5.417 5.392 5.392 0 01-1.309 3.525l.234.225zM2.38 6.13a3.745 3.745 0 003.75 3.75 3.745 3.745 0 003.75-3.75 3.745 3.745 0 00-3.75-3.75 3.745 3.745 0 00-3.75 3.75z"
+                      fill="var(--primary)"
+                      fill-opacity="0.54"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <input
+                  autocomplete="off"
+                  class="chakra-input css-aqiwep"
+                  id="text"
+                  name="search"
+                  placeholder="P. ej: Desarrollo web"
+                  type="search"
+                  value="[object Object]"
+                />
+              </div>
+            </li>
+          </ul>
+          <button
+            class="chakra-button css-xvfn2m"
+            type="submit"
+          >
+            Buscar
+          </button>
+        </div>
+      </div>
+    </form>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
@@ -152,33 +256,137 @@ Object {
       />
     </div>
     <div>
-      <ul
-        style="text-decoration: none; list-style: none;"
-      >
-        <li>
-          <input
-            class="chakra-input css-e7pfi5"
-            placeholder="P. ej: Desarrollo web"
-            type="search"
-            value=""
-          />
-        </li>
-      </ul>
+      <form>
+        <div
+          class="chakra-form-control css-1kxonj9"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-10m1y3x"
+            for="text"
+            id="text-label"
+          >
+            Busca el tema de tu interés
+          </label>
+          <div
+            class="css-k008qs"
+          >
+            <ul
+              style="text-decoration: none; list-style: none;"
+            >
+              <li>
+                <div
+                  class="chakra-input__group css-1ygfgic"
+                >
+                  <div
+                    class="chakra-input__left-element css-1cw84h2"
+                  >
+                    <svg
+                      color="var(--primary)"
+                      fill="none"
+                      height="1em"
+                      style="font-size: 15px;"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M10.47 9.88h.66l4.157 4.166-1.241 1.241-4.167-4.158v-.658l-.225-.234a5.392 5.392 0 01-3.525 1.309 5.416 5.416 0 115.417-5.417 5.392 5.392 0 01-1.309 3.525l.234.225zM2.38 6.13a3.745 3.745 0 003.75 3.75 3.745 3.745 0 003.75-3.75 3.745 3.745 0 00-3.75-3.75 3.745 3.745 0 00-3.75 3.75z"
+                        fill="var(--primary)"
+                        fill-opacity="0.54"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    autocomplete="off"
+                    class="chakra-input css-aqiwep"
+                    id="text"
+                    name="search"
+                    placeholder="P. ej: Desarrollo web"
+                    type="search"
+                    value=""
+                  />
+                </div>
+              </li>
+            </ul>
+            <button
+              class="chakra-button css-xvfn2m"
+              type="submit"
+            >
+              Buscar
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </body>,
   "container": <div>
-    <ul
-      style="text-decoration: none; list-style: none;"
-    >
-      <li>
-        <input
-          class="chakra-input css-e7pfi5"
-          placeholder="P. ej: Desarrollo web"
-          type="search"
-          value=""
-        />
-      </li>
-    </ul>
+    <form>
+      <div
+        class="chakra-form-control css-1kxonj9"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-10m1y3x"
+          for="text"
+          id="text-label"
+        >
+          Busca el tema de tu interés
+        </label>
+        <div
+          class="css-k008qs"
+        >
+          <ul
+            style="text-decoration: none; list-style: none;"
+          >
+            <li>
+              <div
+                class="chakra-input__group css-1ygfgic"
+              >
+                <div
+                  class="chakra-input__left-element css-1cw84h2"
+                >
+                  <svg
+                    color="var(--primary)"
+                    fill="none"
+                    height="1em"
+                    style="font-size: 15px;"
+                    viewBox="0 0 16 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M10.47 9.88h.66l4.157 4.166-1.241 1.241-4.167-4.158v-.658l-.225-.234a5.392 5.392 0 01-3.525 1.309 5.416 5.416 0 115.417-5.417 5.392 5.392 0 01-1.309 3.525l.234.225zM2.38 6.13a3.745 3.745 0 003.75 3.75 3.745 3.745 0 003.75-3.75 3.745 3.745 0 00-3.75-3.75 3.745 3.745 0 00-3.75 3.75z"
+                      fill="var(--primary)"
+                      fill-opacity="0.54"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <input
+                  autocomplete="off"
+                  class="chakra-input css-aqiwep"
+                  id="text"
+                  name="search"
+                  placeholder="P. ej: Desarrollo web"
+                  type="search"
+                  value=""
+                />
+              </div>
+            </li>
+          </ul>
+          <button
+            class="chakra-button css-xvfn2m"
+            type="submit"
+          >
+            Buscar
+          </button>
+        </div>
+      </div>
+    </form>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

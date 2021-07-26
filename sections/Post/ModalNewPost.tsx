@@ -186,7 +186,6 @@ export default function ModalNewPost({
       // ---------------------------------------------------------
       // Uploading Images to Cloudinary
       let media: ImageProps[] = []
-      console.log("imagesFiles: ", imagesFile)
       const imgNewURL = imagesFile.filter(img => img.size)
       const imgOldURL = imagesFile.filter(img => !img.size)
       // parse imgOld: luego remover
@@ -197,7 +196,6 @@ export default function ModalNewPost({
       if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
       const imagesPost = [...imgOldUrlParse, ...media]
       // -------------------------------------------------------------
-      console.log("imagesPost: ", imagesPost)
       const body = {
         pst_imagen_1: imagesPost[0].url,
         pst_imagen_2: imagesPost[1].url,
@@ -221,7 +219,6 @@ export default function ModalNewPost({
       } else {
         res = await post("/api/post/create", body)
       }
-      console.log("res: ", res)
       setIsPosting(false)
       if (res.data?.error) {
         return showToast(

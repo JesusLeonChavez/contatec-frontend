@@ -28,34 +28,12 @@ export default function CategoryItems({ category }) {
               lg: "repeat(4, 1fr)"
             }}
           >
-            {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(item => (
-            <Link
-              key={item}
-              href="/explorar/[categoryid]/[categoryitemid]"
-              as={`/explorar/${category}/item${item}`}
-            >
-              <a>
-                <CardCategory
-                  title="Marketing digital en category"
-                  imageUrl="/assets/marketing/marketing1.png"
-                />
-              </a>
-            </Link>
-          ))} */}
             {category.posts.map(post => (
-              // <Link
-              //   key={post.id}
-              //   href="/explorar/[categoryid]/[categoryitemid]"
-              //   as={`/explorar/${category.id}/${post.id}`}
-              // >
-              //   <a>
               <CardCategory
                 key={post.id}
                 post={post}
                 categoryid={category.id}
               />
-              //   </a>
-              // </Link>
             ))}
           </Grid>
         )}

@@ -31,7 +31,7 @@ export default function Dialog({
   cancel = "No, cancelar",
   callbackFunction,
   color = "primary",
-  icon
+  icon = "trash"
 }: DialogProps) {
   const { onClose } = useDisclosure()
   const cancelRef = useRef(null)
