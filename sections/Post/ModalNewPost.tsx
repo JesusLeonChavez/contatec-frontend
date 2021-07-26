@@ -96,6 +96,12 @@ export default function ModalNewPost({
   icon = false,
   mypost
 }: PropsRegister) {
+  console.log(
+    "NEXT_PUBLIC_CLOUD_UPDATE_PRESET",
+    process.env.NEXT_PUBLIC_CLOUD_UPDATE_PRESET
+  )
+  console.log("NEXT_PUBLIC_CLOUD_NAME", process.env.NEXT_PUBLIC_CLOUD_NAME)
+  console.log("NEXT_PUBLIC_CLOUD_API", process.env.NEXT_PUBLIC_CLOUD_API)
   let initialState
   if (mypost) {
     initialState = {
@@ -207,6 +213,7 @@ export default function ModalNewPost({
         pst_categoria: category?.value,
         pst_precioBase: Number(values.price)
       }
+      console.log("body: ", body)
       setAuth(auth!.access_token)
       let res
       if (mypost) {
