@@ -95,17 +95,19 @@ export default function Navbar() {
           </PopoverTrigger>
           <PopoverContent w="38" _focus={{ outline: "none" }}>
             <PopoverArrow />
-            <PopoverBody>
-              <Box fullWidth>
-                <Link href="/mostrar-datos">
-                  <a>
-                    <Button variant="secondary" fullWidth>
-                      Perfil
-                    </Button>
-                  </a>
-                </Link>
-              </Box>
-              <Button variant="primary" onClick={handleLogout}>
+            <PopoverBody d="flex" alignItems="center" flexDirection="column">
+              <Button
+                variant="secondary"
+                w="100px"
+                onClick={() => {
+                  router.push("/mostrar-datos")
+                }}
+                my="2"
+              >
+                Perfil
+              </Button>
+
+              <Button variant="primary" w="100px" onClick={handleLogout} my="2">
                 Log out
               </Button>
             </PopoverBody>

@@ -5,7 +5,10 @@ import CardCategory from "../../../components/CardCategory"
 export default function CategoryItems({ category }) {
   return (
     <Box py={{ base: "1", md: "8" }}>
-      <div className="generalWrapper">
+      <div
+        className="generalWrapper"
+        style={{ minHeight: "calc(100vh - 300px)" }}
+      >
         {category.posts.length === 0 ? (
           <Box
             d="flex"
