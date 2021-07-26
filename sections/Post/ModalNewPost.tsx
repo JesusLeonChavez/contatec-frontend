@@ -194,7 +194,6 @@ export default function ModalNewPost({
         public_id: "publicId123",
         url: img
       }))
-      console.log("imgOldUrlParse: ", imgOldUrlParse)
       if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
       const imagesPost = [...imgOldUrlParse, ...media]
       // -------------------------------------------------------------
@@ -215,7 +214,6 @@ export default function ModalNewPost({
         pst_categoria: category?.value,
         pst_precioBase: Number(values.price)
       }
-      console.log("body: ", body)
       setAuth(auth!.access_token)
       let res
       if (mypost) {
