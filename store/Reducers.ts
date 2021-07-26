@@ -44,6 +44,17 @@ const reducers = (state, action) => {
           return post.id !== action.payload
         })
       }
+    case ACTIONS.EDIT_POST:
+      return {
+        ...state,
+        posts: state.posts.map(post => {
+          if (post.id === action.payload.id) {
+            return action.payload
+          } else {
+            return post
+          }
+        })
+      }
     default:
       return state
   }

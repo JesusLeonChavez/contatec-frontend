@@ -37,6 +37,24 @@ import { patch, post, setAuth } from "../../utils/http"
 
 import { DataContext } from "../../store/GlobalState"
 import { toCapitalFirstLetter } from "../../utils/toCapital"
+
+interface PropsUserPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  us_correo: string
+  us_nombre: string
+  us_apellido: string
+  avatar: string
+}
+
+interface PropsCategoryPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  cat_nombre: string
+  cat_descripcion: string
+}
 interface PropsPost {
   id: number
   createdAt: string
@@ -52,6 +70,8 @@ interface PropsPost {
   pst_imagen_4: string
   pst_imagen_5: string
   pst_precioBase: number
+  pstUsuarioId: PropsUserPost
+  pstCategoriaId: PropsCategoryPost
 }
 type PropsRegister = {
   variant: string
@@ -77,6 +97,8 @@ export default function ModalNewPost({
   mypost
 }: PropsRegister) {
   let initialState
+
+  console.log("poooooost es modallll: ", mypost)
   if (mypost) {
     initialState = {
       values: {
@@ -85,7 +107,10 @@ export default function ModalNewPost({
         description: mypost.pst_descripcion,
         price: mypost.pst_precioBase.toString()
       },
-      category: { value: 35, label: "Programacion" },
+      category: {
+        value: mypost.pstCategoriaId.id,
+        label: mypost.pstCategoriaId.cat_nombre
+      },
       imagesFiles: [
         mypost.pst_imagen_1,
         mypost.pst_imagen_2,
@@ -197,6 +222,7 @@ export default function ModalNewPost({
         // TODO: console log
         console.log("body edicion: ", body)
         res = await patch(`/api/post/update/${mypost.id}`, body)
+        console.log("resedition: ", res)
       } else {
         // TODO: console log
         console.log("creando")
@@ -211,10 +237,38 @@ export default function ModalNewPost({
           "error"
         )
       } else {
+        // if (mypost) {
+        //   initialState = {
+        //     values: {
+        //       name: body.pst_nombre,
+        //       brief_content: body.pst_descripcion_corta,
+        //       description: body.pst_descripcion,
+        //       price: body.pst_precioBase.toString()
+        //     },
+        //     category: {
+        //       value: body.pst_categoria,
+
+        //       label: category.label
+        //     },
+        //     imagesFiles: [
+        //       body.pst_imagen_1,
+        //       body.pst_imagen_2,
+        //       body.pst_imagen_3,
+        //       body.pst_imagen_4,
+        //       body.pst_imagen_5
+        //     ],
+        //     tags: body.pst_descripcion_incluye
+        //   }
+        // }
         onClose()
         // TODO: hacer que la actualizacion de los post sea por disptach en auth
         // window.location.reload()
-        dispatch({ type: "ADD_POST", payload: res.data.data })
+        if (mypost) {
+          console.log("payload: ", res.data.data)
+          dispatch({ type: "EDIT_POST", payload: res.data.data })
+        } else {
+          dispatch({ type: "ADD_POST", payload: res.data.data })
+        }
       }
 
       // ---------------------------------------------------------
@@ -239,7 +293,6 @@ export default function ModalNewPost({
       )
       return
     }
-    console.log("file: ", files)
     setImagesFile([...imagesFile, ...files])
   }
 

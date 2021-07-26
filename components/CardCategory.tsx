@@ -21,6 +21,13 @@ interface User {
   us_correo: string
   us_nombre: string
 }
+interface PropsCategoryPost {
+  id: number
+  createdAt: string
+  updatedAt: string
+  cat_nombre: string
+  cat_descripcion: string
+}
 
 interface Post {
   id: number
@@ -38,6 +45,7 @@ interface Post {
   pst_imagen_5: string
   pst_precioBase: number
   pstUsuarioId: User
+  pstCategoriaId: PropsCategoryPost
 }
 
 interface PropsCard {

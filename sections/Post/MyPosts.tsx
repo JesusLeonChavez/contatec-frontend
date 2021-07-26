@@ -23,7 +23,7 @@ export default function MyPosts({ posts }) {
             lg: "repeat(4, 1fr)"
           }}
         >
-          {posts.map(post => (
+          {posts?.map(post => (
             <CardCategory key={post.id} post={post} categoryScreen={false} />
           ))}
         </Grid>
