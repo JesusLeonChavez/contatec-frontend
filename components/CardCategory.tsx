@@ -11,6 +11,7 @@ import { DataContext } from "../store/GlobalState"
 import Dialog from "./Dialog"
 import { toCapitalFirstLetter } from "../utils/toCapital"
 import ProgressDialog from "./ProgressDialog"
+import Link from "next/link"
 
 interface User {
   avatar: string
@@ -51,10 +52,12 @@ interface Post {
 interface PropsCard {
   post: Post
   categoryScreen?: boolean
+  categoryid?: string
 }
 export default function CardCategory({
   post,
-  categoryScreen = true
+  categoryScreen = true,
+  categoryid
 }: PropsCard) {
   const { state, dispatch } = useContext(DataContext)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -81,12 +84,24 @@ export default function CardCategory({
   return (
     <Box borderRadius="lg" overflow="hidden" mx="3">
       <Box position="relative">
-        <Image
-          src={post?.pst_imagen_1 || "/assets/images/marketing/marketing1.png"}
-          alt={post?.pst_nombre}
-          height="500"
-          width="500"
-        />
+        <Link
+          key={post.id}
+          href="/explorar/[categoryid]/[categoryitemid]"
+          as={`/explorar/${!categoryid ? post.pstCategoriaId.id : categoryid}/${
+            post.id
+          }`}
+        >
+          <a>
+            <Image
+              src={
+                post?.pst_imagen_1 || "/assets/images/marketing/marketing1.png"
+              }
+              alt={post?.pst_nombre}
+              height="500"
+              width="500"
+            />
+          </a>
+        </Link>
         <Flex
           align="center"
           justify="space-between"
@@ -114,18 +129,6 @@ export default function CardCategory({
                 icon
                 mypost={post}
                 backgroundColor="gray.200"
-                // nombre={post.pst_nombre}
-                // descripcion={post.pst_descripcion}
-                // descripcionCorta={post.pst_descripcion_corta}
-                // precio={post.pst_precioBase}
-                // valuesForm={{
-                //   values: {
-                //     name: post.pst_nombre,
-                //     brief_content: post.pst_descripcion_corta,
-                //     description: post.pst_descripcion,
-                //     price: post.pst_precioBase
-                //   }
-                // }}
               />
               <Button
                 variant="light"
@@ -140,24 +143,37 @@ export default function CardCategory({
           )}
         </Flex>
       </Box>
-
-      <Box px="2" pb="5">
-        <Flex align="flex-start" justify="center" direction="column">
-          <Flex align="center" justify="flex-start">
-            <Text fontSize="md" className={styles.bold500} color="primary">
-              {toCapitalFirstLetter(post.pst_nombre)}
-            </Text>
-          </Flex>
-          {categoryScreen && (
-            <Flex align="center" justify="flex-start">
-              <Text fontSize="sm" className={styles.bold200} color="primary">
-                Por {post.pstUsuarioId.us_nombre}{" "}
-                {post.pstUsuarioId.us_apellido}
-              </Text>
+      <Link
+        key={post.id}
+        href="/explorar/[categoryid]/[categoryitemid]"
+        as={`/explorar/${!categoryid ? post.pstCategoriaId.id : categoryid}}/${
+          post.id
+        }`}
+      >
+        <a>
+          <Box px="2" pb="5">
+            <Flex align="flex-start" justify="center" direction="column">
+              <Flex align="center" justify="flex-start">
+                <Text fontSize="md" className={styles.bold500} color="primary">
+                  {toCapitalFirstLetter(post.pst_nombre)}
+                </Text>
+              </Flex>
+              {categoryScreen && (
+                <Flex align="center" justify="flex-start">
+                  <Text
+                    fontSize="sm"
+                    className={styles.bold200}
+                    color="primary"
+                  >
+                    Por {post.pstUsuarioId.us_nombre}{" "}
+                    {post.pstUsuarioId.us_apellido}
+                  </Text>
+                </Flex>
+              )}
             </Flex>
-          )}
-        </Flex>
-      </Box>
+          </Box>
+        </a>
+      </Link>
       {openDialog && (
         <Dialog
           title="Eliminar categoría"

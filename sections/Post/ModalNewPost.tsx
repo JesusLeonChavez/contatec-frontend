@@ -96,12 +96,6 @@ export default function ModalNewPost({
   icon = false,
   mypost
 }: PropsRegister) {
-  console.log(
-    "NEXT_PUBLIC_CLOUD_UPDATE_PRESET",
-    process.env.NEXT_PUBLIC_CLOUD_UPDATE_PRESET
-  )
-  console.log("NEXT_PUBLIC_CLOUD_NAME", process.env.NEXT_PUBLIC_CLOUD_NAME)
-  console.log("NEXT_PUBLIC_CLOUD_API", process.env.NEXT_PUBLIC_CLOUD_API)
   let initialState
   if (mypost) {
     initialState = {
@@ -192,11 +186,19 @@ export default function ModalNewPost({
       // ---------------------------------------------------------
       // Uploading Images to Cloudinary
       let media: ImageProps[] = []
-      const imgNewURL = imagesFile.filter(img => !img.url)
-      const imgOldURL = imagesFile.filter(img => img.url)
+      console.log("imagesFiles: ", imagesFile)
+      const imgNewURL = imagesFile.filter(img => img.size)
+      const imgOldURL = imagesFile.filter(img => !img.size)
+      // parse imgOld: luego remover
+      const imgOldUrlParse = imgOldURL.map(img => ({
+        public_id: "publicId123",
+        url: img
+      }))
+      console.log("imgOldUrlParse: ", imgOldUrlParse)
       if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
-      const imagesPost = [...imgOldURL, ...media]
+      const imagesPost = [...imgOldUrlParse, ...media]
       // -------------------------------------------------------------
+      console.log("imagesPost: ", imagesPost)
       const body = {
         pst_imagen_1: imagesPost[0].url,
         pst_imagen_2: imagesPost[1].url,
@@ -221,6 +223,7 @@ export default function ModalNewPost({
       } else {
         res = await post("/api/post/create", body)
       }
+      console.log("res: ", res)
       setIsPosting(false)
       if (res.data?.error) {
         return showToast(

@@ -24,6 +24,12 @@ export default function MyPosts({ posts }) {
           }}
         >
           {posts?.map(post => (
+            // <Link
+            //   key={post.id}
+            //   href="/explorar/[categoryid]/[categoryitemid]"
+            //   as={`/explorar/${post.pstCategoriaId.id}/${post.id}`}
+            // >
+            //   <a>
             <CardCategory key={post.id} post={post} categoryScreen={false} />
           ))}
         </Grid>

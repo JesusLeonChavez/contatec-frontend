@@ -1,5 +1,5 @@
 import { Box, Grid, Text } from "@chakra-ui/react"
-import Link from "next/link"
+// import Link from "next/link"
 import CardCategory from "../../../components/CardCategory"
 
 export default function CategoryItems({ category }) {
@@ -40,15 +40,19 @@ export default function CategoryItems({ category }) {
             </Link>
           ))} */}
             {category.posts.map(post => (
-              <Link
+              // <Link
+              //   key={post.id}
+              //   href="/explorar/[categoryid]/[categoryitemid]"
+              //   as={`/explorar/${category.id}/${post.id}`}
+              // >
+              //   <a>
+              <CardCategory
                 key={post.id}
-                href="/explorar/[categoryid]/[categoryitemid]"
-                as={`/explorar/${category.id}/${post.id}`}
-              >
-                <a>
-                  <CardCategory post={post} />
-                </a>
-              </Link>
+                post={post}
+                categoryid={category.id}
+              />
+              //   </a>
+              // </Link>
             ))}
           </Grid>
         )}
