@@ -1,20 +1,10 @@
-import {
-  Button,
-  Flex,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Text
-} from "@chakra-ui/react"
+import { Text } from "@chakra-ui/react"
 import algoliasearch from "algoliasearch/lite"
 import Image from "next/image"
 import { InstantSearch } from "react-instantsearch-dom"
 import SwiperCore, { Autoplay, Navigation } from "swiper/core"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { CustomAutocomplete } from "../../components/AutoComplete"
-import ZIcon from "../../components/Icon/ZIcon"
 import styles from "../../styles/sections/Home.module.css"
 
 SwiperCore.use([Autoplay, Navigation])
@@ -46,11 +36,7 @@ export default function Hero() {
             >
               <CustomAutocomplete />
             </InstantSearch>
-            <div>
-              <FormControl id="text">
-                <FormLabel>Busca el tema de tu interés</FormLabel>
-                <Flex>
-                  <InputGroup>
+            {/* <InputGroup>
                     <InputLeftElement
                       pointerEvents="none"
                       // eslint-disable-next-line react/no-children-prop
@@ -61,13 +47,7 @@ export default function Hero() {
                       placeholder="P. ej: Desarrollo web"
                       bg="white"
                     />
-                  </InputGroup>
-                  <Button w={{ md: "3xs" }} variant="primary">
-                    Buscar
-                  </Button>
-                </Flex>
-              </FormControl>
-            </div>
+                  </InputGroup> */}
           </div>
         </div>
       </section>
