@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-// import { useRouter } from "next/router"
 import "@pathofdev/react-tag-input/build/index.css"
 import ReactTagInput from "@pathofdev/react-tag-input"
 import { useState, useEffect, useContext } from "react"
@@ -73,6 +72,7 @@ interface PropsPost {
   pstUsuarioId: PropsUserPost
   pstCategoriaId: PropsCategoryPost
 }
+
 type PropsRegister = {
   variant: string
   width: string
@@ -97,8 +97,6 @@ export default function ModalNewPost({
   mypost
 }: PropsRegister) {
   let initialState
-
-  console.log("poooooost es modallll: ", mypost)
   if (mypost) {
     initialState = {
       values: {
@@ -138,7 +136,6 @@ export default function ModalNewPost({
   // @ts-ignore
   const { auth, categories } = state
   const { isOpen, onOpen, onClose } = useDisclosure()
-  // const router = useRouter()
   const [values, handleInputChange, reset] = useForm(initialState.values)
   const [category, setCategory] = useState(initialState.category)
   const [tags, setTags] = useState<string[]>(initialState.tags)
@@ -185,8 +182,6 @@ export default function ModalNewPost({
           )
         }
       }
-      // TODO: console log
-      console.log("seguir")
       setIsPosting(true)
       // ---------------------------------------------------------
       // Uploading Images to Cloudinary
@@ -215,20 +210,10 @@ export default function ModalNewPost({
       setAuth(auth!.access_token)
       let res
       if (mypost) {
-        // TODO: console log
-        console.log("editando")
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        // TODO: console log
-        console.log("body edicion: ", body)
         res = await patch(`/api/post/update/${mypost.id}`, body)
-        console.log("resedition: ", res)
       } else {
-        // TODO: console log
-        console.log("creando")
         res = await post("/api/post/create", body)
       }
-      console.log("create_edit: ", res)
       setIsPosting(false)
       if (res.data?.error) {
         return showToast(
@@ -237,34 +222,16 @@ export default function ModalNewPost({
           "error"
         )
       } else {
-        // if (mypost) {
-        //   initialState = {
-        //     values: {
-        //       name: body.pst_nombre,
-        //       brief_content: body.pst_descripcion_corta,
-        //       description: body.pst_descripcion,
-        //       price: body.pst_precioBase.toString()
-        //     },
-        //     category: {
-        //       value: body.pst_categoria,
-
-        //       label: category.label
-        //     },
-        //     imagesFiles: [
-        //       body.pst_imagen_1,
-        //       body.pst_imagen_2,
-        //       body.pst_imagen_3,
-        //       body.pst_imagen_4,
-        //       body.pst_imagen_5
-        //     ],
-        //     tags: body.pst_descripcion_incluye
-        //   }
-        // }
-        onClose()
+        showToast(
+          `${mypost ? "Edición" : "Creación"} exitosa`,
+          `Se ${mypost ? "editó" : "creó"} correctamente el anuncio`,
+          "success"
+        )
+        setTimeout(() => {
+          onClose()
+        }, 1500)
         // TODO: hacer que la actualizacion de los post sea por disptach en auth
-        // window.location.reload()
         if (mypost) {
-          console.log("payload: ", res.data.data)
           dispatch({ type: "EDIT_POST", payload: res.data.data })
         } else {
           dispatch({ type: "ADD_POST", payload: res.data.data })

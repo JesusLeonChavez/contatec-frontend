@@ -114,6 +114,18 @@ export default function CardCategory({
                 icon
                 mypost={post}
                 backgroundColor="gray.200"
+                // nombre={post.pst_nombre}
+                // descripcion={post.pst_descripcion}
+                // descripcionCorta={post.pst_descripcion_corta}
+                // precio={post.pst_precioBase}
+                // valuesForm={{
+                //   values: {
+                //     name: post.pst_nombre,
+                //     brief_content: post.pst_descripcion_corta,
+                //     description: post.pst_descripcion,
+                //     price: post.pst_precioBase
+                //   }
+                // }}
               />
               <Button
                 variant="light"

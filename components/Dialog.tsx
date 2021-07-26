@@ -46,7 +46,7 @@ export default function Dialog({
       >
         <AlertDialogOverlay />
 
-        <AlertDialogContent p="3">
+        <AlertDialogContent py="4">
           <AlertDialogHeader
             d="flex"
             justifyContent="center"
@@ -63,7 +63,7 @@ export default function Dialog({
             alignItems="center"
           >
             <ZIcon name={icon} size={50} color={color} />
-            <Text align="center" p="3" color="primary">
+            <Text align="center" p="4" color="primary">
               {content}
             </Text>
           </AlertDialogBody>
