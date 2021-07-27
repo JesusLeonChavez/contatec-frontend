@@ -17,12 +17,13 @@ import {
 } from "@chakra-ui/react"
 import ZIcon from "../../components/Icon/ZIcon"
 import FileUpload from "../../components/FileUpload/FileUpload"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import showToast from "../../components/Toast"
 import { useError } from "../../utils/hooks/useError"
 import { validImage } from "./utils/valid"
 import { imageUpload } from "../../utils/imageUpload"
 import { patch } from "../../utils/http"
+import { DataContext } from "../../store/GlobalState"
 interface ImageProps {
   // eslint-disable-next-line camelcase
   public_id: string
@@ -30,6 +31,9 @@ interface ImageProps {
 }
 
 export default function ProfilePicture({ auth }) {
+  const { dispatch } = useContext(DataContext)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imagesFile, setImagesFile] = useState<any>([])
   const [errors, setErrors, resetErrors] = useError({
@@ -65,6 +69,10 @@ export default function ProfilePicture({ auth }) {
           "Se editó correctamente la información",
           "success"
         )
+        dispatch({
+          type: "UPDATE_IMAGE",
+          payload: imagesPost[0].url
+        })
       } else {
         showToast(
           "Error en la edición",
@@ -72,8 +80,10 @@ export default function ProfilePicture({ auth }) {
           "error"
         )
       }
-      console.log("res-edit: ", res)
       setIsPosting(false)
+      setTimeout(() => {
+        onClose()
+      }, 1500)
     }
   }
 

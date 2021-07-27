@@ -56,7 +56,6 @@ export default function Show() {
           "error"
         )
       }
-      console.log("res-edit: ", res)
       setIsPosting(false)
       reset()
     }

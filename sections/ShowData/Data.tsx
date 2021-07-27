@@ -17,7 +17,7 @@ import { DataContext } from "../../store/GlobalState"
 import showToast from "../../components/Toast"
 
 export default function Show() {
-  const { state } = useContext(DataContext)
+  const { state, dispatch } = useContext(DataContext)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { auth } = state
@@ -50,6 +50,10 @@ export default function Show() {
           "Se editó correctamente la información",
           "success"
         )
+        dispatch({
+          type: "UPDATE_NAME",
+          payload: { name: name, lastname: lastname }
+        })
       } else {
         showToast(
           "Error en la edición",
@@ -57,7 +61,6 @@ export default function Show() {
           "error"
         )
       }
-      console.log("res-pass:", res)
       setIsPosting(false)
       reset()
     }

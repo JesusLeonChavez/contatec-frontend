@@ -56,6 +56,29 @@ const reducers = (state, action) => {
           }
         })
       }
+    case ACTIONS.UPDATE_NAME:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          user: {
+            ...state.auth.user,
+            us_nombre: action.payload.name,
+            us_apellido: action.payload.lastname
+          }
+        }
+      }
+    case ACTIONS.UPDATE_IMAGE:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          user: {
+            ...state.auth.user,
+            avatar: action.payload
+          }
+        }
+      }
     default:
       return state
   }
