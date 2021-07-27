@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CONTATEC
 
-## Getting Started
+## Descripción
+Proyecto realizado para el curso de Metodos de Pruebas para la unmsm.
+Aplicativo web con funcionalidad de publicar anuncios.
 
-First, run the development server:
+## STACK
+- React
+- NextJs
+## Dependencias
+* Chakra-ui
+* Algolia
+* Emotion react
+* Emotion styled
+* Algoliasearch
+* Framer-motion
+* Swiper
+* Instantsearch
+* React-facebook-login
+* React-google-login
+* React-rating-stars-component
+* React-instantsearch
+* React-instantsearch-dom
+## Instalación
+
+Clonar el proyecto
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/CbazCode/contatec-frontend.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Instalar dependencias
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+  npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Iniciar cliente
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  npm run dev
+  # or
+  yarn dev
+```
+## Rutas privadas
+Rutas privadas para usuarios que tienen una cuenta en CONTATEC:
 
-## Learn More
+* Publicar: https://contactec-front.vercel.app/publicar/nuevo_post
 
-To learn more about Next.js, take a look at the following resources:
+* Editar publicación: https://contactec-front.vercel.app/publicar/nuevo_post
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Perfil: https://contactec-front.vercel.app/mostrar-datos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Rutas públicas
+Rutas accesibles para usuarios que no tienen una cuenta en CONTATEC:
 
-## Deploy on Vercel
+* Explorar Anuncio: https://contactec-front.vercel.app/explorar
+## Despliegue
+La forma más sencilla de implementar la pagina web CONTATEC con Next.js es utilizar la plataforma Vercel ([Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)) de los creadores de Next.js.
+## Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Home
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* Explorar anuncio
+
+* Publicar
+
+* Perfil
+
+* Restablecer Contraseña
+
