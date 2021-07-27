@@ -21,6 +21,13 @@ import { useEffect, useState } from "react"
 import showToast from "../../components/Toast"
 import { useError } from "../../utils/hooks/useError"
 import { validImage } from "./utils/valid"
+import { imageUpload } from "../../utils/imageUpload"
+import { patch } from "../../utils/http"
+interface ImageProps {
+  // eslint-disable-next-line camelcase
+  public_id: string
+  url: string
+}
 
 export default function ProfilePicture({ auth }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -30,20 +37,43 @@ export default function ProfilePicture({ auth }) {
   })
   const [isPosting, setIsPosting] = useState(false)
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     const { errors: errorsForm, isValid } = validImage(imagesFile)
     setErrors(errorsForm)
     if (isValid) {
-      resetErrors()
+      // Uploading Images to Cloudinary
+      let media: ImageProps[] = []
       setIsPosting(true)
+      resetErrors()
+      const imgNewURL = imagesFile.filter(img => img.size)
+      const imgOldURL = imagesFile.filter(img => !img.size)
+      // parse imgOld: luego remover
+      const imgOldUrlParse = imgOldURL.map(img => ({
+        public_id: "publicId123",
+        url: img
+      }))
+      if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
+      const imagesPost = [...imgOldUrlParse, ...media]
       const body = {
-        avatar: imagesFile
+        avatar: imagesPost[0].url
       }
-      console.log("body: ", body)
-      setTimeout(() => {
-        setIsPosting(false)
-      }, 2000)
+      const res = await patch(`/api/user/update`, body)
+      if (res.data?.message === "Usuario a sido actualizado") {
+        showToast(
+          "Exito en la edición",
+          "Se editó correctamente la información",
+          "success"
+        )
+      } else {
+        showToast(
+          "Error en la edición",
+          "Problemas al editar información",
+          "error"
+        )
+      }
+      console.log("res-edit: ", res)
+      setIsPosting(false)
     }
   }
 

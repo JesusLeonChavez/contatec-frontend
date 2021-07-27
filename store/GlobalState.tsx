@@ -71,8 +71,8 @@ export const DataProvider = ({ children }) => {
                 us_correo: user.data.us_correo,
                 us_nombre: user.data.us_nombre,
                 us_apellido: user.data.us_apellido,
-                avatar: user.data.avatar,
-                posts: user.data.posts
+                avatar: user.data.avatar
+                // posts: user.data.posts
               }
             }
           })

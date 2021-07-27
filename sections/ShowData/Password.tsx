@@ -10,10 +10,17 @@ import {
 } from "@chakra-ui/react"
 import { useForm } from "../../utils/hooks/useForm"
 import { useError } from "../../utils/hooks/useError"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { validNewPassword } from "./utils/valid"
+import { patch, setAuth } from "../../utils/http"
+import showToast from "../../components/Toast"
+import { DataContext } from "../../store/GlobalState"
 
 export default function Show() {
+  const { state } = useContext(DataContext)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { auth } = state
   const [values, handleInputChange, reset] = useForm({
     password: "",
     password2: ""
@@ -24,7 +31,7 @@ export default function Show() {
     password2: ""
   })
   const [isPosting, setIsPosting] = useState(false)
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     const { errors: errorsForm, isValid } = validNewPassword(values)
     setErrors(errorsForm)
@@ -34,11 +41,24 @@ export default function Show() {
       const body = {
         password: password
       }
-      console.log("body: ", body)
-      setTimeout(() => {
-        setIsPosting(false)
-        reset()
-      }, 2000)
+      setAuth(auth!.access_token)
+      const res = await patch(`/api/user/update`, body)
+      if (res.data?.message === "Usuario a sido actualizado") {
+        showToast(
+          "Exito en la edición",
+          "Se editó correctamente la información",
+          "success"
+        )
+      } else {
+        showToast(
+          "Error en la edición",
+          "Problemas al editar información",
+          "error"
+        )
+      }
+      console.log("res-edit: ", res)
+      setIsPosting(false)
+      reset()
     }
   }
   return (
@@ -57,6 +77,7 @@ export default function Show() {
               Nueva contraseña
             </FormLabel>
             <Input
+              autoComplete="off"
               type="password"
               my="3"
               placeholder="Escribe tu contraseña actual aquí"
@@ -73,6 +94,7 @@ export default function Show() {
               Confirmar nueva contraseña
             </FormLabel>
             <Input
+              autoComplete="off"
               type="password"
               my="3"
               placeholder="Escribe tu contraseña nueva aquí"
@@ -84,7 +106,13 @@ export default function Show() {
             />
             <FormErrorMessage>{errors.password2}</FormErrorMessage>
           </FormControl>
-          <Button variant="primary" w="3xs" type="submit" isLoading={isPosting}>
+          <Button
+            variant="primary"
+            w="3xs"
+            type="submit"
+            isLoading={isPosting}
+            className="buttonDisabledPrimary"
+          >
             Guardar Cambios
           </Button>
         </Box>
