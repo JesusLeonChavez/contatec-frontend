@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Flex, Grid, Text } from "@chakra-ui/react"
 import CardCategory from "../../components/CardCategory"
 

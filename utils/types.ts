@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export const errorForm = {
   EMPTY_NAME: "Nombre es requerido",
   EMPTY_LASTNAME: "Apellido es requerido",

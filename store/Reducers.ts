@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { ACTIONS } from "./Actions"
 
 const reducers = (state, action) => {
