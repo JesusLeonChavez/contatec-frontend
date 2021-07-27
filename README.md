@@ -1,8 +1,7 @@
 # CONTATEC
 
 ## Descripción
-Proyecto realizado para el curso de Metodos de Pruebas para la unmsm.
-Aplicativo web con funcionalidad de publicar anuncios.
+Aplicativo web con funcionalidad de publicar anuncios, registrarse y contactar con el trabajador.
 
 ## STACK
 - React
@@ -57,7 +56,7 @@ Rutas accesibles para usuarios que no tienen una cuenta en CONTATEC:
 * Explorar Anuncio: https://contactec-front.vercel.app/explorar
 ## Despliegue
 La forma más sencilla de implementar la pagina web CONTATEC con Next.js es utilizar la plataforma Vercel ([Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)) de los creadores de Next.js.
-## Screenshots
+## Previsualización
 
 * Home
 
@@ -74,3 +73,5 @@ La forma más sencilla de implementar la pagina web CONTATEC con Next.js es util
 * Perfil
 
 ![Perfil](https://github.com/CbazCode/contatec-frontend/blob/Jesus-Leon-readme/Imagenes/Perfil.png)
+
+* Restablecer Contraseña
