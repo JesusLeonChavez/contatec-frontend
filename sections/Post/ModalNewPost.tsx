@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /* eslint-disable camelcase */
 import "@pathofdev/react-tag-input/build/index.css"
 import ReactTagInput from "@pathofdev/react-tag-input"

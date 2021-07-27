@@ -1,0 +1,1692 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeaturedServices debe renderizarse el componente 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    class="chakra-ui-light"
+  >
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+    <div>
+      <div
+        class="generalWrapper"
+      >
+        <div
+          class="css-1i40juj"
+        >
+          <p
+            class="chakra-text bold600 css-1nypnod"
+          >
+            Servicios destacados
+          </p>
+        </div>
+        <div
+          align="center"
+          class="chakra-tabs css-13o7eu2"
+        >
+          <div
+            aria-orientation="horizontal"
+            class="chakra-tabs__tablist css-ksvmh9"
+            role="tablist"
+          >
+            <button
+              aria-controls="tabs-1--tabpanel-0"
+              aria-selected="true"
+              class="chakra-tabs__tab css-137r715"
+              data-index="0"
+              id="tabs-1--tab-0"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              Marketing digital
+            </button>
+            <button
+              aria-controls="tabs-1--tabpanel-1"
+              aria-selected="false"
+              class="chakra-tabs__tab css-137r715"
+              data-index="1"
+              id="tabs-1--tab-1"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Desarrollo web
+            </button>
+            <button
+              aria-controls="tabs-1--tabpanel-2"
+              aria-selected="false"
+              class="chakra-tabs__tab css-137r715"
+              data-index="2"
+              id="tabs-1--tab-2"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Programación
+            </button>
+          </div>
+          <div
+            class="chakra-tabs__tab-panels css-8atqhb"
+          >
+            <div
+              aria-labelledby="tabs-1--tab-0"
+              class="chakra-tabs__tab-panel css-a5mhaz"
+              id="tabs-1--tabpanel-0"
+              role="tabpanel"
+              tabindex="0"
+            >
+              <div
+                class="swiper-container swiper-container-initialized swiper-container-horizontal mySwiperTab"
+              >
+                <div
+                  class="swiper-button-prev"
+                />
+                <div
+                  class="swiper-button-next"
+                />
+                <div
+                  class="swiper-wrapper"
+                  style="transition-duration: 0ms; transform: translate3d(NaNpx, 0px, 0px);"
+                >
+                  <div
+                    class="swiper-slide swiper-slide-duplicate"
+                    data-swiper-slide-index="0"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Marketing de contenido"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Marketing de contenido
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              300
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide swiper-slide-duplicate"
+                    data-swiper-slide-index="1"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Estrategia de marketing"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Estrategia de marketing
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              200
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide swiper-slide-duplicate"
+                    data-swiper-slide-index="2"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Crowfunding"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Crowfunding
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              150
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide swiper-slide-duplicate"
+                    data-swiper-slide-index="3"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Marketing de contenido"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Marketing de contenido
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              300
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide"
+                    data-swiper-slide-index="0"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Marketing de contenido"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Marketing de contenido
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              300
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide"
+                    data-swiper-slide-index="1"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Estrategia de marketing"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Estrategia de marketing
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              200
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide"
+                    data-swiper-slide-index="2"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Crowfunding"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Crowfunding
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              150
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide"
+                    data-swiper-slide-index="3"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Marketing de contenido"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Marketing de contenido
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              300
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide swiper-slide-duplicate"
+                    data-swiper-slide-index="0"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Marketing de contenido"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Marketing de contenido
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              300
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide swiper-slide-duplicate"
+                    data-swiper-slide-index="1"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Estrategia de marketing"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Estrategia de marketing
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              200
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide swiper-slide-duplicate"
+                    data-swiper-slide-index="2"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Crowfunding"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Crowfunding
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              150
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="swiper-slide swiper-slide-duplicate"
+                    data-swiper-slide-index="3"
+                  >
+                    <div
+                      class="css-1uc1m7v"
+                    >
+                      <div
+                        style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                      >
+                        <div
+                          style="box-sizing: border-box; display: block; max-width: 100%;"
+                        >
+                          <img
+                            alt=""
+                            aria-hidden="true"
+                            role="presentation"
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                            style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                          />
+                        </div>
+                        <noscript />
+                        <img
+                          alt="Marketing de contenido"
+                          decoding="async"
+                          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                        />
+                      </div>
+                      <div
+                        class="css-r4358i"
+                      >
+                        <div
+                          class="css-u6v8er"
+                        >
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold500 css-qqfgvy"
+                            >
+                              Marketing de contenido
+                            </p>
+                          </div>
+                          <div
+                            class="css-gmuwbf"
+                          >
+                            <p
+                              class="chakra-text bold200 css-1123zjm"
+                            >
+                              Desde S/. 
+                              300
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-labelledby="tabs-1--tab-1"
+              class="chakra-tabs__tab-panel css-a5mhaz"
+              hidden=""
+              id="tabs-1--tabpanel-1"
+              role="tabpanel"
+              tabindex="0"
+            />
+            <div
+              aria-labelledby="tabs-1--tab-2"
+              class="chakra-tabs__tab-panel css-a5mhaz"
+              hidden=""
+              id="tabs-1--tabpanel-2"
+              role="tabpanel"
+              tabindex="0"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="generalWrapper"
+    >
+      <div
+        class="css-1i40juj"
+      >
+        <p
+          class="chakra-text bold600 css-1nypnod"
+        >
+          Servicios destacados
+        </p>
+      </div>
+      <div
+        align="center"
+        class="chakra-tabs css-13o7eu2"
+      >
+        <div
+          aria-orientation="horizontal"
+          class="chakra-tabs__tablist css-ksvmh9"
+          role="tablist"
+        >
+          <button
+            aria-controls="tabs-1--tabpanel-0"
+            aria-selected="true"
+            class="chakra-tabs__tab css-137r715"
+            data-index="0"
+            id="tabs-1--tab-0"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            Marketing digital
+          </button>
+          <button
+            aria-controls="tabs-1--tabpanel-1"
+            aria-selected="false"
+            class="chakra-tabs__tab css-137r715"
+            data-index="1"
+            id="tabs-1--tab-1"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Desarrollo web
+          </button>
+          <button
+            aria-controls="tabs-1--tabpanel-2"
+            aria-selected="false"
+            class="chakra-tabs__tab css-137r715"
+            data-index="2"
+            id="tabs-1--tab-2"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Programación
+          </button>
+        </div>
+        <div
+          class="chakra-tabs__tab-panels css-8atqhb"
+        >
+          <div
+            aria-labelledby="tabs-1--tab-0"
+            class="chakra-tabs__tab-panel css-a5mhaz"
+            id="tabs-1--tabpanel-0"
+            role="tabpanel"
+            tabindex="0"
+          >
+            <div
+              class="swiper-container swiper-container-initialized swiper-container-horizontal mySwiperTab"
+            >
+              <div
+                class="swiper-button-prev"
+              />
+              <div
+                class="swiper-button-next"
+              />
+              <div
+                class="swiper-wrapper"
+                style="transition-duration: 0ms; transform: translate3d(NaNpx, 0px, 0px);"
+              >
+                <div
+                  class="swiper-slide swiper-slide-duplicate"
+                  data-swiper-slide-index="0"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Marketing de contenido"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Marketing de contenido
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            300
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide swiper-slide-duplicate"
+                  data-swiper-slide-index="1"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Estrategia de marketing"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Estrategia de marketing
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            200
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide swiper-slide-duplicate"
+                  data-swiper-slide-index="2"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Crowfunding"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Crowfunding
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            150
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide swiper-slide-duplicate"
+                  data-swiper-slide-index="3"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Marketing de contenido"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Marketing de contenido
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            300
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  data-swiper-slide-index="0"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Marketing de contenido"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Marketing de contenido
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            300
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  data-swiper-slide-index="1"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Estrategia de marketing"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Estrategia de marketing
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            200
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  data-swiper-slide-index="2"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Crowfunding"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Crowfunding
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            150
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  data-swiper-slide-index="3"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Marketing de contenido"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Marketing de contenido
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            300
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide swiper-slide-duplicate"
+                  data-swiper-slide-index="0"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Marketing de contenido"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Marketing de contenido
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            300
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide swiper-slide-duplicate"
+                  data-swiper-slide-index="1"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Estrategia de marketing"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Estrategia de marketing
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            200
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide swiper-slide-duplicate"
+                  data-swiper-slide-index="2"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Crowfunding"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Crowfunding
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            150
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide swiper-slide-duplicate"
+                  data-swiper-slide-index="3"
+                >
+                  <div
+                    class="css-1uc1m7v"
+                  >
+                    <div
+                      style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                    >
+                      <div
+                        style="box-sizing: border-box; display: block; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                        />
+                      </div>
+                      <noscript />
+                      <img
+                        alt="Marketing de contenido"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                    </div>
+                    <div
+                      class="css-r4358i"
+                    >
+                      <div
+                        class="css-u6v8er"
+                      >
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold500 css-qqfgvy"
+                          >
+                            Marketing de contenido
+                          </p>
+                        </div>
+                        <div
+                          class="css-gmuwbf"
+                        >
+                          <p
+                            class="chakra-text bold200 css-1123zjm"
+                          >
+                            Desde S/. 
+                            300
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-labelledby="tabs-1--tab-1"
+            class="chakra-tabs__tab-panel css-a5mhaz"
+            hidden=""
+            id="tabs-1--tabpanel-1"
+            role="tabpanel"
+            tabindex="0"
+          />
+          <div
+            aria-labelledby="tabs-1--tab-2"
+            class="chakra-tabs__tab-panel css-a5mhaz"
+            hidden=""
+            id="tabs-1--tabpanel-2"
+            role="tabpanel"
+            tabindex="0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
