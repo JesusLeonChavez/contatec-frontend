@@ -75,3 +75,5 @@ La forma más sencilla de implementar la pagina web CONTATEC con Next.js es util
 ![Perfil](https://github.com/CbazCode/contatec-frontend/blob/Jesus-Leon-readme/Imagenes/Perfil.png)
 
 * Restablecer Contraseña
+
+![Perfil](https://github.com/CbazCode/contatec-frontend/blob/Jesus-Leon-readme/Imagenes/Reset.png)
