@@ -61,11 +61,16 @@ La forma más sencilla de implementar la pagina web CONTATEC con Next.js es util
 
 * Home
 
+![Home](https://github.com/CbazCode/contatec-frontend/blob/Jesus-Leon-readme/Imagenes/Home.png)
+
 * Explorar anuncio
+
+![Explorar anuncio](https://github.com/CbazCode/contatec-frontend/blob/Jesus-Leon-readme/Imagenes/Explorar%20anuncio.png)
 
 * Publicar
 
+![Publicar](https://github.com/CbazCode/contatec-frontend/blob/Jesus-Leon-readme/Imagenes/Publicar.png)
+
 * Perfil
 
-* Restablecer Contraseña
-
+![Perfil](https://github.com/CbazCode/contatec-frontend/blob/Jesus-Leon-readme/Imagenes/Perfil.png)
