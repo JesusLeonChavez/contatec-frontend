@@ -62,7 +62,7 @@ export default function Dialog({
             flexDirection="column"
             alignItems="center"
           >
-            <ZIcon name={icon} size={50} color={color} />
+            <ZIcon name={icon} size={35} color={color} />
             <Text align="center" p="4" color="primary">
               {content}
             </Text>
