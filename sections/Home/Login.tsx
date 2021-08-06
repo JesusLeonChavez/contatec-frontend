@@ -24,6 +24,7 @@ import { validLogin } from "./utils/valid"
 import { post } from "../../utils/http"
 import { DataContext } from "../../store/GlobalState"
 import showToast from "../../components/Toast"
+// import Socket from "socket.io-client"
 
 type PropsRegister = {
   variant: string
@@ -32,12 +33,21 @@ type PropsRegister = {
   isLoading?: boolean
 }
 
+// const PORT = process.env.NEXT_PUBLIC_API_BASE_URL
+
 export default function Login({
   variant,
   width,
   showModalButtonText
 }: PropsRegister) {
   // eslint-disable-next-line no-unused-vars
+  // const socket = Socket(PORT)
+
+  // useEffect(() => {
+  //   socket.on("connect", () => {
+  //     socket.emit("identity", 1)
+  //   })
+  // }, [])
   const { state, dispatch } = useContext(DataContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [isPosting, setIsPosting] = useState(false)
