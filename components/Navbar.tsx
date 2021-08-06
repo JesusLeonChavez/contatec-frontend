@@ -20,6 +20,7 @@ import { useRouter } from "next/router"
 import { DataContext } from "../store/GlobalState"
 import React, { useContext } from "react"
 import { get } from "../utils/http"
+import Loading from "../components/Loading"
 
 export default function Navbar() {
   const router = useRouter()
@@ -176,9 +177,7 @@ export default function Navbar() {
             )}
           </>
         ) : (
-          <Box>
-            <Text>Entrando ...</Text>
-          </Box>
+          <Loading content="" />
         )}
       </nav>
     </div>
