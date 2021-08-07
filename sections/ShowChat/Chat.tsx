@@ -11,6 +11,8 @@ import {
 } from "@chakra-ui/react"
 import ZIcon from "../../components/Icon"
 import Messages from "../ShowChat/Messages"
+import Users from "../ShowChat/Users"
+import Message from "../ShowChat/Message"
 
 export default function Chat() {
   return (
@@ -30,32 +32,22 @@ export default function Chat() {
         <Box w="300px" border="2px solid #DBD9DC">
           <TabList>
             <Text>Chats</Text>
-            <Tab>Leónidas</Tab>
-            <Tab>Varyana</Tab>
-            <Tab>Lucy</Tab>
-            <Tab>Sofia</Tab>
-            <Tab>Kioshi</Tab>
+            {[1, 2, 3, 4, 5, 6].map((notifElement, idx) => (
+            <Tab>
+              <Users />
+            </Tab>
+            ))}
           </TabList>
         </Box>
         <Box w="800px" border="2px solid #DBD9DC">
           <Box h="50px" border="2px solid #DBD9DC"></Box>
           <Box h="650px" border="2px solid #DBD9DC">
             <TabPanels>
-              <TabPanel>
-                <Text>Soy Leonidas</Text>
-              </TabPanel>
-              <TabPanel>
-                <Text>Soy Varyana</Text>
-              </TabPanel>
-              <TabPanel>
-                <Text>Soy Lucy</Text>
-              </TabPanel>
-              <TabPanel>
-                <Text>Soy Sofia</Text>
-              </TabPanel>
-              <TabPanel>
-                <Text>Soy Kioshi</Text>
-              </TabPanel>
+              {[1, 2, 3, 4, 5, 6].map((notifElement, idx) => (
+                <TabPanel>
+                  <Message />
+                </TabPanel>
+                ))}
             </TabPanels>
           </Box>
           <Box h="200px" border="2px solid #DBD9DC">
