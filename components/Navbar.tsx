@@ -3,6 +3,8 @@ import styles from "../styles/components/Navbar.module.css"
 import ZIcon from "../components/Icon"
 import Register from "../sections/Home/Register"
 import Login from "../sections/Home/Login"
+import Notifications from "../components/Notifications"
+import Inbox from "../components/Inbox"
 import {
   Flex,
   Button,
@@ -14,7 +16,12 @@ import {
   PopoverHeader,
   PopoverBody,
   PopoverArrow,
-  PopoverCloseButton
+  PopoverCloseButton,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanels,
+  TabPanel
 } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { DataContext } from "../store/GlobalState"
@@ -50,7 +57,7 @@ export default function Navbar() {
           <PopoverTrigger>
             <Box px="4" position="relative">
               {/* <ZIcon name="ring" color="primary" size={20} pointer /> */}
-              <Text cursor="pointer">Mis mensajes</Text>
+              <Text cursor="pointer">Mensajes</Text>
               <Box
                 h="2"
                 w="2"
@@ -68,25 +75,35 @@ export default function Navbar() {
               _focus={{ outline: "none" }}
               _active={{ outline: "none" }}
             />
-            <PopoverHeader>
-              <Text color="gray">Mis notificaciones (3)</Text>
-            </PopoverHeader>
-            <PopoverBody>
-              <Box h="200" overflow="auto" minW="xl">
-                {[1, 2, 3, 4, 5, 6].map((notifElement, idx) => (
-                  <Flex color="gray" align="center" py="1" minW="80" key={idx}>
-                    <ZIcon name="avatar" color="primary" size={35} />
-                    <Text px="4">
-                      <b style={{ color: "var(--secondary)" }}>Juancho</b> - Se
-                      acaba de publicar un evento:{" "}
-                      <b style={{ color: "var(--secondary)" }}>Matrimonio</b>
-                    </Text>
-                  </Flex>
-                ))}
-              </Box>
-            </PopoverBody>
+            <Tabs>
+              <TabList>
+                <Tab>
+                  <PopoverHeader>
+                    <Text color="gray">Notificaciones (3)</Text>
+                  </PopoverHeader>
+                </Tab>
+                <Tab>
+                  <PopoverHeader>
+                    <Text color="gray">Bandeja de entrada (3)</Text>
+                  </PopoverHeader>
+                </Tab>
+              </TabList>
+              <TabPanels>
+                <TabPanel>
+                  <PopoverBody>
+                    <Notifications />
+                  </PopoverBody>
+                </TabPanel>
+                <TabPanel>
+                  <PopoverBody>
+                    <Inbox />
+                  </PopoverBody>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
           </PopoverContent>
         </Popover>
+
         <Popover placement="bottom-end">
           <PopoverTrigger>
             <Box px="4">
