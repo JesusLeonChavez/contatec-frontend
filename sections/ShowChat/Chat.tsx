@@ -1,6 +1,5 @@
 import {
   Box,
-  // Button,
   Flex,
   Text,
   Tabs,
@@ -23,12 +22,12 @@ export default function Chat() {
       mt="10"
       mb="10"
       display="flex"
-      w="1100px"
-      h="1000px"
+      w="1102px"
+      h="998px"
       border="3px solid #DBD9DC"
     >
       <Tabs align="center" orientation="vertical" variant="unstyled" isLazy>
-        <Box w="300px" border="3px solid #DBD9DC">
+        <Box w="300px" border="1px solid #DBD9DC">
           <TabList>
             <Text ml="5" p="4" align="start" color="#482F51" fontSize="25">
               Chats
@@ -46,8 +45,8 @@ export default function Chat() {
             ))}
           </TabList>
         </Box>
-        <Box w="800px" border="3px solid #DBD9DC">
-          <Box h="50px" border="3px solid #DBD9DC">
+        <Box w="799px" border="1px solid #DBD9DC">
+          <Box h="50px" border="1px solid #DBD9DC">
             <TabPanels>
               {[1, 2, 3].map((userNameElemnt, idx) => (
                 // eslint-disable-next-line react/jsx-key
@@ -57,7 +56,7 @@ export default function Chat() {
               ))}
             </TabPanels>
           </Box>
-          <Box h="650px" border="3px solid #DBD9DC">
+          <Box h="650px" border="1px solid #DBD9DC">
             <TabPanels>
               {[1, 2, 3].map((messageElemnt, idx) => (
                 // eslint-disable-next-line react/jsx-key
@@ -67,15 +66,15 @@ export default function Chat() {
               ))}
             </TabPanels>
           </Box>
-          <Box h="200px" border="3px solid #DBD9DC">
+          <Box h="200px" border="1px solid #DBD9DC">
             <Messages />
           </Box>
           <Flex
             bg="#F2F2F2"
             justify="start"
             direction="column"
-            h="90px"
-            border="3px solid #DBD9DC"
+            h="91px"
+            border="1px solid #DBD9DC"
           >
             <Flex
               padding="4"
@@ -94,10 +93,6 @@ export default function Chat() {
                     width="1xs"
                     showModalButtonText="Cotizar"
                   />
-                  {/* <Button variant="primary" p={4} color="white">
-                    <ModalNewQuote />
-                    Cotizar
-                  </Button> */}
                 </Flex>
                 <ZIcon name="buttonRight" pointer size={40} />
               </Flex>
