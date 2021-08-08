@@ -1,6 +1,6 @@
 import {
   Box,
-  Button,
+  // Button,
   Flex,
   Text,
   Tabs,
@@ -13,6 +13,8 @@ import ZIcon from "../../components/Icon"
 import Messages from "../ShowChat/Messages"
 import Users from "../ShowChat/Users"
 import Message from "../ShowChat/Message"
+import UsersName from "../ShowChat/UsersName"
+import ModalNewQuote from "../ShowChat/ModalNewQuote"
 
 export default function Chat() {
   return (
@@ -20,45 +22,60 @@ export default function Chat() {
       m="0 auto"
       mt="10"
       mb="10"
-      // textAlign="center"
       display="flex"
-      // justifyItems="center"
-      // align="center"
       w="1100px"
       h="1000px"
-      border="2px solid #DBD9DC"
+      border="3px solid #DBD9DC"
     >
       <Tabs align="center" orientation="vertical" variant="unstyled" isLazy>
-        <Box w="300px" border="2px solid #DBD9DC">
+        <Box w="300px" border="3px solid #DBD9DC">
           <TabList>
-            <Text>Chats</Text>
-            {[1, 2, 3, 4, 5, 6].map((notifElement, idx) => (
-            <Tab>
-              <Users />
-            </Tab>
+            <Text ml="5" p="4" align="start" color="#482F51" fontSize="25">
+              Chats
+            </Text>
+            {[1, 2, 3].map((userElement, idx) => (
+              // eslint-disable-next-line react/jsx-key
+              <Tab
+                _selected={{
+                  borderColor: "var(--secondary)",
+                  bg: "var(--secondary)"
+                }}
+              >
+                <Users />
+              </Tab>
             ))}
           </TabList>
         </Box>
-        <Box w="800px" border="2px solid #DBD9DC">
-          <Box h="50px" border="2px solid #DBD9DC"></Box>
-          <Box h="650px" border="2px solid #DBD9DC">
+        <Box w="800px" border="3px solid #DBD9DC">
+          <Box h="50px" border="3px solid #DBD9DC">
             <TabPanels>
-              {[1, 2, 3, 4, 5, 6].map((notifElement, idx) => (
+              {[1, 2, 3].map((userNameElemnt, idx) => (
+                // eslint-disable-next-line react/jsx-key
+                <TabPanel>
+                  <UsersName />
+                </TabPanel>
+              ))}
+            </TabPanels>
+          </Box>
+          <Box h="650px" border="3px solid #DBD9DC">
+            <TabPanels>
+              {[1, 2, 3].map((messageElemnt, idx) => (
+                // eslint-disable-next-line react/jsx-key
                 <TabPanel>
                   <Message />
                 </TabPanel>
-                ))}
+              ))}
             </TabPanels>
           </Box>
-          <Box h="200px" border="2px solid #DBD9DC">
+          <Box h="200px" border="3px solid #DBD9DC">
             <Messages />
           </Box>
           <Flex
             bg="#F2F2F2"
             justify="start"
             direction="column"
-            h="95px"
-            border="2px solid #DBD9DC"
+            h="90px"
+            border="3px solid #DBD9DC"
           >
             <Flex
               padding="4"
@@ -71,10 +88,16 @@ export default function Chat() {
                 <ZIcon name="uploadPhoto" pointer size={30} />
               </Flex>
               <Flex align="center" justify="space-between">
-                <Flex align="center" justify="space-between" w="100px">
-                  <Button variant="primary" p={4} color="white">
+                <Flex mr="5">
+                  <ModalNewQuote
+                    variant="primary"
+                    width="1xs"
+                    showModalButtonText="Cotizar"
+                  />
+                  {/* <Button variant="primary" p={4} color="white">
+                    <ModalNewQuote />
                     Cotizar
-                  </Button>
+                  </Button> */}
                 </Flex>
                 <ZIcon name="buttonRight" pointer size={40} />
               </Flex>
