@@ -1,4 +1,4 @@
-/* istanbul ignore file */
+ 
 /**
  * @typedef {import('./types').PropsIcon} PropsIcon
  */

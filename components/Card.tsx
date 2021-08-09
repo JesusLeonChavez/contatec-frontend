@@ -1,6 +1,7 @@
 import { Box, Text, Flex } from "@chakra-ui/react"
 import Image from "next/image"
 import styles from "../styles/sections/Home.module.css"
+
 export default function Card({ title, price, img }) {
   return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden">

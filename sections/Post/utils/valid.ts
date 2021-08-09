@@ -1,4 +1,4 @@
-/* istanbul ignore file */
+ 
 import { regexOnlyString, regexDecimal } from "../../../utils/regex"
 
 import { errorForm } from "../../../utils/types"
