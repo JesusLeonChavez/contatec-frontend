@@ -6,10 +6,10 @@ export default function Show() {
   return (
     <div>
       <Text color="primary" className={styles.mainLabel}>
-        Historial
+        Servicios
       </Text>
       <Text color="primary" align="start" fontWeight="medium" pb="4">
-        Puedes ver tu lista de pendientes de pago aquí.
+        Puedes ver tu lista de servicios con puntuaciones y alcance aquí
       </Text>
       <Flex justify="start" direction="column">
         <Flex
@@ -21,15 +21,15 @@ export default function Show() {
         >
           <Box>
             <Text size="md" align="start">
-              ID: 1515151
+              Nombre del servicio: Marketing digital
             </Text>
             <Text size="md" align="start">
-              Monto: s/2000
+              Alcance: 1200 usuarios
             </Text>
           </Box>
           <Flex align="center" justify="space-between" w="50px">
-            <ZIcon name="search" pointer size={20} />
-            <ZIcon name="dowload" pointer size={20} />
+            <Text fontSize="xl">4.1</Text>
+            <ZIcon name="star" color="secondary" size={20} />
           </Flex>
         </Flex>
         <Flex
@@ -41,15 +41,15 @@ export default function Show() {
         >
           <Box>
             <Text size="md" align="start">
-              ID: 1515151
+              Nombre del servicio: SEO SEM
             </Text>
             <Text size="md" align="start">
-              Monto: s/2000
+              Alcance: 900 usuarios
             </Text>
           </Box>
           <Flex align="center" justify="space-between" w="50px">
-            <ZIcon name="search" pointer size={20} />
-            <ZIcon name="dowload" pointer size={20} />
+            <Text fontSize="xl">3.8</Text>
+            <ZIcon name="star" color="secondary" size={20} />
           </Flex>
         </Flex>
       </Flex>
