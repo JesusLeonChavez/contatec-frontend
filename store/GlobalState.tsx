@@ -95,11 +95,12 @@ export const DataProvider = ({ children }) => {
           console.log("error: ", err)
         }
       }
-      dispatch({
-        type: "AUTH_READY",
-        payload: true
-      })
+      
     }
+    dispatch({
+      type: "AUTH_READY",
+      payload: true
+    })
     logging()
     get("/api/category/categories")
       .then(categories => {
