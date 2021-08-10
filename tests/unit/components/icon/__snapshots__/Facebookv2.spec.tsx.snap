@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Facebookv2 debe renderizarse el componente 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    class="chakra-ui-light"
+  >
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+    <div>
+      <svg
+        fill="none"
+        height="1.5em"
+        viewBox="0 0 29 28"
+        width="1.5em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M28.25 13.75C28.25 6.156 22.094 0 14.5 0a13.7 13.7 0 00-9.265 3.59C2.48 6.104 1.083 9.725 1.083 13.75c0 7.594 5.823 13.534 13.417 13.534 4.023 0 7.642-1.511 10.156-4.265a13.7 13.7 0 003.594-9.269z"
+          fill="#fff"
+        />
+        <path
+          d="M18.048 8.871h1.775a.444.444 0 00.443-.444v-2.66a.444.444 0 00-.443-.444H17.16a4.879 4.879 0 00-4.879 4.879v3.548H9.621l-.681 2.702 3.675.473.075 9.834 3.465.292.563-.502V17.3h2.315c.203 0 .38-.14.43-.337l.665-2.66a.444.444 0 00-.43-.552h-2.98v-3.548c0-.735.596-1.331 1.33-1.331z"
+          fill="#1877F2"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      fill="none"
+      height="1.5em"
+      viewBox="0 0 29 28"
+      width="1.5em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M28.25 13.75C28.25 6.156 22.094 0 14.5 0a13.7 13.7 0 00-9.265 3.59C2.48 6.104 1.083 9.725 1.083 13.75c0 7.594 5.823 13.534 13.417 13.534 4.023 0 7.642-1.511 10.156-4.265a13.7 13.7 0 003.594-9.269z"
+        fill="#fff"
+      />
+      <path
+        d="M18.048 8.871h1.775a.444.444 0 00.443-.444v-2.66a.444.444 0 00-.443-.444H17.16a4.879 4.879 0 00-4.879 4.879v3.548H9.621l-.681 2.702 3.675.473.075 9.834 3.465.292.563-.502V17.3h2.315c.203 0 .38-.14.43-.337l.665-2.66a.444.444 0 00-.43-.552h-2.98v-3.548c0-.735.596-1.331 1.33-1.331z"
+        fill="#1877F2"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

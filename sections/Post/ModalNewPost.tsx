@@ -233,15 +233,15 @@ export default function ModalNewPost({
           `Se ${mypost ? "editó" : "creó"} correctamente el anuncio`,
           "success"
         )
-        setTimeout(() => {
-          onClose()
-        }, 1500)
         // TODO: hacer que la actualizacion de los post sea por disptach en auth
         if (mypost) {
           dispatch({ type: "EDIT_POST", payload: res.data.data })
         } else {
           dispatch({ type: "ADD_POST", payload: res.data.data })
         }
+        setTimeout(() => {
+          onClose()
+        }, 1500)
       }
 
       // ---------------------------------------------------------

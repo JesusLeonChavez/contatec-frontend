@@ -1,8 +1,6 @@
-/* istanbul ignore file */
-
 import * as React from "react"
 
-export default function Boat(props) {
+function Boat(props) {
   return (
     <svg
       width="1em"
@@ -21,3 +19,5 @@ export default function Boat(props) {
     </svg>
   )
 }
+
+export default Boat

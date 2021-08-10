@@ -1,4 +1,4 @@
-/* istanbul ignore file */
+ 
 import React, { createContext, useEffect, useReducer } from "react"
 import { get, post, setAuth } from "../utils/http"
 import reducers from "./Reducers"
