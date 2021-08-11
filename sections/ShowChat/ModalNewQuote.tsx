@@ -15,12 +15,17 @@ import {
   Textarea
 } from "@chakra-ui/react"
 
-export default function ModalNewQuote({ variant, width, showModalButtonText }) {
+export default function ModalNewQuote({
+  variant,
+  width,
+  height,
+  showModalButtonText
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <Box>
-      <Button variant={variant} width={width} onClick={onOpen}>
+      <Button variant={variant} width={width} height={height} onClick={onOpen}>
         <Text>{showModalButtonText}</Text>
       </Button>
 
