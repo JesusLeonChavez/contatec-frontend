@@ -1,9 +1,11 @@
 import styles from "../../styles/sections/Show.module.css"
 import { Box, Text, Flex } from "@chakra-ui/react"
-import ZIcon from "../../components/Icon/ZIcon"
+// import ZIcon from "../../components/Icon/ZIcon"
 import ModalDowload from "../ShowData/ModalDowload"
+import React from "react"
+import ModalSteper from "./ModalSteper"
 
-export default function Show() {
+export default function Pay() {
   return (
     <div>
       <Text color="primary" className={styles.mainLabel}>
@@ -28,9 +30,10 @@ export default function Show() {
               Monto: S/ 2000
             </Text>
           </Box>
-          <Flex align="center" justify="space-between" w="80px">
-            <ZIcon name="search" pointer size={20} />
-            <ModalDowload variant="" width="" showModalButtonText="" />
+          <Flex align="center" justify="space-around" w="80px">
+            {/* <ZIcon name="search" pointer size={20} /> */}
+            <ModalSteper />
+            <ModalDowload />
           </Flex>
         </Flex>
         <Flex
@@ -48,9 +51,9 @@ export default function Show() {
               Monto: S/ 3000
             </Text>
           </Box>
-          <Flex align="center" justify="space-between" w="80px">
-            <ZIcon name="search" pointer size={20} />
-            <ModalDowload variant="" width="" showModalButtonText="" />
+          <Flex align="center" justify="space-around" w="80px">
+            <ModalSteper />
+            <ModalDowload />
           </Flex>
         </Flex>
       </Flex>

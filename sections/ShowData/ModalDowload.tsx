@@ -6,115 +6,136 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
+  ModalCloseButton,
   ModalBody,
   useDisclosure,
   FormControl,
   FormLabel,
   Grid,
-  ButtonGroup
+  ModalFooter
 } from "@chakra-ui/react"
 import ZIcon from "../../components/Icon/ZIcon"
 
-export default function ModalNewQuote({ variant, width, showModalButtonText }) {
+export default function ModalDowload() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <Box>
-      <Button variant={variant} width={width} onClick={onOpen}>
-        <ZIcon name="dowload" pointer size={20} />
-      </Button>
+      <ZIcon name="dowload" pointer size={20} onClick={onOpen} />
 
-      <Modal isOpen={isOpen} onClose={onClose} size="3xl">
+      <Modal isOpen={isOpen} onClose={onClose} size="3xl" isCentered>
         <ModalOverlay />
 
         <ModalContent>
           <ModalHeader>
-            <Text align="center" color="primary" py="2" fontSize="25px">
+            <Text
+              align="center"
+              color="primary"
+              py="6"
+              fontSize="3xl"
+              fontWeight="bold"
+            >
               Comprobante 1057662
             </Text>
           </ModalHeader>
+          <ModalCloseButton _focus={{ outline: "none" }} />
 
-          <ModalBody color="primary" px="10">
+          <ModalBody color="primary" px="20">
             <Grid templateColumns="repeat(2,1fr)" gap="6">
               <FormControl mb="2">
-                <FormLabel color="primary" fontWeight="medium" fontSize="20px">
+                <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Nombre del servicio:
                 </FormLabel>
-                <Text>Marketing para redes</Text>
+                <Text fontSize="md" color="letter" fontWeight="light">
+                  Marketing para redes
+                </Text>
               </FormControl>
 
               <FormControl mb="2">
-                <FormLabel color="primary" fontWeight="medium" fontSize="20px">
+                <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Nombre del proyecto:
                 </FormLabel>
-                <Text>Marketea tu dia</Text>
+                <Text fontSize="md" color="letter" fontWeight="light">
+                  Marketea tu dia
+                </Text>
               </FormControl>
-            </Grid>
 
-            <Grid templateColumns="repeat(2,1fr)" gap="6">
               <FormControl mb="2">
-                <FormLabel color="primary" fontWeight="medium" fontSize="20px">
+                <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Presupuesto:
                 </FormLabel>
-                <Text>s/ 2000</Text>
+                <Text fontSize="md" color="letter" fontWeight="light">
+                  s/ 2000
+                </Text>
               </FormControl>
 
               <FormControl mb="2">
-                <FormLabel color="primary" fontWeight="medium" fontSize="20px">
+                <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Cuenta total:
                 </FormLabel>
-                <Text>s/ 2500</Text>
+                <Text fontSize="md" color="letter" fontWeight="light">
+                  s/ 2500
+                </Text>
               </FormControl>
-            </Grid>
 
-            <Grid templateColumns="repeat(2,1fr)" gap="6">
               <FormControl mb="2">
-                <FormLabel color="primary" fontWeight="medium" fontSize="20px">
+                <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Fecha de inicio:
                 </FormLabel>
-                <Text>11-10-21</Text>
+                <Text fontSize="md" color="letter" fontWeight="light">
+                  11-10-21
+                </Text>
               </FormControl>
 
               <FormControl mb="2">
-                <FormLabel color="primary" fontWeight="medium" fontSize="20px">
+                <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Fecha final:
                 </FormLabel>
-                <Text>11-11-21</Text>
+                <Text fontSize="md" color="letter" fontWeight="light">
+                  11-11-21
+                </Text>
               </FormControl>
-            </Grid>
 
-            <Grid templateColumns="repeat(2,1fr)" gap="6">
               <FormControl mb="2">
-                <FormLabel color="primary" fontWeight="medium" fontSize="20px">
+                <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Cliente:
                 </FormLabel>
-                <Text>Varyana León</Text>
+                <Text fontSize="md" color="letter" fontWeight="light">
+                  Varyana León
+                </Text>
               </FormControl>
 
               <FormControl mb="2">
-                <FormLabel color="primary" fontWeight="medium" fontSize="20px">
+                <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Trabajador:
                 </FormLabel>
-                <Text>Leónidas León</Text>
+                <Text fontSize="md" color="letter" fontWeight="light">
+                  Leónidas León
+                </Text>
               </FormControl>
             </Grid>
-
-            <ButtonGroup mt="25" float="right" templateColumns="repeat(2,1fr)">
-              <Button bg="transparent" fontSize="sm" width="100px">
-                cancelar
-              </Button>
-
-              <Button
-                fontSize="sm"
-                width="100px"
-                variant="primary"
-                type="submit"
-                className="buttonDisabledPrimary"
-              >
-                Descargar
-              </Button>
-            </ButtonGroup>
           </ModalBody>
+          <ModalFooter>
+            <Button
+              bg="transparent"
+              variant="light"
+              fontSize="sm"
+              width="100px"
+              onClick={onClose}
+            >
+              Cancelar
+            </Button>
+
+            <Button
+              fontSize="sm"
+              width="100px"
+              variant="primary"
+              type="submit"
+              className="buttonDisabledPrimary"
+            >
+              Descargar
+            </Button>
+          </ModalFooter>
         </ModalContent>
       </Modal>
     </Box>
