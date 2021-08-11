@@ -1,4 +1,3 @@
- 
 import React, { createContext, useEffect, useReducer } from "react"
 import { get, post, setAuth } from "../utils/http"
 import reducers from "./Reducers"
@@ -95,7 +94,6 @@ export const DataProvider = ({ children }) => {
           console.log("error: ", err)
         }
       }
-      
     }
     dispatch({
       type: "AUTH_READY",
