@@ -1,15 +1,39 @@
-import { Box, Flex, Text } from "@chakra-ui/react"
-import ZIcon from "../../components/Icon"
+import { Avatar, Box, Flex, Text } from "@chakra-ui/react"
 
-export default function Message(own) {
+interface MessageProps {
+  own?: boolean
+}
+export default function Message({ own }: MessageProps) {
   return (
-    <Box h="200" overflow="auto" minW="xl">
-      <div>
-        <Flex px="5" color="gray" align="center" py="1" minW="80">
-          <ZIcon name="avatar" color="primary" size={50} />
-          <Text px="4">Estoy interesada en cotizar un proyecto </Text>
+    <Flex
+      d="flex"
+      justify={`${own === true ? "end" : "start"}`}
+      align="center"
+      my="3"
+      mx="2"
+    >
+      <Box maxW="500px">
+        <Flex
+          px="5"
+          color="gray"
+          align="center"
+          py="1"
+          maxW="500px"
+          direction={`${own === true ? "row-reverse" : "row"}`}
+        >
+          <Avatar size="md" name="name" position="relative" mx="2" />
+          <Text
+            px="4"
+            bg={`${own === true ? "primary" : "gray.100"}`}
+            color={`${own === true ? "white" : "primary"}`}
+            borderRadius="lg"
+            py="2"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam,
+            voluptas.
+          </Text>
         </Flex>
-      </div>
-    </Box>
+      </Box>
+    </Flex>
   )
 }

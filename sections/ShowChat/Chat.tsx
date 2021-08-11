@@ -16,11 +16,15 @@ import Users from "../ShowChat/Users"
 import Message from "../ShowChat/Message"
 import UsersName from "../ShowChat/UsersName"
 import ModalNewQuote from "../ShowChat/ModalNewQuote"
+import { useState } from "react"
 
 export default function Chat() {
   // const [setUsers] = useState([])
   // const [usersNames] = useState([])
-
+  const [activeChat, setActiveChat] = useState(-1)
+  const handleActiveChat = idx => {
+    setActiveChat(idx)
+  }
   return (
     <Box
       m="0 auto"
@@ -35,39 +39,48 @@ export default function Chat() {
         <Text ml="5" p="4" align="start" color="#482F51" fontSize="25">
           Chats
         </Text>
-        <div>
-          {[
-            {
-              nombre: "Leónidas",
-              ultimo_mensaje: "ultimo mensajes",
-              image: "/assets/marketing/markegin1.png"
-            }
-          ].map((conver, idx) => (
-            <div
-            // onClick={() => {
-            //   handleClick(idx)
-            // }}
-            >
-              <Users
-                idx={idx}
-                name={conver.nombre}
-                lastMessage={conver.ultimo_mensaje}
-                image={conver.image}
-              />
-            </div>
-          ))}
-        </div>
+
+        {[
+          {
+            nombre: "Leónidas",
+            ultimo_mensaje: "ultimo mensajesssssssssssssssssssss",
+            image: "/assets/marketing/marketing1.png"
+          },
+          {
+            nombre: "Juan",
+            ultimo_mensaje: "ultimo mensajes juan",
+            image: "/assets/marketing/marketing1.png"
+          }
+        ].map((conver, idx) => (
+          <Users
+            onClick={() => {
+              handleActiveChat(idx)
+            }}
+            idx={idx}
+            activeChat={activeChat}
+            name={conver.nombre}
+            lastMessage={conver.ultimo_mensaje}
+            image={conver.image}
+          />
+        ))}
       </Box>
       <Box w="799px" border="1px solid #DBD9DC">
-        <Box h="50px" border="1px solid #DBD9DC">
-          <div>
-            <UsersName />
-          </div>
-        </Box>
+        <Flex h="50px" border="1px solid #DBD9DC" align="center">
+          <UsersName />
+        </Flex>
         <Box overflowY="scroll" h="650px" border="1px solid #DBD9DC">
-          <div>
-            <Message />
-          </div>
+          <Message />
+          <Message />
+          <Message own />
+          <Message />
+          <Message own />
+          <Message />
+          <Message />
+          <Message />
+          <Message />
+          <Message />
+          <Message />
+          <Message />
         </Box>
         <Box h="200px" border="1px solid #DBD9DC">
           <SendMessage />
