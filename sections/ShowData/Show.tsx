@@ -1,8 +1,7 @@
 import ShowData from "../../sections/ShowData/Data"
 import ShowPassword from "../../sections/ShowData/Password"
 import ShowPay from "../../sections/ShowData/Pay"
-import ShowHistory from "../../sections/ShowData/History"
-import ShowMethods from "../../sections/ShowData/Methods"
+import ShowServices from "../ShowData/Services"
 import { TabList, TabPanels, TabPanel, Tab, Tabs, Text } from "@chakra-ui/react"
 
 export default function ShowD({ auth }) {
@@ -40,7 +39,7 @@ export default function ShowD({ auth }) {
                 fontWeight: "semibold"
               }}
             >
-              Realizar Pagos
+              Pagos
             </Tab>
             <Tab
               _selected={{
@@ -49,19 +48,10 @@ export default function ShowD({ auth }) {
                 fontWeight: "semibold"
               }}
             >
-              Historial
-            </Tab>
-            <Tab
-              _selected={{
-                color: "primary",
-                boxShadow: "none",
-                fontWeight: "semibold"
-              }}
-            >
-              Metódos de pago
+              Servicios
             </Tab>
           </TabList>
-          <TabPanels h="500px" pl="10%">
+          <TabPanels h="400px" pl="10%">
             <TabPanel>
               <ShowData />
             </TabPanel>
@@ -72,10 +62,7 @@ export default function ShowD({ auth }) {
               <ShowPay />
             </TabPanel>
             <TabPanel>
-              <ShowHistory />
-            </TabPanel>
-            <TabPanel>
-              <ShowMethods />
+              <ShowServices />
             </TabPanel>
           </TabPanels>
         </Tabs>
