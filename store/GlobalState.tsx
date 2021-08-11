@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import React, { createContext, useEffect, useReducer } from "react"
 import { get, post, setAuth } from "../utils/http"
 import reducers from "./Reducers"
@@ -96,6 +95,10 @@ export const DataProvider = ({ children }) => {
         }
       }
     }
+    dispatch({
+      type: "AUTH_READY",
+      payload: true
+    })
     logging()
     dispatch({
       type: "AUTH_READY",

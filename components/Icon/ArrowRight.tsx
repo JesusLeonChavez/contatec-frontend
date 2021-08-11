@@ -1,4 +1,4 @@
-/* istanbul ignore file */
+ 
 import * as React from "react"
 
 function ArrowRight(props) {

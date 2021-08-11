@@ -1,4 +1,4 @@
-/* istanbul ignore file */
+ 
 interface ImageProps {
   // eslint-disable-next-line camelcase
   public_id: string

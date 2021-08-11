@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-/* istanbul ignore file */
+ 
 import React from "react"
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from "prop-types"
