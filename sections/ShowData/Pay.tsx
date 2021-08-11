@@ -5,6 +5,32 @@ import ModalDowload from "../ShowData/ModalDowload"
 import React from "react"
 import ModalSteper from "./ModalSteper"
 
+function PayCard() {
+  return (
+    <Flex
+      backgroundColor="gray.200"
+      padding="4"
+      marginBottom="20px"
+      justifyContent="space-between"
+      w="80%"
+    >
+      <Box>
+        <Text size="md" align="start">
+          Servicio: Marketing para redes
+        </Text>
+        <Text size="md" align="start">
+          Monto: S/ 2000
+        </Text>
+      </Box>
+      <Flex align="center" justify="space-around" w="80px">
+        {/* <ZIcon name="search" pointer size={20} /> */}
+        <ModalSteper />
+        <ModalDowload />
+      </Flex>
+    </Flex>
+  )
+}
+
 export default function Pay() {
   return (
     <div>
@@ -14,49 +40,13 @@ export default function Pay() {
       <Text color="primary" align="start" fontWeight="medium" pb="4">
         Puedes revisar tu lista de pagos y sus estado aquí.
       </Text>
-      <Flex justify="start" direction="column">
-        <Flex
-          backgroundColor="gray.200"
-          padding="4"
-          marginBottom="20px"
-          justifyContent="space-between"
-          w="80%"
-        >
-          <Box>
-            <Text size="md" align="start">
-              Servicio: Marketing para redes
-            </Text>
-            <Text size="md" align="start">
-              Monto: S/ 2000
-            </Text>
-          </Box>
-          <Flex align="center" justify="space-around" w="80px">
-            {/* <ZIcon name="search" pointer size={20} /> */}
-            <ModalSteper />
-            <ModalDowload />
-          </Flex>
+      <Box overflowY="scroll" h="250px">
+        <Flex justify="start" direction="column">
+          {[1, 2, 3, 4, 5].map((item, index) => (
+            <PayCard key={index} />
+          ))}
         </Flex>
-        <Flex
-          backgroundColor="gray.200"
-          padding="4"
-          marginBottom="20px"
-          justifyContent="space-between"
-          w="80%"
-        >
-          <Box>
-            <Text size="md" align="start">
-              Servicio: SEO SEM
-            </Text>
-            <Text size="md" align="start">
-              Monto: S/ 3000
-            </Text>
-          </Box>
-          <Flex align="center" justify="space-around" w="80px">
-            <ModalSteper />
-            <ModalDowload />
-          </Flex>
-        </Flex>
-      </Flex>
+      </Box>
     </div>
   )
 }
