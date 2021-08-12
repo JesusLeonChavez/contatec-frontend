@@ -26,6 +26,7 @@ export default function Chat() {
   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState("")
   const textArearef = useRef()
+  const scrollRef = useRef()
   const handleActiveChat = idx => {
     setActiveChat(idx)
   }
@@ -50,6 +51,10 @@ export default function Chat() {
     setNewMessage("")
     textArearef.current?.focus()
   }
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ block: "end", behavior: "smooth" })
+  }, [currentChat])
 
   const handleSendMessage = () => {
     sendMessage()
@@ -106,18 +111,33 @@ export default function Chat() {
               <UsersName />
             </Flex>
             <Box overflowY="scroll" h="650px" border="1px solid #DBD9DC">
-              <Message />
-              <Message />
-              <Message own />
-              <Message />
-              <Message own />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
+              <div ref={scrollRef}>
+                <Message />
+              </div>
+              <div ref={scrollRef}>
+                <Message />
+              </div>
+              <div ref={scrollRef}>
+                <Message />
+              </div>
+              <div ref={scrollRef}>
+                <Message />
+              </div>
+              <div ref={scrollRef}>
+                <Message />
+              </div>
+              <div ref={scrollRef}>
+                <Message />
+              </div>
+              <div ref={scrollRef}>
+                <Message />
+              </div>
+              <div ref={scrollRef}>
+                <Message />
+              </div>
+              <div ref={scrollRef}>
+                <Message own />
+              </div>
             </Box>
             <Box h="200px" border="1px solid #DBD9DC">
               <SendMessage
