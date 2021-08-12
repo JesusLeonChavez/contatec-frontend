@@ -16,14 +16,48 @@ import Users from "../ShowChat/Users"
 import Message from "../ShowChat/Message"
 import UsersName from "../ShowChat/UsersName"
 import ModalNewQuote from "../ShowChat/ModalNewQuote"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
+
+import { get } from "../../utils/http"
 
 export default function Chat() {
-  // const [setUsers] = useState([])
-  // const [usersNames] = useState([])
   const [activeChat, setActiveChat] = useState(-1)
+  const [currentChat, setCurrentChat] = useState(null)
+  const [messages, setMessages] = useState([])
+  const [newMessage, setNewMessage] = useState("")
+  const textArearef = useRef()
   const handleActiveChat = idx => {
     setActiveChat(idx)
+  }
+  useEffect(() => {
+    const getConversations = async () => {
+      const res = await get("/api/messages/all")
+      console.log("resMessage:", res)
+    }
+    getConversations()
+  }, [])
+  // useEffect(() => {
+  //   const getMessages = async () => {
+  //     const resMessages = await get(`/api/messages/all/${id}`)
+  //     console.log("resMessage:", resMessages)
+  //     setMessages(resMessages)
+  //   }
+  //   getMessages()
+  // },[currentChat])
+  const sendMessage = () => {
+    console.log(newMessage)
+    // setMessages([...messages, nuevoMensajeQuedevuelveunPost])
+    setNewMessage("")
+    textArearef.current?.focus()
+  }
+
+  const handleSendMessage = () => {
+    sendMessage()
+  }
+  const onKeyDown = e => {
+    if (e.keyCode == "13") {
+      sendMessage()
+    }
   }
   return (
     <Box
@@ -55,6 +89,7 @@ export default function Chat() {
           <Users
             onClick={() => {
               handleActiveChat(idx)
+              setCurrentChat(conver)
             }}
             idx={idx}
             activeChat={activeChat}
@@ -64,55 +99,73 @@ export default function Chat() {
           />
         ))}
       </Box>
-      <Box w="799px" border="1px solid #DBD9DC">
-        <Flex h="50px" border="1px solid #DBD9DC" align="center">
-          <UsersName />
-        </Flex>
-        <Box overflowY="scroll" h="650px" border="1px solid #DBD9DC">
-          <Message />
-          <Message />
-          <Message own />
-          <Message />
-          <Message own />
-          <Message />
-          <Message />
-          <Message />
-          <Message />
-          <Message />
-          <Message />
-          <Message />
-        </Box>
-        <Box h="200px" border="1px solid #DBD9DC">
-          <SendMessage />
-        </Box>
-        <Box
-          bg="#F2F2F2"
-          justify="start"
-          direction="column"
-          h="91px"
-          border="1px solid #DBD9DC"
-          align="center"
-          m="auto"
-        >
-          <Flex padding="7" justifyContent="space-between" w="100%">
-            <Flex justify="space-between" w="70px">
-              <ZIcon name="clip" pointer size={25} />
-              <ZIcon name="uploadPhoto" pointer size={25} />
+      {currentChat ? (
+        <>
+          <Box w="799px" border="1px solid #DBD9DC">
+            <Flex h="50px" border="1px solid #DBD9DC" align="center">
+              <UsersName />
             </Flex>
-            <Flex justify="space-between">
-              <Flex mr="5">
-                <ModalNewQuote
-                  variant="primary"
-                  width="100px"
-                  height="25px"
-                  showModalButtonText="Cotizar"
-                />
+            <Box overflowY="scroll" h="650px" border="1px solid #DBD9DC">
+              <Message />
+              <Message />
+              <Message own />
+              <Message />
+              <Message own />
+              <Message />
+              <Message />
+              <Message />
+              <Message />
+              <Message />
+              <Message />
+              <Message />
+            </Box>
+            <Box h="200px" border="1px solid #DBD9DC">
+              <SendMessage
+                newMessage={newMessage}
+                setNewMessage={setNewMessage}
+                onKeyDown={onKeyDown}
+                textArearef={textArearef}
+              />
+            </Box>
+            <Box
+              bg="#F2F2F2"
+              justify="start"
+              direction="column"
+              h="91px"
+              border="1px solid #DBD9DC"
+              align="center"
+              m="auto"
+            >
+              <Flex padding="7" justifyContent="space-between" w="100%">
+                <Flex justify="space-between" w="70px">
+                  <ZIcon name="clip" pointer size={25} />
+                  <ZIcon name="uploadPhoto" pointer size={25} />
+                </Flex>
+                <Flex justify="space-between">
+                  <Flex mr="5">
+                    <ModalNewQuote
+                      variant="primary"
+                      width="100px"
+                      height="25px"
+                      showModalButtonText="Cotizar"
+                    />
+                  </Flex>
+                  <ZIcon
+                    name="buttonRight"
+                    pointer
+                    size={25}
+                    onClick={handleSendMessage}
+                  />
+                </Flex>
               </Flex>
-              <ZIcon name="buttonRight" pointer size={25} />
-            </Flex>
-          </Flex>
-        </Box>
-      </Box>
+            </Box>
+          </Box>
+        </>
+      ) : (
+        <Text fontSize="2xl" p="5">
+          Seleccione un chat...
+        </Text>
+      )}
     </Box>
   )
 }
