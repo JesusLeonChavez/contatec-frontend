@@ -141,8 +141,8 @@ export default function CategoryTittle({ post }: PropsMain) {
           justify="center"
           px="3"
           my="2"
-          position="fixed"
-          right="20%"
+          position={{ base: "unset", lg: "fixed" }}
+          left={{ base: "20", lg: "70%", xl: "65%" }}
         >
           <Box boxShadow="0px 1px 4px rgba(0, 0, 0, 0.4)" px="6" py="6">
             <Grid templateColumns="repeat(1, 1fr)" gap="5">
