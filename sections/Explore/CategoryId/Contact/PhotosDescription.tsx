@@ -15,6 +15,7 @@ import SwiperCore, { Navigation, Thumbs } from "swiper/core"
 // import QuotePriceModal from "./QuotePriceModal"
 import { toCapitalFirstLetter } from "../../../../utils/toCapital"
 import { format } from "date-fns"
+import router from "next/router"
 
 SwiperCore.use([Navigation, Thumbs])
 interface PropsUserPost {
@@ -70,7 +71,12 @@ export default function CategoryTittle({ post }: PropsMain) {
         <Box>
           <Flex align="center" justify="space-between">
             <Grid templateColumns="repeat(2, 1fr)" gap="2">
-              <Button variant="fourth">
+              <Button
+                variant="fourth"
+                onClick={() => {
+                  router.push(`/explorar/${post.pstCategoriaId.id}`)
+                }}
+              >
                 {toCapitalFirstLetter(post.pstCategoriaId.cat_nombre)}
               </Button>
               <Flex align="center">
