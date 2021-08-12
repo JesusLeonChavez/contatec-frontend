@@ -21,6 +21,7 @@ import { useError } from "../../../../utils/hooks/useError"
 import { useForm } from "../../../../utils/hooks/useForm"
 
 import { validRate } from "./utils/valid"
+import { post } from "../../../../utils/http"
 // import { post } from "../../../../utils/http"
 // import showToast from "../../../../components/Toast"
 
@@ -28,14 +29,16 @@ type PropsModal = {
   variant: string
   width: string
   showModalButtonText: string
+  post: Record<string, string>
 }
 
 // TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
 
-export default function ContactWorkerModal({
+export default function RateServiceModal({
   variant,
   width,
-  showModalButtonText
+  showModalButtonText,
+  post: postItem
 }: PropsModal) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -56,13 +59,14 @@ export default function ContactWorkerModal({
     const { errors: errorsForm, isValid } = validRate(values, rate)
     setErrors(errorsForm)
     if (isValid) {
-      const body = {
-        rate,
-        description: description.toLocaleLowerCase()
+      const review = {
+        rw_score: rate,
+        rw_comentario: description.toLocaleLowerCase(),
+        rw_idPost: postItem.id
       }
-      console.log(body)
       setIsPosting(true)
-
+      const res = await post("/api/review/create", review)
+      console.log("resReview: ", res)
       setIsPosting(false)
     }
   }
