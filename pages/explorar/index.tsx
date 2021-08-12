@@ -10,7 +10,7 @@ import OurServices from "../../sections/Explore/OurServices"
 
 import InterestedService from "../../sections/Explore/InterestedService"
 
-export default function Explorar({ categories }) {
+export default function Explorar({ categories, explore }) {
   return (
     <div>
       <Head>
@@ -23,9 +23,9 @@ export default function Explorar({ categories }) {
 
       <Layout withNav withFooter>
         <CategoryTittle categories={categories} />
-        <RecomendedService />
-        <OurServices />
-        <InterestedService />
+        <RecomendedService recommended={explore.recommendedPosts} />
+        <OurServices ourServices={explore.latestPosts} />
+        <InterestedService interesting={explore.interestingPosts} />
       </Layout>
     </div>
   )
@@ -33,11 +33,17 @@ export default function Explorar({ categories }) {
 
 export const getServerSideProps = async context => {
   // const id = context.params.id
-  const res = await fetch(`${process.env.API_BASE_URL}/api/category/categories`)
+  const resCategories = await fetch(
+    `${process.env.API_BASE_URL}/api/category/categories`
+  )
+  const resExplore = await fetch(
+    `${process.env.API_BASE_URL}/api/post/explore-posts`
+  )
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const data = await res.json()
+  const dataCategories = await resCategories.json()
+  const dataExplore = await resExplore.json()
   return {
-    props: { categories: data }
+    props: { categories: dataCategories, explore: dataExplore }
   }
 }
