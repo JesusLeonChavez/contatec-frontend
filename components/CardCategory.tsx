@@ -103,7 +103,7 @@ export default function CardCategory({
                 post?.pst_imagen_1 || "/assets/images/marketing/marketing1.png"
               }
               alt={post?.pst_nombre}
-              height="600"
+              height="550"
               width="500"
             />
           </a>

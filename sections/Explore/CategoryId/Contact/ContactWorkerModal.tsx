@@ -33,6 +33,7 @@ type PropsRegister = {
   variant: string
   width: string
   showModalButtonText: string
+  creator: Record<string, string>
 }
 
 // TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
@@ -40,7 +41,8 @@ type PropsRegister = {
 export default function ContactWorkerModal({
   variant,
   width,
-  showModalButtonText
+  showModalButtonText,
+  creator
 }: PropsRegister) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   // const router = useRouter()
@@ -111,12 +113,12 @@ export default function ContactWorkerModal({
             <Flex direction="column" align="center" justify="center">
               <Avatar
                 size="2xl"
-                name="Oshigaki Kisame"
-                src="https://bit.ly/broken-link"
+                name={`${creator?.us_nombre} ${creator?.us_apellido}`}
+                src={creator.avatar}
                 mx="1"
               />
               <Text color="gray" fontSize="lg" fontWeight="light" pt="2">
-                Liliana Villanueva
+                {`${creator.us_nombre}${" "}${creator.us_apellido}`}
               </Text>
             </Flex>
           </ModalHeader>

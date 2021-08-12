@@ -21,6 +21,7 @@ export default function CategoryTittle({ creator }) {
                 <Text fontSize="sm">Colaborador de contatec</Text>
                 {/* <Button variant="primary">Contactar</Button> */}
                 <ContactWorkerModal
+                  creator={creator}
                   variant="primary"
                   width="full"
                   showModalButtonText="Contactar"
