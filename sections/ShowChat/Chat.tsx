@@ -1,45 +1,59 @@
 /* eslint-disable react/jsx-key */
-// import { useState } from "react"
-import {
-  Box,
-  Flex,
-  Text
-  // Tabs,
-  // TabList,
-  // Tab,
-  // TabPanels,
-  // TabPanel
-} from "@chakra-ui/react"
+import { Box, Flex, Text } from "@chakra-ui/react"
 import ZIcon from "../../components/Icon"
 import SendMessage from "../ShowChat/SendMessage"
 import Users from "../ShowChat/Users"
 import Message from "../ShowChat/Message"
 import UsersName from "../ShowChat/UsersName"
 import ModalNewQuote from "../ShowChat/ModalNewQuote"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useContext } from "react"
+import Socket from "socket.io-client"
 
 import { get } from "../../utils/http"
+import { DataContext } from "../../store/GlobalState"
 
 export default function Chat() {
   const [activeChat, setActiveChat] = useState(-1)
   const [currentChat, setCurrentChat] = useState(null)
-  const [messages, setMessages] = useState([])
+  const state = useContext(DataContext)
+  const { auth } = state
+  // const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState("")
-  const textArearef = useRef()
-  const scrollRef = useRef()
+  const [arrivalMessage, setArrivalMessage] = useState(null)
+  const textArearef = useRef<HTMLTextAreaElement>()
+  const scrollRef = useRef<HTMLDivElement>()
   const handleActiveChat = idx => {
     setActiveChat(idx)
   }
+  // const socket = Socket("localhost:3000")
+  // useEffect(() => {
+  //   socket.on("connect", () => {
+  //     socket.emit("identity", 1)
+  //   })
+  //   socket.on("getMessages", data => {
+  //     setArrivalMessage({
+  //       sender: data.senderId,
+  //       text: data.text,
+  //       createdAt: Date.now()
+  //     })
+  //   })
+  // }, [])
+
+  // useEffect(() => {
+  //   arrivalMessage &&
+  //     setMessages((prev) => [...prev, arrivalMessage]);
+  // }, [arrivalMessage, currentChat]);
+
   useEffect(() => {
     const getConversations = async () => {
       const res = await get("/api/messages/all")
       console.log("resMessage:", res)
     }
     getConversations()
-  }, [])
+  }, [auth?.user.id])
   // useEffect(() => {
   //   const getMessages = async () => {
-  //     const resMessages = await get(`/api/messages/all/${id}`)
+  //     const resMessages = await get(`/api/messages/all/${auth.user.id}`)
   //     console.log("resMessage:", resMessages)
   //     setMessages(resMessages)
   //   }
@@ -55,6 +69,7 @@ export default function Chat() {
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ block: "end", behavior: "smooth" })
   }, [currentChat])
+  // TODO: cambiar currentChat x messages
 
   const handleSendMessage = () => {
     sendMessage()
