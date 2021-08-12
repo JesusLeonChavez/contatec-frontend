@@ -77,15 +77,29 @@ export default function Navbar() {
             />
             <Tabs>
               <TabList>
-                <Tab>
-                  <PopoverHeader>
-                    <Text color="gray">Notificaciones (3)</Text>
-                  </PopoverHeader>
+                <Tab
+                  _focus={{ outline: "none" }}
+                  _active={{ outline: "none" }}
+                  _selected={{
+                    color: "primary",
+                    boxShadow: "none",
+                    borderBottom: "2px",
+                    borderBottomColor: "primary"
+                  }}
+                >
+                  Notificaciones (3)
                 </Tab>
-                <Tab>
-                  <PopoverHeader>
-                    <Text color="gray">Bandeja de entrada (3)</Text>
-                  </PopoverHeader>
+                <Tab
+                  _focus={{ outline: "none" }}
+                  _active={{ outline: "none" }}
+                  _selected={{
+                    color: "primary",
+                    boxShadow: "none",
+                    borderBottom: "2px",
+                    borderBottomColor: "primary"
+                  }}
+                >
+                  Bandeja de entrada (3)
                 </Tab>
               </TabList>
               <TabPanels>
