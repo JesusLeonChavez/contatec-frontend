@@ -2,7 +2,7 @@ import { Text, Grid, Box, Flex } from "@chakra-ui/react"
 import ZIcon from "../../../../components/Icon"
 import Progress from "../../../../components/Progress"
 import RateServiceModal from "./RateServiceModal"
-export default function Assessment() {
+export default function Assessment({ post }) {
   return (
     <Box py="5">
       <div className="generalWrapper">
@@ -32,6 +32,7 @@ export default function Assessment() {
                 </Grid>
 
                 <RateServiceModal
+                  post={post}
                   variant="fourth"
                   width="6xs"
                   showModalButtonText="Valorar servicio"

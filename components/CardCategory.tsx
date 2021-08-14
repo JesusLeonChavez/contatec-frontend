@@ -82,7 +82,13 @@ export default function CardCategory({
     }
   }
   return (
-    <Box borderRadius="lg" overflow="hidden" mx="3">
+    <Box
+      borderRadius="lg"
+      overflow="hidden"
+      mx="3"
+      boxShadow="lg"
+      bg="secondary"
+    >
       <Box position="relative">
         <Link
           key={post.id}
@@ -97,7 +103,7 @@ export default function CardCategory({
                 post?.pst_imagen_1 || "/assets/images/marketing/marketing1.png"
               }
               alt={post?.pst_nombre}
-              height="500"
+              height="550"
               width="500"
             />
           </a>
@@ -108,7 +114,7 @@ export default function CardCategory({
           w="full"
           p="3"
           position="absolute"
-          bottom="1"
+          bottom="0"
           backgroundColor="whiteAlpha.700"
         >
           <Flex align="center" w="40px" justify="space-between">
@@ -151,7 +157,7 @@ export default function CardCategory({
         }`}
       >
         <a>
-          <Box px="2" pb="5">
+          <Box px="2" py="3" bg="white">
             <Flex align="flex-start" justify="center" direction="column">
               <Flex align="center" justify="flex-start">
                 <Text fontSize="md" className={styles.bold500} color="primary">

@@ -1,4 +1,3 @@
- 
 export const errorForm = {
   EMPTY_NAME: "Nombre es requerido",
   EMPTY_LASTNAME: "Apellido es requerido",
@@ -21,5 +20,6 @@ export const errorForm = {
   INVALID_ISSUE: "Ingrese un asunto válido",
   INVALID_BUDGET: "Ingrese un presupuesto válido",
   SHORT_PASSWORD: "La contraseña debe ser de 7 carateres o más",
-  UNMATCH_PASSWORD: "La contraseña no coinciden"
+  UNMATCH_PASSWORD: "La contraseña no coinciden",
+  SHORT_CONTENT: "El campo debe contener 10 caracteres como minimo"
 }

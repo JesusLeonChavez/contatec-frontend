@@ -1,4 +1,3 @@
- 
 import { ACTIONS } from "./Actions"
 
 const reducers = (state, action) => {
@@ -78,6 +77,11 @@ const reducers = (state, action) => {
             avatar: action.payload
           }
         }
+      }
+    case ACTIONS.SOCKET:
+      return {
+        ...state,
+        socket: action.payload
       }
     default:
       return state

@@ -1,7 +1,7 @@
 import { Box, Grid, Flex, Avatar, Text } from "@chakra-ui/react"
 import ContactWorkerModal from "./ContactWorkerModal"
 
-export default function CategoryTittle({ creator }) {
+export default function CategoryTittle({ creator, post }) {
   return (
     <Box>
       <div className="generalWrapper">
@@ -21,6 +21,8 @@ export default function CategoryTittle({ creator }) {
                 <Text fontSize="sm">Colaborador de contatec</Text>
                 {/* <Button variant="primary">Contactar</Button> */}
                 <ContactWorkerModal
+                  post={post}
+                  creator={creator}
                   variant="primary"
                   width="full"
                   showModalButtonText="Contactar"

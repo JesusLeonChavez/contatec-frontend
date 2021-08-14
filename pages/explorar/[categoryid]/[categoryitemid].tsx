@@ -107,8 +107,8 @@ export default function Post({ post }: PropsMain) {
               briefDescription={post.pst_descripcion_corta}
             />
             <PhotosDescription post={post} />
-            <Creator creator={post.pstUsuarioId} />
-            <Assessment />
+            <Creator creator={post.pstUsuarioId} post={post} />
+            <Assessment post={post} />
             <Comentaries />
           </>
         ) : (

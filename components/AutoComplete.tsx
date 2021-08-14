@@ -1,4 +1,13 @@
-import {Input,Box,InputGroup,InputLeftElement,FormControl,FormLabel,Button,Flex} from "@chakra-ui/react"
+import {
+  Input,
+  Box,
+  InputGroup,
+  InputLeftElement,
+  FormControl,
+  FormLabel,
+  Button,
+  Flex
+} from "@chakra-ui/react"
 import router from "next/router"
 import { useRef } from "react"
 import { connectAutoComplete } from "react-instantsearch-dom"
@@ -23,7 +32,7 @@ export const Autocomplete = ({ hits, currentRefinement, refine }) => {
     e.preventDefault()
     console.log("api/buscar/" + inputRef.current?.value || "none")
   }
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <FormControl id="text">

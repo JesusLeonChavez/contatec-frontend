@@ -2,8 +2,14 @@ import { Text, Grid, Flex, Circle } from "@chakra-ui/react"
 import Image from "next/image"
 import styles from "../../styles/sections/Home.module.css"
 import ZIcon from "../../components/Icon/ZIcon"
+// import { addDays } from "date-fns"
 
 export default function OurCategories() {
+  // const handleTestDateFNS = () => {
+  //   const date = new Date()
+  //   const tomorrow = addDays(date, 1)
+  //   console.log("tomorrow: ", tomorrow)
+  // }
   return (
     <div
       className={styles.infoContainer}
@@ -25,6 +31,7 @@ export default function OurCategories() {
               <Text fontSize="5xl" className={styles.bold600}>
                 ¿Por qué utilizar la plataforma?
               </Text>
+              {/* <Button onClick={handleTestDateFNS}>Date fns</Button> */}
 
               <Text fontSize="md">
                 Contactamos clientes con profesionales para garantizar el éxito

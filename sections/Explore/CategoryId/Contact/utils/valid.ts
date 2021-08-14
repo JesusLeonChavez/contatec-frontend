@@ -16,6 +16,9 @@ export const validRate = (values, rate) => {
   } else if (!regexOnlyString(values.description.trim())) {
     errors.description = errorForm.INVALID_TEXT_AREA
     isValid = false
+  } else if (values.description.trim().length < 10) {
+    errors.description = errorForm.SHORT_CONTENT
+    isValid = false
   }
   if (rate === 0) {
     errors.rate = errorForm.EMPTY_RATE

@@ -56,8 +56,12 @@ import ArrowRight from "./ArrowRight"
 import ArrowLeftv2 from "./ArrowLeftv2"
 import Avatar from "./Avatar"
 import Ring from "./Ring"
+import Clip from "./Clip"
+import UploadPhoto from "./UploadPhoto"
+import ButtonRight from "./ButtonRight"
 
 import { PropsIcon } from "./types"
+
 function VIcon({
   name,
   color,
@@ -182,6 +186,12 @@ function VIcon({
       return <Calendar {...props} style={style} color={_color} />
     case "dowload":
       return <Dowload {...props} style={style} color={_color} />
+    case "clip":
+      return <Clip {...props} style={style} color={_color} />
+    case "uploadPhoto":
+      return <UploadPhoto {...props} style={style} color={_color} />
+    case "buttonRight":
+      return <ButtonRight {...props} style={style} color={_color} />
     default:
       return null
   }

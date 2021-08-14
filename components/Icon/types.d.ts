@@ -72,6 +72,9 @@ export type IconName =
   | "arrow-leftv2"
   | "avatar"
   | "ring"
+  | "clip"
+  | "uploadPhoto"
+  | "buttonRight"
 
 /**
  * Props SVG, incluyendo name, color, size y weight. No se debe usar el prop style.
