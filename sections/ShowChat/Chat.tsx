@@ -34,7 +34,7 @@ export default function Chat() {
     if (Object.keys(auth).length === 0) return
     if (Object.keys(socket).length === 0) return
     console.log("activando socket")
-    socket.on("messageDefault", ({ data }) => {
+    socket.on("messageDefaultResponse", ({ data }) => {
       console.log("data: ", data)
       // setMessages([...messages, { ...data }])
       setArrivalMessage({
