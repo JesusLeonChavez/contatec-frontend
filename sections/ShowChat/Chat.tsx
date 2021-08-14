@@ -9,14 +9,14 @@ import ModalNewQuote from "../ShowChat/ModalNewQuote"
 import { useState, useEffect, useRef, useContext } from "react"
 import Socket from "socket.io-client"
 
-import { get } from "../../utils/http"
+import { get, setAuth } from "../../utils/http"
 import { DataContext } from "../../store/GlobalState"
 
 export default function Chat() {
   const [activeChat, setActiveChat] = useState(-1)
   const [currentChat, setCurrentChat] = useState(null)
   const { state } = useContext(DataContext)
-  const { auth, socket } = state
+  const { auth, authReady, socket } = state
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // const { auth, socket } = state
@@ -45,18 +45,20 @@ export default function Chat() {
 
   useEffect(() => {
     const getConversations = async () => {
+      setAuth(auth.access_token)
       const res = await get("/api/messages/all")
       setConversations(res.data)
     }
+    if (!auth?.user?.id) return
     getConversations()
   }, [auth?.user?.id])
   useEffect(() => {
     const getMessages = async () => {
-      const resMessages = await get(`/api/messages/all/${auth.user?.id}`)
+      const resMessages = await get(`/api/messages/all/${auth?.user?.id}`)
       console.log("resMessage:", resMessages)
       setMessages(resMessages.data)
     }
-
+    if (!auth?.user?.id) return
     getMessages()
   }, [currentChat])
 
@@ -102,19 +104,24 @@ export default function Chat() {
           Chats
         </Text>
 
-        {conversations?.map((conver, idx) => (
-          <Users
-            onClick={() => {
-              handleActiveChat(idx)
-              setCurrentChat(conver)
-            }}
-            idx={idx}
-            activeChat={activeChat}
-            name={conver.nameAmiwi}
-            lastMessage={conver.msj_contenido}
-            image={conver.ImagenAmiwi}
-          />
-        ))}
+        {authReady ? (
+          conversations?.map((conver, idx) => (
+            <Users
+              onClick={() => {
+                handleActiveChat(idx)
+                setCurrentChat(conver)
+              }}
+              key={idx}
+              idx={idx}
+              activeChat={activeChat}
+              name={conver.nameAmiwi}
+              lastMessage={conver.msj_contenido}
+              image={conver.ImagenAmiwi}
+            />
+          ))
+        ) : (
+          <p>Espere...</p>
+        )}
       </Box>
       {currentChat ? (
         <>
