@@ -1,6 +1,5 @@
 // import { useRouter } from "next/router"
-
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { format } from "date-fns"
 import {
   Text,
@@ -24,12 +23,13 @@ import {
 import { useForm } from "../../../../utils/hooks/useForm"
 import { useError } from "../../../../utils/hooks/useError"
 import { validContactWorker } from "./utils/valid"
+import { DataContext } from "../../../../store/GlobalState"
+import { useRouter } from "next/router"
 
 // import { post } from "../../../../utils/http"
-
 // import showToast from "../../../../components/Toast"
-
 type PropsRegister = {
+  post: Record<string, any>
   variant: string
   width: string
   showModalButtonText: string
@@ -39,13 +39,21 @@ type PropsRegister = {
 // TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
 
 export default function ContactWorkerModal({
+  post,
   variant,
   width,
   showModalButtonText,
   creator
 }: PropsRegister) {
+  const { state } = useContext(DataContext)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { auth, socket } = state
+  // useEffect(() => {
+  //   console.log("state: ", state)
+  // }, [state])
   const { isOpen, onOpen, onClose } = useDisclosure()
-  // const router = useRouter()
+  const router = useRouter()
 
   const [values, handleInputChange, reset] = useForm({
     issue: "",
@@ -63,18 +71,25 @@ export default function ContactWorkerModal({
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // TODO: cambiar valid register
     const { errors: errorsForm, isValid } = validContactWorker(values)
     setErrors(errorsForm)
 
     if (isValid) {
-      const body = {
-        issue: issue.toLocaleLowerCase(),
-        message: message.toLocaleLowerCase()
-      }
-      console.log(body)
+      socket.emit("messageDefault", {
+        to: post.pstUsuarioId.id,
+        data: message.toLocaleLowerCase(),
+        from: auth.user.id,
+        post: post.id
+      })
+      // const body = {
+      //   issue: issue.toLocaleLowerCase(),
+      //   message: message.toLocaleLowerCase()
+      // }
       setIsPosting(true)
-      setIsPosting(false)
+      setTimeout(() => {
+        setIsPosting(false)
+        router.push("/mensajes")
+      }, 1000)
     }
   }
 

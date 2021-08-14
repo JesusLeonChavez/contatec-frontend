@@ -1,9 +1,10 @@
 import { Avatar, Box, Flex, Text } from "@chakra-ui/react"
 
 interface MessageProps {
+  message: Record<string, string>
   own?: boolean
 }
-export default function Message({ own }: MessageProps) {
+export default function Message({ message, own }: MessageProps) {
   return (
     <Flex
       d="flex"
@@ -29,8 +30,7 @@ export default function Message({ own }: MessageProps) {
             borderRadius="lg"
             py="2"
           >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam,
-            voluptas.
+            {message.msj_contenido}
           </Text>
         </Flex>
       </Box>

@@ -15,9 +15,13 @@ import { DataContext } from "../../store/GlobalState"
 export default function Chat() {
   const [activeChat, setActiveChat] = useState(-1)
   const [currentChat, setCurrentChat] = useState(null)
-  const state = useContext(DataContext)
-  const { auth } = state
-  // const [messages, setMessages] = useState([])
+  const { state } = useContext(DataContext)
+  const { auth, socket } = state
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // const { auth, socket } = state
+  const [conversations, setConversations] = useState([])
+  const [messages, setMessages] = useState<string[]>([])
   const [newMessage, setNewMessage] = useState("")
   const [arrivalMessage, setArrivalMessage] = useState(null)
   const textArearef = useRef<HTMLTextAreaElement>()
@@ -25,43 +29,47 @@ export default function Chat() {
   const handleActiveChat = idx => {
     setActiveChat(idx)
   }
-  // const socket = Socket("localhost:3000")
-  // useEffect(() => {
-  //   socket.on("connect", () => {
-  //     socket.emit("identity", 1)
-  //   })
-  //   socket.on("getMessages", data => {
-  //     setArrivalMessage({
-  //       sender: data.senderId,
-  //       text: data.text,
-  //       createdAt: Date.now()
-  //     })
-  //   })
-  // }, [])
+  useEffect(() => {
+    // socket.on("getMessages", data => {
+    //   setArrivalMessage({
+    //     sender: data.senderId,
+    //     text: data.text,
+    //     createdAt: Date.now()
+    //   })
+    // })
+  }, [])
 
   // useEffect(() => {
-  //   arrivalMessage &&
-  //     setMessages((prev) => [...prev, arrivalMessage]);
-  // }, [arrivalMessage, currentChat]);
+  //   arrivalMessage && setMessages(prev => [...prev, arrivalMessage])
+  // }, [arrivalMessage, currentChat])
 
   useEffect(() => {
     const getConversations = async () => {
       const res = await get("/api/messages/all")
-      console.log("resMessage:", res)
+      setConversations(res.data)
     }
     getConversations()
-  }, [auth?.user.id])
-  // useEffect(() => {
-  //   const getMessages = async () => {
-  //     const resMessages = await get(`/api/messages/all/${auth.user.id}`)
-  //     console.log("resMessage:", resMessages)
-  //     setMessages(resMessages)
-  //   }
-  //   getMessages()
-  // },[currentChat])
+  }, [auth?.user?.id])
+  useEffect(() => {
+    const getMessages = async () => {
+      const resMessages = await get(`/api/messages/all/${auth.user?.id}`)
+      console.log("resMessage:", resMessages)
+      setMessages(resMessages.data)
+    }
+
+    getMessages()
+  }, [currentChat])
+
   const sendMessage = () => {
+    const message = {
+      createdAt: "2021-08-14T05:46:46.578Z",
+      msjIdPostPropuestaId: 295,
+      msjUserFromId: 135,
+      msjUserToId: 155,
+      msj_contenido: newMessage
+    }
     console.log(newMessage)
-    // setMessages([...messages, nuevoMensajeQuedevuelveunPost])
+    setMessages([...messages, newMessage])
     setNewMessage("")
     textArearef.current?.focus()
   }
@@ -94,18 +102,7 @@ export default function Chat() {
           Chats
         </Text>
 
-        {[
-          {
-            nombre: "Leónidas",
-            ultimo_mensaje: "ultimo mensajesssssssssssssssssssss",
-            image: "/assets/marketing/marketing1.png"
-          },
-          {
-            nombre: "Juan",
-            ultimo_mensaje: "ultimo mensajes juan",
-            image: "/assets/marketing/marketing1.png"
-          }
-        ].map((conver, idx) => (
+        {conversations?.map((conver, idx) => (
           <Users
             onClick={() => {
               handleActiveChat(idx)
@@ -113,9 +110,9 @@ export default function Chat() {
             }}
             idx={idx}
             activeChat={activeChat}
-            name={conver.nombre}
-            lastMessage={conver.ultimo_mensaje}
-            image={conver.image}
+            name={conver.nameAmiwi}
+            lastMessage={conver.msj_contenido}
+            image={conver.ImagenAmiwi}
           />
         ))}
       </Box>
@@ -126,33 +123,16 @@ export default function Chat() {
               <UsersName />
             </Flex>
             <Box overflowY="scroll" h="650px" border="1px solid #DBD9DC">
-              <div ref={scrollRef}>
-                <Message />
-              </div>
-              <div ref={scrollRef}>
-                <Message />
-              </div>
-              <div ref={scrollRef}>
-                <Message />
-              </div>
-              <div ref={scrollRef}>
-                <Message />
-              </div>
-              <div ref={scrollRef}>
-                <Message />
-              </div>
-              <div ref={scrollRef}>
-                <Message />
-              </div>
-              <div ref={scrollRef}>
-                <Message />
-              </div>
-              <div ref={scrollRef}>
-                <Message />
-              </div>
-              <div ref={scrollRef}>
-                <Message own />
-              </div>
+              {messages.map((message, item) => (
+                <div ref={scrollRef} key={item}>
+                  <Message
+                    message={message}
+                    own={auth?.user?.id === message.msjUserToId}
+                  />
+                </div>
+              ))}
+
+              {/*  */}
             </Box>
             <Box h="200px" border="1px solid #DBD9DC">
               <SendMessage

@@ -1,14 +1,15 @@
-import React, { createContext, useEffect, useReducer } from "react"
+import React, { createContext, useEffect, useReducer, useState } from "react"
 import { get, post, setAuth } from "../utils/http"
 import reducers from "./Reducers"
 import { useToast } from "@chakra-ui/react"
+import Socket from "socket.io-client"
 
-type InitialStateType = {
-  auth?: Record<string, any>
-  authReady?: boolean
-}
+// type InitialStateType = {
+//   auth?: Record<string, any>
+//   authReady?: boolean
+// }
 export const DataContext = createContext<{
-  state: InitialStateType
+  state: any
   dispatch: React.Dispatch<any>
 }>({
   state: {},
@@ -16,13 +17,16 @@ export const DataContext = createContext<{
 })
 
 export const DataProvider = ({ children }) => {
-  const initialState = {
+  const initialState: any = {
     auth: {},
     authReady: false,
     authType: "none",
     categories: [],
-    posts: []
+    posts: [],
+    socket: {}
   }
+
+  const [socket, setSocket] = useState<any>(null)
   const [state, dispatch] = useReducer(reducers, initialState)
   const { authType } = state
   const toast = useToast()
@@ -59,6 +63,9 @@ export const DataProvider = ({ children }) => {
           if (user.data.msg === "Autenticación inválida") {
             return showToast("Error al recuperar datos del usuario")
           }
+
+          setSocket(Socket("https://contatec.herokuapp.com"))
+
           dispatch({
             type: "AUTH",
             payload: {
@@ -110,6 +117,20 @@ export const DataProvider = ({ children }) => {
       })
       .catch(() => showToast("Error al recuperar categorias"))
   }, [authType])
+
+  useEffect(() => {
+    if (Object.keys(state.auth).length === 0) return
+    if (!socket) return
+    socket.on("connect", () => {
+      console.log("emitiendo")
+      socket.emit("identity", state.auth.user.id)
+    })
+    dispatch({ type: "SOCKET", payload: socket })
+  }, [socket])
+
+  // useEffect(() => {
+  //   console.log("cambio en state: ", state)
+  // }, [state])
 
   return (
     <>
