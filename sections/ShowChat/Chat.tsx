@@ -7,8 +7,6 @@ import Message from "../ShowChat/Message"
 import UsersName from "../ShowChat/UsersName"
 import ModalNewQuote from "../ShowChat/ModalNewQuote"
 import { useState, useEffect, useRef, useContext } from "react"
-import Socket from "socket.io-client"
-
 import { get, setAuth } from "../../utils/http"
 import { DataContext } from "../../store/GlobalState"
 
@@ -16,9 +14,9 @@ export default function Chat() {
   const [activeChat, setActiveChat] = useState(-1)
   const [currentChat, setCurrentChat] = useState(null)
   const { state } = useContext(DataContext)
-  const { auth, authReady, socket } = state
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
+  const { auth, authReady, socket } = state
   // const { auth, socket } = state
   const [conversations, setConversations] = useState([])
   const [messages, setMessages] = useState<string[]>([])
@@ -30,37 +28,25 @@ export default function Chat() {
     setActiveChat(idx)
   }
   useEffect(() => {
-    // console.log("auth effect: ", auth)
-    // console.log(auth)
-    // console.log(socket)
     if (Object.keys(auth).length === 0) return
     if (Object.keys(socket).length === 0) return
 
     const functionSocket = ({ data }) => {
-      // console.log(recibido)
-      console.log(data)
-      // setMessages([...messages, { ...data }])
       setArrivalMessage({
         ...data
       })
     }
-    // console.log("activando socket")
+
     socket.on("messageDefaultResponse", functionSocket)
-    // socket.on("messageDefault", data => {
-    //   setArrivalMessage({
-    //     sender: data.senderId,
-    //     text: data.text,
-    //     createdAt: Date.now()
-    //   })
-    // })
+
     return () => {
       socket.off("messageDefaultResponse")
-      // socket.un("messageDefaultResponse", functionSocket)
     }
   }, [auth?.user?.id, socket])
 
   useEffect(() => {
-    // console.log("efecto gaaa")
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     arrivalMessage && setMessages(prev => [...prev, arrivalMessage])
   }, [arrivalMessage, currentChat])
 
@@ -68,7 +54,7 @@ export default function Chat() {
     const getConversations = async () => {
       setAuth(auth.access_token)
       const res = await get("/api/messages/all")
-      // console.log("conversaciones: ", res)
+
       setConversations(res.data)
     }
     if (!auth?.user?.id) return
@@ -76,12 +62,13 @@ export default function Chat() {
   }, [auth?.user?.id])
   useEffect(() => {
     const getMessages = async () => {
-      setAuth(auth.access_token)
-      const resMessages = await get(`/api/messages/all/${currentChat!.idAmiwi}`)
-      // console.log("resMessage:", resMessages)
+      setAuth(auth!.access_token)
+      const resMessages = await get(`/api/messages/all/${currentChat.idAmiwi}`)
+
       setMessages(resMessages.data.data.reverse())
     }
     if (!auth?.user?.id) return
+    if (!currentChat) return
     getMessages()
   }, [currentChat])
 
@@ -91,7 +78,7 @@ export default function Chat() {
       data: newMessage,
       from: auth.user.id
     })
-    // console.log(newMessage)
+
     setNewMessage("")
     textArearef.current?.focus()
   }
@@ -99,7 +86,6 @@ export default function Chat() {
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" })
   }, [messages])
-  // TODO: cambiar currentChat x messages
 
   const handleSendMessage = () => {
     sendMessage()
