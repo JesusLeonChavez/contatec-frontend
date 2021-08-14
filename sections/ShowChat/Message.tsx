@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex, Text } from "@chakra-ui/react"
+import { Box, Flex, Text } from "@chakra-ui/react"
 
 interface MessageProps {
   message: Record<string, string>
@@ -22,7 +22,7 @@ export default function Message({ message, own }: MessageProps) {
           maxW="500px"
           direction={`${own === true ? "row-reverse" : "row"}`}
         >
-          <Avatar size="md" name="name" position="relative" mx="2" />
+          {/* <Avatar size="md" name="name" position="relative" mx="2" /> */}
           <Text
             px="4"
             bg={`${own === true ? "primary" : "gray.100"}`}

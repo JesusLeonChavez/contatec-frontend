@@ -30,14 +30,18 @@ export default function Chat() {
     setActiveChat(idx)
   }
   useEffect(() => {
-    // socket.on("getMessages", data => {
+    if (Object.keys(socket).length === 0) return
+    socket.on("messageDefault", ({ data }) => {
+      console.log("data: ", data)
+    })
+    // socket.on("messageDefault", data => {
     //   setArrivalMessage({
     //     sender: data.senderId,
     //     text: data.text,
     //     createdAt: Date.now()
     //   })
     // })
-  }, [])
+  }, [auth?.user?.id])
 
   // useEffect(() => {
   //   arrivalMessage && setMessages(prev => [...prev, arrivalMessage])
@@ -47,6 +51,7 @@ export default function Chat() {
     const getConversations = async () => {
       setAuth(auth.access_token)
       const res = await get("/api/messages/all")
+      console.log("conversaciones: ", res)
       setConversations(res.data)
     }
     if (!auth?.user?.id) return
@@ -56,7 +61,7 @@ export default function Chat() {
     const getMessages = async () => {
       const resMessages = await get(`/api/messages/all/${auth?.user?.id}`)
       console.log("resMessage:", resMessages)
-      setMessages(resMessages.data)
+      setMessages(resMessages.data.data)
     }
     if (!auth?.user?.id) return
     getMessages()
@@ -66,10 +71,15 @@ export default function Chat() {
     const message = {
       createdAt: "2021-08-14T05:46:46.578Z",
       msjIdPostPropuestaId: 295,
-      msjUserFromId: 135,
+      msjUserFromId: auth.user.id,
       msjUserToId: 155,
       msj_contenido: newMessage
     }
+    socket.emit("messageDefault", {
+      to: currentChat!.idAmiwi,
+      data: newMessage,
+      from: auth.user.id
+    })
     console.log(newMessage)
     setMessages([...messages, newMessage])
     setNewMessage("")
@@ -127,14 +137,14 @@ export default function Chat() {
         <>
           <Box w="799px" border="1px solid #DBD9DC">
             <Flex h="50px" border="1px solid #DBD9DC" align="center">
-              <UsersName />
+              <UsersName name={currentChat.nameAmiwi} />
             </Flex>
             <Box overflowY="scroll" h="650px" border="1px solid #DBD9DC">
               {messages.map((message, item) => (
                 <div ref={scrollRef} key={item}>
                   <Message
                     message={message}
-                    own={auth?.user?.id === message.msjUserToId}
+                    own={auth?.user?.id !== message.msjUserToId}
                   />
                 </div>
               ))}
