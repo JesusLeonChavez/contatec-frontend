@@ -33,6 +33,7 @@ export default function Chat() {
     if (Object.keys(socket).length === 0) return
     socket.on("messageDefault", ({ data }) => {
       console.log("data: ", data)
+      setMessages([...messages, { ...data }])
     })
     // socket.on("messageDefault", data => {
     //   setArrivalMessage({
@@ -81,7 +82,6 @@ export default function Chat() {
       from: auth.user.id
     })
     console.log(newMessage)
-    setMessages([...messages, newMessage])
     setNewMessage("")
     textArearef.current?.focus()
   }
