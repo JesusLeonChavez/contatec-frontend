@@ -11,6 +11,7 @@ import OurServices from "../../sections/Explore/OurServices"
 import InterestedService from "../../sections/Explore/InterestedService"
 
 export default function Explorar({ categories, explore }) {
+  console.log("explore: ", explore)
   return (
     <div>
       <Head>
@@ -23,6 +24,7 @@ export default function Explorar({ categories, explore }) {
 
       <Layout withNav withFooter>
         <CategoryTittle categories={categories} />
+
         <RecomendedService recommended={explore.recommendedPosts} />
         <OurServices ourServices={explore.latestPosts} />
         <InterestedService interesting={explore.interestingPosts} />
