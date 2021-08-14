@@ -1,14 +1,14 @@
 import { Box, Flex, Text } from "@chakra-ui/react"
 
 interface MessageProps {
-  message: Record<string, string>
+  message: any
   own?: boolean
 }
 export default function Message({ message, own }: MessageProps) {
   return (
-    <Flex
+    <Box
       d="flex"
-      justify={`${own === true ? "end" : "start"}`}
+      justifyContent={`${own === true ? "flex-end" : "flex-start"}`}
       align="center"
       my="3"
       mx="2"
@@ -34,6 +34,6 @@ export default function Message({ message, own }: MessageProps) {
           </Text>
         </Flex>
       </Box>
-    </Flex>
+    </Box>
   )
 }

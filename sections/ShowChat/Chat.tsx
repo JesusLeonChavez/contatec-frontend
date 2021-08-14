@@ -30,10 +30,16 @@ export default function Chat() {
     setActiveChat(idx)
   }
   useEffect(() => {
+    // console.log("auth effect: ", auth)
+    if (Object.keys(auth).length === 0) return
     if (Object.keys(socket).length === 0) return
+    console.log("activando socket")
     socket.on("messageDefault", ({ data }) => {
       console.log("data: ", data)
-      setMessages([...messages, { ...data }])
+      // setMessages([...messages, { ...data }])
+      setArrivalMessage({
+        ...data
+      })
     })
     // socket.on("messageDefault", data => {
     //   setArrivalMessage({
@@ -44,9 +50,10 @@ export default function Chat() {
     // })
   }, [auth?.user?.id])
 
-  // useEffect(() => {
-  //   arrivalMessage && setMessages(prev => [...prev, arrivalMessage])
-  // }, [arrivalMessage, currentChat])
+  useEffect(() => {
+    console.log("efecto gaaa")
+    arrivalMessage && setMessages(prev => [...prev, arrivalMessage])
+  }, [arrivalMessage, currentChat])
 
   useEffect(() => {
     const getConversations = async () => {
@@ -62,7 +69,7 @@ export default function Chat() {
     const getMessages = async () => {
       const resMessages = await get(`/api/messages/all/${auth?.user?.id}`)
       console.log("resMessage:", resMessages)
-      setMessages(resMessages.data.data)
+      setMessages(resMessages.data.data.reverse())
     }
     if (!auth?.user?.id) return
     getMessages()
