@@ -31,16 +31,21 @@ export default function Chat() {
   }
   useEffect(() => {
     // console.log("auth effect: ", auth)
+    console.log(auth)
+    console.log(socket)
     if (Object.keys(auth).length === 0) return
     if (Object.keys(socket).length === 0) return
-    console.log("activando socket")
-    socket.on("messageDefaultResponse", ({ data }) => {
-      console.log("data: ", data)
+
+    const functionSocket = ({ data }) => {
+      // console.log(recibido)
+      console.log(data)
       // setMessages([...messages, { ...data }])
       setArrivalMessage({
         ...data
       })
-    })
+    }
+    console.log("activando socket")
+    socket.on("messageDefaultResponse", functionSocket)
     // socket.on("messageDefault", data => {
     //   setArrivalMessage({
     //     sender: data.senderId,
@@ -48,7 +53,10 @@ export default function Chat() {
     //     createdAt: Date.now()
     //   })
     // })
-  }, [auth?.user?.id])
+    return () => {
+      socket.un("messageDefaultResponse", functionSocket)
+    }
+  }, [auth?.user?.id, socket])
 
   useEffect(() => {
     console.log("efecto gaaa")
