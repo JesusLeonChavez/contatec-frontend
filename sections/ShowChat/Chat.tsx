@@ -31,8 +31,8 @@ export default function Chat() {
   }
   useEffect(() => {
     // console.log("auth effect: ", auth)
-    console.log(auth)
-    console.log(socket)
+    // console.log(auth)
+    // console.log(socket)
     if (Object.keys(auth).length === 0) return
     if (Object.keys(socket).length === 0) return
 
@@ -44,7 +44,7 @@ export default function Chat() {
         ...data
       })
     }
-    console.log("activando socket")
+    // console.log("activando socket")
     socket.on("messageDefaultResponse", functionSocket)
     // socket.on("messageDefault", data => {
     //   setArrivalMessage({
@@ -54,12 +54,13 @@ export default function Chat() {
     //   })
     // })
     return () => {
-      socket.un("messageDefaultResponse", functionSocket)
+      socket.off("messageDefaultResponse")
+      // socket.un("messageDefaultResponse", functionSocket)
     }
   }, [auth?.user?.id, socket])
 
   useEffect(() => {
-    console.log("efecto gaaa")
+    // console.log("efecto gaaa")
     arrivalMessage && setMessages(prev => [...prev, arrivalMessage])
   }, [arrivalMessage, currentChat])
 
@@ -67,7 +68,7 @@ export default function Chat() {
     const getConversations = async () => {
       setAuth(auth.access_token)
       const res = await get("/api/messages/all")
-      console.log("conversaciones: ", res)
+      // console.log("conversaciones: ", res)
       setConversations(res.data)
     }
     if (!auth?.user?.id) return
@@ -75,8 +76,9 @@ export default function Chat() {
   }, [auth?.user?.id])
   useEffect(() => {
     const getMessages = async () => {
-      const resMessages = await get(`/api/messages/all/${auth?.user?.id}`)
-      console.log("resMessage:", resMessages)
+      setAuth(auth.access_token)
+      const resMessages = await get(`/api/messages/all/${currentChat!.idAmiwi}`)
+      // console.log("resMessage:", resMessages)
       setMessages(resMessages.data.data.reverse())
     }
     if (!auth?.user?.id) return
@@ -96,7 +98,7 @@ export default function Chat() {
       data: newMessage,
       from: auth.user.id
     })
-    console.log(newMessage)
+    // console.log(newMessage)
     setNewMessage("")
     textArearef.current?.focus()
   }
