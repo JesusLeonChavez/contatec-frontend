@@ -24,7 +24,7 @@ export default function InterestedService({ interesting }) {
             ))}
           </Grid>
         )}
-        {interesting.length > 3 ? (
+        {interesting.length > 3 && (
           <Swiper
             slidesPerView={4}
             spaceBetween={10}
@@ -59,7 +59,8 @@ export default function InterestedService({ interesting }) {
               </SwiperSlide>
             ))}
           </Swiper>
-        ) : (
+        )}
+        {interesting.length === 0 && (
           <p>No hay servicios interesantes para ti</p>
         )}
       </div>

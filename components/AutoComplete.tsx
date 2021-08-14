@@ -12,6 +12,8 @@ import router from "next/router"
 import { useRef } from "react"
 import { connectAutoComplete } from "react-instantsearch-dom"
 import ZIcon from "../components/Icon"
+import { post } from "../utils/http"
+import showToast from "./Toast"
 
 // Aplicar  estilos
 export const Autocomplete = ({ hits, currentRefinement, refine }) => {
@@ -24,13 +26,28 @@ export const Autocomplete = ({ hits, currentRefinement, refine }) => {
         .join(" ")
         .slice(1)}`
     )
+    // eslint-disable-next-line camelcase
+    const { objectID, category_id } = hit
     setTimeout(() => {
-      router.push("/explorar")
+      // eslint-disable-next-line camelcase
+      router.push(`/explorar/${category_id}/${objectID}`)
     }, 500)
   }
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    console.log("api/buscar/" + inputRef.current?.value || "none")
+    const res = await post("/api/post/search", {
+      nombre_post: inputRef.current?.value,
+      categoria_post: inputRef.current?.value
+    })
+    if (res.data.message === "Http Exception")
+      return showToast(
+        "Error",
+        "No se encontraron servicios relacionados a su busqueda",
+        "error"
+      )
+    const { idCategoria, idPost } = res.data.data
+    router.push(`/explorar/${idCategoria}/${idPost}`)
+    // console.log("api/buscar/" + inputRef.current?.value || "none")
   }
 
   return (

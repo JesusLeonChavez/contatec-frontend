@@ -101,7 +101,8 @@ export default function Chat() {
     sendMessage()
   }
   const onKeyDown = e => {
-    if (e.keyCode === "13") {
+    // eslint-disable-next-line eqeqeq
+    if (e.keyCode == "13") {
       sendMessage()
     }
   }

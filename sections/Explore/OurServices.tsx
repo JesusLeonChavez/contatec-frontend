@@ -24,7 +24,7 @@ export default function OurServices({ ourServices }) {
             ))}
           </Grid>
         )}
-        {ourServices.length > 3 ? (
+        {ourServices.length > 3 && (
           <Swiper
             slidesPerView={4}
             spaceBetween={10}
@@ -59,9 +59,8 @@ export default function OurServices({ ourServices }) {
               </SwiperSlide>
             ))}
           </Swiper>
-        ) : (
-          <p>No tenemos servicios para ti</p>
         )}
+        {ourServices.length === 0 && <p>No tenemos servicios para ti</p>}
       </div>
     </Box>
   )

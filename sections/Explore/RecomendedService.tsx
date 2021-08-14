@@ -23,7 +23,7 @@ export default function RecomendedService({ recommended }) {
             ))}
           </Grid>
         )}
-        {recommended.length > 3 ? (
+        {recommended.length > 3 && (
           <Swiper
             slidesPerView={4}
             spaceBetween={10}
@@ -58,9 +58,8 @@ export default function RecomendedService({ recommended }) {
               </SwiperSlide>
             ))}
           </Swiper>
-        ) : (
-          <p>No hay servicios recomendados</p>
         )}
+        {recommended.length === 0 && <p>No hay servicios recomendados</p>}
       </div>
     </Box>
   )
