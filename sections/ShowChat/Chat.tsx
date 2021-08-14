@@ -86,13 +86,6 @@ export default function Chat() {
   }, [currentChat])
 
   const sendMessage = () => {
-    const message = {
-      createdAt: "2021-08-14T05:46:46.578Z",
-      msjIdPostPropuestaId: 295,
-      msjUserFromId: auth.user.id,
-      msjUserToId: 155,
-      msj_contenido: newMessage
-    }
     socket.emit("messageDefault", {
       to: currentChat!.idAmiwi,
       data: newMessage,
@@ -104,8 +97,8 @@ export default function Chat() {
   }
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ block: "end", behavior: "smooth" })
-  }, [currentChat])
+    scrollRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" })
+  }, [messages])
   // TODO: cambiar currentChat x messages
 
   const handleSendMessage = () => {
