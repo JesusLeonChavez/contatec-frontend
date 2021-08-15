@@ -38,7 +38,7 @@ export default function Chat() {
 
     const functionSocket = ({ data }) => {
       // console.log(recibido)
-      console.log(data)
+      // console.log(data)
       // setMessages([...messages, { ...data }])
       setArrivalMessage({
         ...data

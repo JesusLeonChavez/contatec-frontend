@@ -11,7 +11,7 @@ import OurServices from "../../sections/Explore/OurServices"
 import InterestedService from "../../sections/Explore/InterestedService"
 
 export default function Explorar({ categories, explore }) {
-  console.log("explore: ", explore)
+  // console.log("explore: ", explore)
   return (
     <div>
       <Head>

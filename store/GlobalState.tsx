@@ -44,14 +44,14 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const logging = async () => {
       // TODO: console.log
-      console.log("ejecutando efecto")
+      // console.log("ejecutando efecto")
       const isLogged = localStorage.getItem("isLogged")
       const typeLogged = localStorage.getItem("typeLogged")
       if (isLogged) {
         try {
           const accessToken = await post("/api/user/refresh_token", {})
           // TODO: console.log
-          console.log("accessToken: ", accessToken)
+          // console.log("accessToken: ", accessToken)
           if (accessToken.data.status) {
             localStorage.removeItem("isLogged")
             return showToast("Error con el token de acceso")
@@ -122,7 +122,7 @@ export const DataProvider = ({ children }) => {
     if (Object.keys(state.auth).length === 0) return
     if (!socket) return
     socket.on("connect", () => {
-      console.log("emitiendo")
+      // console.log("emitiendo")
       socket.emit("identity", state.auth.user.id)
     })
     dispatch({ type: "SOCKET", payload: socket })

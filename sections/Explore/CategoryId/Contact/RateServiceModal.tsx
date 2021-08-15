@@ -66,7 +66,7 @@ export default function RateServiceModal({
       }
       setIsPosting(true)
       const res = await post("/api/review/create", review)
-      console.log("resReview: ", res)
+      // console.log("resReview: ", res)
       setIsPosting(false)
     }
   }

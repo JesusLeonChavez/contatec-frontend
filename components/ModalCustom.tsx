@@ -34,7 +34,7 @@ export default function ModalCustom({
   useEffect(() => {
     if (reset && resetError) {
       if (type === "register") {
-        console.log("register open: ", isOpen)
+        // console.log("register open: ", isOpen)
         if (!isOpen) {
           reset()
           resetError()

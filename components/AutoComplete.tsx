@@ -17,7 +17,7 @@ import ZIcon from "../components/Icon"
 export const Autocomplete = ({ hits, currentRefinement, refine }) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const handleSelect = hit => {
-    console.log(hit)
+    // console.log(hit)
     refine(
       `${hit.description.charAt(0).toUpperCase()}${hit.description
         .split("_")
@@ -30,7 +30,7 @@ export const Autocomplete = ({ hits, currentRefinement, refine }) => {
   }
   const handleSubmit = e => {
     e.preventDefault()
-    console.log("api/buscar/" + inputRef.current?.value || "none")
+    // console.log("api/buscar/" + inputRef.current?.value || "none")
   }
 
   return (

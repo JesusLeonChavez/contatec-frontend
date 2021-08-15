@@ -1,4 +1,3 @@
- 
 import { regexOnlyString, regexDecimal } from "../../../utils/regex"
 
 import { errorForm } from "../../../utils/types"
@@ -28,7 +27,7 @@ export const validPost = (values, category, imagesFile, tags) => {
     isValid = false
   }
 
-  console.log("tamaño: ")
+  // console.log("tamaño: ")
   if (!values.brief_content.trim()) {
     errors.brief_content = errorForm.EMPTY_TEXT_AREA
 

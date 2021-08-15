@@ -68,13 +68,13 @@ export default function CardCategory({
   const handleDeletePost = async result => {
     setOpenDialog(true)
     if (result === true) {
-      console.log("result: ", result)
+      // console.log("result: ", result)
       setOpenDialog(false)
       setOpenProgress(true)
       setAuth(auth!.access_token)
       const res = await del(`/api/post/delete/${post.id}`)
       dispatch({ type: "DELETE_POST", payload: post.id })
-      console.log("delete: ", res)
+      // console.log("delete: ", res)
       // TODO: hacer que la actualizacion de los post sea por disptach en auth
       setOpenProgress(false)
     } else if (result === false) {
