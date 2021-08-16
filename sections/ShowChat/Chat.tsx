@@ -24,6 +24,7 @@ export default function Chat() {
   const [messages, setMessages] = useState<string[]>([])
   const [newMessage, setNewMessage] = useState("")
   const [arrivalMessage, setArrivalMessage] = useState(null)
+  const [isArrivalMessage, setIsArrivalMessage] = useState(false)
   const textArearef = useRef<HTMLTextAreaElement>()
   const scrollRef = useRef<HTMLDivElement>()
   const handleActiveChat = idx => {
@@ -33,48 +34,48 @@ export default function Chat() {
     // console.log("auth effect: ", auth)
     // console.log(auth)
     // console.log(socket)
+    if (!currentChat) return
     if (Object.keys(auth).length === 0) return
     if (Object.keys(socket).length === 0) return
 
     const functionSocket = ({ data }) => {
-      // console.log(recibido)
-      // console.log(data)
-      // setMessages([...messages, { ...data }])
-      setArrivalMessage({
-        ...data
-      })
+      setIsArrivalMessage(!isArrivalMessage)
+      if (
+        data.msjUserFromId === currentChat!.idAmiwi ||
+        data.msjUserFromId === auth?.user?.id
+      ) {
+        setArrivalMessage({
+          ...data
+        })
+      }
     }
     // console.log("activando socket")
     socket.on("messageDefaultResponse", functionSocket)
-    // socket.on("messageDefault", data => {
-    //   setArrivalMessage({
-    //     sender: data.senderId,
-    //     text: data.text,
-    //     createdAt: Date.now()
-    //   })
-    // })
     return () => {
       socket.off("messageDefaultResponse")
       // socket.un("messageDefaultResponse", functionSocket)
     }
-  }, [auth?.user?.id, socket])
+  }, [auth?.user?.id, socket, currentChat])
 
   useEffect(() => {
     // console.log("efecto gaaa")
-    arrivalMessage && setMessages(prev => [...prev, arrivalMessage])
+    arrivalMessage && setMessages((prev: any) => [...prev, arrivalMessage])
   }, [arrivalMessage, currentChat])
 
   useEffect(() => {
+    if (!auth?.user?.id) return
     const getConversations = async () => {
       setAuth(auth.access_token)
       const res = await get("/api/messages/all")
       // console.log("conversaciones: ", res)
       setConversations(res.data)
     }
-    if (!auth?.user?.id) return
+
     getConversations()
-  }, [auth?.user?.id])
+  }, [auth?.user?.id, arrivalMessage, isArrivalMessage])
   useEffect(() => {
+    if (!currentChat) return
+    console.log(currentChat)
     const getMessages = async () => {
       setAuth(auth.access_token)
       const resMessages = await get(`/api/messages/all/${currentChat!.idAmiwi}`)
@@ -131,7 +132,7 @@ export default function Chat() {
           Chats
         </Text>
 
-        {authReady ? (
+        {authReady && conversations ? (
           conversations?.map((conver, idx) => (
             <Users
               onClick={() => {

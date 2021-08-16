@@ -34,6 +34,8 @@ export default function Navbar() {
   const { auth, authReady, socket } = state
   const [isNewMessage, setIsNewMessage] = useState(false)
 
+  const [recentMessages, setRecentMessages] = useState<any>([])
+
   const handleLogout = async () => {
     localStorage.removeItem("isLogged")
     await get("/api/user/logout")
@@ -46,8 +48,10 @@ export default function Navbar() {
     if (Object.keys(auth).length === 0) return
     if (Object.keys(socket).length === 0) return
 
-    const functionSocket = () => {
-      setIsNewMessage(true)
+    const functionSocket = ({ data }) => {
+      if (data.msjUserToId === auth?.user?.id) {
+        setIsNewMessage(true)
+      }
     }
     socket.on("messageDefaultResponse", functionSocket)
 
@@ -120,7 +124,7 @@ export default function Navbar() {
                     borderBottomColor: "primary"
                   }}
                 >
-                  Bandeja de entrada (3)
+                  Bandeja de entrada ({recentMessages.length})
                 </Tab>
               </TabList>
               <TabPanels>
@@ -131,7 +135,10 @@ export default function Navbar() {
                 </TabPanel>
                 <TabPanel>
                   <PopoverBody>
-                    <Inbox />
+                    <Inbox
+                      recentMessages={recentMessages}
+                      setRecentMessages={setRecentMessages}
+                    />
                   </PopoverBody>
                 </TabPanel>
               </TabPanels>
