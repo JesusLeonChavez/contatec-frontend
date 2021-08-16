@@ -6,11 +6,11 @@ import { render } from "@testing-library/react"
 
 import "@testing-library/jest-dom"
 
-import { newTheme } from "../../styles/theme"
+import { newTheme } from "../../../styles/theme"
 
 import { ChakraProvider } from "@chakra-ui/react"
 
-import Comentary from "../../components/Comentary"
+import Comentary from "../../../components/Comentary"
 import React from "react"
 
 const ChakraRenderer = ({ children }) => {

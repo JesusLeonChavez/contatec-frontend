@@ -5,11 +5,11 @@ import { render } from "@testing-library/react"
 
 import "@testing-library/jest-dom"
 
-import { newTheme } from "../../styles/theme"
+import { newTheme } from "../../../styles/theme"
 
 import { ChakraProvider } from "@chakra-ui/react"
 
-import Footer from "../../components/Footer"
+import Footer from "../../../components/Footer"
 
 import React from "react"
 

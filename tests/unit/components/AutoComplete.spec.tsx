@@ -3,9 +3,10 @@
  */
 import { render } from "@testing-library/react"
 import "@testing-library/jest-dom"
-import { newTheme } from "../../styles/theme"
+import { newTheme } from "../../../styles/theme"
 import { ChakraProvider } from "@chakra-ui/react"
-import { Autocomplete } from "../../components/AutoComplete"
+import { Autocomplete, handleSelect } from "../../../components/AutoComplete"
+ 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 
 
@@ -13,7 +14,7 @@ const props = { hits: [], currentRefinement: {}, refine: () => {} }
 const ChakraRenderer = ({ children }) => {
   return <ChakraProvider theme={newTheme}>{children}</ChakraProvider>
 }
-
+ 
 
 describe("Autocomplete", function () {
   test("debe renderizarse", () => {
@@ -33,4 +34,13 @@ describe("Autocomplete", function () {
 
     expect(component).toMatchSnapshot()
   })
+  test('Aplicar Estilos', () => {
+    const hit = { objectID: 'id', 
+                  category_id: 'id',
+                  description: 'description' };
+    const refine = 'refine'
+    const handSelect = handleSelect(hit, refine)
+    expect(handSelect).toHaveBeenCalled()
+  })
+
 })

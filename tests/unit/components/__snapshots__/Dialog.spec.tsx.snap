@@ -82,7 +82,7 @@ Object {
                 color="var(--primary)"
                 fill="none"
                 height="1em"
-                style="font-size: 50px;"
+                style="font-size: 35px;"
                 viewBox="0 0 16 16"
                 width="1em"
                 xmlns="http://www.w3.org/2000/svg"

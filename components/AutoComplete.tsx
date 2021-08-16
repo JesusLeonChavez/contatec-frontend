@@ -16,24 +16,27 @@ import { post } from "../utils/http"
 import showToast from "./Toast"
 
 // Aplicar  estilos
+
+export const handleSelect = (hit, refine) => {
+  //console.log(hit)
+  refine(
+    `${hit.description.charAt(0).toUpperCase()}${hit.description
+      .split("_")
+      .join(" ")
+      .slice(1)}`
+  )
+  // eslint-disable-next-line camelcase
+  const { objectID, category_id } = hit
+  setTimeout(() => {
+    // eslint-disable-next-line camelcase
+    router.push(`/explorar/${category_id}/${objectID}`)
+  }, 500)
+}
+
 export const Autocomplete = ({ hits, currentRefinement, refine }) => {
   const inputRef = useRef<HTMLInputElement>(null)
-  const handleSelect = hit => {
-    console.log(hit)
-    refine(
-      `${hit.description.charAt(0).toUpperCase()}${hit.description
-        .split("_")
-        .join(" ")
-        .slice(1)}`
-    )
-    // eslint-disable-next-line camelcase
-    const { objectID, category_id } = hit
-    setTimeout(() => {
-      // eslint-disable-next-line camelcase
-      router.push(`/explorar/${category_id}/${objectID}`)
-    }, 500)
-  }
   const handleSubmit = async e => {
+    const inputRef = useRef<HTMLInputElement>(null)
     e.preventDefault()
     const res = await post("/api/post/search", {
       nombre_post: inputRef.current?.value,
@@ -49,7 +52,6 @@ export const Autocomplete = ({ hits, currentRefinement, refine }) => {
     router.push(`/explorar/${idCategoria}/${idPost}`)
     // console.log("api/buscar/" + inputRef.current?.value || "none")
   }
-
   return (
     <form onSubmit={handleSubmit}>
       <FormControl id="text">
@@ -87,7 +89,7 @@ export const Autocomplete = ({ hits, currentRefinement, refine }) => {
                   shadow="xl"
                   _hover={{ backgroundColor: "primary", color: "white" }}
                   onClick={() => {
-                    handleSelect(hit)
+                    handleSelect(hit, refine)
                   }}
                 >
                   {hit.description.charAt(0).toUpperCase()}

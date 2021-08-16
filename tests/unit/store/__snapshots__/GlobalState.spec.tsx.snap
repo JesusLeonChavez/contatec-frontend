@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Zicon debe renderizarse el componente 1`] = `
+exports[`DataProvider debe renderizarse el componente 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body

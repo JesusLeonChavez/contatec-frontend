@@ -1,0 +1,462 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notifications debe renderizarse el componente 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    class="chakra-ui-light"
+  >
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+    <div>
+      <div
+        class="css-rmzu3u"
+      >
+        <div
+          class="css-10hq1ir"
+        >
+          <svg
+            color="var(--primary)"
+            fill="none"
+            height="1em"
+            style="font-size: 35px;"
+            viewBox="0 0 41 41"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+              fill="var(--primary)"
+            />
+          </svg>
+          <p
+            class="chakra-text css-8nthb6"
+          >
+            <b>
+              Juancho
+            </b>
+             - Se acaba de publicar un evento:
+             
+            <b>
+              Matrimonio
+            </b>
+          </p>
+        </div>
+        <div
+          class="css-10hq1ir"
+        >
+          <svg
+            color="var(--primary)"
+            fill="none"
+            height="1em"
+            style="font-size: 35px;"
+            viewBox="0 0 41 41"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+              fill="var(--primary)"
+            />
+          </svg>
+          <p
+            class="chakra-text css-8nthb6"
+          >
+            <b>
+              Juancho
+            </b>
+             - Se acaba de publicar un evento:
+             
+            <b>
+              Matrimonio
+            </b>
+          </p>
+        </div>
+        <div
+          class="css-10hq1ir"
+        >
+          <svg
+            color="var(--primary)"
+            fill="none"
+            height="1em"
+            style="font-size: 35px;"
+            viewBox="0 0 41 41"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+              fill="var(--primary)"
+            />
+          </svg>
+          <p
+            class="chakra-text css-8nthb6"
+          >
+            <b>
+              Juancho
+            </b>
+             - Se acaba de publicar un evento:
+             
+            <b>
+              Matrimonio
+            </b>
+          </p>
+        </div>
+        <div
+          class="css-10hq1ir"
+        >
+          <svg
+            color="var(--primary)"
+            fill="none"
+            height="1em"
+            style="font-size: 35px;"
+            viewBox="0 0 41 41"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+              fill="var(--primary)"
+            />
+          </svg>
+          <p
+            class="chakra-text css-8nthb6"
+          >
+            <b>
+              Juancho
+            </b>
+             - Se acaba de publicar un evento:
+             
+            <b>
+              Matrimonio
+            </b>
+          </p>
+        </div>
+        <div
+          class="css-10hq1ir"
+        >
+          <svg
+            color="var(--primary)"
+            fill="none"
+            height="1em"
+            style="font-size: 35px;"
+            viewBox="0 0 41 41"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+              fill="var(--primary)"
+            />
+          </svg>
+          <p
+            class="chakra-text css-8nthb6"
+          >
+            <b>
+              Juancho
+            </b>
+             - Se acaba de publicar un evento:
+             
+            <b>
+              Matrimonio
+            </b>
+          </p>
+        </div>
+        <div
+          class="css-10hq1ir"
+        >
+          <svg
+            color="var(--primary)"
+            fill="none"
+            height="1em"
+            style="font-size: 35px;"
+            viewBox="0 0 41 41"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+              fill="var(--primary)"
+            />
+          </svg>
+          <p
+            class="chakra-text css-8nthb6"
+          >
+            <b>
+              Juancho
+            </b>
+             - Se acaba de publicar un evento:
+             
+            <b>
+              Matrimonio
+            </b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-rmzu3u"
+    >
+      <div
+        class="css-10hq1ir"
+      >
+        <svg
+          color="var(--primary)"
+          fill="none"
+          height="1em"
+          style="font-size: 35px;"
+          viewBox="0 0 41 41"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+            fill="var(--primary)"
+          />
+        </svg>
+        <p
+          class="chakra-text css-8nthb6"
+        >
+          <b>
+            Juancho
+          </b>
+           - Se acaba de publicar un evento:
+           
+          <b>
+            Matrimonio
+          </b>
+        </p>
+      </div>
+      <div
+        class="css-10hq1ir"
+      >
+        <svg
+          color="var(--primary)"
+          fill="none"
+          height="1em"
+          style="font-size: 35px;"
+          viewBox="0 0 41 41"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+            fill="var(--primary)"
+          />
+        </svg>
+        <p
+          class="chakra-text css-8nthb6"
+        >
+          <b>
+            Juancho
+          </b>
+           - Se acaba de publicar un evento:
+           
+          <b>
+            Matrimonio
+          </b>
+        </p>
+      </div>
+      <div
+        class="css-10hq1ir"
+      >
+        <svg
+          color="var(--primary)"
+          fill="none"
+          height="1em"
+          style="font-size: 35px;"
+          viewBox="0 0 41 41"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+            fill="var(--primary)"
+          />
+        </svg>
+        <p
+          class="chakra-text css-8nthb6"
+        >
+          <b>
+            Juancho
+          </b>
+           - Se acaba de publicar un evento:
+           
+          <b>
+            Matrimonio
+          </b>
+        </p>
+      </div>
+      <div
+        class="css-10hq1ir"
+      >
+        <svg
+          color="var(--primary)"
+          fill="none"
+          height="1em"
+          style="font-size: 35px;"
+          viewBox="0 0 41 41"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+            fill="var(--primary)"
+          />
+        </svg>
+        <p
+          class="chakra-text css-8nthb6"
+        >
+          <b>
+            Juancho
+          </b>
+           - Se acaba de publicar un evento:
+           
+          <b>
+            Matrimonio
+          </b>
+        </p>
+      </div>
+      <div
+        class="css-10hq1ir"
+      >
+        <svg
+          color="var(--primary)"
+          fill="none"
+          height="1em"
+          style="font-size: 35px;"
+          viewBox="0 0 41 41"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+            fill="var(--primary)"
+          />
+        </svg>
+        <p
+          class="chakra-text css-8nthb6"
+        >
+          <b>
+            Juancho
+          </b>
+           - Se acaba de publicar un evento:
+           
+          <b>
+            Matrimonio
+          </b>
+        </p>
+      </div>
+      <div
+        class="css-10hq1ir"
+      >
+        <svg
+          color="var(--primary)"
+          fill="none"
+          height="1em"
+          style="font-size: 35px;"
+          viewBox="0 0 41 41"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.5 35.2c5.104 0 9.616-2.613 12.25-6.533-.061-4.084-8.167-6.33-12.25-6.33s-12.189 2.246-12.25 6.33A14.766 14.766 0 0020.5 35.2zm0-28.992a6.125 6.125 0 100 12.25 6.125 6.125 0 000-12.25zm0-6.125A20.416 20.416 0 11.083 20.5C.083 9.21 9.271.083 20.5.083z"
+            fill="var(--primary)"
+          />
+        </svg>
+        <p
+          class="chakra-text css-8nthb6"
+        >
+          <b>
+            Juancho
+          </b>
+           - Se acaba de publicar un evento:
+           
+          <b>
+            Matrimonio
+          </b>
+        </p>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

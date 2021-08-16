@@ -2,7 +2,6 @@ import { createStandaloneToast } from "@chakra-ui/react"
 const toast = createStandaloneToast()
 
 export default function showToast(title, message, type) {
-  console.log("toast")
   toast({
     title: `${title}`,
     description: `${message}`,
@@ -14,3 +13,4 @@ export default function showToast(title, message, type) {
     isClosable: true
   })
 }
+ 

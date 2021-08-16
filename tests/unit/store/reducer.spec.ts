@@ -1,5 +1,5 @@
-import reducers from "../../store/Reducers"
-import { ACTIONS } from "../../store/Actions"
+import reducers from "../../../store/Reducers"
+import { ACTIONS } from "../../../store/Actions"
 
 describe("Pruebas en reducer", () => {
   test("debe de realizar el login", () => {
