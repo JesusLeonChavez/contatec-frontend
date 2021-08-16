@@ -33,21 +33,7 @@ type PropsRegister = {
 }
 
 // const PORT = process.env.NEXT_PUBLIC_API_BASE_URL
-
-export default function Login({
-  variant,
-  width,
-  showModalButtonText
-}: PropsRegister) {
-  // eslint-disable-next-line no-unused-vars
-  // const socket = Socket(PORT)
-
-  // useEffect(() => {
-  //   socket.on("connect", () => {
-  //     socket.emit("identity", 1)
-  //   })
-  // }, [])
-  const { state, dispatch } = useContext(DataContext)
+const { state, dispatch } = useContext(DataContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [isPosting, setIsPosting] = useState(false)
   const [values, handleInputChange, reset] = useForm({
@@ -63,59 +49,79 @@ export default function Login({
     password: ""
   })
 
-  const handleSubmit = async e => {
-    e.preventDefault()
-    const { errors: errorsForm, isValid } = validLogin(values)
-    setErrors(errorsForm)
-    if (isValid) {
-      setIsPosting(true)
-      const res = await post("/api/user/login", {
-        us_correo: values.email,
-        password: values.password
-      })
-      setIsPosting(false)
-      // console.log("res.data Login: ", res.data)
-      if (res.data.status) {
-        showToast("Error al iniciar sesión.", res.data.message, "error")
-      } else {
-        // window.location.reload()
-        dispatch({ type: "AUTH_TYPE", payload: "normal" })
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        localStorage.setItem("isLogged", true)
-        localStorage.setItem("typeLogged", "normal")
-      }
+export const handleSubmit = async e => {
+  e.preventDefault()
+  const { errors: errorsForm, isValid } = validLogin(values)
+  setErrors(errorsForm)
+  if (isValid) {
+    setIsPosting(true)
+    const res = await post("/api/user/login", {
+      us_correo: values.email,
+      password: values.password
+    })
+    setIsPosting(false)
+    // console.log("res.data Login: ", res.data)
+    if (res.data.status) {
+      showToast("Error al iniciar sesión.", res.data.message, "error")
+    } else {
+      // window.location.reload()
+      dispatch({ type: "AUTH_TYPE", payload: "normal" })
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      localStorage.setItem("isLogged", true)
+      localStorage.setItem("typeLogged", "normal")
     }
   }
+}
+
+export const handleFacebook = async res => {
+  const { accessToken, userID } = res
+  // console.log("respues de libreria FB: ", res)
+  try {
+    const res = await post("/api/user/facebook_login", {
+      accessToken,
+      userID
+    })
+    // console.log("resFB: ", res)
+    if (res.data.status || res.data.error) {
+      // console.log("error en fb")
+      showToast(
+        "Error al iniciar sesión.",
+        "No se pudo iniciar sesión con FB",
+        "error"
+      )
+    } else {
+      // console.log("aparentemete correcto")
+      dispatch({ type: "AUTH_TYPE", payload: "facebook" })
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      localStorage.setItem("isLogged", true)
+      localStorage.setItem("typeLogged", "facebook")
+    }
+  } catch (err) {
+    console.log("err: ", err)
+  }
+}
+
+export default function Login({
+  variant,
+  width,
+  showModalButtonText
+}: PropsRegister) {
+  // eslint-disable-next-line no-unused-vars
+  // const socket = Socket(PORT)
+
+  // useEffect(() => {
+  //   socket.on("connect", () => {
+  //     socket.emit("identity", 1)
+  //   })
+  // }, [])
+  //
+
+  //
   // TODO: error en login fb y google
-  const handleFacebook = async res => {
-    const { accessToken, userID } = res
-    // console.log("respues de libreria FB: ", res)
-    try {
-      const res = await post("/api/user/facebook_login", {
-        accessToken,
-        userID
-      })
-      // console.log("resFB: ", res)
-      if (res.data.status || res.data.error) {
-        // console.log("error en fb")
-        showToast(
-          "Error al iniciar sesión.",
-          "No se pudo iniciar sesión con FB",
-          "error"
-        )
-      } else {
-        // console.log("aparentemete correcto")
-        dispatch({ type: "AUTH_TYPE", payload: "facebook" })
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        localStorage.setItem("isLogged", true)
-        localStorage.setItem("typeLogged", "facebook")
-      }
-    } catch (err) {
-      console.log("err: ", err)
-    }
-  }
+  //FB
+
   const handleGoogle = async res => {
     const { tokenId } = res
     // console.log("respues de libreria Google: ", res)
