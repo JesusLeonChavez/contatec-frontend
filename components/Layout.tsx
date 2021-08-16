@@ -12,7 +12,6 @@ function Layout({ children, withNav, withFooter }: LayoutProps) {
   const router = useRouter()
   useEffect(() => {
     const handleRouteChange = url => {
-      console.log(url)
       NProgress.start()
     }
     router.events.on("routeChangeStart", handleRouteChange)
