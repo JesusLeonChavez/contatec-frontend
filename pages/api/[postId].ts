@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 const deleteImages = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = req.headers.authorization
   const postId = req.query.postId
-  console.log("idPost: ", postId, " token: ", token)
+  // console.log("idPost: ", postId, " token: ", token)
   // const resp = await fetch(`https://contatec.herokuapp.com/api/post/${postId}`)
   return res.status(200).json({ error: false })
 }

@@ -74,7 +74,7 @@ export default function Login({
         password: values.password
       })
       setIsPosting(false)
-      console.log("res.data Login: ", res.data)
+      // console.log("res.data Login: ", res.data)
       if (res.data.status) {
         showToast("Error al iniciar sesión.", res.data.message, "error")
       } else {
@@ -90,22 +90,22 @@ export default function Login({
   // TODO: error en login fb y google
   const handleFacebook = async res => {
     const { accessToken, userID } = res
-    console.log("respues de libreria FB: ", res)
+    // console.log("respues de libreria FB: ", res)
     try {
       const res = await post("/api/user/facebook_login", {
         accessToken,
         userID
       })
-      console.log("resFB: ", res)
+      // console.log("resFB: ", res)
       if (res.data.status || res.data.error) {
-        console.log("error en fb")
+        // console.log("error en fb")
         showToast(
           "Error al iniciar sesión.",
           "No se pudo iniciar sesión con FB",
           "error"
         )
       } else {
-        console.log("aparentemete correcto")
+        // console.log("aparentemete correcto")
         dispatch({ type: "AUTH_TYPE", payload: "facebook" })
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -118,11 +118,11 @@ export default function Login({
   }
   const handleGoogle = async res => {
     const { tokenId } = res
-    console.log("respues de libreria Google: ", res)
+    // console.log("respues de libreria Google: ", res)
     try {
       setIsPosting(true)
       const res = await post("/api/user/google_login", { tokenId })
-      console.log("resGoogle: ", res)
+      // console.log("resGoogle: ", res)
       setIsPosting(false)
       if (res.data.status) {
         showToast("Error al iniciar sesión.", res.data.message, "error")

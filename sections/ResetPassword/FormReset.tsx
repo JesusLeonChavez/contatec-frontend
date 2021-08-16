@@ -31,7 +31,7 @@ export default function FormReset() {
     const { errors: errorsForm, isValid } = validReset(values)
     setErrors(errorsForm)
     if (isValid) {
-      console.log("enviando correo")
+      // console.log("enviando correo")
       setIsPosting(true)
       const resp = await post("/api/user/forgot", {
         us_correo: values.email
@@ -45,7 +45,7 @@ export default function FormReset() {
           "success"
         )
       }
-      console.log("resp: ", resp)
+      // console.log("resp: ", resp)
       setIsPosting(false)
     }
   }

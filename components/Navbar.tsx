@@ -36,7 +36,7 @@ export default function Navbar() {
   const handleLogout = async () => {
     localStorage.removeItem("isLogged")
     await get("/api/user/logout")
-    console.log("log out")
+    // console.log("log out")
     dispatch({ type: "AUTH", payload: {} })
     // return router.push("/")
     return window.location.reload()
