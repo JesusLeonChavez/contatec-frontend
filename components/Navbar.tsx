@@ -24,14 +24,15 @@ import {
 } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { DataContext } from "../store/GlobalState"
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { get } from "../utils/http"
 
 export default function Navbar() {
   const router = useRouter()
   const activeRoute = router?.pathname.split("/")[1]
   const { state, dispatch } = useContext(DataContext)
-  const { auth, authReady } = state
+  const { auth, authReady, socket } = state
+  const [isNewMessage, setIsNewMessage] = useState(false)
 
   const handleLogout = async () => {
     localStorage.removeItem("isLogged")
@@ -41,6 +42,19 @@ export default function Navbar() {
     // return router.push("/")
     return window.location.reload()
   }
+  useEffect(() => {
+    if (Object.keys(auth).length === 0) return
+    if (Object.keys(socket).length === 0) return
+
+    const functionSocket = () => {
+      setIsNewMessage(true)
+    }
+    socket.on("messageDefaultResponse", functionSocket)
+
+    return () => {
+      socket.off("messageDefaultResponse")
+    }
+  }, [auth?.user?.id, socket])
 
   const loggedRouter = () => {
     return (
@@ -54,18 +68,26 @@ export default function Navbar() {
       <Flex align="center">
         <Popover placement="bottom-end">
           <PopoverTrigger>
-            <Box px="4" position="relative">
+            <Box
+              px="4"
+              position="relative"
+              onClick={() => setIsNewMessage(false)}
+            >
               {/* <ZIcon name="ring" color="primary" size={20} pointer /> */}
-              <Text cursor="pointer">Mensajes</Text>
-              <Box
-                h="2"
-                w="2"
-                bg="red"
-                borderRadius="50"
-                position="absolute"
-                top="0.5"
-                left="120px"
-              ></Box>
+              <Text cursor="pointer" userSelect="none">
+                Mensajes
+              </Text>
+              {isNewMessage && (
+                <Box
+                  h="2"
+                  w="2"
+                  bg="red"
+                  borderRadius="50"
+                  position="absolute"
+                  top="0.5"
+                  left="90px"
+                ></Box>
+              )}
             </Box>
           </PopoverTrigger>
           <PopoverContent w="150" _focus={{ outline: "none" }}>
@@ -120,7 +142,13 @@ export default function Navbar() {
         <Popover placement="bottom-end">
           <PopoverTrigger>
             <Box px="4">
-              <ZIcon name="avatar" color="primary" size={25} pointer />
+              <ZIcon
+                name="avatar"
+                color="primary"
+                size={25}
+                pointer
+                onClick={() => setIsNewMessage(false)}
+              />
             </Box>
           </PopoverTrigger>
           <PopoverContent w="38" _focus={{ outline: "none" }}>
