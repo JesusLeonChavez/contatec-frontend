@@ -57,6 +57,52 @@ interface FileUploadProps {
   errorHelper: boolean
 }
 
+//
+export function onChange(ev) {
+  const _files = ev.target.files
+  let availabale_files = []
+  let notSupport = false
+  let validImage = false
+  // eslint-disable-next-line array-callback-return
+  availabale_files = Object.values(_files).filter(item => {
+    const ext = item.name
+      .substring(item.name.lastIndexOf(".") + 1)
+      .toLowerCase()
+    const size = item.size
+    if (extensions.includes(ext)) {
+      item.extension = ext
+      validImage = true
+    } else if (!notSupport) {
+      notSupport = true
+    }
+    if (size <= 1024 * 1024) {
+      validImage = true
+    } else if (!notSupport) {
+      notSupport = true
+    }
+
+    if (validImage) {
+      return item
+    }
+    // console.log("gaaa: ", item)
+  })
+
+  if (!notSupport) {
+    setErrorSupport(false)
+    onDrop(Object.values(availabale_files))
+  } else {
+    setErrorSupport(true)
+  }
+}
+
+export function handleCollapse(value) {
+  toggleFocus.current.classList.toggle(styles.focus)
+  if (!value) {
+    setErrorSupport(false)
+  }
+  setCollapse(!value)
+}
+
 export default function FileUpload({
   files,
   extensions,
@@ -95,50 +141,9 @@ export default function FileUpload({
     }
   }, [handleOut])
 
-  function handleCollapse(value) {
-    toggleFocus.current.classList.toggle(styles.focus)
-    if (!value) {
-      setErrorSupport(false)
-    }
-    setCollapse(!value)
-  }
+  //
 
-  function onChange(ev) {
-    const _files = ev.target.files
-    let availabale_files = []
-    let notSupport = false
-    let validImage = false
-    // eslint-disable-next-line array-callback-return
-    availabale_files = Object.values(_files).filter(item => {
-      const ext = item.name
-        .substring(item.name.lastIndexOf(".") + 1)
-        .toLowerCase()
-      const size = item.size
-      if (extensions.includes(ext)) {
-        item.extension = ext
-        validImage = true
-      } else if (!notSupport) {
-        notSupport = true
-      }
-      if (size <= 1024 * 1024) {
-        validImage = true
-      } else if (!notSupport) {
-        notSupport = true
-      }
-
-      if (validImage) {
-        return item
-      }
-      // console.log("gaaa: ", item)
-    })
-
-    if (!notSupport) {
-      setErrorSupport(false)
-      onDrop(Object.values(availabale_files))
-    } else {
-      setErrorSupport(true)
-    }
-  }
+  //
   const new_files = setFiles(files)
   return (
     <Provider value={{ readOnly, remove }}>

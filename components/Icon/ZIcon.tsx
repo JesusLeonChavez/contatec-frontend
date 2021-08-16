@@ -62,7 +62,7 @@ import ButtonRight from "./ButtonRight"
 
 import { PropsIcon } from "./types"
 
-function VIcon({
+export function VIcon({
   name,
   color,
   size,

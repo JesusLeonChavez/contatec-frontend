@@ -7,21 +7,19 @@ import Message from "../ShowChat/Message"
 import UsersName from "../ShowChat/UsersName"
 import ModalNewQuote from "../ShowChat/ModalNewQuote"
 import { useState, useEffect, useRef, useContext } from "react"
-import Socket from "socket.io-client"
-
 import { get, setAuth } from "../../utils/http"
 import { DataContext } from "../../store/GlobalState"
 
 export default function Chat() {
   const [activeChat, setActiveChat] = useState(-1)
-  const [currentChat, setCurrentChat] = useState(null)
+  const [currentChat, setCurrentChat] = useState<any>(null)
   const { state } = useContext(DataContext)
-  const { auth, authReady, socket } = state
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
+  const { auth, authReady, socket } = state
   // const { auth, socket } = state
   const [conversations, setConversations] = useState([])
-  const [messages, setMessages] = useState<string[]>([])
+  const [messages, setMessages] = useState<any>([])
   const [newMessage, setNewMessage] = useState("")
   const [arrivalMessage, setArrivalMessage] = useState(null)
   const [isArrivalMessage, setIsArrivalMessage] = useState(false)
@@ -49,11 +47,10 @@ export default function Chat() {
         })
       }
     }
-    // console.log("activando socket")
+
     socket.on("messageDefaultResponse", functionSocket)
     return () => {
       socket.off("messageDefaultResponse")
-      // socket.un("messageDefaultResponse", functionSocket)
     }
   }, [auth?.user?.id, socket, currentChat])
 
@@ -65,9 +62,11 @@ export default function Chat() {
   useEffect(() => {
     if (!auth?.user?.id) return
     const getConversations = async () => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       setAuth(auth.access_token)
       const res = await get("/api/messages/all")
-      // console.log("conversaciones: ", res)
+
       setConversations(res.data)
     }
 
@@ -77,42 +76,42 @@ export default function Chat() {
     if (!currentChat) return
     console.log(currentChat)
     const getMessages = async () => {
-      setAuth(auth.access_token)
-      const resMessages = await get(`/api/messages/all/${currentChat!.idAmiwi}`)
-      // console.log("resMessage:", resMessages)
+      setAuth(auth!.access_token)
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const resMessages = await get(`/api/messages/all/${currentChat.idAmiwi}`)
+
       setMessages(resMessages.data.data.reverse())
     }
     if (!auth?.user?.id) return
+    if (!currentChat) return
     getMessages()
   }, [currentChat])
 
   const sendMessage = () => {
-    const message = {
-      createdAt: "2021-08-14T05:46:46.578Z",
-      msjIdPostPropuestaId: 295,
-      msjUserFromId: auth.user.id,
-      msjUserToId: 155,
-      msj_contenido: newMessage
-    }
     socket.emit("messageDefault", {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       to: currentChat!.idAmiwi,
       data: newMessage,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       from: auth.user.id
     })
-    // console.log(newMessage)
+
     setNewMessage("")
     textArearef.current?.focus()
   }
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ block: "end", behavior: "smooth" })
-  }, [currentChat])
-  // TODO: cambiar currentChat x messages
+    scrollRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" })
+  }, [messages])
 
   const handleSendMessage = () => {
     sendMessage()
   }
   const onKeyDown = e => {
+    // eslint-disable-next-line eqeqeq
     if (e.keyCode == "13") {
       sendMessage()
     }
@@ -142,8 +141,14 @@ export default function Chat() {
               key={idx}
               idx={idx}
               activeChat={activeChat}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               name={conver.nameAmiwi}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               lastMessage={conver.msj_contenido}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               image={conver.ImagenAmiwi}
             />
           ))
@@ -155,10 +160,14 @@ export default function Chat() {
         <>
           <Box w="799px" border="1px solid #DBD9DC">
             <Flex h="50px" border="1px solid #DBD9DC" align="center">
+              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+              {/* @ts-ignore */}
               <UsersName name={currentChat.nameAmiwi} />
             </Flex>
             <Box overflowY="scroll" h="650px" border="1px solid #DBD9DC">
               {messages.map((message, item) => (
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 <div ref={scrollRef} key={item}>
                   <Message
                     message={message}

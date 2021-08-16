@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dialog debe renderizarse el componente 1`] = `
+exports[`ProgressDialog debe renderizarse el componente 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body
@@ -60,60 +60,23 @@ Object {
         >
           <section
             aria-describedby="chakra-modal--body-1"
-            aria-labelledby="chakra-modal--header-1"
             aria-modal="true"
-            class="chakra-modal__content css-19hidti"
+            class="chakra-modal__content css-1sd1914"
             id="chakra-modal-1"
             role="alertdialog"
             style="opacity: 0; transform: translateX(0px) translateY(16px) translateZ(0);"
             tabindex="-1"
           >
-            <header
-              class="chakra-modal__header css-12vu553"
-              id="chakra-modal--header-1"
-            />
             <div
               class="chakra-modal__body css-iefe8e"
               id="chakra-modal--body-1"
             >
-              <svg
-                color="var(--primary)"
-                fill="none"
-                height="1em"
-                style="font-size: 50px;"
-                viewBox="0 0 12 15"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  clip-rule="evenodd"
-                  d="M7.917 0l.833.833h2.917V2.5H0V.833h2.917L3.75 0h4.167zM1 12.833c0 .917.75 1.667 1.667 1.667h6.666c.917 0 1.667-.75 1.667-1.667v-10H1v10zM2.667 4.5h6.666v8.333H2.667V4.5z"
-                  fill="var(--primary)"
-                  fill-rule="evenodd"
-                />
-              </svg>
               <p
-                class="chakra-text css-12inih9"
+                class="chakra-text css-10k94ha"
               >
                 Contenido
               </p>
             </div>
-            <footer
-              class="chakra-modal__footer css-125ai9l"
-            >
-              <button
-                class="chakra-button css-kh6jo1"
-                type="button"
-              >
-                No, cancelar
-              </button>
-              <button
-                class="chakra-button css-1m2lyo8"
-                type="button"
-              >
-                Sí, acepto
-              </button>
-            </footer>
           </section>
         </div>
       </div>

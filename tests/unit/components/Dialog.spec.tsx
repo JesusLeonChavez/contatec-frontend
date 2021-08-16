@@ -6,11 +6,11 @@ import { render } from "@testing-library/react"
 
 import "@testing-library/jest-dom"
 
-import { newTheme } from "../../styles/theme"
+import { newTheme } from "../../../styles/theme"
 
 import { ChakraProvider } from "@chakra-ui/react"
 
-import Dialog from "../../components/Dialog"
+import Dialog from "../../../components/Dialog"
 
 const ChakraRenderer = ({ children }) => {
   return <ChakraProvider theme={newTheme}>{children}</ChakraProvider>
@@ -40,7 +40,7 @@ describe("Dialog", function () {
       wrapper: ChakraRenderer
     })
 
-    //expect(component).toMatchSnapshot()
+    expect(component).toMatchSnapshot()
   })
 
   test("debe recibir las propiedades con el tipo esperado", () => {

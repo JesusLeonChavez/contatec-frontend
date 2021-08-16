@@ -39,15 +39,7 @@ export default function Login({
   width,
   showModalButtonText
 }: PropsRegister) {
-  // eslint-disable-next-line no-unused-vars
-  // const socket = Socket(PORT)
-
-  // useEffect(() => {
-  //   socket.on("connect", () => {
-  //     socket.emit("identity", 1)
-  //   })
-  // }, [])
-  const { state, dispatch } = useContext(DataContext)
+  const { dispatch } = useContext(DataContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [isPosting, setIsPosting] = useState(false)
   const [values, handleInputChange, reset] = useForm({
@@ -62,7 +54,6 @@ export default function Login({
     email: "",
     password: ""
   })
-
   const handleSubmit = async e => {
     e.preventDefault()
     const { errors: errorsForm, isValid } = validLogin(values)
@@ -87,7 +78,6 @@ export default function Login({
       }
     }
   }
-  // TODO: error en login fb y google
   const handleFacebook = async res => {
     const { accessToken, userID } = res
     // console.log("respues de libreria FB: ", res)
@@ -116,6 +106,20 @@ export default function Login({
       console.log("err: ", err)
     }
   }
+
+  // eslint-disable-next-line no-unused-vars
+  // const socket = Socket(PORT)
+
+  // useEffect(() => {
+  //   socket.on("connect", () => {
+  //     socket.emit("identity", 1)
+  //   })
+  // }, [])
+  //
+
+  //
+  // TODO: error en login fb y google
+
   const handleGoogle = async res => {
     const { tokenId } = res
     // console.log("respues de libreria Google: ", res)

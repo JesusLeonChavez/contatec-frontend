@@ -8,7 +8,7 @@ import ZIcon from "../components/Icon"
 
 const { Provider, Consumer } = React.createContext(false)
 
-interface PropsOptionComponent {
+interface PropsOptionComponent {  
   children: React.ReactNode
   value: string | number | boolean
   image?: string
@@ -90,7 +90,7 @@ interface PropsSelectField {
   transparent?: boolean
   errorHelper?: boolean
 }
-function SelectField({
+export function SelectField({
   children,
   option,
   onChange,
