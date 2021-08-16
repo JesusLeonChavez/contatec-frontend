@@ -1,6 +1,6 @@
 import { Box, Text, Flex, Button } from "@chakra-ui/react"
 import router from "next/router"
-import { useState, useContext, useEffect } from "react"
+import { useContext, useEffect } from "react"
 
 import ZIcon from "../components/Icon"
 import { DataContext } from "../store/GlobalState"
