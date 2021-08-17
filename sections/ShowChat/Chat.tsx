@@ -84,9 +84,8 @@ export default function Chat() {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const resMessages = await get(`/api/messages/all/${currentChat.idAmiwi}`)
-
       setMessages(resMessages.data.data.reverse())
-      console.log(resMessages.data.data.reverse())
+      // console.log(resMessages.data.data.reverse())
     }
     if (!auth?.user?.id) return
     if (!currentChat) return

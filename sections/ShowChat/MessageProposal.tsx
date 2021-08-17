@@ -1,11 +1,19 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react"
 import router from "next/router"
+import { useContext } from "react"
+import { DataContext } from "../../store/GlobalState"
 
 interface MessageProps {
   message: any
   own?: boolean
 }
 export default function MessageProposal({ message, own }: MessageProps) {
+  const { state } = useContext(DataContext)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { auth, socket } = state
+
+  const handleAcceptPropose = async () => {}
   return (
     <Box
       d="flex"
