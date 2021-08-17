@@ -60,15 +60,15 @@ export const DataProvider = ({ children }) => {
           // console.log("setAuth: ", accessToken.data.access_token)
           setAuth(accessToken.data.access_token)
           const { data } = await get("/api/user/info")
-          console.log(data)
+          // console.log(data)
           const { user } = data
 
           if (user.msg === "Autenticación inválida") {
             return showToast("Error al recuperar datos del usuario")
           }
-          console.log(user)
+          // console.log(user)
           setSocket(Socket("https://contatec.herokuapp.com"))
-          console.log(accessToken)
+          // console.log(accessToken)
           dispatch({
             type: "AUTH",
             payload: {
@@ -110,16 +110,22 @@ export const DataProvider = ({ children }) => {
       payload: true
     })
     logging()
-    dispatch({
-      type: "AUTH_READY",
-      payload: true
-    })
-    get("/api/category/categories")
-      .then(categories => {
-        dispatch({ type: "GET_CATEGORIES", payload: categories.data })
-      })
-      .catch(() => showToast("Error al recuperar categorias"))
+
+    console.log("efecto")
   }, [authType])
+
+  // useEffect(() => {
+  //   console.log("ejecuta")
+  //   const getCategories = async () => {
+  //     const { data, error } = await get("/api/category/categories")
+  //     if (error) {
+  //       console.log(error)
+  //       showToast("Error al recuperar categorias")
+  //     }
+  //     dispatch({ type: "GET_CATEGORIES", payload: data })
+  //   }
+  //   getCategories()
+  // }, [])
 
   useEffect(() => {
     if (Object.keys(state.auth).length === 0) return
