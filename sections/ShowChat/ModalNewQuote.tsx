@@ -12,9 +12,12 @@ import {
   FormLabel,
   Input,
   Grid,
-  Textarea
+  Textarea,
+  NumberInput,
+  NumberInputField
 } from "@chakra-ui/react"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
+import SelectField, { Option } from "../../components/SelectField"
 import { DataContext } from "../../store/GlobalState"
 import { useForm } from "../../utils/hooks/useForm"
 import { toCapitalFirstLetter } from "../../utils/toCapital"
@@ -28,24 +31,41 @@ export default function ModalNewQuote({
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { state } = useContext(DataContext)
-  const { socket, auth } = state
+  const { socket, auth, posts } = state
   const [values, handleInputChange, reset] = useForm({
     servicio: "",
     nombre: "",
     presupuesto: "",
     fechaLimite: "",
-    descripcion: ""
+    descripcion: "",
+    price: ""
   })
-  const { nombre, descripcion, servicio, presupuesto, fechaLimite } = values
+  const [category, setCategory] = useState(null)
+  const { nombre, descripcion, servicio, presupuesto, fechaLimite, price } =
+    values
+  function handleChangeSelect(option) {
+    setCategory(option)
+  }
+
   const handleSubmit = (e: any) => {
     e.preventDefault()
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const dataEmit = { ...values, categoryId: category.value }
     socket.emit("messageProposal", {
       to: currentChat!.idAmiwi,
       from: auth.user.id,
-      data: values
+      data: dataEmit
     })
     reset()
   }
+
+  useEffect(() => {
+    if (!isOpen) {
+      reset()
+      setCategory(null)
+    }
+  }, [isOpen])
   return (
     <Box>
       <Button variant={variant} width={width} height={height} onClick={onOpen}>
@@ -95,16 +115,24 @@ export default function ModalNewQuote({
               <Grid templateColumns="repeat(2,1fr)" gap="6">
                 <FormControl mb="2">
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
-                    Presupuesto
+                    Categoría
                   </FormLabel>
-                  <Input
-                    fontSize="sm"
-                    type="text"
-                    placeholder="s/"
-                    name="presupuesto"
-                    onChange={handleInputChange}
-                    value={toCapitalFirstLetter(presupuesto)}
-                  />
+                  <SelectField
+                    fullWidth
+                    required
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    option={category}
+                    placeholder="Seleccione una categoría "
+                    onChange={handleChangeSelect}
+                    // errorHelper={!!errors.category}
+                  >
+                    {posts.map((p, idx) => (
+                      <Option key={idx} value={p.id}>
+                        {p.pst_nombre}
+                      </Option>
+                    ))}
+                  </SelectField>
                 </FormControl>
                 <FormControl mb="2">
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
@@ -131,11 +159,34 @@ export default function ModalNewQuote({
                   placeholder="Escribe tu contenido detallado aquí"
                   h="100"
                   maxLength={100}
-                  resizable="false"
+                  resize="none"
                   name="descripcion"
                   onChange={handleInputChange}
                   value={toCapitalFirstLetter(descripcion)}
                 />
+              </FormControl>
+              <FormControl mb="2" id="first-name">
+                <FormLabel color="letter" fontWeight="light" fontSize="sm">
+                  Presupuesto
+                </FormLabel>
+                <NumberInput min={0} defaultValue={price}>
+                  <NumberInputField
+                    fontSize="sm"
+                    placeholder="S/."
+                    name="presupuesto"
+                    onChange={handleInputChange}
+                    value={presupuesto}
+                  />
+                </NumberInput>
+
+                {/* <Input
+                  fontSize="sm"
+                  type="text"
+                  placeholder="s/"
+                  name="presupuesto"
+                  onChange={handleInputChange}
+                  value={toCapitalFirstLetter(presupuesto)}
+                /> */}
               </FormControl>
 
               <Button
@@ -144,6 +195,7 @@ export default function ModalNewQuote({
                 variant="primary"
                 type="submit"
                 className="buttonDisabledPrimary"
+                my="4"
               >
                 Enviar cotización
               </Button>
