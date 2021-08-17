@@ -114,18 +114,22 @@ export const DataProvider = ({ children }) => {
     console.log("efecto")
   }, [authType])
 
-  // useEffect(() => {
-  //   console.log("ejecuta")
-  //   const getCategories = async () => {
-  //     const { data, error } = await get("/api/category/categories")
-  //     if (error) {
-  //       console.log(error)
-  //       showToast("Error al recuperar categorias")
-  //     }
-  //     dispatch({ type: "GET_CATEGORIES", payload: data })
-  //   }
-  //   getCategories()
-  // }, [])
+  useEffect(() => {
+    console.log("ejecuta")
+    const getCategories = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/category/categories`
+        )
+        const data = await res.json()
+        console.log("data: ", data)
+        dispatch({ type: "GET_CATEGORIES", payload: data })
+      } catch (err) {
+        showToast("Error al recuperar categorias")
+      }
+    }
+    getCategories()
+  }, [])
 
   useEffect(() => {
     if (Object.keys(state.auth).length === 0) return
