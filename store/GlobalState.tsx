@@ -59,25 +59,28 @@ export const DataProvider = ({ children }) => {
           // console.log("accessToken: ", accessToken.data.access_token)
           // console.log("setAuth: ", accessToken.data.access_token)
           setAuth(accessToken.data.access_token)
-          const user = await get("/api/user/info")
-          if (user.data.msg === "Autenticación inválida") {
+          const { data } = await get("/api/user/info")
+          console.log(data)
+          const { user } = data
+
+          if (user.msg === "Autenticación inválida") {
             return showToast("Error al recuperar datos del usuario")
           }
-
+          console.log(user)
           setSocket(Socket("https://contatec.herokuapp.com"))
-
+          console.log(accessToken)
           dispatch({
             type: "AUTH",
             payload: {
               access_token: accessToken.data.access_token,
               user: {
-                id: user.data.id,
-                createdAt: user.data.createdAt,
-                updatedAt: user.data.updatedAt,
-                us_correo: user.data.us_correo,
-                us_nombre: user.data.us_nombre,
-                us_apellido: user.data.us_apellido,
-                avatar: user.data.avatar
+                id: user.id,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt,
+                us_correo: user.us_correo,
+                us_nombre: user.us_nombre,
+                us_apellido: user.us_apellido,
+                avatar: user.avatar
                 // posts: user.data.posts
               }
             }
@@ -85,7 +88,7 @@ export const DataProvider = ({ children }) => {
 
           dispatch({
             type: "POSTS",
-            payload: user.data.posts
+            payload: user.posts
           })
           if (typeLogged === "normal") {
             dispatch({ type: "AUTH_TYPE", payload: "normal" })

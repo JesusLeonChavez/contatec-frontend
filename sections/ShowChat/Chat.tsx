@@ -85,7 +85,7 @@ export default function Chat() {
       // @ts-ignore
       const resMessages = await get(`/api/messages/all/${currentChat.idAmiwi}`)
       setMessages(resMessages.data.data.reverse())
-      // console.log(resMessages.data.data.reverse())
+      console.log(resMessages.data.data.reverse())
     }
     if (!auth?.user?.id) return
     if (!currentChat) return
@@ -97,8 +97,10 @@ export default function Chat() {
     if (!auth?.user?.id) return
     const verifyPost = async () => {
       setAuth(auth.access_token)
-      const user = await get("/api/user/info")
-      if (!(user.data.posts.length > 0)) return
+      const {
+        data: { user }
+      } = await get("/api/user/info")
+      if (!(user.posts.length > 0)) return
       setIsAblePropose(true)
     }
     verifyPost()

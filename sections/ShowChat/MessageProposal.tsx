@@ -2,6 +2,7 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react"
 import router from "next/router"
 import { useContext } from "react"
 import { DataContext } from "../../store/GlobalState"
+import { post } from "../../utils/http"
 
 interface MessageProps {
   message: any
@@ -14,7 +15,27 @@ export default function MessageProposal({ message, own }: MessageProps) {
   const { auth, socket } = state
   console.log("message: ", message)
 
-  const handleAcceptPropose = async () => {}
+  const handleAcceptPropose = async () => {
+    if (!auth?.user?.id) return
+    // setAuth(auth!.access_token)
+    // TODO: Verificar tiempo de propuesta
+    const { data, error } = await post(`/api/work/accept-propose`, {
+      id_mensaje: message.id
+    })
+    if (error) {
+      console.log(error)
+      return
+    }
+    // console.log({
+    //   data,
+    //   message
+    // })
+
+    socket.emit("acceptPropose", {
+      data,
+      message
+    })
+  }
   return (
     <Box
       d="flex"
@@ -70,10 +91,8 @@ export default function MessageProposal({ message, own }: MessageProps) {
               <Button
                 variant="primary"
                 w="100px"
-                onClick={() => {
-                  console.log("aceptar propuesta")
-                  // router.push("/mostrar-datos")
-                }}
+                // agregar validador (alert/modal)
+                onClick={handleAcceptPropose}
                 mx="auto"
               >
                 Contratar
