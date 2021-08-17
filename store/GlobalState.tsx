@@ -111,13 +111,21 @@ export const DataProvider = ({ children }) => {
     })
     logging()
 
-    // get("/api/category/categories")
-    //   .then(categories => {
-    //     dispatch({ type: "GET_CATEGORIES", payload: categories.data })
-    //   })
-    //   .catch(() => showToast("Error al recuperar categorias"))
-    // console.log("efecto")
+    console.log("efecto")
   }, [authType])
+
+  // useEffect(() => {
+  //   console.log("ejecuta")
+  //   const getCategories = async () => {
+  //     const { data, error } = await get("/api/category/categories")
+  //     if (error) {
+  //       console.log(error)
+  //       showToast("Error al recuperar categorias")
+  //     }
+  //     dispatch({ type: "GET_CATEGORIES", payload: data })
+  //   }
+  //   getCategories()
+  // }, [])
 
   useEffect(() => {
     if (Object.keys(state.auth).length === 0) return

@@ -2,6 +2,7 @@
 // import parseError from "./parseError"
 // import { getKeyByPath } from "./tools"
 const baseUrl = "https://contatec.herokuapp.com"
+// const baseUrl = "http://localhost:3001"
 export interface HttpResponse<T> {
   error: any
   data: T | null
