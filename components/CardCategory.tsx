@@ -85,6 +85,7 @@ export default function CardCategory({
     <Box
       borderRadius="lg"
       overflow="hidden"
+      my="3"
       mx="3"
       boxShadow="lg"
       bg="secondary"

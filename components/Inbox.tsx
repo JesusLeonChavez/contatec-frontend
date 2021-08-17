@@ -21,7 +21,6 @@ export default function Inbox({
 
     const functionSocket = ({ data }) => {
       if (data.msjUserToId === auth?.user?.id) {
-        console.log(data)
         setRecentMessages(prev => [
           ...prev,
           { from: data.msjUserFromId, message: data.msj_contenido }
