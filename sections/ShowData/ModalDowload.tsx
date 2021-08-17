@@ -15,9 +15,45 @@ import {
   ModalFooter
 } from "@chakra-ui/react"
 import ZIcon from "../../components/Icon/ZIcon"
+import { useReactToPrint } from "react-to-print"
+import { useRef } from "react"
+import PrintView from "./PrintView"
 
+const pageStyle = `
+  @media print {
+    .page-break {
+      margin-top: 1rem;
+    }
+  }
+
+  @media print {
+    html, body {
+      height: initial !important;
+      overflow: initial !important;
+      -webkit-print-color-adjust: exact;
+    }
+
+    table {
+      thead, th{
+        background: #F1F1F1;
+      }
+    }
+  }
+`
 export default function ModalDowload() {
+  const componentRef = useRef<any>(null)
+  function handleClosePrint() {
+    console.log("Adios impresion")
+  }
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const handlePrint = useReactToPrint({
+    onAfterPrint: () => handleClosePrint(),
+    content: () => componentRef.current,
+    pageStyle: pageStyle
+  })
+  const boucher = {
+    number: "13546"
+  }
 
   return (
     <Box>
@@ -132,9 +168,17 @@ export default function ModalDowload() {
               variant="primary"
               type="submit"
               className="buttonDisabledPrimary"
+              onClick={() => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                handlePrint()
+              }}
             >
               Descargar
             </Button>
+            <div style={{ display: "none" }}>
+              <PrintView ref={componentRef} boucher={boucher} />
+            </div>
           </ModalFooter>
         </ModalContent>
       </Modal>
