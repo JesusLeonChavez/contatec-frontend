@@ -9,6 +9,7 @@ import ModalNewQuote from "../ShowChat/ModalNewQuote"
 import { useState, useEffect, useRef, useContext } from "react"
 import { get, setAuth } from "../../utils/http"
 import { DataContext } from "../../store/GlobalState"
+import MessageProposal from "./MessageProposal"
 
 export default function Chat() {
   const [activeChat, setActiveChat] = useState(-1)
@@ -23,6 +24,7 @@ export default function Chat() {
   const [newMessage, setNewMessage] = useState("")
   const [arrivalMessage, setArrivalMessage] = useState(null)
   const [isArrivalMessage, setIsArrivalMessage] = useState(false)
+  const [isAblePropose, setIsAblePropose] = useState(false)
   const textArearef = useRef<HTMLTextAreaElement>()
   const scrollRef = useRef<HTMLDivElement>()
   const handleActiveChat = idx => {
@@ -49,8 +51,22 @@ export default function Chat() {
     }
 
     socket.on("messageDefaultResponse", functionSocket)
+
+    socket.on("messageProposeResponse", ({ data }) => {
+      setIsArrivalMessage(!isArrivalMessage)
+      if (
+        data.msjUserFromId === currentChat!.idAmiwi ||
+        data.msjUserFromId === auth?.user?.id
+      ) {
+        setArrivalMessage({
+          ...data
+        })
+      }
+    })
+
     return () => {
       socket.off("messageDefaultResponse")
+      socket.off("messageProposeResponse")
     }
   }, [auth?.user?.id, socket, currentChat])
 
@@ -74,7 +90,6 @@ export default function Chat() {
   }, [auth?.user?.id, arrivalMessage, isArrivalMessage])
   useEffect(() => {
     if (!currentChat) return
-    console.log(currentChat)
     const getMessages = async () => {
       setAuth(auth!.access_token)
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -82,11 +97,24 @@ export default function Chat() {
       const resMessages = await get(`/api/messages/all/${currentChat.idAmiwi}`)
 
       setMessages(resMessages.data.data.reverse())
+      console.log(resMessages.data.data.reverse())
     }
     if (!auth?.user?.id) return
     if (!currentChat) return
     getMessages()
   }, [currentChat])
+
+  // Habilitar capacidad de cotizar
+  useEffect(() => {
+    if (!auth?.user?.id) return
+    const verifyPost = async () => {
+      setAuth(auth.access_token)
+      const user = await get("/api/user/info")
+      if (!(user.data.posts.length > 0)) return
+      setIsAblePropose(true)
+    }
+    verifyPost()
+  }, [auth?.user?.id])
 
   const sendMessage = () => {
     socket.emit("messageDefault", {
@@ -123,7 +151,7 @@ export default function Chat() {
       mb="10"
       display="flex"
       w="1102px"
-      h="998px"
+      h="798px"
       border="3px solid #DBD9DC"
     >
       <Box w="300px" borderRight="1px solid #DBD9DC">
@@ -164,21 +192,28 @@ export default function Chat() {
               {/* @ts-ignore */}
               <UsersName name={currentChat.nameAmiwi} />
             </Flex>
-            <Box overflowY="scroll" h="650px" border="1px solid #DBD9DC">
-              {messages.map((message, item) => (
+            <Box overflowY="scroll" h="550px" border="1px solid #DBD9DC">
+              {messages.map((message, idx) => (
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
-                <div ref={scrollRef} key={item}>
-                  <Message
-                    message={message}
-                    own={auth?.user?.id !== message.msjUserToId}
-                  />
+                <div ref={scrollRef} key={idx}>
+                  {message.msj_precio_prop ? (
+                    <MessageProposal
+                      message={message}
+                      own={auth?.user?.id !== message.msjUserToId}
+                    />
+                  ) : (
+                    <Message
+                      message={message}
+                      own={auth?.user?.id !== message.msjUserToId}
+                    />
+                  )}
                 </div>
               ))}
 
               {/*  */}
             </Box>
-            <Box h="200px" border="1px solid #DBD9DC">
+            <Box h="100px" border="1px solid #DBD9DC">
               <SendMessage
                 newMessage={newMessage}
                 setNewMessage={setNewMessage}
@@ -202,12 +237,15 @@ export default function Chat() {
                 </Flex>
                 <Flex justify="space-between">
                   <Flex mr="5">
-                    <ModalNewQuote
-                      variant="primary"
-                      width="100px"
-                      height="25px"
-                      showModalButtonText="Cotizar"
-                    />
+                    {isAblePropose && (
+                      <ModalNewQuote
+                        variant="primary"
+                        width="100px"
+                        height="25px"
+                        showModalButtonText="Cotizar"
+                        currentChat={currentChat}
+                      />
+                    )}
                   </Flex>
                   <ZIcon
                     name="buttonRight"
