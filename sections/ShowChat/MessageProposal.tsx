@@ -1,13 +1,9 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react"
-import {
-  formatDistance,
-  formatDistanceStrict,
-  formatDistanceToNow
-} from "date-fns"
+import { formatDistanceToNow } from "date-fns"
+import { es } from "date-fns/locale"
 // import router from "next/router"
 import { useContext } from "react"
 import { DataContext } from "../../store/GlobalState"
-import { es } from "date-fns/locale"
 import { post } from "../../utils/http"
 
 interface MessageProps {

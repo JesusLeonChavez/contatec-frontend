@@ -24,13 +24,12 @@ import SelectField from "../../components/SelectField"
 import ZIcon from "../../components/Icon/ZIcon"
 import Steper from "../../components/Steper"
 
-export default function ModalSteper() {
+export default function ModalSteper({ service }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [step, setStep] = useState(1)
   const steps = [
     { value: 1, label: "Contacto" },
-    { value: 2, label: "Inicio servicio" },
-    { value: 3, label: "Fin servicio" }
+    { value: 2, label: "Servicio" }
   ]
   return (
     <Box>
@@ -79,7 +78,7 @@ export default function ModalSteper() {
                       readOnly
                       placeholder="P. ej. Liliana Espinoza"
                       name="name"
-                      value={"Nombre de prueba"}
+                      value={service ? service.msj_nombre_propuesta : "Ejemplo"}
                       size="sm"
                       color="letter"
                     />
@@ -99,29 +98,13 @@ export default function ModalSteper() {
                         readOnly
                         placeholder="P. ej. S/. 2000"
                         name="name"
-                        value={"S/. 2000"}
+                        value={
+                          service ? `S/ ${service.msj_precio_prop}` : "S/ 2000"
+                        }
                         size="sm"
                         color="letter"
                       />
                       <FormErrorMessage>Mensaje de error</FormErrorMessage>
-                    </FormControl>
-                    <FormControl mb="2">
-                      <FormLabel
-                        color="primary"
-                        fontWeight="normal"
-                        fontSize="md"
-                      >
-                        Fecha limite del proyecto:
-                      </FormLabel>
-                      <Input
-                        type="text"
-                        readOnly
-                        placeholder="P. ej. 11-11-2012"
-                        name="name"
-                        value={"11-11-2012"}
-                        size="sm"
-                        color="letter"
-                      />
                     </FormControl>
                   </Grid>
                   <FormControl mb="2">
@@ -137,7 +120,7 @@ export default function ModalSteper() {
                       placeholder="Escribe tu contenido breve aquí"
                       // onChange={handleInputChange}
                       name="brief_content"
-                      value={"Contenido de prueba"}
+                      value={service ? service.msj_descripcion_prop : "Ejemplo"}
                       h="100"
                       maxLength={100}
                       resize="none"
@@ -148,25 +131,6 @@ export default function ModalSteper() {
               )}
               {step === 2 && (
                 <>
-                  <FormControl mb="2">
-                    <FormLabel
-                      color="primary"
-                      fontWeight="normal"
-                      fontSize="md"
-                    >
-                      Archivos adjuntos:
-                    </FormLabel>
-                    <FileUpload
-                      fullWidth
-                      // files={imagesFile}
-                      // onDrop={handleDrop}
-                      // onDelete={handleDelete}
-                      extensions={["jpg", "png"]}
-                      remove
-                      errorHelper={false}
-                    />
-                    <FormErrorMessage>Mensaje de error</FormErrorMessage>
-                  </FormControl>
                   <Grid templateColumns="repeat(2,1fr)" gap="6">
                     <FormControl mb="2">
                       <FormLabel
@@ -176,6 +140,7 @@ export default function ModalSteper() {
                       >
                         Cliente:
                       </FormLabel>
+                      {/* Agregar cliente, hacer peticion a endpoint */}
                       <Input
                         type="text"
                         readOnly
@@ -193,95 +158,14 @@ export default function ModalSteper() {
                         fontWeight="normal"
                         fontSize="md"
                       >
-                        Fecha de inicio:
+                        Fecha de actualizacion:
                       </FormLabel>
                       <Input
                         type="text"
                         readOnly
                         placeholder="P. ej. 11-11-2012"
                         name="name"
-                        value={"11-11-2012"}
-                        size="sm"
-                        color="letter"
-                      />
-                    </FormControl>
-                  </Grid>
-                  <FormControl mb="2">
-                    <FormLabel
-                      color="primary"
-                      fontWeight="normal"
-                      fontSize="md"
-                    >
-                      Detalles adicionales:
-                    </FormLabel>
-                    <Textarea
-                      fontSize="sm"
-                      placeholder="Escribe tu contenido breve aquí"
-                      // onChange={handleInputChange}
-                      name="brief_content"
-                      value={"Contenido de prueba"}
-                      h="100"
-                      maxLength={100}
-                      resize="none"
-                      color="letter"
-                    />
-                  </FormControl>
-                </>
-              )}
-              {step === 3 && (
-                <>
-                  <FormControl mb="2">
-                    <FormLabel
-                      color="primary"
-                      fontWeight="normal"
-                      fontSize="md"
-                    >
-                      Cuenta total:
-                    </FormLabel>
-                    <Input
-                      type="text"
-                      readOnly
-                      placeholder="P. ej. S/. 2000"
-                      name="name"
-                      value={"S/. 2000"}
-                      size="sm"
-                      color="letter"
-                    />
-                    <FormErrorMessage>Mensaje de error</FormErrorMessage>
-                  </FormControl>
-                  <Grid templateColumns="repeat(2,1fr)" gap="6">
-                    <FormControl mb="2">
-                      <FormLabel
-                        color="primary"
-                        fontWeight="normal"
-                        fontSize="md"
-                      >
-                        Cliente:
-                      </FormLabel>
-                      <SelectField
-                        fullWidth
-                        readOnly
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-ignore
-                        option={null}
-                        placeholder="Seleccione una categoría "
-                      />
-                      <FormErrorMessage>Mensaje de error</FormErrorMessage>
-                    </FormControl>
-                    <FormControl mb="2">
-                      <FormLabel
-                        color="primary"
-                        fontWeight="normal"
-                        fontSize="md"
-                      >
-                        Fecha de fin:
-                      </FormLabel>
-                      <Input
-                        type="text"
-                        readOnly
-                        placeholder="P. ej. 11-11-2012"
-                        name="name"
-                        value={"11-11-2012"}
+                        value={service ? service.trb_updatedAt : "11/12/2020"}
                         size="sm"
                         color="letter"
                       />
@@ -327,11 +211,9 @@ export default function ModalSteper() {
                 variant="primary"
                 type="submit"
                 className="buttonDisabledPrimary"
-                onClick={() => {
-                  setStep(step + 1)
-                }}
+                onClick={onClose}
               >
-                Guardar
+                Salir
               </Button>
             )}
           </ModalFooter>
