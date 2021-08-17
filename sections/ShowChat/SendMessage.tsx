@@ -11,7 +11,7 @@ export default function SendMessages({
       <Textarea
         ref={textArearef}
         resize="none"
-        h="200px"
+        h="full"
         w="795px"
         value={newMessage}
         placeholder="Escribe un mensaje"

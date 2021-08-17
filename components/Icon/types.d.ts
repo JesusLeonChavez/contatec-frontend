@@ -1,4 +1,3 @@
- 
 /**
  * Transformar de svg a componente de React
  * {@link https://react-svgr.com/playground/?icon=true}
@@ -75,6 +74,7 @@ export type IconName =
   | "clip"
   | "uploadPhoto"
   | "buttonRight"
+  | "cart"
 
 /**
  * Props SVG, incluyendo name, color, size y weight. No se debe usar el prop style.

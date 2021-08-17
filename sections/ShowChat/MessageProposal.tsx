@@ -13,6 +13,7 @@ export default function MessageProposal({ message, own }: MessageProps) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { auth, socket } = state
+  console.log("message: ", message)
 
   const handleAcceptPropose = async () => {
     if (!auth?.user?.id) return
@@ -57,14 +58,14 @@ export default function MessageProposal({ message, own }: MessageProps) {
           <Box
             px="3"
             bg="gray.100"
-            color="primary"
+            color="red"
             d="flex"
             flexDirection="column"
             justifyContent="start"
             borderRadius="lg"
             py="2"
             borderColor="primary"
-            borderTop="8px"
+            borderWidth="1px"
           >
             <strong>Presupuesto: </strong>
             <br />

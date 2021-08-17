@@ -233,6 +233,8 @@ export default function Chat() {
                         width="100px"
                         height="25px"
                         showModalButtonText="Cotizar"
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
                         currentChat={currentChat}
                       />
                     )}
