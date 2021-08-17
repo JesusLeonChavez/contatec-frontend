@@ -15,6 +15,7 @@ import { useContext, useState } from "react"
 import { patch, setAuth } from "../../utils/http"
 import { DataContext } from "../../store/GlobalState"
 import showToast from "../../components/Toast"
+import DatePicker from "../../components/Datepicker"
 
 export default function Show() {
   const { state, dispatch } = useContext(DataContext)
@@ -74,6 +75,7 @@ export default function Show() {
         Puedes cambiar los datos de tu perfil cuantas veces lo consideres
         necesario.
       </Text>
+      <DatePicker onChange={fecha => console.log(fecha)} />
       <form onSubmit={handleSubmit}>
         <Box className={styles.divContainerForm}>
           <FormControl isInvalid={!!errors.name}>

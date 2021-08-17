@@ -1,0 +1,90 @@
+.selector{
+    max-width: 90px;
+}
+
+/* .selector ul, .selector input{
+    @apply text-xs;
+    @apply py-3;
+    @apply px-4;
+}
+
+.selector input{
+    @apply text-center rounded-md shadow-none p-0;
+} */
+
+.selector-select-month{
+    width:105px;
+}
+.selector-select-year{
+    width:70px;
+}
+
+.daySelect{
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-delay: 50ms;
+}
+
+.daySelect:hoover{
+  border-color: transparent;
+  background: var(--primary);
+  color: rgba(255, 255, 255, 1);
+  width: 1.5rem;
+}
+
+.active{
+  border-radius: 9999px;
+  border-color: transparent;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  background: var(--primary);
+  cursor: pointer;
+  width: 1.5rem;
+}
+
+.disable{
+  border-radius: 9999px;
+  border-color: transparent;
+  pointer-events: none;
+  opacity: 0.2;
+  width: 1.5rem;
+}
+
+.otherMonths{
+  border-color: transparent;
+  --tw-text-opacity: 1;
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.icon{
+  position: absolute;
+  right: 0.75rem;
+  color: rgba(156, 163, 175, 1);
+}
+
+.date{
+  --tw-scale-x: 0;
+  --tw-scale-y: 0;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-delay: 75ms;
+}
+
+.date1{
+  visibility: hidden;
+  text-align: center;
+}
+
+.date2{
+  opacity: 1;
+  visibility: visible;
+  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  display: block;
+}
