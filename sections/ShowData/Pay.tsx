@@ -1,6 +1,5 @@
 import styles from "../../styles/sections/Show.module.css"
 import { Box, Text, Flex, Button } from "@chakra-ui/react"
-import ZIcon from "../../components/Icon/ZIcon"
 import ModalDowload from "../ShowData/ModalDowload"
 import React from "react"
 import ModalSteper from "./ModalSteper"
