@@ -1,7 +1,7 @@
 import ShowData from "../../sections/ShowData/Data"
 import ShowPassword from "../../sections/ShowData/Password"
 import ShowPay from "../../sections/ShowData/Pay"
-import ShowServices from "../ShowData/Services"
+// import ShowServices from "../ShowData/Services"
 import { TabList, TabPanels, TabPanel, Tab, Tabs, Text } from "@chakra-ui/react"
 
 export default function ShowD({ auth }) {
@@ -41,7 +41,7 @@ export default function ShowD({ auth }) {
             >
               Pagos
             </Tab>
-            <Tab
+            {/* <Tab
               _selected={{
                 color: "primary",
                 boxShadow: "none",
@@ -49,7 +49,7 @@ export default function ShowD({ auth }) {
               }}
             >
               Servicios
-            </Tab>
+            </Tab> */}
           </TabList>
           <TabPanels h="400px" pl="10%">
             <TabPanel>
@@ -61,9 +61,9 @@ export default function ShowD({ auth }) {
             <TabPanel>
               <ShowPay />
             </TabPanel>
-            <TabPanel>
+            {/* <TabPanel>
               <ShowServices />
-            </TabPanel>
+            </TabPanel> */}
           </TabPanels>
         </Tabs>
       </div>

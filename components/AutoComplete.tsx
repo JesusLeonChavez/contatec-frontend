@@ -18,7 +18,7 @@ import showToast from "./Toast"
 // Aplicar  estilos
 
 export const handleSelect = (hit, refine) => {
-  //console.log(hit)
+  // console.log(hit)
   refine(
     `${hit.description.charAt(0).toUpperCase()}${hit.description
       .split("_")

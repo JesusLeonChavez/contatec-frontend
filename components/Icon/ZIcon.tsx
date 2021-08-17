@@ -61,6 +61,7 @@ import UploadPhoto from "./UploadPhoto"
 import ButtonRight from "./ButtonRight"
 
 import { PropsIcon } from "./types"
+import Cart from "./Cart"
 
 export function VIcon({
   name,
@@ -78,6 +79,8 @@ export function VIcon({
   }
 
   switch (name) {
+    case "cart":
+      return <Cart {...props} style={style} color={_color} />
     case "ring":
       return <Ring {...props} style={style} color={_color} />
     case "avatar":

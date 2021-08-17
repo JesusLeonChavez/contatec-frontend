@@ -1,6 +1,6 @@
 import styles from "../../styles/sections/Show.module.css"
-import { Box, Text, Flex } from "@chakra-ui/react"
-// import ZIcon from "../../components/Icon/ZIcon"
+import { Box, Text, Flex, Button } from "@chakra-ui/react"
+import ZIcon from "../../components/Icon/ZIcon"
 import ModalDowload from "../ShowData/ModalDowload"
 import React from "react"
 import ModalSteper from "./ModalSteper"
@@ -22,8 +22,8 @@ function PayCard() {
           Monto: S/ 2000
         </Text>
       </Box>
-      <Flex align="center" justify="space-around" w="80px">
-        {/* <ZIcon name="search" pointer size={20} /> */}
+      <Flex align="center" justify="space-around" w="180px">
+        <Button variant="primary">Pagar</Button>
         <ModalSteper />
         <ModalDowload />
       </Flex>

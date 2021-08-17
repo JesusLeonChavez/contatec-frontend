@@ -54,6 +54,7 @@ export default function Navbar() {
       }
     }
     socket.on("messageDefaultResponse", functionSocket)
+    socket.on("messageProposeResponse", functionSocket)
 
     return () => {
       socket.off("messageDefaultResponse")
