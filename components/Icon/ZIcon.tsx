@@ -59,6 +59,8 @@ import Ring from "./Ring"
 import Clip from "./Clip"
 import UploadPhoto from "./UploadPhoto"
 import ButtonRight from "./ButtonRight"
+import ArrowLeftv1 from "./ArrowLeftv1"
+import ArrowRightv1 from "./ArrowRightv1"
 
 import { PropsIcon } from "./types"
 import Cart from "./Cart"
@@ -195,6 +197,10 @@ export function VIcon({
       return <UploadPhoto {...props} style={style} color={_color} />
     case "buttonRight":
       return <ButtonRight {...props} style={style} color={_color} />
+    case "arrow-leftv1":
+      return <ArrowLeftv1 {...props} style={style} color={_color} />
+    case "arrow-rightv1":
+      return <ArrowRightv1 {...props} style={style} color={_color} />
     default:
       return null
   }

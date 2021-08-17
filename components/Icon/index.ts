@@ -1,4 +1,3 @@
- 
 /**
  * @typedef {import('./types').PropsIcon} PropsIcon
  */

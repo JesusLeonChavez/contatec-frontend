@@ -4,6 +4,7 @@ import { PropsCalendar } from "../type"
 import { DAYS } from "../utilities"
 import CalendarRows from "./CalendarRows"
 import SelectorMonthYear from "./SelectorMonthYear"
+import styles from "../../../styles/components/Datepicker.module.css"
 
 function Days() {
   return (
@@ -23,9 +24,8 @@ function Days() {
           w="100%"
           borderRadius="9999px"
           m="auto"
-          outline="2px solid transparent"
-          // outline="none"
           fontWeight="700"
+          className={styles.dateCalendar}
           key={i}
         >
           {DAY}

@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react"
 import { PropsDay } from "../type"
+import styles from "../../../styles/components/Datepicker.module.css"
 
 export default function Day({
   day,
@@ -37,9 +38,9 @@ export default function Day({
       m="auto"
       cursor="pointer"
       borderRadius="9999px"
-      className={`${"daySelect"} ${active && "active"} ${
-        (disabledMin || disabledMax) && "disable"
-      } ${otherMonth && "otherMonths"}`}
+      className={`${styles.daySelect} ${active && styles.active} ${
+        (disabledMin || disabledMax) && styles.disable
+      } ${otherMonth && styles.otherMonths}`}
       onClick={() => handleSelect(day)}
     >
       {day.date()}

@@ -1,21 +1,21 @@
 import * as React from "react"
 
-function ArrowRight(props) {
+function ArrowLeftv1(props) {
   return (
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 5 13"
+      viewBox="0 0 12 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
-        d="M.77 12.13l3.91-5.94L.77.25.28.992 3.702 6.19.28 11.387l.49.743z"
-        fill="#5B697A"
+        d="M.6 10l9.964 10L12 18.56 3.407 9.977l8.57-8.56L10.564 0 .6 10z"
+        fill="#482F51"
       />
     </svg>
   )
 }
 
-export default ArrowRight
+export default ArrowLeftv1

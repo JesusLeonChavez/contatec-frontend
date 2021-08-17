@@ -1,6 +1,6 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 import ZIcon from "../../Icon"
-import "./../../../styles/components/Datepicker.module.css"
+import styles from "./../../../styles/components/Datepicker.module.css"
 import { getOptionMonth, getOptionYear, MONTHS, YEARS } from "../utilities"
 import {
   PropsSelectorMonth,
@@ -10,13 +10,13 @@ import {
 
 function SelectorMonth({ month, onSelect }: PropsSelectorMonth) {
   return (
-    <Box className="selector">
+    <Box className={styles.selector}>
       <select
         onChange={ev => onSelect("month", ev.target.value)}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         value={getOptionMonth(MONTHS, month).value}
-        className="select select-bordered select-xs selector-select-month"
+        className={styles.selectorSelectMonth}
       >
         {MONTHS.map((_month, i) => (
           <option key={i} value={(i + 1).toString()}>
@@ -30,13 +30,13 @@ function SelectorMonth({ month, onSelect }: PropsSelectorMonth) {
 
 function SelectorYear({ year, onSelect }: PropsSelectorYear) {
   return (
-    <Box className="selector">
+    <Box className={styles.selector}>
       <select
         onChange={ev => onSelect("year", ev.target.value)}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         value={getOptionYear(YEARS, year).label}
-        className="select select-bordered select-xs selector-select-year"
+        className={styles.selectorSelectYear}
       >
         {YEARS.map((_year, i) => {
           return (
@@ -62,19 +62,20 @@ export default function SelectorMonthYear({
     onBack(false)
   }
   return (
-    <Box
+    <Flex
       w="100%"
-      d="flex"
       alingItems="center"
       justifyContent="space-around"
-      py="3"
-      px="0"
+      pt="0.75rem"
+      pb="0.75rem"
+      pl="0px"
+      pr="0px"
       position="relative"
     >
-      <ZIcon name="arrow-leftv2" onClick={handleLeft} />
+      <ZIcon size={16} name="arrow-leftv1" onClick={handleLeft} />
       <SelectorMonth month={viewDate.month()} onSelect={onChange} />
       <SelectorYear year={viewDate.year()} onSelect={onChange} />
-      <ZIcon name="arrow-right" onClick={handleRight} />
-    </Box>
+      <ZIcon size={16} name="arrow-rightv1" onClick={handleRight} />
+    </Flex>
   )
 }

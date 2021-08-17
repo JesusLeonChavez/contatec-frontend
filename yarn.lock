@@ -5591,11 +5591,7 @@
   dependencies:
     "@babel/runtime" "^7.12.13"
 
-<<<<<<< HEAD
-"react-dom@17.0.2":
-=======
 "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0", "react-dom@17.0.2":
->>>>>>> 987551ba090630fe294afd1748f62c09f4f8405e
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -5730,9 +5726,6 @@
     "invariant" "^2.2.4"
     "tslib" "^1.0.0"
 
-<<<<<<< HEAD
-"react@17.0.2":
-=======
 "react-to-print@^2.13.0":
   "integrity" "sha512-JMX+HrMtBXWDh2ohPT2IeBkaGY4QpFeloXTXBA7hBK7dXJQei/UXMvQqbZHb0rqJwzAHltZ2zXevuSK/ReKI5w=="
   "resolved" "https://registry.npmjs.org/react-to-print/-/react-to-print-2.13.0.tgz"
@@ -5741,7 +5734,6 @@
     "prop-types" "^15.7.2"
 
 "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@17.0.2":
->>>>>>> 987551ba090630fe294afd1748f62c09f4f8405e
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -6020,11 +6012,7 @@
     "astral-regex" "^2.0.0"
     "is-fullwidth-code-point" "^3.0.0"
 
-<<<<<<< HEAD
-"socket.io-client@^2.4.0":
-=======
 "socket.io-client@2.4.0":
->>>>>>> 987551ba090630fe294afd1748f62c09f4f8405e
   "integrity" "sha512-M6xhnKQHuuZd4Ba9vltCLT9oa+YvTsP8j9NcEiLElfIg8KeYPyhWOes6x4t+LTAC8enQbE/995AdTem2uNyKKQ=="
   "resolved" "https://registry.npmjs.org/socket.io-client/-/socket.io-client-2.4.0.tgz"
   "version" "2.4.0"
