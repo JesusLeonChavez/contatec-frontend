@@ -51,18 +51,7 @@ export default function Chat() {
     }
 
     socket.on("messageDefaultResponse", functionSocket)
-
-    socket.on("messageProposeResponse", ({ data }) => {
-      setIsArrivalMessage(!isArrivalMessage)
-      if (
-        data.msjUserFromId === currentChat!.idAmiwi ||
-        data.msjUserFromId === auth?.user?.id
-      ) {
-        setArrivalMessage({
-          ...data
-        })
-      }
-    })
+    socket.on("messageProposeResponse", functionSocket)
 
     return () => {
       socket.off("messageDefaultResponse")
