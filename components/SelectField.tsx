@@ -8,7 +8,7 @@ import ZIcon from "../components/Icon"
 
 const { Provider, Consumer } = React.createContext(false)
 
-interface PropsOptionComponent {  
+interface PropsOptionComponent {
   children: React.ReactNode
   value: string | number | boolean
   image?: string
