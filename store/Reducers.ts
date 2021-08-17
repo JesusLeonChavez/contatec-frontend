@@ -23,7 +23,7 @@ const reducers = (state, action) => {
         user: action.payload
       }
     case ACTIONS.GET_CATEGORIES:
-      console.log(action.payload)
+      // console.log(action.payload)
       return {
         ...state,
         categories: [...action.payload]

@@ -1,7 +1,13 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react"
+import {
+  formatDistance,
+  formatDistanceStrict,
+  formatDistanceToNow
+} from "date-fns"
 // import router from "next/router"
 import { useContext } from "react"
 import { DataContext } from "../../store/GlobalState"
+import { es } from "date-fns/locale"
 import { post } from "../../utils/http"
 
 interface MessageProps {
@@ -13,12 +19,15 @@ export default function MessageProposal({ message, own }: MessageProps) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { auth, socket } = state
-  console.log("message: ", message)
+  // console.log("message: ", message)
 
   const handleAcceptPropose = async () => {
     if (!auth?.user?.id) return
-    // setAuth(auth!.access_token)
-    // TODO: Verificar tiempo de propuesta
+    if (new Date() > new Date(message.msj_caducidad_prop)) {
+      // TODO: Mostrar toaster de que ya vencio
+      return
+    }
+
     const { data, error } = await post(`/api/work/accept-propose`, {
       id_mensaje: message.id
     })
@@ -26,10 +35,6 @@ export default function MessageProposal({ message, own }: MessageProps) {
       console.log(error)
       return
     }
-    // console.log({
-    //   data,
-    //   message
-    // })
 
     socket.emit("acceptPropose", {
       data,
@@ -73,7 +78,7 @@ export default function MessageProposal({ message, own }: MessageProps) {
               justifyContent="center"
               alignItems="center"
             >
-              <Text>Nombre del servicio</Text>
+              <Text>{message.msj_nombre_propuesta}</Text>
             </Box>
             <strong>Presupuesto: </strong>
             <br />
@@ -81,7 +86,12 @@ export default function MessageProposal({ message, own }: MessageProps) {
 
             <strong>Fecha límite: </strong>
             <br />
-            <span>{message.msj_caducidad_prop}</span>
+            <span>
+              {formatDistanceToNow(new Date(message.msj_caducidad_prop), {
+                locale: es,
+                addSuffix: true
+              })}
+            </span>
 
             <strong>Descripcion: </strong>
             <br />

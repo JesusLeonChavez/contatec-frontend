@@ -39,7 +39,7 @@ export default function ShowD({ auth }) {
                 fontWeight: "semibold"
               }}
             >
-              Pagos
+              Servicios
             </Tab>
             {/* <Tab
               _selected={{

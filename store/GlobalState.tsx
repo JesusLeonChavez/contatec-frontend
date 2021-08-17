@@ -111,18 +111,18 @@ export const DataProvider = ({ children }) => {
     })
     logging()
 
-    console.log("efecto")
+    // console.log("efecto")
   }, [authType])
 
   useEffect(() => {
-    console.log("ejecuta")
+    // console.log("ejecuta")
     const getCategories = async () => {
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/category/categories`
         )
         const data = await res.json()
-        console.log("data: ", data)
+        // console.log("data: ", data)
         dispatch({ type: "GET_CATEGORIES", payload: data })
       } catch (err) {
         showToast("Error al recuperar categorias")

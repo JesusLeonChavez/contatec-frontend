@@ -37,12 +37,10 @@ export default function ModalNewQuote({
     nombre: "",
     presupuesto: "",
     fechaLimite: "",
-    descripcion: "",
-    price: ""
+    descripcion: ""
   })
   const [category, setCategory] = useState(null)
-  const { nombre, descripcion, servicio, presupuesto, fechaLimite, price } =
-    values
+  const { nombre, descripcion, servicio, presupuesto, fechaLimite } = values
   function handleChangeSelect(option) {
     setCategory(option)
   }
@@ -51,13 +49,18 @@ export default function ModalNewQuote({
     e.preventDefault()
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const dataEmit = { ...values, categoryId: category.value }
+    const dataEmit = { ...values, postId: category.value }
+    console.log({
+      to: currentChat!.idAmiwi,
+      from: auth.user.id,
+      data: dataEmit
+    })
     socket.emit("messageProposal", {
       to: currentChat!.idAmiwi,
       from: auth.user.id,
       data: dataEmit
     })
-    reset()
+    // reset()
   }
 
   useEffect(() => {
@@ -134,7 +137,7 @@ export default function ModalNewQuote({
                     ))}
                   </SelectField>
                 </FormControl>
-                <FormControl mb="2">
+                {/* <FormControl mb="2">
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Fecha limite del proyecto
                   </FormLabel>
@@ -146,7 +149,7 @@ export default function ModalNewQuote({
                     onChange={handleInputChange}
                     value={toCapitalFirstLetter(fechaLimite)}
                   />
-                </FormControl>
+                </FormControl> */}
               </Grid>
 
               <FormControl mb="2">
@@ -169,7 +172,7 @@ export default function ModalNewQuote({
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Presupuesto
                 </FormLabel>
-                <NumberInput min={0} defaultValue={price}>
+                <NumberInput min={0} defaultValue={presupuesto}>
                   <NumberInputField
                     fontSize="sm"
                     placeholder="S/."

@@ -40,7 +40,7 @@ const pageStyle = `
     }
   }
 `
-export default function ModalDowload() {
+export default function ModalDowload({ service }) {
   const componentRef = useRef<any>(null)
   function handleClosePrint() {
     console.log("Adios impresion")
