@@ -7,6 +7,48 @@ import { DataContext } from "../../store/GlobalState"
 import { get } from "../../utils/http"
 
 function PayCard({ service, user }) {
+  const [dataOtherUser, setDataOtherUser] = useState<any>(null)
+  const [postData, setPostData] = useState<any>(null)
+  useEffect(() => {
+    if (!service) return
+    const getOtherUser = async () => {
+      let data
+      let error
+      if (service.provider === "1") {
+        const { data: dataObtenida, error: errorObtenido } = await get(
+          `/api/user/info/${service.msj_user_to}`
+        )
+        error = errorObtenido
+        data = dataObtenida
+      } else {
+        const { data: dataObtenida, error: errorObtenido } = await get(
+          `/api/user/info/${service.msj_user_from}`
+        )
+        error = errorObtenido
+        data = dataObtenida
+      }
+      if (error) {
+        console.log(error)
+        return
+      }
+      console.log("other user", data)
+      setDataOtherUser(data)
+    }
+    getOtherUser()
+    const getPostData = async () => {
+      if (!service.msjIdPostPropuestaId) return
+      const { data, error } = await get(
+        `/api/post/${service.msjIdPostPropuestaId}`
+      )
+      if (error) {
+        console.log(error)
+        return
+      }
+      console.log("Post data", data)
+      setPostData(data)
+    }
+    getPostData()
+  }, [service])
   if (service.provider === "1") {
     return (
       <Flex
@@ -60,7 +102,7 @@ function PayCard({ service, user }) {
             <h1>Finalizado</h1>
           </div>
         )}
-        <ModalSteper />
+        <ModalSteper service={service} />
         <ModalDowload service={service} />
       </Flex>
     </Flex>
@@ -71,17 +113,19 @@ export default function Pay() {
   const { state } = useContext(DataContext)
   const { auth, authReady } = state
   const [myServices, setMyServices] = useState<any[]>([])
+
   useEffect(() => {
     if (!auth?.user?.id) return
     const userData = async () => {
       const { data: total } = await get("/api/user/info")
       const { data } = total
       console.log(data)
-      console.log(auth.user)
+      console.log("yo", auth.user)
       setMyServices(data)
     }
     userData()
   }, [auth?.user?.id])
+
   return (
     <div>
       <Text color="primary" className={styles.mainLabel}>
