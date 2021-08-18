@@ -11,7 +11,7 @@ export const validPost = (values, category, imagesFile, tags) => {
     category: "",
     imagesFile: "",
     tags: ""
-  } 
+  }
 
   let isValid = true
 
