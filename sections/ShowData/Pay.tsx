@@ -32,7 +32,7 @@ function PayCard({ service, user, setSelectedService }) {
         console.log(error)
         return
       }
-      console.log("other user", data)
+      // console.log("other user", data)
       setDataOtherUser(data)
     }
     getOtherUser()
@@ -46,7 +46,7 @@ function PayCard({ service, user, setSelectedService }) {
         console.log(error)
         return
       }
-      console.log("Post data", data)
+      // console.log("Post data", data)
       setPostData(data)
     }
     getPostData()
@@ -161,8 +161,8 @@ export default function Pay() {
   const [isUpdatingServices, setIsUpdatingServices] = useState(false)
 
   const handlePay = async (token: any, service: any) => {
-    console.log(token)
-    console.log(service)
+    // console.log(token)
+    // console.log(service)
     // token.id
     const body = {
       pgo_nombre: auth.user.us_nombre,
