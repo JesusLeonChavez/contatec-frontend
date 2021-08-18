@@ -58,52 +58,68 @@ export default function MessageProposal({ message, own }: MessageProps) {
 
           <Box
             bg="gray.100"
-            color="red"
+            color="primary"
             d="flex"
             flexDirection="column"
-            justifyContent="start"
+            alignItems="start"
             borderRadius="lg"
             borderColor="primary"
             borderWidth="1px"
           >
             <Box
-              h="80px"
               w="full"
+              py="2"
+              px="3"
               bg="primary"
               d="flex"
-              justifyContent="center"
+              justifyContent="start"
               alignItems="center"
+              borderTopRadius="lg"
             >
-              <Text>{message.msj_nombre_propuesta}</Text>
+              <Text color="white">{message.msj_nombre_propuesta}</Text>
             </Box>
-            <strong>Presupuesto: </strong>
-            <br />
-            <span>{message.msj_precio_prop}</span>
+            <Flex direction="column" align="start" p="3">
+              <Flex>
+                <Text color="letter" fontWeight="semibold">
+                  Presupuesto:{" "}
+                </Text>
+                <Text color="letter" pl="1">
+                  S/. {message.msj_precio_prop}
+                </Text>
+              </Flex>
 
-            <strong>Fecha límite: </strong>
-            <br />
-            <span>
-              {formatDistanceToNow(new Date(message.msj_caducidad_prop), {
-                locale: es,
-                addSuffix: true
-              })}
-            </span>
+              <Flex>
+                <Text color="letter" fontWeight="semibold">
+                  Fecha límite:{" "}
+                </Text>
+                <Text color="letter" pl="1">
+                  {formatDistanceToNow(new Date(message.msj_caducidad_prop), {
+                    locale: es,
+                    addSuffix: true
+                  })}
+                </Text>
+              </Flex>
+              <Text color="letter" fontWeight="semibold">
+                Descripcion:{" "}
+              </Text>
+              <Text color="letter">{message.msj_descripcion_prop}</Text>
+            </Flex>
 
-            <strong>Descripcion: </strong>
-            <br />
-            <span>{message.msj_descripcion_prop}</span>
-
-            {!own && (
-              <Button
-                variant="primary"
-                w="100px"
-                // agregar validador (alert/modal)
-                onClick={handleAcceptPropose}
-                mx="auto"
-              >
-                Contratar
-              </Button>
-            )}
+            <Box bg="gray.200" w="full" borderBottomRadius="lg">
+              {!own && (
+                <Button
+                  variant="secondary"
+                  my="2"
+                  mx="auto"
+                  w="calc(100% - 20px)"
+                  color="letter"
+                  // agregar validador (alert/modal)
+                  onClick={handleAcceptPropose}
+                >
+                  Contratar
+                </Button>
+              )}
+            </Box>
           </Box>
         </Flex>
       </Box>
