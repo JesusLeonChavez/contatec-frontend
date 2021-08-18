@@ -13,6 +13,12 @@ export function regexOnlyString(string: string) {
   return regex.test(string)
 }
 
+export function regexNumberLetters(string: string) {
+  const regex = /[a-z,A-Z,0-9]/
+
+  return regex.test(string)
+}
+
 export function regexDecimal(number: string) {
   const regex = /^[0-9]{1,5}$|^[0-9]{1,5}\.[0-9]{1,5}$/
   return regex.test(number)

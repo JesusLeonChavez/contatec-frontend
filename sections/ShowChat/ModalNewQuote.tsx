@@ -154,6 +154,9 @@ export default function ModalNewQuote({
                       </Option>
                     ))}
                   </SelectField>
+                  <FormErrorMessage fontSize="sm">
+                    {errors.category}
+                  </FormErrorMessage>
                 </FormControl>
                 {/* <FormControl mb="2">
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
@@ -185,7 +188,20 @@ export default function ModalNewQuote({
                   onChange={handleInputChange}
                   value={toCapitalFirstLetter(descripcion)}
                 />
-                <FormErrorMessage>{errors.descripcion}</FormErrorMessage>
+                <Box
+                  d="flex"
+                  justifyContent="space-between"
+                  color="gray"
+                  fontSize="xs"
+                >
+                  {!errors.descripcion && <Box w="3"></Box>}
+                  <FormErrorMessage fontSize="sm">
+                    {errors.descripcion}
+                  </FormErrorMessage>
+                  <span style={{ paddingTop: "10px" }}>
+                    {descripcion.length}/100
+                  </span>
+                </Box>
               </FormControl>
               <FormControl
                 mb="2"
