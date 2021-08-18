@@ -23,8 +23,16 @@ import SelectField from "../../components/SelectField"
 
 import ZIcon from "../../components/Icon/ZIcon"
 import Steper from "../../components/Steper"
-
-export default function ModalSteper({ service }) {
+import { format } from "date-fns"
+import { es } from "date-fns/locale"
+import { toCapitalFirstLetter } from "../../utils/toCapital"
+// agregar toCapitalFirstLetter
+export default function ModalSteper({
+  service,
+  user,
+  dataOtherUser,
+  postData
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [step, setStep] = useState(1)
   const steps = [
@@ -46,7 +54,7 @@ export default function ModalSteper({ service }) {
               fontSize="3xl"
               fontWeight="bold"
             >
-              Marketing para redes
+              {postData ? postData.pst_nombre : `Nombre de post`}
             </Text>
             <Text
               align="center"
@@ -54,7 +62,7 @@ export default function ModalSteper({ service }) {
               fontSize="xl"
               fontWeight="light"
             >
-              Marketea tu dia
+              {postData ? postData.pst_descripcion_corta : `Descripcion corta`}
             </Text>
           </ModalHeader>
 
@@ -146,7 +154,11 @@ export default function ModalSteper({ service }) {
                         readOnly
                         placeholder="P. ej. Renata rojas"
                         name="name"
-                        value={"Renata rojas"}
+                        value={
+                          service.provider === "1"
+                            ? `${dataOtherUser.us_nombre} ${dataOtherUser.us_apellido}`
+                            : `${user.us_nombre} ${user.us_apellido}`
+                        }
                         size="sm"
                         color="letter"
                       />
@@ -165,7 +177,15 @@ export default function ModalSteper({ service }) {
                         readOnly
                         placeholder="P. ej. 11-11-2012"
                         name="name"
-                        value={service ? service.trb_updatedAt : "11/12/2020"}
+                        value={
+                          service
+                            ? format(
+                                new Date(service.trb_updatedAt),
+                                "do 'de' MMMM yyyy",
+                                { locale: es }
+                              )
+                            : "11/12/2020"
+                        }
                         size="sm"
                         color="letter"
                       />

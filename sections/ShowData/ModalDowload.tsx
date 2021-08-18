@@ -18,6 +18,9 @@ import ZIcon from "../../components/Icon/ZIcon"
 import { useReactToPrint } from "react-to-print"
 import { useRef } from "react"
 import PrintView from "./PrintView"
+import { toCapitalFirstLetter } from "../../utils/toCapital"
+import { format } from "date-fns"
+import { es } from "date-fns/locale"
 
 const pageStyle = `
   @media print {
@@ -40,7 +43,13 @@ const pageStyle = `
     }
   }
 `
-export default function ModalDowload({ service }) {
+
+export default function ModalDowload({
+  service,
+  user,
+  dataOtherUser,
+  postData
+}) {
   const componentRef = useRef<any>(null)
   function handleClosePrint() {
     console.log("Adios impresion")
@@ -71,7 +80,7 @@ export default function ModalDowload({ service }) {
               fontSize="3xl"
               fontWeight="bold"
             >
-              Comprobante 1057662
+              Comprobante {service.trb_ID}
             </Text>
           </ModalHeader>
           <ModalCloseButton _focus={{ outline: "none" }} />
@@ -83,7 +92,9 @@ export default function ModalDowload({ service }) {
                   Nombre del servicio:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
-                  Marketing para redes
+                  {postData
+                    ? toCapitalFirstLetter(postData.pst_nombre)
+                    : `Nombre de post`}
                 </Text>
               </FormControl>
 
@@ -92,34 +103,42 @@ export default function ModalDowload({ service }) {
                   Nombre del proyecto:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
-                  Marketea tu dia
+                  {service
+                    ? service.msj_nombre_propuesta
+                    : "Nombre de proyecto"}
                 </Text>
               </FormControl>
 
               <FormControl mb="2">
                 <FormLabel color="primary" fontWeight="medium" fontSize="lg">
-                  Presupuesto:
+                  Monto total:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
-                  s/ 2000
+                  S/ {service ? service.msj_precio_prop : "0"}
                 </Text>
               </FormControl>
 
-              <FormControl mb="2">
+              {/* <FormControl mb="2">
                 <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Cuenta total:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
                   s/ 2500
                 </Text>
-              </FormControl>
+              </FormControl> */}
 
               <FormControl mb="2">
                 <FormLabel color="primary" fontWeight="medium" fontSize="lg">
                   Fecha de inicio:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
-                  11-10-21
+                  {service
+                    ? format(
+                        new Date(service.trb_createdAt),
+                        "do 'de' MMMM yyyy",
+                        { locale: es }
+                      )
+                    : "11/12/2020"}
                 </Text>
               </FormControl>
 
@@ -128,7 +147,13 @@ export default function ModalDowload({ service }) {
                   Fecha final:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
-                  11-11-21
+                  {service
+                    ? format(
+                        new Date(service.trb_updatedAt),
+                        "do 'de' MMMM yyyy",
+                        { locale: es }
+                      )
+                    : "11/12/2020"}
                 </Text>
               </FormControl>
 
@@ -137,7 +162,9 @@ export default function ModalDowload({ service }) {
                   Cliente:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
-                  Varyana León
+                  {service.provider === "1"
+                    ? `${dataOtherUser.us_nombre} ${dataOtherUser.us_apellido}`
+                    : `${user.us_nombre} ${user.us_apellido}`}
                 </Text>
               </FormControl>
 
@@ -146,7 +173,9 @@ export default function ModalDowload({ service }) {
                   Trabajador:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
-                  Leónidas León
+                  {service.provider === "1"
+                    ? `${user.us_nombre} ${user.us_apellido}`
+                    : `${dataOtherUser.us_nombre} ${dataOtherUser.us_apellido}`}
                 </Text>
               </FormControl>
             </Grid>

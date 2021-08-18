@@ -67,8 +67,13 @@ function PayCard({ service, user }) {
           </Text>
         </Box>
         <Flex align="center" justify="space-evenly" w="180px">
-          <ModalSteper service={service} />
-          <ModalDowload service={service} />
+          <ModalSteper
+            service={service}
+            user={user}
+            dataOtherUser={dataOtherUser}
+            postData={postData}
+          />
+          <button>Actualizar estado</button>
         </Flex>
       </Flex>
     )
@@ -102,8 +107,18 @@ function PayCard({ service, user }) {
             <h1>Finalizado</h1>
           </div>
         )}
-        <ModalSteper service={service} />
-        <ModalDowload service={service} />
+        <ModalSteper
+          service={service}
+          user={user}
+          dataOtherUser={dataOtherUser}
+          postData={postData}
+        />
+        <ModalDowload
+          service={service}
+          user={user}
+          dataOtherUser={dataOtherUser}
+          postData={postData}
+        />
       </Flex>
     </Flex>
   )
