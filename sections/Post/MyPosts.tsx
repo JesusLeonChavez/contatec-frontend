@@ -1,5 +1,6 @@
 import { Flex, Grid, Text } from "@chakra-ui/react"
 import CardCategory from "../../components/CardCategory"
+// import NoFoundCategory from "../../components/NoFoundCategory"
 
 export default function MyPosts({ posts }) {
   return (
@@ -10,6 +11,7 @@ export default function MyPosts({ posts }) {
 
       {posts.length === 0 ? (
         <Flex align="center" justify="center">
+          {/* <NoFoundCategory /> */}
           <Text fontSize="lg" py="5">
             Usted no ha realizado ninguna publicación
           </Text>

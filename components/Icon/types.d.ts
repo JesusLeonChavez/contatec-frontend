@@ -75,6 +75,7 @@ export type IconName =
   | "uploadPhoto"
   | "buttonRight"
   | "cart"
+  | "ray"
 
 /**
  * Props SVG, incluyendo name, color, size y weight. No se debe usar el prop style.
