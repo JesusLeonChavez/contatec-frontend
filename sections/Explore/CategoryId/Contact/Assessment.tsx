@@ -3,7 +3,21 @@ import ZIcon from "../../../../components/Icon"
 import Progress from "../../../../components/Progress"
 import RateServiceModal from "./RateServiceModal"
 export default function Assessment({ post, scoreReviews: querySql }) {
-  const scoreReviews = querySql[0]
+  const scoreReviews = querySql[0] || {
+    score_average: 0,
+    score_count: 0,
+    score_five_percent: 0,
+    score_five: 0,
+    score_four_percent: 0,
+    score_four: 0,
+    score_three_percent: 0,
+    score_three: 0,
+    score_two_percent: 0,
+    score_two: 0,
+    score_one_percent: 0,
+    score_one: 0
+  }
+  console.log(scoreReviews)
   return (
     <Box py="5">
       <div className="generalWrapper">
