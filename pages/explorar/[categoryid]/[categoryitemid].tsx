@@ -50,17 +50,14 @@ interface PropsPost {
   pstCategoriaId: PropsCategoryPost
 }
 
-interface PropsMain {
-  post: PropsPost
-}
 export default function Post({
   post,
   reviews,
   scoreReviews
 }: {
-  post: PropsMain
+  post: PropsPost
   reviews: any
-  scoreReview: any
+  scoreReviews: any
 }) {
   const router = useRouter()
   const { state } = useContext(DataContext)
