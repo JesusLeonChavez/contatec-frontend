@@ -68,6 +68,8 @@ export default function ModalNewQuote({
     if (isValid) {
       const dataEmit = {
         ...values,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         postId: category?.value
       }
       // console.log({
