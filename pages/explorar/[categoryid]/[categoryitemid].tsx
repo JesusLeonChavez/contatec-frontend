@@ -53,7 +53,15 @@ interface PropsPost {
 interface PropsMain {
   post: PropsPost
 }
-export default function Post({ post }: PropsMain) {
+export default function Post({
+  post,
+  reviews,
+  scoreReviews
+}: {
+  post: PropsMain
+  reviews: any
+  scoreReview: any
+}) {
   const router = useRouter()
   const { state } = useContext(DataContext)
   const { authReady } = state
@@ -108,8 +116,8 @@ export default function Post({ post }: PropsMain) {
             />
             <PhotosDescription post={post} />
             <Creator creator={post.pstUsuarioId} post={post} />
-            <Assessment post={post} />
-            <Comentaries />
+            <Assessment post={post} scoreReviews={scoreReviews} />
+            <Comentaries reviews={reviews} />
           </>
         ) : (
           <Box
@@ -130,13 +138,14 @@ export default function Post({ post }: PropsMain) {
 
 export const getServerSideProps = async context => {
   const id = context.params.categoryitemid
-  console.log("id: ", id)
+  // console.log("id: ", id)
   const res = await fetch(`${process.env.API_BASE_URL}/api/post/${id}`)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const data = await res.json()
-  console.log("dataPost: ", data)
+  console.log(data)
+  // console.log("dataPost: ", data)
   return {
-    props: { post: data }
+    props: data
   }
 }

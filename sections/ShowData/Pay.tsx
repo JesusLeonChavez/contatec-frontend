@@ -1,13 +1,28 @@
 import styles from "../../styles/sections/Show.module.css"
-import { Box, Text, Flex, Button } from "@chakra-ui/react"
+import {
+  Box,
+  Text,
+  Flex,
+  Button,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter
+} from "@chakra-ui/react"
 import ModalDowload from "../ShowData/ModalDowload"
 import React, { useContext, useEffect, useState } from "react"
 import ModalSteper from "./ModalSteper"
 import { DataContext } from "../../store/GlobalState"
-import { get, post } from "../../utils/http"
+import { get, patch, post } from "../../utils/http"
 import { CulqiProvider, Culqi } from "react-culqi"
+import SelectField, { Option } from "../../components/SelectField"
+import RateServiceModal from "../Explore/CategoryId/Contact/RateServiceModal"
 
-function PayCard({ service, user, setSelectedService }) {
+function PayCard({ service, user, setSelectedService, setIsEditting }) {
   const [dataOtherUser, setDataOtherUser] = useState<any>(null)
   const [postData, setPostData] = useState<any>(null)
   useEffect(() => {
@@ -78,7 +93,24 @@ function PayCard({ service, user, setSelectedService }) {
                 dataOtherUser={dataOtherUser}
                 postData={postData}
               />
-              <button>Actualizar estado</button>
+              {service.trb_estado === "Contratado" ? (
+                <h3>Pendiente</h3>
+              ) : (
+                <>
+                  <h3>{service.trb_estado}</h3>
+                  {service.review_exists === "0" && (
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        setSelectedService(service)
+                        setIsEditting(true)
+                      }}
+                    >
+                      Actualizar
+                    </Button>
+                  )}
+                </>
+              )}
             </>
           )}
         </Flex>
@@ -101,7 +133,7 @@ function PayCard({ service, user, setSelectedService }) {
           Monto: S/ {service.msj_precio_prop}
         </Text>
       </Box>
-      {/* Revisar renderizado condicional (es mas complejo de lo que deberia) */}
+      {/* TODO: Revisar renderizado condicional (es mas complejo de lo que deberia) */}
       <Flex align="center" justify="space-around" w="180px">
         {/* Funcionalidad de pago! */}
         {service && dataOtherUser && (
@@ -132,6 +164,17 @@ function PayCard({ service, user, setSelectedService }) {
             ) : (
               <div>
                 <h1>Finalizado</h1>
+                {service && service?.review_exists === "0" ? (
+                  <RateServiceModal
+                    post={{ id: service.msjIdPostPropuestaId }}
+                    trabajo={service.trb_ID}
+                    variant="fourth"
+                    width="6xs"
+                    showModalButtonText="Valorar servicio"
+                  />
+                ) : (
+                  <h1>{service ? service.review_score : "hola"}</h1>
+                )}
               </div>
             )}
             <ModalSteper
@@ -158,7 +201,21 @@ export default function Pay() {
   const { auth } = state
   const [myServices, setMyServices] = useState<any[]>([])
   const [selectedService, setSelectedService] = useState<any>(null)
+  // isUpdatingServices es para rehacer peticion (similar a redity)
   const [isUpdatingServices, setIsUpdatingServices] = useState(false)
+  const [serviceStatus, setServiceStatus] = useState<any>(null)
+  // Para editar estado (Uso del proveedor)
+  const [isEditting, setIsEditting] = useState(false)
+  // Para calificar trabajo (Uso del cliente).
+  const [isReviewing, setIsReviewing] = useState(false)
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const {
+    isOpen: isReviewOpen,
+    onOpen: onReviewOpen,
+    onClose: onReviewClose
+  } = useDisclosure()
 
   const handlePay = async (token: any, service: any) => {
     // console.log(token)
@@ -173,8 +230,7 @@ export default function Pay() {
       pgo_trabajoId: service.trb_ID
     }
     const data = await post("/api/pay/service", body)
-    // Agregar toaster si hace post con exito
-    // console.log(data)
+    // TODO: Agregar toaster si hace post con exito
     setSelectedService(null)
     setIsUpdatingServices(prev => !prev)
   }
@@ -189,10 +245,41 @@ export default function Pay() {
       setMyServices(data)
     }
     userData()
+    setIsEditting(false)
   }, [auth?.user?.id, isUpdatingServices])
 
+  useEffect(() => {
+    if (!isEditting) {
+      onClose()
+      setSelectedService(null)
+      setServiceStatus(null)
+      return
+    }
+
+    onOpen()
+  }, [isEditting])
+
+  const handleUpdateStatus = async () => {
+    if (selectedService.trb_estado === serviceStatus.value) {
+      // TODO: TOASTER NO SE REALIZO NINGUN CAMBIO
+      setIsEditting(false)
+      return
+    }
+    const body = {
+      trb_estado: serviceStatus.value
+    }
+    const data = await patch(
+      `/api/work/update-status/${selectedService.trb_ID}`,
+      body
+    )
+    // TODO: Mostrar toaster de que se actualizo correctamente
+    // console.log(data)
+    console.log("Servicio seleccionado: ", selectedService)
+    setIsUpdatingServices(prev => !prev)
+  }
+
   return (
-    <div>
+    <>
       <Text color="primary" className={styles.mainLabel}>
         Servicios
       </Text>
@@ -202,6 +289,7 @@ export default function Pay() {
       <Box overflowY="scroll" h="250px">
         <Flex justify="start" direction="column">
           <CulqiProvider
+            //    Cambiar a env
             publicKey="pk_test_9824531d3eed6c8a"
             title="Pago de servicio Contatec"
             description="Facilitamos el servicio hacia ti"
@@ -225,11 +313,60 @@ export default function Pay() {
                 user={auth.user}
                 key={index}
                 setSelectedService={setSelectedService}
+                setIsEditting={setIsEditting}
               />
             ))}
           </CulqiProvider>
         </Flex>
       </Box>
-    </div>
+      <Modal isCentered isOpen={isOpen} onClose={() => setIsEditting(false)}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Actualización de estado de trabajo</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <SelectField
+              fullWidth
+              option={serviceStatus}
+              placeholder="Seleccione una categoría "
+              onChange={e => setServiceStatus(e)}
+            >
+              <Option value="En proceso">En proceso</Option>
+              <Option value="Finalizado">Finalizado</Option>
+            </SelectField>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button variant="primary" onClick={() => handleUpdateStatus()}>
+              Actualizar estado
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <Modal
+        isCentered
+        isOpen={isReviewOpen}
+        onClose={() => setIsReviewing(false)}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Calificar trabajo de trabajo</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <h1>Formulario de review</h1>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+              variant="primary"
+              onClick={() => console.log("enviar review")}
+            >
+              Calificar
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   )
 }

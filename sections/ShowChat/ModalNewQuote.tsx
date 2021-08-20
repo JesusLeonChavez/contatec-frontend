@@ -64,14 +64,18 @@ export default function ModalNewQuote({
     // eslint-disable-next-line no-unused-vars
     const { errors: errorsForm, isValid } = validQuote(values, category)
     setErrors(errorsForm)
-    console.log(isValid)
+    // console.log(isValid)
     if (isValid) {
-      const dataEmit = { ...values, postId: posts.value }
-      console.log({
-        to: currentChat!.idAmiwi,
-        from: auth.user.id,
-        data: dataEmit
-      })
+      const dataEmit = {
+        ...values,
+        postId: category?.value
+      }
+      // console.log({
+      //   to: currentChat!.idAmiwi,
+      //   from: auth.user.id,
+      //   data: dataEmit
+      // })
+
       socket.emit("messageProposal", {
         to: currentChat!.idAmiwi,
         from: auth.user.id,

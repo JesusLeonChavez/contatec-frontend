@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react"
 import { formatDistanceToNow } from "date-fns"
 import { es } from "date-fns/locale"
+import router from "next/router"
 // import router from "next/router"
 import { useContext } from "react"
 import { DataContext } from "../../store/GlobalState"
@@ -23,6 +24,7 @@ export default function MessageProposal({ message, own }: MessageProps) {
       // TODO: Mostrar toaster de que ya vencio
       return
     }
+    // TODO: Agregar alerta para validar si desea el trabajo
 
     const { data, error } = await post(`/api/work/accept-propose`, {
       id_mensaje: message.id
@@ -36,6 +38,9 @@ export default function MessageProposal({ message, own }: MessageProps) {
       data,
       message
     })
+    setTimeout(() => {
+      router.push("/mostrar-datos")
+    }, 500)
   }
   return (
     <Box

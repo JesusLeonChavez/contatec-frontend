@@ -2,40 +2,22 @@ import { Box, Grid } from "@chakra-ui/react"
 
 import Comentary from "../../../../components/Comentary"
 
-export default function CategoryTittle() {
+export default function CategoryTittle({ reviews }: { reviews: any }) {
   return (
     <Box py="6">
       <div className="generalWrapper">
         <Grid templateColumns={{ base: "100%", lg: "70% 30%" }}>
           <Box>
-            <Comentary
-              img="https://bit.ly/broken-link"
-              name="Oshigaki Kisame"
-              comentary="Explora tu creatividad con nuevas técnicas en redes y mejora el alcance
-              a tu publico objetivo"
-              quantityStars={4}
-            />
-            <Comentary
-              img="https://bit.ly/broken-link"
-              name="Oshigaki Kisame"
-              comentary="Explora tu creatividad con nuevas técnicas en redes y mejora el alcance
-              a tu publico objetivo"
-              quantityStars={4}
-            />
-            <Comentary
-              img="https://bit.ly/broken-link"
-              name="Oshigaki Kisame"
-              comentary="Explora tu creatividad con nuevas técnicas en redes y mejora el alcance
-              a tu publico objetivo"
-              quantityStars={4}
-            />
-            <Comentary
-              img="https://bit.ly/broken-link"
-              name="Oshigaki Kisame"
-              comentary="Explora tu creatividad con nuevas técnicas en redes y mejora el alcance
-              a tu publico objetivo"
-              quantityStars={4}
-            />
+            {reviews &&
+              reviews.map((review, idx) => (
+                <Comentary
+                  key={idx}
+                  img={review.avatar}
+                  name={review.name}
+                  comentary={review.comentary}
+                  quantityStars={review.score}
+                />
+              ))}
           </Box>
         </Grid>
       </div>

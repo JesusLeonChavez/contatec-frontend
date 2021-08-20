@@ -162,7 +162,7 @@ export default function CardCategory({
             <Flex align="flex-start" justify="center" direction="column">
               <Flex align="center" justify="flex-start">
                 <Text fontSize="md" className={styles.bold500} color="primary">
-                  {toCapitalFirstLetter(post.pst_nombre)}
+                  {post ? toCapitalFirstLetter(post.pst_nombre) : `post_nombre`}
                 </Text>
               </Flex>
               {categoryScreen && (

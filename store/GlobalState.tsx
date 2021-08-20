@@ -62,7 +62,7 @@ export const DataProvider = ({ children }) => {
           const { data } = await get("/api/user/info")
           // console.log(data)
           const { user } = data
-          console.log(user)
+          // console.log(user)
           if (user.msg === "Autenticación inválida") {
             return showToast("Error al recuperar datos del usuario")
           }

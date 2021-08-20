@@ -39,7 +39,7 @@ export default function Chat() {
     if (Object.keys(socket).length === 0) return
 
     const functionSocket = ({ data }) => {
-      console.log(data)
+      // console.log(data)
       setIsArrivalMessage(!isArrivalMessage)
       if (
         data.msjUserFromId === currentChat!.idAmiwi ||

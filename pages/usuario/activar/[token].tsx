@@ -19,7 +19,7 @@ export default function Activar() {
       activation_token
     })
       .then(res => {
-        console.log("respToke:", res)
+        // console.log("respToke:", res)
         if (
           res.data.name === "JsonWebTokenError" ||
           res.data.name === "TokenExpiredError"

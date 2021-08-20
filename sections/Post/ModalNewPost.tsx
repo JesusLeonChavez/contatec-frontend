@@ -144,7 +144,7 @@ export default function ModalNewPost({
         public_id: "publicId123",
         url: img
       }))
-      console.log("hasta aqui llega")
+      // console.log("hasta aqui llega")
       if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
       const imagesPost = [...imgOldUrlParse, ...media]
       // -------------------------------------------------------------
@@ -169,7 +169,7 @@ export default function ModalNewPost({
       if (mypost) {
         res = await patch(`/api/post/update/${mypost.id}`, body)
       } else {
-        console.log("creando")
+        // console.log("creando")
         res = await post("/api/post/create", body)
       }
       setIsPosting(false)
