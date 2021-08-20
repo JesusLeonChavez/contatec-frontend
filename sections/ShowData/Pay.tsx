@@ -207,13 +207,16 @@ export default function Pay() {
   // Para editar estado (Uso del proveedor)
   const [isEditting, setIsEditting] = useState(false)
   // Para calificar trabajo (Uso del cliente).
+  // eslint-disable-next-line no-unused-vars
   const [isReviewing, setIsReviewing] = useState(false)
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const {
     isOpen: isReviewOpen,
+    // eslint-disable-next-line no-unused-vars
     onOpen: onReviewOpen,
+    // eslint-disable-next-line no-unused-vars
     onClose: onReviewClose
   } = useDisclosure()
 
@@ -229,7 +232,7 @@ export default function Pay() {
       pgo_monto: service.msj_precio_prop,
       pgo_trabajoId: service.trb_ID
     }
-    const data = await post("/api/pay/service", body)
+    await post("/api/pay/service", body)
     // TODO: Agregar toaster si hace post con exito
     setSelectedService(null)
     setIsUpdatingServices(prev => !prev)
@@ -268,10 +271,7 @@ export default function Pay() {
     const body = {
       trb_estado: serviceStatus.value
     }
-    const data = await patch(
-      `/api/work/update-status/${selectedService.trb_ID}`,
-      body
-    )
+    await patch(`/api/work/update-status/${selectedService.trb_ID}`, body)
     // TODO: Mostrar toaster de que se actualizo correctamente
     // console.log(data)
     console.log("Servicio seleccionado: ", selectedService)

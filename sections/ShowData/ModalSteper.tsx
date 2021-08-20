@@ -18,14 +18,10 @@ import {
   Textarea
 } from "@chakra-ui/react"
 import { useState } from "react"
-import FileUpload from "../../components/FileUpload/FileUpload"
-import SelectField from "../../components/SelectField"
-
 import ZIcon from "../../components/Icon/ZIcon"
 import Steper from "../../components/Steper"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
-import { toCapitalFirstLetter } from "../../utils/toCapital"
 // agregar toCapitalFirstLetter
 export default function ModalSteper({
   service,
