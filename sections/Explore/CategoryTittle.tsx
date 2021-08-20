@@ -15,12 +15,12 @@ export default function CategoryTittle({ categories }) {
           </Text>
         </Flex>
         <Grid
-          gap="10"
+          gap="2"
           py="5"
           templateColumns={{
             base: "repeat(1, 1fr)",
-            sm: "repeat(3, 1fr)",
-            lg: "repeat(6, 1fr)"
+            md: "repeat(4, 1fr)",
+            xl: "repeat(8, 1fr)"
           }}
         >
           {categories.map(category => (
@@ -30,7 +30,7 @@ export default function CategoryTittle({ categories }) {
               as={`/explorar/${category.id}`}
             >
               <a>
-                <Button variant="third" isFullWidth>
+                <Button variant="third" fontSize="xs" isFullWidth>
                   {category.cat_nombre}
                 </Button>
               </a>
