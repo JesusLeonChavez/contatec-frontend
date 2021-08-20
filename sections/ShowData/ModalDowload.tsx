@@ -50,6 +50,7 @@ export default function ModalDowload({
   dataOtherUser,
   postData
 }) {
+  console.log("postData: ", postData)
   const componentRef = useRef<any>(null)
   function handleClosePrint() {
     console.log("Adios impresion")
@@ -60,8 +61,26 @@ export default function ModalDowload({
     content: () => componentRef.current,
     pageStyle: pageStyle
   })
-  const boucher = {
-    number: "13546"
+  let boucher
+  if (postData) {
+    boucher = {
+      servicetrb_ID: service.trb_ID,
+      pstNombre: postData.post.pst_nombre,
+      nombrePropuesta: service.msj_nombre_propuesta,
+      precioPropuesta: service.msj_precio_prop,
+      fechaInicio: format(
+        new Date(service.trb_createdAt),
+        "do 'de' MMMM yyyy",
+        {
+          locale: es
+        }
+      ),
+      fechaFin: format(new Date(service.trb_updatedAt), "do 'de' MMMM yyyy", {
+        locale: es
+      }),
+      nombreCliente: `${user.us_nombre} ${user.us_apellido}`,
+      nombreTrabajador: `${dataOtherUser.us_nombre} ${dataOtherUser.us_apellido}`
+    }
   }
 
   return (
@@ -92,7 +111,7 @@ export default function ModalDowload({
                   Nombre del servicio:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
-                  {postData ? postData.pst_nombre : `Nombre de post`}
+                  {postData ? postData.post.pst_nombre : `Nombre de post`}
                 </Text>
               </FormControl>
 

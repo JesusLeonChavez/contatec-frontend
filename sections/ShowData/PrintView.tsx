@@ -16,7 +16,7 @@ class PrintView extends React.PureComponent<Props> {
           fontWeight="bold"
           my="10"
         >
-          Comprobante {this.props.boucher.number}
+          Comprobante {this.props.boucher.servicetrb_ID}
         </Text>
         <Grid
           templateColumns="repeat(2,1fr)"
@@ -30,7 +30,7 @@ class PrintView extends React.PureComponent<Props> {
             </Text>
 
             <Text fontSize="md" color="letter" fontWeight="light">
-              Marketing para redes
+              {this.props.boucher.pstNombre}
             </Text>
           </FormControl>
 
@@ -39,7 +39,7 @@ class PrintView extends React.PureComponent<Props> {
               Nombre del proyecto:
             </Text>
             <Text fontSize="md" color="letter" fontWeight="light">
-              Marketea tu dia
+              {this.props.boucher.nombrePropuesta}
             </Text>
           </FormControl>
 
@@ -48,16 +48,7 @@ class PrintView extends React.PureComponent<Props> {
               Presupuesto:
             </Text>
             <Text fontSize="md" color="letter" fontWeight="light">
-              s/ 2000
-            </Text>
-          </FormControl>
-
-          <FormControl mb="2">
-            <Text fontSize="lg" color="primary" fontWeight="medium">
-              Cuenta total:
-            </Text>
-            <Text fontSize="md" color="letter" fontWeight="light">
-              s/ 2500
+              S/. {this.props.boucher.precioPropuesta}
             </Text>
           </FormControl>
 
@@ -66,7 +57,7 @@ class PrintView extends React.PureComponent<Props> {
               Fecha de inicio:
             </Text>
             <Text fontSize="md" color="letter" fontWeight="light">
-              11-10-21
+              {this.props.boucher.fechaInicio}
             </Text>
           </FormControl>
 
@@ -75,7 +66,7 @@ class PrintView extends React.PureComponent<Props> {
               Fecha final:
             </Text>
             <Text fontSize="md" color="letter" fontWeight="light">
-              11-11-21
+              {this.props.boucher.fechaFin}
             </Text>
           </FormControl>
 
@@ -84,7 +75,7 @@ class PrintView extends React.PureComponent<Props> {
               Cliente:
             </Text>
             <Text fontSize="md" color="letter" fontWeight="light">
-              Varyana León
+              {this.props.boucher.nombreCliente}
             </Text>
           </FormControl>
 
@@ -93,7 +84,7 @@ class PrintView extends React.PureComponent<Props> {
               Trabajador:
             </Text>
             <Text fontSize="md" color="letter" fontWeight="light">
-              Leónidas León
+              {this.props.boucher.nombreTrabajador}
             </Text>
           </FormControl>
         </Grid>

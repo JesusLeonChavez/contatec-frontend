@@ -229,7 +229,7 @@ export default function Pay() {
       pgo_apellido: auth.user.us_apellido,
       pgo_token_culqi: token.id,
       pgo_correo: token.email,
-      pgo_monto: service.msj_precio_prop,
+      pgo_monto: service.msj_precio_prop * 100,
       pgo_trabajoId: service.trb_ID
     }
     await post("/api/pay/service", body)
