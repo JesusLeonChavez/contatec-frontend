@@ -50,7 +50,6 @@ export default function ModalDowload({
   dataOtherUser,
   postData
 }) {
-  console.log("postData: ", postData)
   const componentRef = useRef<any>(null)
   function handleClosePrint() {
     console.log("Adios impresion")
@@ -85,7 +84,13 @@ export default function ModalDowload({
 
   return (
     <Box>
-      <ZIcon name="dowload" pointer size={20} onClick={onOpen} />
+      <ZIcon
+        name="dowload"
+        pointer
+        size={20}
+        onClick={onOpen}
+        className="ml1 mr1"
+      />
 
       <Modal isOpen={isOpen} onClose={onClose} size="3xl" isCentered>
         <ModalOverlay />

@@ -11,7 +11,7 @@ export default function CategoryTittle({ categories }) {
             align="center"
             color="primary"
           >
-            Elige una catogoría
+            Elige una categoría
           </Text>
         </Flex>
         <Grid

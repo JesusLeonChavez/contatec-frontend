@@ -84,7 +84,7 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
             Monto: S/ {service.msj_precio_prop}
           </Text>
         </Box>
-        <Flex align="center" justify="space-evenly" w="180px">
+        <Flex align="center" justify="end">
           {service && dataOtherUser && (
             <>
               <ModalSteper
@@ -94,12 +94,13 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
                 postData={postData}
               />
               {service.trb_estado === "Contratado" ? (
-                <h3>Pendiente</h3>
+                <h3 style={{ margin: "0 10px" }}>Pendiente</h3>
               ) : (
                 <>
                   <h3>{service.trb_estado}</h3>
                   {service.review_exists === "0" && (
                     <Button
+                      mx="3"
                       variant="primary"
                       onClick={() => {
                         setSelectedService(service)
@@ -134,7 +135,7 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
         </Text>
       </Box>
       {/* TODO: Revisar renderizado condicional (es mas complejo de lo que deberia) */}
-      <Flex align="center" justify="space-around" w="180px">
+      <Flex align="center" justify="start">
         {/* Funcionalidad de pago! */}
         {service && dataOtherUser && (
           <>
@@ -159,11 +160,11 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
               </Culqi>
             ) : service.trb_estado === "En proceso" ? (
               <div>
-                <h1>En proceso</h1>
+                <h1 style={{ margin: "0 10px" }}>En proceso</h1>
               </div>
             ) : (
               <div>
-                <h1>Finalizado</h1>
+                <h1 style={{ margin: "0 10px" }}>Finalizado</h1>
                 {service && service?.review_exists === "0" ? (
                   <RateServiceModal
                     post={{ id: service.msjIdPostPropuestaId }}

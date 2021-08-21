@@ -88,7 +88,7 @@ export default function CardCategory({
       my="3"
       mx="3"
       boxShadow="lg"
-      bg="secondary"
+      bg="gray.200"
     >
       <Box position="relative">
         <Link
@@ -161,7 +161,18 @@ export default function CardCategory({
           <Box px="2" py="3" bg="white">
             <Flex align="flex-start" justify="center" direction="column">
               <Flex align="center" justify="flex-start">
-                <Text fontSize="md" className={styles.bold500} color="primary">
+                <Text
+                  fontSize="md"
+                  className={styles.bold500}
+                  align="start"
+                  color="primary"
+                  overflow="hidden"
+                  whiteSpace="nowrap"
+                  textOverflow="ellipsis"
+                  w="250px"
+                  pl="10px"
+                  // w="100%"
+                >
                   {post ? toCapitalFirstLetter(post.pst_nombre) : `post_nombre`}
                 </Text>
               </Flex>
@@ -171,6 +182,12 @@ export default function CardCategory({
                     fontSize="sm"
                     className={styles.bold200}
                     color="primary"
+                    pl="10px"
+                    overflow="hidden"
+                    whiteSpace="nowrap"
+                    textOverflow="ellipsis"
+                    w="250px"
+                    align="start"
                   >
                     Por {post.pstUsuarioId.us_nombre}{" "}
                     {post.pstUsuarioId.us_apellido}

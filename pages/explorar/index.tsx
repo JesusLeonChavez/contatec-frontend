@@ -11,7 +11,6 @@ import OurServices from "../../sections/Explore/OurServices"
 import InterestedService from "../../sections/Explore/InterestedService"
 
 export default function Explorar({ categories, explore }) {
-  // console.log("explore: ", explore)
   return (
     <div>
       <Head>
@@ -34,7 +33,6 @@ export default function Explorar({ categories, explore }) {
 }
 
 export const getServerSideProps = async context => {
-  // const id = context.params.id
   const resCategories = await fetch(
     `${process.env.API_BASE_URL}/api/category/categories`
   )

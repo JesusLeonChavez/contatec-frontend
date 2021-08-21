@@ -37,7 +37,13 @@ export default function ModalSteper({
   ]
   return (
     <Box>
-      <ZIcon name="search" pointer size={20} onClick={onOpen} />
+      <ZIcon
+        name="search"
+        pointer
+        size={20}
+        onClick={onOpen}
+        className="ml1 mr1"
+      />
 
       <Modal isOpen={isOpen} onClose={onClose} size="3xl" isCentered>
         <ModalOverlay />
