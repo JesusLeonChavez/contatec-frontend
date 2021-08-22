@@ -45,7 +45,7 @@ export default function Chat() {
         data.msjUserFromId === currentChat!.idAmiwi ||
         data.msjUserFromId === auth?.user?.id
       ) {
-        console.log("mensaje recibido: ", data)
+        // console.log("mensaje recibido: ", data)
         setArrivalMessage({
           ...data
         })
@@ -86,7 +86,7 @@ export default function Chat() {
       // @ts-ignore
       const resMessages = await get(`/api/messages/all/${currentChat.idAmiwi}`)
       const messageParse = resMessages.data.data.reverse()
-      console.log("Mensajes de bd", messageParse)
+      // console.log("Mensajes de bd", messageParse)
       setMessages(messageParse)
       // console.log(resMessages.data.data.reverse())
     }

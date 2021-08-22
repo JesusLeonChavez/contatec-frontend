@@ -36,7 +36,7 @@ export default function PasswordReset({ router }) {
     const { errors: errorsForm, isValid } = validNewPassword(values)
     setErrors(errorsForm)
     if (isValid) {
-      console.log("enviando contraseñas")
+      // console.log("enviando contraseñas")
       // eslint-disable-next-line camelcase
       const reset_token = router.query.token
       setAuth(reset_token)
@@ -61,7 +61,7 @@ export default function PasswordReset({ router }) {
             )
             router.push("/")
           }
-          console.log("resReseto:", res)
+          // console.log("resReseto:", res)
         })
         .catch(respError => console.log("respError: ", respError))
     }
