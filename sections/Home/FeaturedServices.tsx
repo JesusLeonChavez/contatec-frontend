@@ -38,7 +38,12 @@ export default function FeaturedServices() {
   return (
     <div className="generalWrapper">
       <Flex align="center" justify="center" py={10}>
-        <Text fontSize="5xl" className={styles.bold600} color="primary">
+        <Text
+          fontSize="5xl"
+          className={styles.bold600}
+          color="primary"
+          align={{ base: "center", md: "unset" }}
+        >
           Servicios destacados
         </Text>
       </Flex>
@@ -52,6 +57,7 @@ export default function FeaturedServices() {
               borderBottomColor: "primary",
               mx: "10px"
             }}
+            fontSize={{ base: "xs", md: "md" }}
           >
             Marketing digital
           </Tab>
@@ -63,6 +69,7 @@ export default function FeaturedServices() {
               borderBottomColor: "primary",
               mx: "10px"
             }}
+            fontSize={{ base: "xs", md: "md" }}
           >
             Desarrollo web
           </Tab>
@@ -74,6 +81,7 @@ export default function FeaturedServices() {
               borderBottomColor: "primary",
               mx: "10px"
             }}
+            fontSize={{ base: "xs", md: "md" }}
           >
             Programación
           </Tab>

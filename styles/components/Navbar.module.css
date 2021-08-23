@@ -47,3 +47,10 @@
     font-weight: 600;
     border-radius: 0.5rem;
 }
+
+@media screen and (max-width:800px){
+  .navbarWrapper ul li{
+    display:none;
+    background-color: red;
+}
+}

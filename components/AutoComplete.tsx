@@ -59,7 +59,7 @@ export const Autocomplete = ({ hits, currentRefinement, refine }) => {
         <Flex>
           <ul style={{ textDecoration: "none", listStyle: "none" }}>
             <li>
-              <InputGroup w={{ base: "50", md: "md", lg: "lg" }}>
+              <InputGroup w={{ base: "64", md: "md", lg: "lg" }}>
                 <InputLeftElement
                   pointerEvents="none"
                   // eslint-disable-next-line react/no-children-prop

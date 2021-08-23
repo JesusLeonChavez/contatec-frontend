@@ -28,7 +28,11 @@ export default function OurCategories() {
 
           <Flex align="center" justify="center" py={10}>
             <Grid templateColumns="repeat(1, 1fr)" gap={6} w={500}>
-              <Text fontSize="5xl" className={styles.bold600}>
+              <Text
+                fontSize="5xl"
+                className={styles.bold600}
+                align={{ base: "center", md: "unset" }}
+              >
                 ¿Por qué utilizar la plataforma?
               </Text>
               {/* <Button onClick={handleTestDateFNS}>Date fns</Button> */}
