@@ -145,12 +145,15 @@ export default function CategoryTittle({ post }: PropsMain) {
             px="6"
             py="6"
             position="sticky"
+            w="100%"
           >
             <Grid templateColumns="repeat(1, 1fr)" gap="5">
               <Text className="bold600" fontSize="lg" color="primary">
                 Descripción
               </Text>
-              <Text>{toCapitalFirstLetter(post.pst_descripcion)}</Text>
+              <Box wordBreak="break-word">
+                <Text>{toCapitalFirstLetter(post.pst_descripcion)}</Text>
+              </Box>
               <UnorderedList spacing={3} px="3">
                 {tags.map((tag, index) => (
                   <ListItem key={index}>{toCapitalFirstLetter(tag)}</ListItem>

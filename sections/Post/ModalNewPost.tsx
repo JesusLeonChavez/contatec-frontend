@@ -340,8 +340,8 @@ export default function ModalNewPost({
                   name="brief_content"
                   value={toCapitalFirstLetter(brief_content)}
                   h="100"
-                  maxLength={100}
-                  resizable="false"
+                  maxLength={250}
+                  resize="none"
                 />
 
                 <Box
@@ -353,7 +353,7 @@ export default function ModalNewPost({
                   {!errors.brief_content && <Box w="3"></Box>}
                   <FormErrorMessage>{errors.brief_content}</FormErrorMessage>
                   <span style={{ paddingTop: "10px" }}>
-                    {brief_content.length}/100
+                    {brief_content.length}/250
                   </span>
                 </Box>
               </FormControl>
@@ -372,8 +372,8 @@ export default function ModalNewPost({
                   name="description"
                   value={toCapitalFirstLetter(description)}
                   h="100"
-                  maxLength={100}
-                  resizable="false"
+                  maxLength={250}
+                  resize="none"
                 />
 
                 <Box
@@ -387,7 +387,7 @@ export default function ModalNewPost({
                     {errors.description}
                   </FormErrorMessage>
                   <span style={{ paddingTop: "10px" }}>
-                    {description.length}/100
+                    {description.length}/250
                   </span>
                 </Box>
               </FormControl>
