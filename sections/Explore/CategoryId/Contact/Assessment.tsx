@@ -17,7 +17,7 @@ export default function Assessment({ post, scoreReviews: querySql }) {
     score_one_percent: 0,
     score_one: 0
   }
-  console.log(scoreReviews)
+  // console.log(scoreReviews)
   return (
     <Box py="5">
       <div className="generalWrapper">

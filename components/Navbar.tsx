@@ -35,6 +35,7 @@ export default function Navbar() {
   const [isNewMessage, setIsNewMessage] = useState(false)
 
   const [recentMessages, setRecentMessages] = useState<any>([])
+  const [recentNotifications, setRecentNotifications] = useState<any>([])
 
   const handleLogout = async () => {
     localStorage.removeItem("isLogged")
@@ -58,6 +59,7 @@ export default function Navbar() {
 
     return () => {
       socket.off("messageDefaultResponse")
+      socket.off("messageProposeResponse")
     }
   }, [auth?.user?.id, socket])
 
@@ -113,7 +115,9 @@ export default function Navbar() {
                     borderBottomColor: "primary"
                   }}
                 >
-                  Notificaciones (3)
+                  Notificaciones{" "}
+                  {recentNotifications.length > 0 &&
+                    `(${recentNotifications.length})`}
                 </Tab>
                 <Tab
                   _focus={{ outline: "none" }}
@@ -125,13 +129,17 @@ export default function Navbar() {
                     borderBottomColor: "primary"
                   }}
                 >
-                  Bandeja de entrada ({recentMessages.length})
+                  Bandeja de entrada{" "}
+                  {recentMessages.length > 0 && `(${recentMessages.length})`}
                 </Tab>
               </TabList>
               <TabPanels>
                 <TabPanel>
                   <PopoverBody>
-                    <Notifications />
+                    <Notifications
+                      recentNotifications={recentNotifications}
+                      setRecentNotifications={setRecentNotifications}
+                    />
                   </PopoverBody>
                 </TabPanel>
                 <TabPanel>

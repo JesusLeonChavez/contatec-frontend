@@ -45,6 +45,7 @@ export default function Chat() {
         data.msjUserFromId === currentChat!.idAmiwi ||
         data.msjUserFromId === auth?.user?.id
       ) {
+        // console.log("mensaje recibido: ", data)
         setArrivalMessage({
           ...data
         })
@@ -71,7 +72,6 @@ export default function Chat() {
       // @ts-ignore
       setAuth(auth.access_token)
       const res = await get("/api/messages/all")
-
       setConversations(res.data)
     }
 
@@ -79,17 +79,18 @@ export default function Chat() {
   }, [auth?.user?.id, arrivalMessage, isArrivalMessage])
   useEffect(() => {
     if (!currentChat) return
+    if (!auth?.user?.id) return
     const getMessages = async () => {
       setAuth(auth!.access_token)
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const resMessages = await get(`/api/messages/all/${currentChat.idAmiwi}`)
       const messageParse = resMessages.data.data.reverse()
+      // console.log("Mensajes de bd", messageParse)
       setMessages(messageParse)
       // console.log(resMessages.data.data.reverse())
     }
-    if (!auth?.user?.id) return
-    if (!currentChat) return
+
     getMessages()
   }, [currentChat])
 
