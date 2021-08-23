@@ -122,6 +122,7 @@ export default function MessageProposal({ message, own }: MessageProps) {
                   mx="auto"
                   w="calc(100% - 20px)"
                   color="letter"
+                  _hover={{ backgroundColor: "orange" }}
                   // agregar validador (alert/modal)
                   onClick={handleAcceptPropose}
                 >

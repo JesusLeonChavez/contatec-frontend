@@ -139,11 +139,9 @@ export default function Chat() {
   return (
     <Box
       m="0 auto"
-      mt="10"
-      mb="10"
       display="flex"
       w="1102px"
-      h="798px"
+      h="calc(100vh - 80px)"
       border="3px solid #DBD9DC"
     >
       <Box w="300px" borderRight="1px solid #DBD9DC">
@@ -179,12 +177,12 @@ export default function Chat() {
       {currentChat ? (
         <>
           <Box w="799px" border="1px solid #DBD9DC">
-            <Flex h="50px" border="1px solid #DBD9DC" align="center">
+            <Flex h="8%" border="1px solid #DBD9DC" align="center">
               {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
               {/* @ts-ignore */}
               <UsersName name={currentChat.nameAmiwi} />
             </Flex>
-            <Box overflowY="scroll" h="550px" border="1px solid #DBD9DC">
+            <Box overflowY="scroll" h="65%" border="1px solid #DBD9DC">
               {messages.map((message, idx) => (
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
@@ -205,7 +203,7 @@ export default function Chat() {
 
               {/*  */}
             </Box>
-            <Box h="100px" border="1px solid #DBD9DC">
+            <Box h="13.5%" border="1px solid #DBD9DC">
               <SendMessage
                 newMessage={newMessage}
                 setNewMessage={setNewMessage}
@@ -217,7 +215,7 @@ export default function Chat() {
               bg="#F2F2F2"
               justify="start"
               direction="column"
-              h="91px"
+              h="13.5%"
               border="1px solid #DBD9DC"
               align="center"
               m="auto"

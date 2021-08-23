@@ -35,7 +35,7 @@ export default function Message() {
   }
   return (
     <div>
-      <Layout withNav withFooter>
+      <Layout withNav withFooter={false}>
         <Chat />
       </Layout>
     </div>
