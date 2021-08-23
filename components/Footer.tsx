@@ -23,7 +23,7 @@ export default function Footer() {
             justify="center"
             direction={{ base: "column", xs: "column", sm: "row" }}
           >
-            <Grid
+            {/* <Grid
               templateColumns={{ sm: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
               gap="2"
               py="2"
@@ -46,9 +46,9 @@ export default function Footer() {
                 <a className="mt1 mb1 flexCenterCustom">Third Link</a>
               </Link>
               <Link href="/">
-                <a className="mt1 mb1  flexCenterCustom">Fourth Link</a>
+                <a className="mt1 mb1 flexCenterCustom">Fourth Link</a>
               </Link>
-            </Grid>
+            </Grid> */}
           </Flex>
           <Flex py="4" align="center" justify="center">
             <Link href="/">

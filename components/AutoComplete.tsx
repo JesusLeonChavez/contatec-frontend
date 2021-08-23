@@ -36,8 +36,8 @@ export const handleSelect = (hit, refine) => {
 export const Autocomplete = ({ hits, currentRefinement, refine }) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const handleSubmit = async e => {
-    const inputRef = useRef<HTMLInputElement>(null)
     e.preventDefault()
+    // const inputRef = useRef<HTMLInputElement>(null)
     const res = await post("/api/post/search", {
       nombre_post: inputRef.current?.value,
       categoria_post: inputRef.current?.value
