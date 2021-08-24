@@ -406,7 +406,15 @@ export default function ModalNewPost({
                     if (!isString) {
                       showToast("Tag inválido", "Ingrese solo texto", "error")
                     }
-                    return isString
+                    const isRepeat = tags.includes(value)
+                    if (isRepeat) {
+                      showToast(
+                        "Tag repetido",
+                        "Ingrese otro contenido",
+                        "error"
+                      )
+                    }
+                    return isString && !isRepeat
                   }}
                 />
 
