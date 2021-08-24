@@ -22,7 +22,22 @@ import { CulqiProvider, Culqi } from "react-culqi"
 import SelectField, { Option } from "../../components/SelectField"
 import RateServiceModal from "../Explore/CategoryId/Contact/RateServiceModal"
 
-function PayCard({ service, user, setSelectedService, setIsEditting }) {
+interface PayCardProps {
+  service: any
+  user: any
+  setSelectedService: any
+  setIsEditting: any
+  setIsUpdatingServices: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function PayCard({
+  service,
+  user,
+  setSelectedService,
+  setIsEditting,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setIsUpdatingServices
+}: PayCardProps) {
   const [dataOtherUser, setDataOtherUser] = useState<any>(null)
   const [postData, setPostData] = useState<any>(null)
   useEffect(() => {
@@ -172,6 +187,7 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
                     variant="fourth"
                     width="6xs"
                     showModalButtonText="Valorar servicio"
+                    setIsUpdatingServices={setIsUpdatingServices}
                   />
                 ) : (
                   <h1>{service ? service.review_score : "hola"}</h1>
@@ -244,8 +260,6 @@ export default function Pay() {
     const userData = async () => {
       const { data: total } = await get("/api/user/info")
       const { data } = total
-      // console.log(data)
-      // console.log("yo", auth.user)
       setMyServices(data)
     }
     userData()
@@ -315,6 +329,7 @@ export default function Pay() {
                 key={index}
                 setSelectedService={setSelectedService}
                 setIsEditting={setIsEditting}
+                setIsUpdatingServices={setIsUpdatingServices}
               />
             ))}
           </CulqiProvider>
