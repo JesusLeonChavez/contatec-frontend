@@ -9,7 +9,7 @@ import {
   Flex
 } from "@chakra-ui/react"
 import router from "next/router"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { connectAutoComplete } from "react-instantsearch-dom"
 import ZIcon from "../components/Icon"
 import { post } from "../utils/http"
@@ -34,10 +34,12 @@ export const handleSelect = (hit, refine) => {
 }
 
 export const Autocomplete = ({ hits, currentRefinement, refine }) => {
+  const [isLoading, setisLoading] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const handleSubmit = async e => {
     e.preventDefault()
     // const inputRef = useRef<HTMLInputElement>(null)
+    setisLoading(true)
     const res = await post("/api/post/search", {
       nombre_post: inputRef.current?.value,
       categoria_post: inputRef.current?.value
@@ -49,6 +51,7 @@ export const Autocomplete = ({ hits, currentRefinement, refine }) => {
         "error"
       )
     const { idCategoria, idPost } = res.data.data
+    setisLoading(false)
     router.push(`/explorar/${idCategoria}/${idPost}`)
     // console.log("api/buscar/" + inputRef.current?.value || "none")
   }
@@ -97,7 +100,12 @@ export const Autocomplete = ({ hits, currentRefinement, refine }) => {
                 </Box>
               ))}
           </ul>
-          <Button w={{ md: "3xs" }} variant="primary" type="submit">
+          <Button
+            w={{ md: "3xs" }}
+            variant="primary"
+            type="submit"
+            isLoading={isLoading}
+          >
             Buscar
           </Button>
         </Flex>
