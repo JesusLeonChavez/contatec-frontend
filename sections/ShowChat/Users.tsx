@@ -1,4 +1,5 @@
 import { Avatar, Box, Flex, Text } from "@chakra-ui/react"
+import { toCapitalFirstLetter } from "../../utils/toCapital"
 // import ZIcon from "../../components/Icon"
 
 export default function Users({
@@ -24,7 +25,7 @@ export default function Users({
         <Avatar size="md" name={name} src={image} position="relative" />
         <Box px="4">
           <Text size="md" align="start" color="#482F51" textOverflow="ellipsis">
-            {name}
+            {toCapitalFirstLetter(name.toLowerCase())}
           </Text>
           <Box
             // size="md"
