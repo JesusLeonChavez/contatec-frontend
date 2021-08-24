@@ -24,6 +24,7 @@ export const errorForm = {
   SHORT_PASSWORD: "La contraseña debe ser de 7 carateres o más",
   SHORT_NAME: "El nombre debe contener más de 4 caracteres",
   SHORT_LASTNAME: "El apellido debe contener más de 4 caracteres",
+  SHORT_PRICE: "El precio debe ser mayor O igual a 20",
   UNMATCH_PASSWORD: "La contraseña no coinciden",
   SHORT_CONTENT: "El campo debe contener 10 caracteres como minimo"
 }
