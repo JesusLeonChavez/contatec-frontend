@@ -16,6 +16,7 @@ import SwiperCore, { Navigation, Thumbs } from "swiper/core"
 import { toCapitalFirstLetter } from "../../../../utils/toCapital"
 import { format } from "date-fns"
 import router from "next/router"
+import ContactWorkerModal from "./ContactWorkerModal"
 
 SwiperCore.use([Navigation, Thumbs])
 interface PropsUserPost {
@@ -56,8 +57,9 @@ interface PropsPost {
 
 interface PropsMain {
   post: PropsPost
+  creator: any
 }
-export default function CategoryTittle({ post }: PropsMain) {
+export default function CategoryTittle({ post, creator }: PropsMain) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
   const tags = post.pst_descripcion_incluye.split(",")
@@ -163,6 +165,13 @@ export default function CategoryTittle({ post }: PropsMain) {
               <UnorderedList spacing={3} px="3">
                 <ListItem>Desde s/.{post.pst_precioBase}</ListItem>
               </UnorderedList>
+              <ContactWorkerModal
+                post={post}
+                creator={creator}
+                variant="primary"
+                width="full"
+                showModalButtonText="Contactar"
+              />
               {/* <QuotePriceModal
                   variant="third"
                   width="full"

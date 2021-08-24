@@ -136,7 +136,7 @@ export default function Post({
               title={post.pst_nombre}
               briefDescription={post.pst_descripcion_corta}
             />
-            <PhotosDescription post={post} />
+            <PhotosDescription post={post} creator={post.pstUsuarioId} />
             <Creator creator={post.pstUsuarioId} post={post} />
             <Assessment post={post} scoreReviews={scoreReviews} />
             <Comentaries reviews={reviews} />
