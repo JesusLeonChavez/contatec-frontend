@@ -28,6 +28,7 @@ export default function Message({ message, own }: MessageProps) {
             bg={`${own === true ? "primary" : "gray.100"}`}
             color={`${own === true ? "white" : "primary"}`}
             borderRadius="lg"
+            wordBreak="break-word"
             py="2"
           >
             {message.msj_contenido}
