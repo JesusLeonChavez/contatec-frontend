@@ -1,11 +1,12 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react"
 import { formatDistanceToNow } from "date-fns"
 import { es } from "date-fns/locale"
+import router from "next/router"
 // import router from "next/router"
 import { useContext } from "react"
 import { DataContext } from "../../store/GlobalState"
 import { post } from "../../utils/http"
-
+import showToast from "../../components/Toast"
 interface MessageProps {
   message: any
   own?: boolean
@@ -20,9 +21,14 @@ export default function MessageProposal({ message, own }: MessageProps) {
   const handleAcceptPropose = async () => {
     if (!auth?.user?.id) return
     if (new Date() > new Date(message.msj_caducidad_prop)) {
-      // TODO: Mostrar toaster de que ya vencio
+      showToast(
+        "Error al aceptar propuesta",
+        "Plazo de aceptación vencido",
+        "error"
+      )
       return
     }
+    // TODO: Agregar alerta para validar si desea el trabajo
 
     const { data, error } = await post(`/api/work/accept-propose`, {
       id_mensaje: message.id
@@ -36,6 +42,9 @@ export default function MessageProposal({ message, own }: MessageProps) {
       data,
       message
     })
+    setTimeout(() => {
+      router.push("/mostrar-datos")
+    }, 500)
   }
   return (
     <Box

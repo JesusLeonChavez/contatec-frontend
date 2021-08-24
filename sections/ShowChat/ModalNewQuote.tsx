@@ -14,12 +14,15 @@ import {
   Grid,
   Textarea,
   NumberInput,
-  NumberInputField
+  NumberInputField,
+  FormErrorMessage
 } from "@chakra-ui/react"
 import { useContext, useEffect, useState } from "react"
 import SelectField, { Option } from "../../components/SelectField"
 import { DataContext } from "../../store/GlobalState"
 import { useForm } from "../../utils/hooks/useForm"
+import { useError } from "../../utils/hooks/useError"
+import { validQuote } from "./utils/valid"
 import { toCapitalFirstLetter } from "../../utils/toCapital"
 
 export default function ModalNewQuote({
@@ -36,30 +39,52 @@ export default function ModalNewQuote({
     servicio: "",
     nombre: "",
     presupuesto: "",
-    fechaLimite: "",
+    category: null,
+    // fechaLimite: "",
     descripcion: ""
   })
   const [category, setCategory] = useState(null)
-  const { nombre, descripcion, servicio, presupuesto, fechaLimite } = values
+  const { nombre, descripcion, servicio, presupuesto } = values
+
+  const [errors, setErrors, resetErrors] = useError({
+    servicio: "",
+    nombre: "",
+    presupuesto: "",
+    category: null,
+    // fechaLimite: "",
+    descripcion: ""
+  })
+
   function handleChangeSelect(option) {
     setCategory(option)
   }
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const dataEmit = { ...values, postId: category.value }
-    console.log({
-      to: currentChat!.idAmiwi,
-      from: auth.user.id,
-      data: dataEmit
-    })
-    socket.emit("messageProposal", {
-      to: currentChat!.idAmiwi,
-      from: auth.user.id,
-      data: dataEmit
-    })
+    // eslint-disable-next-line no-unused-vars
+    const { errors: errorsForm, isValid } = validQuote(values, category)
+    setErrors(errorsForm)
+    // console.log(isValid)
+    if (isValid) {
+      const dataEmit = {
+        ...values,
+        postId: category?.value
+      }
+      // console.log({
+      //   to: currentChat!.idAmiwi,
+      //   from: auth.user.id,
+      //   data: dataEmit
+      // })
+
+      socket.emit("messageProposal", {
+        to: currentChat!.idAmiwi,
+        from: auth.user.id,
+        data: dataEmit
+      })
+      setTimeout(() => {
+        onClose()
+      }, 500)
+    }
     // reset()
   }
 
@@ -67,6 +92,7 @@ export default function ModalNewQuote({
     if (!isOpen) {
       reset()
       setCategory(null)
+      resetErrors()
     }
   }, [isOpen])
   return (
@@ -87,7 +113,7 @@ export default function ModalNewQuote({
 
           <ModalBody color="primary" px="10">
             <form onSubmit={handleSubmit}>
-              <FormControl mb="2" id="first-name">
+              <FormControl mb="2" id="first-name" isInvalid={!!errors.servicio}>
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Servicio
                 </FormLabel>
@@ -100,8 +126,9 @@ export default function ModalNewQuote({
                   onChange={handleInputChange}
                   value={toCapitalFirstLetter(servicio)}
                 />
+                <FormErrorMessage>{errors.servicio}</FormErrorMessage>
               </FormControl>
-              <FormControl mb="2" id="first-name">
+              <FormControl mb="2" id="first-name" isInvalid={!!errors.nombre}>
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Nombre del proyecto
                 </FormLabel>
@@ -114,9 +141,10 @@ export default function ModalNewQuote({
                   onChange={handleInputChange}
                   value={toCapitalFirstLetter(nombre)}
                 />
+                <FormErrorMessage>{errors.nombre}</FormErrorMessage>
               </FormControl>
               <Grid templateColumns="repeat(2,1fr)" gap="6">
-                <FormControl mb="2">
+                <FormControl mb="2" isInvalid={!!errors.category}>
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
                     Categoría
                   </FormLabel>
@@ -128,7 +156,7 @@ export default function ModalNewQuote({
                     option={category}
                     placeholder="Seleccione una categoría "
                     onChange={handleChangeSelect}
-                    // errorHelper={!!errors.category}
+                    errorHelper={!!errors.category}
                   >
                     {posts.map((p, idx) => (
                       <Option key={idx} value={p.id}>
@@ -136,6 +164,9 @@ export default function ModalNewQuote({
                       </Option>
                     ))}
                   </SelectField>
+                  <FormErrorMessage fontSize="sm">
+                    {errors.category}
+                  </FormErrorMessage>
                 </FormControl>
                 {/* <FormControl mb="2">
                   <FormLabel color="letter" fontWeight="light" fontSize="sm">
@@ -152,7 +183,7 @@ export default function ModalNewQuote({
                 </FormControl> */}
               </Grid>
 
-              <FormControl mb="2">
+              <FormControl mb="2" isInvalid={!!errors.descripcion}>
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Descripción
                 </FormLabel>
@@ -167,8 +198,26 @@ export default function ModalNewQuote({
                   onChange={handleInputChange}
                   value={toCapitalFirstLetter(descripcion)}
                 />
+                <Box
+                  d="flex"
+                  justifyContent="space-between"
+                  color="gray"
+                  fontSize="xs"
+                >
+                  {!errors.descripcion && <Box w="3"></Box>}
+                  <FormErrorMessage fontSize="sm">
+                    {errors.descripcion}
+                  </FormErrorMessage>
+                  <span style={{ paddingTop: "10px" }}>
+                    {descripcion.length}/100
+                  </span>
+                </Box>
               </FormControl>
-              <FormControl mb="2" id="first-name">
+              <FormControl
+                mb="2"
+                id="first-name"
+                isInvalid={!!errors.presupuesto}
+              >
                 <FormLabel color="letter" fontWeight="light" fontSize="sm">
                   Presupuesto
                 </FormLabel>
@@ -181,6 +230,7 @@ export default function ModalNewQuote({
                     value={presupuesto}
                   />
                 </NumberInput>
+                <FormErrorMessage>{errors.presupuesto}</FormErrorMessage>
 
                 {/* <Input
                   fontSize="sm"

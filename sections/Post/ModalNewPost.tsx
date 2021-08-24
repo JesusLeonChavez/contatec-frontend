@@ -37,57 +37,7 @@ import { patch, post, setAuth } from "../../utils/http"
 
 import { DataContext } from "../../store/GlobalState"
 import { toCapitalFirstLetter } from "../../utils/toCapital"
-
-interface PropsUserPost {
-  id: number
-  createdAt: string
-  updatedAt: string
-  us_correo: string
-  us_nombre: string
-  us_apellido: string
-  avatar: string
-}
-
-interface PropsCategoryPost {
-  id: number
-  createdAt: string
-  updatedAt: string
-  cat_nombre: string
-  cat_descripcion: string
-}
-interface PropsPost {
-  id: number
-  createdAt: string
-  updatedAt: string
-  pst_isActive: boolean
-  pst_descripcion_corta: string
-  pst_nombre: string
-  pst_descripcion_incluye: string
-  pst_descripcion: string
-  pst_imagen_1: string
-  pst_imagen_2: string
-  pst_imagen_3: string
-  pst_imagen_4: string
-  pst_imagen_5: string
-  pst_precioBase: number
-  pstUsuarioId: PropsUserPost
-  pstCategoriaId: PropsCategoryPost
-}
-
-type PropsRegister = {
-  variant: string
-  width: string
-  backgroundColor?: string
-  showModalButtonText?: string
-  icon?: boolean
-  mypost?: PropsPost
-}
-
-interface ImageProps {
-  public_id: string
-  url: string
-}
-// TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
+import { ImageProps, PropsModalPost } from "./types"
 
 export default function ModalNewPost({
   variant,
@@ -96,7 +46,7 @@ export default function ModalNewPost({
   showModalButtonText,
   icon = false,
   mypost
-}: PropsRegister) {
+}: PropsModalPost) {
   let initialState
   if (mypost) {
     initialState = {
@@ -194,6 +144,7 @@ export default function ModalNewPost({
         public_id: "publicId123",
         url: img
       }))
+      // console.log("hasta aqui llega")
       if (imgNewURL.length > 0) media = await imageUpload(imgNewURL)
       const imagesPost = [...imgOldUrlParse, ...media]
       // -------------------------------------------------------------
@@ -218,6 +169,7 @@ export default function ModalNewPost({
       if (mypost) {
         res = await patch(`/api/post/update/${mypost.id}`, body)
       } else {
+        // console.log("creando")
         res = await post("/api/post/create", body)
       }
       setIsPosting(false)

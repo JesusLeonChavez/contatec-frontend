@@ -18,7 +18,7 @@ import ZIcon from "../../components/Icon/ZIcon"
 import { useReactToPrint } from "react-to-print"
 import { useRef } from "react"
 import PrintView from "./PrintView"
-import { toCapitalFirstLetter } from "../../utils/toCapital"
+// import { toCapitalFirstLetter } from "../../utils/toCapital"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
 
@@ -92,9 +92,7 @@ export default function ModalDowload({
                   Nombre del servicio:
                 </FormLabel>
                 <Text fontSize="md" color="letter" fontWeight="light">
-                  {postData
-                    ? toCapitalFirstLetter(postData.pst_nombre)
-                    : `Nombre de post`}
+                  {postData ? postData.pst_nombre : `Nombre de post`}
                 </Text>
               </FormControl>
 
