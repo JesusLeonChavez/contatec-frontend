@@ -13,6 +13,9 @@ export const validNameLastName = values => {
   if (!values.name.trim()) {
     errors.name = errorForm.EMPTY_NAME
     isValid = false
+  } else if (values.name.length <= 4) {
+    errors.name = errorForm.SHORT_NAME
+    isValid = false
   } else if (!regexOnlyString(values.name.trim())) {
     errors.name = errorForm.INVALID_NAME
     isValid = false
@@ -20,6 +23,9 @@ export const validNameLastName = values => {
 
   if (!values.lastname.trim()) {
     errors.lastname = errorForm.EMPTY_LASTNAME
+    isValid = false
+  } else if (values.lastname.length <= 4) {
+    errors.lastname = errorForm.SHORT_LASTNAME
     isValid = false
   } else if (!regexOnlyString(values.lastname.trim())) {
     errors.lastname = errorForm.INVALID_LASTNAME
