@@ -9,7 +9,11 @@ export default function OurCategories() {
         <div className={styles.infoRowNoInvert}>
           <Flex align="center" justify="center" py={10}>
             <Grid templateColumns="repeat(1, 1fr)" gap={12} w={500}>
-              <Text fontSize="5xl" className={styles.bold600}>
+              <Text
+                fontSize="5xl"
+                className={styles.bold600}
+                align={{ base: "center", md: "unset" }}
+              >
                 Nuestras categorías
               </Text>
               <Grid templateColumns="repeat(2, 1fr)" gap={12}>

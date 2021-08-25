@@ -8,6 +8,7 @@ import { setFiles, getIconString } from "./utils"
 import styles from "../../styles/components/FileUpload.module.css"
 import FileItem from "./FileItem"
 import ZIcon from "../../components/Icon"
+import showToast from "../Toast"
 export const { Provider, Consumer } = React.createContext(false)
 export function FileLink(
   filename,
@@ -109,28 +110,38 @@ export default function FileUpload({
     const _files = ev.target.files
     let availabale_files = []
     let notSupport = false
-    let validImage = false
+    // const validImage = false
+    let isFound = false
+    let isHeavy = false
     // eslint-disable-next-line array-callback-return
     availabale_files = Object.values(_files).filter(item => {
       const ext = item.name
         .substring(item.name.lastIndexOf(".") + 1)
         .toLowerCase()
-      const size = item.size
-      if (extensions.includes(ext)) {
-        item.extension = ext
-        validImage = true
-      } else if (!notSupport) {
-        notSupport = true
+      files.forEach(file => {
+        if (`${item.name}${item.size}` === `${file.name}${file.size}`) {
+          isFound = true
+        }
+        if (item.size > 20000000) {
+          isHeavy = true
+        }
+      })
+      // const size = item.size
+      if (!isFound) {
+        if (!isHeavy) {
+          if (extensions.includes(ext)) {
+            item.extension = ext
+            return item
+          } else if (!notSupport) {
+            notSupport = true
+          }
+        } else {
+          showToast("Cuidado", "Elemento pesado", "info")
+        }
+      } else {
+        showToast("Cuidado", "Elemento repetido", "info")
       }
-      if (size <= 1024 * 1024) {
-        validImage = true
-      } else if (!notSupport) {
-        notSupport = true
-      }
-
-      if (validImage) {
-        return item
-      }
+      isFound = false
       // console.log("gaaa: ", item)
     })
 

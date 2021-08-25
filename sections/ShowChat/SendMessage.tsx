@@ -7,8 +7,9 @@ export default function SendMessages({
   textArearef
 }) {
   return (
-    <FormControl id="email">
+    <FormControl id="email" h="100%">
       <Textarea
+        _focus={{ border: "none" }}
         ref={textArearef}
         resize="none"
         h="full"
@@ -18,6 +19,7 @@ export default function SendMessages({
         onChange={e => {
           setNewMessage(e.target.value)
         }}
+        rounded="none"
         onKeyDown={onKeyDown}
       />
     </FormControl>

@@ -57,6 +57,13 @@
     order: 2;
   }
 }
+@media only screen and (max-width:850px){
+  .infoHero{
+    width: 500px;
+    left: 5%;
+}
+}
+
 .bold600{
   font-weight: 600;
 }

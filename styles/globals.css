@@ -1,3 +1,24 @@
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(216, 215, 215);
+  border-radius: 55px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(168, 168, 168);
+  border-radius: 55px;
+
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(168, 168, 168);
+}
+
+
 :root{
   --primary: #482F51;
   --secondary: #FBD76D;

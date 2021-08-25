@@ -23,9 +23,11 @@ export default function Hero() {
             TRABAJO
           </Text>
           <Text
-            fontSize="6xl"
+            fontSize={{ base: "4xl", md: "6xl", lg: "6xl" }}
             className={styles.heroMainMessage}
             color="primary"
+            w={{ base: "300px", md: "600px" }}
+            wordBreak="break-word"
           >
             Decubre hoy el mejor servicio para tu negocio
           </Text>

@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import Head from "next/head"
 import Link from "next/link"
-import { Box, Breadcrumb, BreadcrumbItem, Text } from "@chakra-ui/react"
+import { Box, Breadcrumb, BreadcrumbItem, Text, Button } from "@chakra-ui/react"
 import ZIcon from "../../../components/Icon"
 import Layout from "../../../components/Layout"
 import Title from "../../../sections/Explore/CategoryId/Contact/Title"
@@ -50,19 +50,41 @@ interface PropsPost {
   pstCategoriaId: PropsCategoryPost
 }
 
-interface PropsMain {
-  post: PropsPost
-}
 export default function Post({
   post,
   reviews,
   scoreReviews
 }: {
-  post: PropsMain
+  post: PropsPost
   reviews: any
-  scoreReview: any
+  scoreReviews: any
 }) {
   const router = useRouter()
+  if (!post) {
+    return (
+      <Box
+        w="100vw"
+        h="100vh"
+        d="flex"
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+      >
+        <ZIcon name="alert" size={35} />
+        <Text fontSize="xl" color="letter" py="4">
+          Este post ya no se encuentra disponible
+        </Text>
+        <Button
+          variant="primary"
+          onClick={() => {
+            router.back()
+          }}
+        >
+          Regresar
+        </Button>
+      </Box>
+    )
+  }
   const { state } = useContext(DataContext)
   const { authReady } = state
   return (
@@ -114,7 +136,7 @@ export default function Post({
               title={post.pst_nombre}
               briefDescription={post.pst_descripcion_corta}
             />
-            <PhotosDescription post={post} />
+            <PhotosDescription post={post} creator={post.pstUsuarioId} />
             <Creator creator={post.pstUsuarioId} post={post} />
             <Assessment post={post} scoreReviews={scoreReviews} />
             <Comentaries reviews={reviews} />
@@ -143,8 +165,6 @@ export const getServerSideProps = async context => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const data = await res.json()
-  // console.log(data)
-  // console.log("dataPost: ", data)
   return {
     props: data
   }

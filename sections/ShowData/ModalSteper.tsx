@@ -18,14 +18,10 @@ import {
   Textarea
 } from "@chakra-ui/react"
 import { useState } from "react"
-import FileUpload from "../../components/FileUpload/FileUpload"
-import SelectField from "../../components/SelectField"
-
 import ZIcon from "../../components/Icon/ZIcon"
 import Steper from "../../components/Steper"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
-import { toCapitalFirstLetter } from "../../utils/toCapital"
 // agregar toCapitalFirstLetter
 export default function ModalSteper({
   service,
@@ -41,7 +37,13 @@ export default function ModalSteper({
   ]
   return (
     <Box>
-      <ZIcon name="search" pointer size={20} onClick={onOpen} />
+      <ZIcon
+        name="search"
+        pointer
+        size={20}
+        onClick={onOpen}
+        className="ml1 mr1"
+      />
 
       <Modal isOpen={isOpen} onClose={onClose} size="3xl" isCentered>
         <ModalOverlay />

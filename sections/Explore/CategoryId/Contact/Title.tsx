@@ -15,6 +15,7 @@ export default function CategoryTittle({ title, briefDescription }) {
               align="start"
               color="primary"
               mr="3"
+              wordBreak="break-word"
             >
               {toCapitalFirstLetter(title)}
             </Text>

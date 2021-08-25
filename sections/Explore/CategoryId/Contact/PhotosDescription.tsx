@@ -16,6 +16,7 @@ import SwiperCore, { Navigation, Thumbs } from "swiper/core"
 import { toCapitalFirstLetter } from "../../../../utils/toCapital"
 import { format } from "date-fns"
 import router from "next/router"
+import ContactWorkerModal from "./ContactWorkerModal"
 
 SwiperCore.use([Navigation, Thumbs])
 interface PropsUserPost {
@@ -56,18 +57,16 @@ interface PropsPost {
 
 interface PropsMain {
   post: PropsPost
+  creator: any
 }
-export default function CategoryTittle({ post }: PropsMain) {
+export default function CategoryTittle({ post, creator }: PropsMain) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
   const tags = post.pst_descripcion_incluye.split(",")
   // TODO: colocar los tags, la descripcion detallada, la fecha de publicacion, recarga de pagina
   return (
     <Box className="generalWrapper" py="6">
-      <Grid
-        templateColumns={{ base: "100%", lg: "70% 30%" }}
-        position="relative"
-      >
+      <Grid templateColumns={{ base: "100%", lg: "70% 30%" }}>
         <Box>
           <Flex align="center" justify="space-between">
             <Grid templateColumns="repeat(2, 1fr)" gap="2">
@@ -142,20 +141,21 @@ export default function CategoryTittle({ post }: PropsMain) {
             </Swiper>
           </Box>
         </Box>
-        <Flex
-          align="center"
-          justify="center"
-          px="3"
-          my="2"
-          position={{ base: "unset", lg: "fixed" }}
-          left={{ base: "20", lg: "70%", xl: "65%" }}
-        >
-          <Box boxShadow="0px 1px 4px rgba(0, 0, 0, 0.4)" px="6" py="6">
+        <Flex align="start" justify="center" px="3" my="2">
+          <Box
+            boxShadow="0px 1px 4px rgba(0, 0, 0, 0.4)"
+            px="6"
+            py="6"
+            position="sticky"
+            w="100%"
+          >
             <Grid templateColumns="repeat(1, 1fr)" gap="5">
               <Text className="bold600" fontSize="lg" color="primary">
                 Descripción
               </Text>
-              <Text>{toCapitalFirstLetter(post.pst_descripcion)}</Text>
+              <Box wordBreak="break-word">
+                <Text>{toCapitalFirstLetter(post.pst_descripcion)}</Text>
+              </Box>
               <UnorderedList spacing={3} px="3">
                 {tags.map((tag, index) => (
                   <ListItem key={index}>{toCapitalFirstLetter(tag)}</ListItem>
@@ -165,6 +165,13 @@ export default function CategoryTittle({ post }: PropsMain) {
               <UnorderedList spacing={3} px="3">
                 <ListItem>Desde s/.{post.pst_precioBase}</ListItem>
               </UnorderedList>
+              <ContactWorkerModal
+                post={post}
+                creator={creator}
+                variant="primary"
+                width="full"
+                showModalButtonText="Contactar"
+              />
               {/* <QuotePriceModal
                   variant="third"
                   width="full"

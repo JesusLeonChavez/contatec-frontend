@@ -22,7 +22,22 @@ import { CulqiProvider, Culqi } from "react-culqi"
 import SelectField, { Option } from "../../components/SelectField"
 import RateServiceModal from "../Explore/CategoryId/Contact/RateServiceModal"
 
-function PayCard({ service, user, setSelectedService, setIsEditting }) {
+interface PayCardProps {
+  service: any
+  user: any
+  setSelectedService: any
+  setIsEditting: any
+  setIsUpdatingServices: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function PayCard({
+  service,
+  user,
+  setSelectedService,
+  setIsEditting,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setIsUpdatingServices
+}: PayCardProps) {
   const [dataOtherUser, setDataOtherUser] = useState<any>(null)
   const [postData, setPostData] = useState<any>(null)
   useEffect(() => {
@@ -84,7 +99,7 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
             Monto: S/ {service.msj_precio_prop}
           </Text>
         </Box>
-        <Flex align="center" justify="space-evenly" w="180px">
+        <Flex align="center" justify="end">
           {service && dataOtherUser && (
             <>
               <ModalSteper
@@ -94,12 +109,13 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
                 postData={postData}
               />
               {service.trb_estado === "Contratado" ? (
-                <h3>Pendiente</h3>
+                <h3 style={{ margin: "0 10px" }}>Pendiente</h3>
               ) : (
                 <>
                   <h3>{service.trb_estado}</h3>
                   {service.review_exists === "0" && (
                     <Button
+                      mx="3"
                       variant="primary"
                       onClick={() => {
                         setSelectedService(service)
@@ -134,7 +150,7 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
         </Text>
       </Box>
       {/* TODO: Revisar renderizado condicional (es mas complejo de lo que deberia) */}
-      <Flex align="center" justify="space-around" w="180px">
+      <Flex align="center" justify="start">
         {/* Funcionalidad de pago! */}
         {service && dataOtherUser && (
           <>
@@ -159,11 +175,11 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
               </Culqi>
             ) : service.trb_estado === "En proceso" ? (
               <div>
-                <h1>En proceso</h1>
+                <h1 style={{ margin: "0 10px" }}>En proceso</h1>
               </div>
             ) : (
               <div>
-                <h1>Finalizado</h1>
+                <h1 style={{ margin: "0 10px" }}>Finalizado</h1>
                 {service && service?.review_exists === "0" ? (
                   <RateServiceModal
                     post={{ id: service.msjIdPostPropuestaId }}
@@ -171,6 +187,7 @@ function PayCard({ service, user, setSelectedService, setIsEditting }) {
                     variant="fourth"
                     width="6xs"
                     showModalButtonText="Valorar servicio"
+                    setIsUpdatingServices={setIsUpdatingServices}
                   />
                 ) : (
                   <h1>{service ? service.review_score : "hola"}</h1>
@@ -207,13 +224,16 @@ export default function Pay() {
   // Para editar estado (Uso del proveedor)
   const [isEditting, setIsEditting] = useState(false)
   // Para calificar trabajo (Uso del cliente).
+  // eslint-disable-next-line no-unused-vars
   const [isReviewing, setIsReviewing] = useState(false)
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const {
     isOpen: isReviewOpen,
+    // eslint-disable-next-line no-unused-vars
     onOpen: onReviewOpen,
+    // eslint-disable-next-line no-unused-vars
     onClose: onReviewClose
   } = useDisclosure()
 
@@ -226,10 +246,10 @@ export default function Pay() {
       pgo_apellido: auth.user.us_apellido,
       pgo_token_culqi: token.id,
       pgo_correo: token.email,
-      pgo_monto: service.msj_precio_prop,
+      pgo_monto: service.msj_precio_prop * 100,
       pgo_trabajoId: service.trb_ID
     }
-    const data = await post("/api/pay/service", body)
+    await post("/api/pay/service", body)
     // TODO: Agregar toaster si hace post con exito
     setSelectedService(null)
     setIsUpdatingServices(prev => !prev)
@@ -240,8 +260,6 @@ export default function Pay() {
     const userData = async () => {
       const { data: total } = await get("/api/user/info")
       const { data } = total
-      // console.log(data)
-      // console.log("yo", auth.user)
       setMyServices(data)
     }
     userData()
@@ -268,10 +286,7 @@ export default function Pay() {
     const body = {
       trb_estado: serviceStatus.value
     }
-    const data = await patch(
-      `/api/work/update-status/${selectedService.trb_ID}`,
-      body
-    )
+    await patch(`/api/work/update-status/${selectedService.trb_ID}`, body)
     // TODO: Mostrar toaster de que se actualizo correctamente
     // console.log(data)
     console.log("Servicio seleccionado: ", selectedService)
@@ -314,6 +329,7 @@ export default function Pay() {
                 key={index}
                 setSelectedService={setSelectedService}
                 setIsEditting={setIsEditting}
+                setIsUpdatingServices={setIsUpdatingServices}
               />
             ))}
           </CulqiProvider>

@@ -31,6 +31,7 @@ type PropsModal = {
   showModalButtonText: string
   post: Record<any, any>
   trabajo: any
+  setIsUpdatingServices?: any
 }
 
 // TODO: manejar error de token cuando se vuelve a dar click en activar cuenta
@@ -40,7 +41,8 @@ export default function RateServiceModal({
   width,
   showModalButtonText,
   post: postItem,
-  trabajo
+  trabajo,
+  setIsUpdatingServices
 }: PropsModal) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -68,9 +70,14 @@ export default function RateServiceModal({
         rw_idTrabajo: trabajo
       }
       setIsPosting(true)
-      const res = await post("/api/review/create", review)
+
+      await post("/api/review/create", review)
+      setIsUpdatingServices && setIsUpdatingServices(prev => !prev)
       // console.log("resReview: ", res)
       setIsPosting(false)
+      setTimeout(() => {
+        onClose()
+      }, 200)
     }
   }
 

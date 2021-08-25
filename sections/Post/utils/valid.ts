@@ -55,6 +55,9 @@ export const validPost = (values, category, imagesFile, tags) => {
   if (!values.price) {
     errors.price = errorForm.EMPTY_PRICE
     isValid = false
+  } else if (Number(values.price) < 10) {
+    errors.price = errorForm.SHORT_PRICE
+    isValid = false
   } else if (!regexDecimal(values.price)) {
     errors.price = errorForm.INVALID_PRICE
     isValid = false

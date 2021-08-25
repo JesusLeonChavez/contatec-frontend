@@ -171,6 +171,16 @@ export default function Navbar() {
             <PopoverArrow />
             <PopoverBody d="flex" alignItems="center" flexDirection="column">
               <Button
+                variant="primary"
+                w="100px"
+                onClick={() => {
+                  router.push("/mensajes")
+                }}
+                my="2"
+              >
+                Chat
+              </Button>
+              <Button
                 variant="secondary"
                 w="100px"
                 onClick={() => {

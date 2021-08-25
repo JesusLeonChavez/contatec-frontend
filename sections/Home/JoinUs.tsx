@@ -25,14 +25,20 @@ export default function OurCategories() {
               <Text fontSize="md" color="gray">
                 COMUNIDAD
               </Text>
-              <Text fontSize="5xl" className={styles.bold600}>
+              <Text
+                fontSize="5xl"
+                className={styles.bold600}
+                align={{ base: "center", md: "unset" }}
+              >
                 ¡Únete a nuestra comunidad y empieza el cambio!
               </Text>
-              <Register
-                variant="primary"
-                width="3xs"
-                showModalButtonText="Registrate"
-              />
+              <Flex justify={{ base: "center", md: "start" }}>
+                <Register
+                  variant="primary"
+                  width="3xs"
+                  showModalButtonText="Registrate"
+                />
+              </Flex>
             </Grid>
           </Flex>
         </div>

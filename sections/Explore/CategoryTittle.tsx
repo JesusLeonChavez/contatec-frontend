@@ -11,16 +11,16 @@ export default function CategoryTittle({ categories }) {
             align="center"
             color="primary"
           >
-            Elige una catogoría
+            Elige una categoría
           </Text>
         </Flex>
         <Grid
-          gap="10"
+          gap="2"
           py="5"
           templateColumns={{
             base: "repeat(1, 1fr)",
-            sm: "repeat(3, 1fr)",
-            lg: "repeat(6, 1fr)"
+            md: "repeat(4, 1fr)",
+            xl: "repeat(8, 1fr)"
           }}
         >
           {categories.map(category => (
@@ -30,54 +30,12 @@ export default function CategoryTittle({ categories }) {
               as={`/explorar/${category.id}`}
             >
               <a>
-                <Button variant="third" isFullWidth>
+                <Button variant="third" fontSize="xs" isFullWidth>
                   {category.cat_nombre}
                 </Button>
               </a>
             </Link>
           ))}
-          {/* <Link href="/explorar/[categoryid]" as={`/explorar/marketing`}>
-            <a>
-              <Button variant="third" isFullWidth>
-                Marketing
-              </Button>
-            </a>
-          </Link>
-          <Link href="/explorar/[categoryid]" as={`/explorar/desarrollo_web`}>
-            <a>
-              <Button variant="third" isFullWidth>
-                Desarrollo web
-              </Button>
-            </a>
-          </Link>
-          <Link href="/explorar/[categoryid]" as={`/explorar/programacion`}>
-            <a>
-              <Button variant="third" isFullWidth>
-                Programación
-              </Button>
-            </a>
-          </Link>
-          <Link href="/explorar/[categoryid]" as={`/explorar/negocios`}>
-            <a>
-              <Button variant="third" isFullWidth>
-                Negocios
-              </Button>
-            </a>
-          </Link>
-          <Link href="/explorar/[categoryid]" as={`/explorar/datos`}>
-            <a>
-              <Button variant="third" isFullWidth>
-                Datos
-              </Button>
-            </a>
-          </Link>
-          <Link href="/explorar/[categoryid]" as={`/explorar/diseno_grafico`}>
-            <a>
-              <Button variant="third" isFullWidth>
-                Diseño gráfico
-              </Button>
-            </a>
-          </Link> */}
         </Grid>
       </div>
     </Box>
