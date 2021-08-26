@@ -75,6 +75,8 @@ export default function Login({
         // @ts-ignore
         localStorage.setItem("isLogged", true)
         localStorage.setItem("typeLogged", "normal")
+        // TODO: VERIFICAR SI NO DAñA PAGINA
+        window.location.reload()
       }
     }
   }
@@ -101,6 +103,8 @@ export default function Login({
         // @ts-ignore
         localStorage.setItem("isLogged", true)
         localStorage.setItem("typeLogged", "facebook")
+        // TODO: VERIFICAR SI NO DAñA PAGINA
+        window.location.reload()
       }
     } catch (err) {
       console.log("err: ", err)
@@ -136,6 +140,8 @@ export default function Login({
         // @ts-ignore
         localStorage.setItem("isLogged", true)
         localStorage.setItem("typeLogged", "google")
+        // TODO: VERIFICAR SI NO DAñA PAGINA
+        window.location.reload()
       }
     } catch (err) {
       console.log("err: ", err)
