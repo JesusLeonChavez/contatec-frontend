@@ -1,4 +1,4 @@
-import { Box, Grid, Flex, Avatar, Text, Button } from "@chakra-ui/react"
+import { Box, Grid, Flex, Avatar, Text, Button, Link } from "@chakra-ui/react"
 
 export default function CategoryTittle({ creator, post }) {
   return (
@@ -18,7 +18,11 @@ export default function CategoryTittle({ creator, post }) {
                   {`${creator.us_nombre}${" "}${creator.us_apellido}`}
                 </Text>
                 <Text fontSize="sm">Colaborador de contatec</Text>
-                <Button variant="third">Ver perfil</Button>
+                <Link href="/perfil-trabajador">
+                  <a>
+                    <Button variant="third">Ver perfil</Button>
+                  </a>
+                </Link>
               </Grid>
             </Flex>
           </Box>

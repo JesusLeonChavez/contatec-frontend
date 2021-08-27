@@ -170,7 +170,7 @@ export default function CategoryTittle({ post, creator }: PropsMain) {
                 creator={creator}
                 variant="primary"
                 width="full"
-                showModalButtonText="Contactar"
+                showModalButtonText="Contactar trabajador"
               />
               {/* <QuotePriceModal
                   variant="third"
