@@ -7,7 +7,7 @@ import Head from "next/head"
 import Worker from "../sections/WorkerProfile/Profile"
 import Profile from "../sections/WorkerProfile/WorkerProfilePicture"
 
-export default function WorkerProfile() {
+export default function WorkerProfile({ explore }) {
   const { state } = useContext(DataContext)
   const { auth, authReady } = state
 

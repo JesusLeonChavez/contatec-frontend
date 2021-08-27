@@ -9,6 +9,7 @@ export default function Statistics() {
       justifyContent="center"
       p="5"
       boxShadow="xl"
+      mb="15"
     >
       <StatGroup w="800px">
         <Stat>
