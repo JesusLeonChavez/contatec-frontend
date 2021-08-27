@@ -9,7 +9,7 @@ import Profile from "../sections/WorkerProfile/WorkerProfilePicture"
 export default function WorkerProfile({ worker }) {
   const { state } = useContext(DataContext)
   const { auth, authReady } = state
-  console.log("worker", worker)
+  console.log("worker: ", worker)
   if (authReady && !auth?.access_token) {
     return (
       <div>

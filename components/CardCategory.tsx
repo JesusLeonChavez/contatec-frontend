@@ -189,8 +189,9 @@ export default function CardCategory({
                     w="250px"
                     align="start"
                   >
-                    Por {post.pstUsuarioId.us_nombre}{" "}
-                    {post.pstUsuarioId.us_apellido}
+                    {post.pstUsuarioId?.us_nombre &&
+                      `Por ${post.pstUsuarioId.us_nombre}${" "}
+                        ${post.pstUsuarioId.us_apellido}`}
                   </Text>
                 </Flex>
               )}

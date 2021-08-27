@@ -1,6 +1,6 @@
 import { Box, Stat, StatLabel, StatNumber, StatGroup } from "@chakra-ui/react"
 
-export default function Statistics() {
+export default function Statistics({ worker }) {
   return (
     <Box
       border="2px solid gray.800"
@@ -12,7 +12,7 @@ export default function Statistics() {
     >
       <StatGroup w="100%" d="flex">
         <Stat>
-          <StatNumber textAlign="center">05</StatNumber>
+          <StatNumber textAlign="center">{worker.posts.length}</StatNumber>
           <StatLabel textAlign="center">Servicios publicados</StatLabel>
         </Stat>
 

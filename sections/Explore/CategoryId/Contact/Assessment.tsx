@@ -1,7 +1,6 @@
 import { Text, Grid, Box, Flex } from "@chakra-ui/react"
 import ZIcon from "../../../../components/Icon"
 import Progress from "../../../../components/Progress"
-import RateServiceModal from "./RateServiceModal"
 export default function Assessment({ post, scoreReviews: querySql }) {
   const scoreReviews = querySql[0] || {
     score_average: 0,
