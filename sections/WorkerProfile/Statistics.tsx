@@ -8,7 +8,7 @@ export default function Statistics() {
       d="flex"
       justifyContent="center"
       p="5"
-      boxShadow="xl"
+      boxShadow="md"
       mb="15"
     >
       <StatGroup w="800px">
