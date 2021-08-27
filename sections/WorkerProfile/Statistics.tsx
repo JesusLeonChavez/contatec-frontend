@@ -5,13 +5,12 @@ export default function Statistics() {
     <Box
       border="2px solid gray.800"
       alignItems="center"
-      d="flex"
-      justifyContent="center"
+      w="100%"
       p="5"
       boxShadow="md"
       mb="15"
     >
-      <StatGroup w="800px">
+      <StatGroup w="100%" d="flex">
         <Stat>
           <StatNumber textAlign="center">05</StatNumber>
           <StatLabel textAlign="center">Servicios publicados</StatLabel>

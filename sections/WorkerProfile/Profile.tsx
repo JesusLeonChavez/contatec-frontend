@@ -1,9 +1,11 @@
 import { Text, Box, Button, Grid } from "@chakra-ui/react"
 import Statistics from "../WorkerProfile/Statistics"
 import { Swiper, SwiperSlide } from "swiper/react"
+import SwiperCore, { Autoplay, Navigation } from "swiper/core"
 // import SwiperCore, { Autoplay, Navigation } from "swiper/core"
 // import styles from "../../styles/sections/Home.module.css"
 import Card from "../../components/Card"
+SwiperCore.use([Autoplay, Navigation])
 
 export default function Profile() {
   const data = [
@@ -26,12 +28,11 @@ export default function Profile() {
 
   return (
     <div className="generalWrapper" style={{ padding: "50px 10px" }}>
-      <Grid templateColumns="repeat(3, 1fr)" gap={5} overflowY="hidden">
+      <Grid templateColumns="30% 70%" overflowY="hidden">
         <Box
           flexDirection="row"
           justifyContent="center"
           alignItems="flex-start"
-          w="250px"
         >
           <Button
             variant="primary"
@@ -47,7 +48,7 @@ export default function Profile() {
           <Text>En contatec desde Julio, 2021</Text>
         </Box>
 
-        <Box pl="100" w="1000px" h="100%">
+        <Box w="100%">
           <Statistics />
           <Swiper
             slidesPerView={4}
