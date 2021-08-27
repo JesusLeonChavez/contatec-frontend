@@ -1,5 +1,7 @@
 import { Text, Box, Button, Grid } from "@chakra-ui/react"
 import Statistics from "../WorkerProfile/Statistics"
+import { format } from "date-fns"
+import { es } from "date-fns/locale"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Autoplay, Navigation } from "swiper/core"
 // import SwiperCore, { Autoplay, Navigation } from "swiper/core"
@@ -7,7 +9,7 @@ import SwiperCore, { Autoplay, Navigation } from "swiper/core"
 import Card from "../../components/Card"
 SwiperCore.use([Autoplay, Navigation])
 
-export default function Profile() {
+export default function Profile({ worker }) {
   const data = [
     {
       title: "Marketing de contenido",
@@ -45,7 +47,10 @@ export default function Profile() {
           >
             Contactar
           </Button>
-          <Text>En contatec desde Julio, 2021</Text>
+          <Text>
+            En contatec desde{" "}
+            {format(new Date(worker.createdAt), "MMMM yyyy", { locale: es })}
+          </Text>
         </Box>
 
         <Box w="100%">

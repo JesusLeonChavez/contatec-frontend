@@ -86,7 +86,7 @@ export default function Post({
     )
   }
   const { state } = useContext(DataContext)
-  const { authReady } = state
+  const { auth, authReady } = state
   return (
     <div>
       <Head>
@@ -137,7 +137,11 @@ export default function Post({
               briefDescription={post.pst_descripcion_corta}
             />
             <PhotosDescription post={post} creator={post.pstUsuarioId} />
-            <Creator creator={post.pstUsuarioId} post={post} />
+            <Creator
+              creator={post.pstUsuarioId}
+              post={post}
+              token={auth.access_token}
+            />
             <Assessment post={post} scoreReviews={scoreReviews} />
             <Comentaries reviews={reviews} />
           </>

@@ -9,7 +9,7 @@ import styles from "../../styles/sections/WorkerProfile.module.css"
 // import { DataContext } from "../../store/GlobalState"
 // import { validImage } from "./utils/valid"
 
-export default function ProfilePicture({ auth }) {
+export default function ProfilePicture({ worker }) {
   return (
     <div
       className={styles.containerWithBackground}
@@ -20,8 +20,8 @@ export default function ProfilePicture({ auth }) {
           <Flex align="center" position="absolute" top="200px">
             <Avatar
               size="2xl"
-              name={`${auth.user?.us_nombre} ${auth.user?.us_apellido}`}
-              src={auth.user?.avatar}
+              name={`${worker?.us_nombre} ${worker?.us_apellido}`}
+              src={worker?.avatar}
               mx="1"
               position="relative"
             />
@@ -33,7 +33,7 @@ export default function ProfilePicture({ auth }) {
             className="bold500"
             fontSize="35px"
           >
-            {`${auth.user?.us_nombre} ${auth.user?.us_apellido}`}
+            {`${worker?.us_nombre} ${worker?.us_apellido}`}
           </Text>
         </Flex>
       </div>

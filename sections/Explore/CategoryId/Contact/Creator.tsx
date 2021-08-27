@@ -1,6 +1,6 @@
 import { Box, Grid, Flex, Avatar, Text, Button, Link } from "@chakra-ui/react"
 
-export default function CategoryTittle({ creator, post }) {
+export default function CategoryTittle({ creator, post, token }) {
   return (
     <Box>
       <div className="generalWrapper">
@@ -18,7 +18,11 @@ export default function CategoryTittle({ creator, post }) {
                   {`${creator.us_nombre}${" "}${creator.us_apellido}`}
                 </Text>
                 <Text fontSize="sm">Colaborador de contatec</Text>
-                <Link href="/perfil-trabajador">
+                <Link
+                  href={`/perfil-trabajador?id=${creator.id}&tk=${
+                    token || "none"
+                  }`}
+                >
                   <a>
                     <Button variant="third">Ver perfil</Button>
                   </a>
