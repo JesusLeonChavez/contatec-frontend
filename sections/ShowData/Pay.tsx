@@ -42,6 +42,7 @@ function PayCard({
   const [postData, setPostData] = useState<any>(null)
   useEffect(() => {
     if (!service) return
+    // console.log(service)
     const getOtherUser = async () => {
       let data
       let error
@@ -82,7 +83,7 @@ function PayCard({
     getPostData()
   }, [])
 
-  if (service.provider === "1") {
+  if (service.provider === 1) {
     return (
       <Flex
         backgroundColor="gray.200"
@@ -112,8 +113,8 @@ function PayCard({
                 <h3 style={{ margin: "0 10px" }}>Pendiente</h3>
               ) : (
                 <>
-                  <h3>{service.trb_estado}</h3>
-                  {service.review_exists === "0" && (
+                  <h3>{service.trb_estado} </h3>
+                  {service.review_exists === 0 && (
                     <Button
                       mx="3"
                       variant="primary"
@@ -180,7 +181,7 @@ function PayCard({
             ) : (
               <div>
                 <h1 style={{ margin: "0 10px" }}>Finalizado</h1>
-                {service && service?.review_exists === "0" ? (
+                {service && service?.review_exists === 0 ? (
                   <RateServiceModal
                     post={{ id: service.msjIdPostPropuestaId }}
                     trabajo={service.trb_ID}
@@ -190,7 +191,24 @@ function PayCard({
                     setIsUpdatingServices={setIsUpdatingServices}
                   />
                 ) : (
-                  <h1>{service ? service.review_score : "hola"}</h1>
+                  <>
+                    {service ? (
+                      <>
+                        <h1>{service.review_score}</h1>
+                        <RateServiceModal
+                          post={{ id: service.msjIdPostPropuestaId }}
+                          trabajo={service.trb_ID}
+                          variant="fourth"
+                          width="6xs"
+                          showModalButtonText="Editar valoración"
+                          setIsUpdatingServices={setIsUpdatingServices}
+                          updateValoration
+                        />
+                      </>
+                    ) : (
+                      <h1>Cargando</h1>
+                    )}
+                  </>
                 )}
               </div>
             )}
@@ -241,6 +259,7 @@ export default function Pay() {
     // console.log(token)
     // console.log(service)
     // token.id
+    console.log("ingresa")
     const body = {
       pgo_nombre: auth.user.us_nombre,
       pgo_apellido: auth.user.us_apellido,
@@ -318,7 +337,6 @@ export default function Pay() {
                 buttontext: "white",
                 maintext: "#482F51",
                 desctext: "#2B1C31"
-                // logo: "//placekitten.com/400/400"
               }
             }}
           >
